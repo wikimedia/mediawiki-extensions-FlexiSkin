@@ -1,0 +1,127 @@
+{
+	"name": "FlexiSkin",
+	"version": "3.2.0-alpha",
+	"license-name": "GPL-3.0-only",
+	"url": "https://en.wiki.bluespice.com/wiki/Reference:FlexiSkin",
+	"author": [
+		"Robert Vogel",
+		"Daniel Vogel"
+	],
+    "descriptionmsg": "flexiskin-extension-desc",
+    "namemsg": "flexiskin-extension-name",
+	"type": "specialpage",
+	"attributes": {
+		"BlueSpiceFoundation": {
+			"PermissionRegistry": {
+				"flexiskin-viewspecialpage": {
+					"type": "global",
+					"roles": [ "admin" ]
+				},
+				"flexiskin-api": {
+					"type": "global",
+					"roles": [ "admin" ]
+				}
+            },
+            "RendererRegistry": {
+            }
+		},
+		"FlexiSkin": {
+			"PluginRegistry": {
+				"WikiBackground": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\WikiBackground::factory",
+				"LogoAndFavicon": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\LogoAndFavicon::factory",
+				"Colors": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Colors::factory",
+				"FreeCSS": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\FreeCSS::factory"
+			}
+		}
+    },
+    "MessagesDirs": {
+		"FlexiSkin": [
+			"i18n"
+		]
+	},
+	"AvailableRights": [
+		"flexiskin-viewspecialpage",
+		"flexiskin-api"
+	],
+	"ServiceWiringFiles": [
+		"includes/ServiceWiring.php"
+	],
+    "SpecialPages": {
+		"FlexiSkin": "SpecialFlexiSkin"
+	},
+	"ExtensionMessagesFiles": {
+		"FlexiSkinAlias": "languages/FlexiSkin.alias.php"
+	},
+    "AutoloadNamespaces": {
+        "MediaWiki\\Extension\\FlexiSkin\\": "src/",
+		"MediaWiki\\Extension\\FlexiSkin\\Tests\\": "tests/phpunit/"
+    },
+    "AutoloadClasses": {
+		"SpecialFlexiSkin": "includes/specials/SpecialFlexiSkin.php"
+	},
+	"APIModules": {
+		"flexiskin-activate": "MediaWiki\\Extension\\FlexiSkin\\Api\\ActivateFlexiSkin",
+		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\SaveFlexiSkin",
+		"flexiskin-preview": "MediaWiki\\Extension\\FlexiSkin\\Api\\PreviewFlexiSkin",
+		"flexiskin-new": "MediaWiki\\Extension\\FlexiSkin\\Api\\NewFlexiSkin",
+		"flexiskin-delete": "MediaWiki\\Extension\\FlexiSkin\\Api\\DeleteFlexiSkin"
+	},
+	"Hooks": {
+		"BeforePageDisplay": [
+			"\\MediaWiki\\Extension\\FlexiSkin\\Hook\\BeforePageDisplay\\GetActiveSkins::callback",
+			"\\MediaWiki\\Extension\\FlexiSkin\\Hook\\BeforePageDisplay\\AddActiveSkinStyles::callback"
+		],
+		"LoadExtensionSchemaUpdates": "\\MediaWiki\\Extension\\FlexiSkin\\Hook\\LoadExtensionSchemaUpdates\\FlexiSkinShemaUpdates::callback",
+		"OutputPageBodyAttributes": "\\MediaWiki\\Extension\\FlexiSkin\\Hook\\OutputPageBodyAttributes\\AddFlexiSkinBodyClass::callback"
+    },
+    "ResourceModules": {
+		"ext.flexiskin.styles": {
+			"class": "\\MediaWiki\\Extension\\FlexiSkin\\ResourceLoader\\ActiveFlexiSkin"
+		},
+		"ext.flexiskin.specialpage.scripts": {
+			"class": "\\MediaWiki\\Extension\\FlexiSkin\\ResourceLoader\\Configurator",
+			"scripts": [
+				"js/ui/flexiskin.js",
+				"js/ui/dialog/newFlexiSkin.js",
+				"js/ui/dialog/deleteFlexiSkin.js"
+			],
+			"dependencies" : [
+				"ext.bluespice",
+				"mediawiki.api",
+				"oojs",
+				"oojs-ui",
+				"ext.codeEditor.ace"
+			],
+			"messages": [
+				"flexiskin-selection-empty-label",
+				"flexiskin-btn-skin-select-label",
+				"flexiskin-btn-skin-preview-label",
+				"flexiskin-btn-skin-new-label",
+				"flexiskin-btn-skin-edit-label",
+				"flexiskin-btn-skin-save-label",
+				"flexiskin-dlg-new-title",
+				"flexiskin-dlg-new-label-submit",
+				"flexiskin-dlg-new-label-abort",
+				"flexiskin-dlg-new-desc",
+				"flexiskin-dlg-new-input-label",
+				"bs-extjs-title-success"
+			]
+		}
+    },
+	"config_prefix": "bsg",
+	"config": {
+		"FlexiSkinThemePath": {
+			"value": "resources/templates/themes",
+			"path": true
+		},
+		"FlexiSkinActiveId": {
+			"value": "1"
+		}
+    },
+	"ResourceFileModulePaths": {
+		"localBasePath": "resources",
+		"remoteExtPath": "FlexiSkin/resources"
+	},
+	"manifest_version": 2,
+	"load_composer_autoloader": true
+}

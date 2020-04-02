@@ -1,0 +1,6 @@
+body.mediawiki #mw-content-text #fs-logo-input input {
+    width: 268px !important;
+    height: 64px;
+    background-color: transparent !important;
+}
+
