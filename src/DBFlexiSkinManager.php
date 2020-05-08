@@ -116,7 +116,7 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 		$allFlexiSkins = $this->getList();
 
 		foreach ( $allFlexiSkins as $flexiSkin ) {
-			if ( $flexiSkin->isActive() === true ) {
+			if ( $flexiSkin->isActive() == true ) {
 				$res = $this->dbw->update(
 					'flexiskin',
 					[
