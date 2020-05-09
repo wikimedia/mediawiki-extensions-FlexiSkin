@@ -4,10 +4,12 @@
     flex-direction: row-reverse;
     height: 24px;
 }
-.oo-ui-fieldLayout:first-child, .oo-ui-fieldLayout.oo-ui-labelElement:first-child {
+.fs-plugin-colors-field-layout .oo-ui-fieldLayout:first-child,
+.fs-plugin-colors-field-layout .oo-ui-fieldLayout.oo-ui-labelElement:first-child {
     margin-top: 15px;
 }
-.oo-ui-fieldLayout:first-child, .oo-ui-fieldLayout.oo-ui-labelElement {
+.fs-plugin-colors-field-layout .oo-ui-fieldLayout,
+.fs-plugin-colors-field-layout .oo-ui-fieldLayout.oo-ui-labelElement {
     margin-top: 0px;
 }
 .fs-plugin-colors-field-layout .oo-ui-fieldLayout-body .oo-ui-fieldLayout-field {

@@ -27,13 +27,12 @@ flexiskin.ui.plugin.WikiBackground.static.title = 'WikiBackground';  /* TODO: us
 flexiskin.ui.plugin.WikiBackground.prototype.setPluginData = function( config ) {
     config = config || {};
 
+    bgColor.setValue( '' );
     if ( config.hasOwnProperty( 'WikiBackground' ) ) {
         var values = config.WikiBackground;
 
         if ( values.hasOwnProperty( 'bg' ) ) {
             bgColor.setValue( values.bg );
-        } else {
-            bgColor.setValue( '' );
         }
     }
 }

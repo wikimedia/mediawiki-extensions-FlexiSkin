@@ -44,10 +44,17 @@ class LogoAndFavicon extends PluginBase {
 	/**
 	 *
 	 * @param sting $bodyClass
-	 * @param StdClass $allDataFromDB
+	 * @param array $allDataFromDB
 	 * @return string The CSS
 	 */
 	public function generateCSS( $bodyClass, $allDataFromDB ) {
+		if ( array_key_exists( 'LogoAndFavicon', $allDataFromDB ) ) {
+			$logo = $allDataFromDB['LogoAndFavicon']['logo'];
+			if ( $logo['data'] !== '' ) {
+			}
+		}
+
+
 		return '';
 	}
 }

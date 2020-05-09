@@ -1,4 +1,4 @@
-/* theme set 1 */
+/* Plugin Colors */
 {{#set1}}
 body.mediawiki.{{bodyClass}} .bs-custom-menu-container { background-color: {{{bg1}}}; }
 body.mediawiki.{{bodyClass}} .bs-custom-menu-header-container .bs-custom-menu.header > li a { color: {{{fg1}}}; }
@@ -7,6 +7,80 @@ body.mediawiki.{{bodyClass}} .bs-custom-menu-header-container .bs-custom-menu.he
 body.mediawiki.{{bodyClass}} .bs-custom-menu-header-container .bs-custom-menu.header > li .dropdown-menu { background-color: {{{bg1}}}; color: {{{fg1}}}; }
 body.mediawiki.{{bodyClass}} .bs-custom-menu-header-container .bs-custom-menu.header > li .dropdown-menu::before { color: {{{bg1}}} !important; }
 body.mediawiki.{{bodyClass}} .bs-custom-menu-header-container .bs-custom-menu.header > li .dropdown-menu a { color: {{{fg1}}}; }
-body.mediawiki.{{bodyClass}} .bs-custom-menu-header-container .bs-custom-menu.header > li .dropdown-menu a:hover { background-color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .bs-custom-menu-header-container .bs-custom-menu.header > li .dropdown-menu a:hover { background-color: {{{bg2}}}; color: {{{fg2}}};}
+body.mediawiki.{{bodyClass}} .calumma-toggle-button.bs-custom-menu-header-button { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .calumma-toggle-button.bs-custom-menu-header-button:hover { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .bs-edit-custom-menu-link .label { color: {{{fg1}}}; }
 {{/set1}}
-
+{{#set2}}
+body.mediawiki.{{bodyClass}} header.main-header { background-color: {{{bg1}}} }
+body.mediawiki.{{bodyClass}} header.main-header .calumma-full-screen-button i::before { color: {{{fg1}}} }
+body.mediawiki.{{bodyClass}} header.main-header .calumma-full-screen-button:hover i::before { color: {{{fg2}}} }
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown .btn.dropdown-toggle::after { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown .btn.dropdown-toggle:hover::after { color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .sidebar-toggle[data-toggle~="navigation-main-collapse"] i.navigation-main-collapse::before,
+body.mediawiki.{{bodyClass}} .mobile-notifications-button i.mobile-notifications-button::before,
+body.mediawiki.{{bodyClass}} header.main-header a.mobile-search-button::before,
+body.mediawiki.{{bodyClass}} .calumma-tablet-visible .sidebar-toggle[data-toggle~="sitetools-main-collapse"] i.sitetools-main-collapse::before { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .sidebar-toggle[data-toggle~="navigation-main-collapse"]:hover i.navigation-main-collapse::before,
+body.mediawiki.{{bodyClass}} .mobile-notifications-button:hover i.mobile-notifications-button::before,
+body.mediawiki.{{bodyClass}} header.main-header a.mobile-search-button:hover::before,
+body.mediawiki.{{bodyClass}} .calumma-tablet-visible .sidebar-toggle[data-toggle~="sitetools-main-collapse"]:hover i.sitetools-main-collapse::before { color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .mobile-notifications-button i.mobile-notifications-button.active::before { color: #FFB100; }
+body.mediawiki.{{bodyClass}} header.main-header .navbar-form.navbar-left.dropdown-menu { background-color: {{{bg1}}}; }
+{{/set2}}
+{{#set3}}
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown .btn.btn-primary .icon::before { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown .btn.btn-primary:hover .icon::before { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown.open .dropdown-menu { background-color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown.open .dropdown-menu::before { color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown.open .dropdown-menu li a { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-featured-actions .dropdown.open .dropdown-menu li a:hover { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} header .bs-button-user.dropdown.open .dropdown-menu { background-color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-button-user.dropdown.open .dropdown-menu::before { color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-button-user.dropdown.open .dropdown-menu li a { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} header .bs-button-user.dropdown.open .dropdown-menu li a:hover { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} header .bs-button-user.dropdown.open .dropdown-menu .separator { border-bottom-color: {{{bg1}}} !important; }
+body.mediawiki.{{bodyClass}} #bs-top { color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} #bs-top:hover { color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .sidebar-toggle[data-toggle~="navigation-main-collapse"] i.navigation-main-collapse::before { color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .sidebar-toggle[data-toggle~="navigation-main-collapse"]:hover i.navigation-main-collapse::before { color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .sidebar-toggle[data-toggle~="navigation-main-collapse"].calumma-mobile-visible-close-only i.navigation-main-collapse::before { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .sidebar-toggle[data-toggle~="navigation-main-collapse"].calumma-mobile-visible-close-only:hover i.navigation-main-collapse::before { color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .sitetools-main .sidebar-toggle[data-toggle~="sitetools-main-collapse"] i.sitetools-main-collapse::before { color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} .sitetools-main .sidebar-toggle[data-toggle~="sitetools-main-collapse"]:hover i.sitetools-main-collapse::before { color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main { background-color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .nav-pills li a  { color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .nav-pills li a:hover  { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .nav-pills li.active a  { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-content a:not( .new ) { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-content a span { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-content a i { color: {{{fg1}}} !important; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-content a:hover { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-content a:hover span {  color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-content a:hover i { color: {{{fg2}}} !important; }
+body.mediawiki.{{bodyClass}} .navigation-main .panel.panel-default .panel-heading .panel-title a,
+body.mediawiki.{{bodyClass}} .navigation-main .panel.panel-default .panel-heading .bs-panel-title a,
+body.mediawiki.{{bodyClass}} .navigation-main .bs-panel.panel-default .panel-heading .panel-title a,
+body.mediawiki.{{bodyClass}} .navigation-main .bs-panel.panel-default .panel-heading .bs-panel-title a { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .panel.panel-default .panel-heading .panel-title a:hover,
+body.mediawiki.{{bodyClass}} .navigation-main .panel.panel-default .panel-heading .bs-panel-title a:hover,
+body.mediawiki.{{bodyClass}} .navigation-main .bs-panel.panel-default .panel-heading .panel-title a:hover,
+body.mediawiki.{{bodyClass}} .navigation-main .bs-panel.panel-default .panel-heading .bs-panel-title a:hover { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-pane.active .bs-calumma-sidebar-edit-link span { color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-pane.active .bs-calumma-sidebar-edit-link:hover span { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .tab-pane.active .bs-calumma-sidebar-edit-link:hover{ background-color: {{{bg1}}};}
+body.mediawiki.{{bodyClass}} .navigation-main .separator { color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main #bs-sitenav-navigation #bs-mobile-user-container .bs-mobile-user-button.dropdown a.dropdown-toggle:hover { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .bs-mobile-user-button .bs-personal-menu li.bs-personal-menu-container-user:hover { background-color: {{{bg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .bs-mobile-user-button .bs-personal-menu li.bs-personal-menu-container-user:hover span,
+body.mediawiki.{{bodyClass}} .navigation-main .bs-mobile-user-button .bs-personal-menu li.bs-personal-menu-container-user:hover i::before  { color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .bs-personal-menu-container { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .navigation-main .bs-mobile-user-button .bs-personal-menu .separator{ border-color: {{{bg1}}}; }
+body.mediawiki.{{bodyClass}} .bs-mobile-more-menu a.bs-mobile-more-menu-button i { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .bs-mobile-more-menu a.bs-mobile-more-menu-button:hover i { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .bs-mobile-more-menu .dropdown-menu { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .bs-mobile-more-menu .dropdown-menu a: hover { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+body.mediawiki.{{bodyClass}} .bs-mobile-featured-actions-button > i { background-color: {{{bg1}}}; color: {{{fg1}}}; }
+body.mediawiki.{{bodyClass}} .bs-mobile-featured-actions-button:hover > i { background-color: {{{bg2}}}; color: {{{fg2}}}; }
+{{/set3}}

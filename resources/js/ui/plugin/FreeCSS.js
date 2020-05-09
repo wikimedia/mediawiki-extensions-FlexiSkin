@@ -77,6 +77,7 @@ $( function($) {
 				}
 			ace.config.set( 'basePath', basePath + '/CodeEditor/modules/ace' );
             editor.session.setMode("ace/mode/css");
+            editor.$blockScrolling = Infinity;
 
             editor.setValue ( editorTmp );
         } );

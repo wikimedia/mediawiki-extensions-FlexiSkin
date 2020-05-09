@@ -18,13 +18,19 @@ flexiskin.ui.plugin.LogoAndFavicon = function( config ){
     config = config || {};
 
     config.items = [
-        new OO.ui.FieldLayout( LogoAndFaviconInputLogo, {
-            label: 'Logo',
-            align: 'top'
-        } ),
-        new OO.ui.FieldLayout( LogoAndFaviconInputFavicon, {
-            label: 'Favicon',
-            align: 'top'
+        new OO.ui.FieldsetLayout( {
+            label: 'Logo and favicon',
+            classes: [ 'fs-plugin-LogoAndFavicon' ],
+            items: [
+                new OO.ui.FieldLayout( LogoAndFaviconInputLogo, {
+                    label: 'Logo',
+                    align: 'top'
+                } ),
+                new OO.ui.FieldLayout( LogoAndFaviconInputFavicon, {
+                    label: 'Favicon',
+                    align: 'top'
+                } )
+            ]
         } )
     ];
 
@@ -40,32 +46,31 @@ flexiskin.ui.plugin.LogoAndFavicon.prototype.setPluginData = function( config ) 
     config = config || {};
 
     if ( config.hasOwnProperty( 'LogoAndFavicon' ) ) {
-        var values = JSON.parse(config.LogoAndFavicon);
+        var values = config.LogoAndFavicon;
 
         if ( values.hasOwnProperty( 'logo' ) ) {
             if ( values.logo.hasOwnProperty( 'data' ) ) {
-                logo.data.setValue( values.logo.data );
-                $('#logo-input-zone').css( 'background-image', 'url("' + logo.data + '")' );
-            } else {
-                logo.data.setValue( '' );
+                logo.data = values.logo.data;
+                $('#fs-logo-input input').css( 'background-image', 'url("' + logo.data + '")' );
             }
             if ( values.logo.hasOwnProperty( 'name' ) ) {
-                logo.name.setValue( values.logo.name );
-            } else {
-                logo.name.setValue( '' );
+                logo.name = values.logo.name;
             }
             if ( values.logo.hasOwnProperty( 'type' ) ) {
-                logo.type.setValue( values.logo.type );
-            } else {
-                logo.type.setValue( '' );
+                logo.type = values.logo.type;
             }
         }
 
         if ( values.hasOwnProperty( 'favicon' ) ) {
-            if ( values.set1.hasOwnProperty( 'data' ) ) {
-                favicon.setValue( values.favicon.data );
-            } else {
-                favicon.setValue( '' );
+            if ( values.favicon.hasOwnProperty( 'data' ) ) {
+                favicon.data = values.favicon.data;
+                $('#fs-logo-input input').css( 'background-image', 'url("' + favicon.data + '")' );
+            }
+            if ( values.logo.hasOwnProperty( 'name' ) ) {
+                favicon.name = values.favicon.name;
+            }
+            if ( values.logo.hasOwnProperty( 'type' ) ) {
+                favicon.type = values.favicon.type;
             }
         }
     }
@@ -88,18 +93,19 @@ var LogoAndFaviconInputLogo = new OO.ui.TextInputWidget( {
     id: 'fs-logo-input',
     readOnly: true,
     placeholder: '',
-    classes: ['fg-neutral2', 'bg-neutral2']
+    classes: []
 } );
 var LogoAndFaviconInputFavicon = new OO.ui.TextInputWidget( {
     placeholder: 'Favicon',
     id: 'fs-favicon-input',
-    disabled: true,
-    placeholder: ''
+    readOnly: true,
+    placeholder: '',
+    classes: []
 } );
 
 $( function($) {
     /* logo */
-    var $logoDropZone = $('#logo-input input');
+    var $logoDropZone = $('#fs-logo-input input');
     $logoDropZone.on( 'drop', function( event ) {
         event.stopPropagation();
         event.preventDefault();
@@ -125,6 +131,38 @@ $( function($) {
         }
      );
      $logoDropZone.on( 'dragover', function( event ) {
+            event.stopPropagation();
+            event.preventDefault();
+        }
+    );
+
+    /* favicon */
+    var $faviconDropZone = $('#fs-favicon-input input');
+    $faviconDropZone.on( 'drop', function( event ) {
+        event.stopPropagation();
+        event.preventDefault();
+
+        event.dataTransfer = event.originalEvent.dataTransfer;
+        event.dataTransfer.effectAllowed = 'copy';
+        event.dataTransfer.dropEffect = 'copy';
+
+        var files = event.dataTransfer.files;
+        var file = files[0];
+
+        favicon.name = file.name;
+        favicon.type = file.type;
+
+        var reader = new FileReader();
+        reader.onloadend = function () {
+            favicon.data = reader.result;
+            $faviconDropZone.css( 'background-image', 'url("' + favicon.data + '")' );
+            LogoAndFaviconInputLogo.favicon = favicon;
+         }
+        var dataUrl = reader.readAsDataURL( file );
+
+        }
+     );
+     $faviconDropZone.on( 'dragover', function( event ) {
             event.stopPropagation();
             event.preventDefault();
         }

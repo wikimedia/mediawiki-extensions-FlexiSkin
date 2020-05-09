@@ -220,7 +220,7 @@ btnSave.on( 'click', function () {
                     bdyCls = bdyCls + ' fs-' + flexiskinSelected.id;
                     document.getElementsByTagName( 'body' )[0].className =  bdyCls;
 
-                    flexiskinSelected.config = data.config;
+                    flexiskinSelected.config = getPluginData();
                 }
             }
         }
