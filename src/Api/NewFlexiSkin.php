@@ -14,7 +14,7 @@ class NewFlexiSkin extends FlexiSkinApiBase {
 	public function execute() {
 		$this->getSourceId();
 
-		if ( $this->sourceId !== null ) {
+		if ( $this->sourceId !== '' ) {
 			$this->makeCopy();
 		} else {
 			$this->makeNew();
