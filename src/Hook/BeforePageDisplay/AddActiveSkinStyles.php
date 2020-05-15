@@ -17,5 +17,4 @@ class AddActiveSkinStyles {
 
 		return true;
 	}
-
 }

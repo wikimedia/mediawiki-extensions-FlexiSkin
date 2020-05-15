@@ -85,6 +85,10 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 			],
 			__METHOD__
 		);
+
+		if ( !$row ) {
+			return null;
+		}
 		return $row->fs_id;
 	}
 
