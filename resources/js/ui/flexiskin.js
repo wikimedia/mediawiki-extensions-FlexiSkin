@@ -9,6 +9,7 @@ flexiskin.pluginFactory = new OO.Factory();
 
 var flexiskins = mw.config.get( 'flexiskins' );
 var activeId = mw.config.get( 'flexiskinId' );
+
 var activeName = '';
 var previewId = 0;
 

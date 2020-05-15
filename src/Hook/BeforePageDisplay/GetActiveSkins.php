@@ -15,13 +15,11 @@ class GetActiveSkins {
 	 * @return bool
 	 */
 	public static function callback( OutputPage $out, Skin $skin ) {
-		/**
-		 * @var IFlexiSkinManager
-		 */
+		/** @var IFlexiSkinManager $flexiSkinManager */
 		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
 		$activeId = $flexiSkinManager->getActive();
 
-		if ( $activeId === false ) {
+		if ( $activeId === null ) {
 			return true;
 		}
 

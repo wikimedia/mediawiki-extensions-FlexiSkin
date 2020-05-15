@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\FlexiSkin\Plugin;
 use BlueSpice\Services;
 use BlueSpice\TemplateParser;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
+use MediaWiki\MediaWikiServices;
 
 class Colors extends PluginBase {
 	/**
@@ -68,8 +69,8 @@ class Colors extends PluginBase {
 	 * @return string
 	 */
 	private function parseFlexiSkinCss( $params = [] ) {
-		$cfg = Services::getInstance()->getConfigFactory()->makeConfig( 'bsg' );
-		$templateParser = new TemplateParser( $cfg->get( 'FlexiSkinThemePath' ) );
+		$config = MediaWikiServices::getInstance()->getMainConfig();
+		$templateParser = new TemplateParser( $config->get( 'FlexiSkinThemePath' ) );
 
 		return $templateParser->processTemplate(
 			'colors',

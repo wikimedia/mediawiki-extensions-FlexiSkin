@@ -1,15 +1,14 @@
 <?php
 
+namespace MediaWiki\Extension\FlexiSkin\Special;
 
-class SpecialFlexiSkin extends SpecialPage {
-	protected $templateParser = null;
+use Html;
+use SpecialPage;
+
+class FlexiSkin extends SpecialPage {
 
 	public function __construct() {
-		parent::__construct(
-				'FlexiSkin',
-				'flexiskin-viewspecialpage',
-				true
-			);
+		parent::__construct( 'FlexiSkin', 'flexiskin-viewspecialpage', true );
 	}
 
 	/**
@@ -20,15 +19,14 @@ class SpecialFlexiSkin extends SpecialPage {
 	public function execute( $par ) {
 		parent::execute( $par );
 
-		$request = $this->getRequest();
-		$output = $this->getOutput();
 		$this->setHeaders();
 
-		$output->addModules( 'ext.flexiskin.specialpage.scripts' );
+		$this->getOutput()->addModules( 'ext.flexiskin.specialpage.scripts' );
 
 		$html = Html::element( 'div', [ 'id' => 'fs-select' ] );
 		$html .= Html::element( 'div', [ 'id' => 'fs-configure' ] );
-		$output->addHTML( $html );
+
+		$this->getOutput()->addHTML( $html );
 	}
 
 	/**

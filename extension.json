@@ -44,10 +44,10 @@
 		"flexiskin-api"
 	],
 	"ServiceWiringFiles": [
-		"includes/ServiceWiring.php"
+		"ServiceWiring.php"
 	],
     "SpecialPages": {
-		"FlexiSkin": "SpecialFlexiSkin"
+		"FlexiSkin": "MediaWiki\\Extension\\FlexiSkin\\Special\\FlexiSkin"
 	},
 	"ExtensionMessagesFiles": {
 		"FlexiSkinAlias": "languages/FlexiSkin.alias.php"
@@ -56,9 +56,6 @@
         "MediaWiki\\Extension\\FlexiSkin\\": "src/",
 		"MediaWiki\\Extension\\FlexiSkin\\Tests\\": "tests/phpunit/"
     },
-    "AutoloadClasses": {
-		"SpecialFlexiSkin": "includes/specials/SpecialFlexiSkin.php"
-	},
 	"APIModules": {
 		"flexiskin-activate": "MediaWiki\\Extension\\FlexiSkin\\Api\\ActivateFlexiSkin",
 		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\SaveFlexiSkin",
@@ -108,14 +105,10 @@
 			]
 		}
     },
-	"config_prefix": "bsg",
 	"config": {
 		"FlexiSkinThemePath": {
 			"value": "resources/templates/themes",
 			"path": true
-		},
-		"FlexiSkinActiveId": {
-			"value": "1"
 		}
     },
 	"ResourceFileModulePaths": {
