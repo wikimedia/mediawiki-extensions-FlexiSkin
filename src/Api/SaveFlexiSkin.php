@@ -3,34 +3,18 @@
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use ApiBase;
+use ApiUsageException;
+use FormatJson;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
+use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\MediaWikiServices;
 
-class SaveFlexiSkin extends FlexiSkinApiBase {
-	protected $flexiSkinId = null;
-	protected $flexiSkinName = null;
-	protected $flexiSkinConfig = null;
-
-	public function execute() {
-		$this->saveFlexiSkinData();
-		$this->returnParams();
-	}
-
+class SaveFlexiSkin extends FlexiSkinOperation {
 	/**
-		*
-		* @return array
-		*/
+	 * @inheritDoc
+	 */
 	protected function getAllowedParams() {
-		return [
-			'id' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_HELP_MSG => 'apihelp-flexiskin-save-param-id',
-			],
-			'name' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_HELP_MSG => 'apihelp-flexiskin-save-param-name',
-			],
+		return parent::getAllowedParams() + [
 			'config' => [
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => false,
@@ -39,55 +23,33 @@ class SaveFlexiSkin extends FlexiSkinApiBase {
 		];
 	}
 
-	/**
-		*
-		* @param string $paramName Parameter name
-		* @param array|mixed $paramSettings Default value or an array of settings
-		*  using PARAM_* constants.
-		* @param bool $parseLimit Whether to parse and validate 'limit' parameters
-		* @return mixed Parameter value
-		*/
-	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
-		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
+	protected function getParameterFromSettings( $name, $settings, $parseLimit ) {
+		$value = parent::getParameterFromSettings( $name, $settings, $parseLimit );
+		if ( $name === 'config' ) {
+			$value = FormatJson::decode( $value, true );
+			if ( !is_array( $value ) ) {
+				$value = [];
+			}
+		}
 
 		return $value;
 	}
 
-	protected $result;
-
 	/**
-	 *
+	 * @return bool
+	 * @throws ApiUsageException
 	 */
-	protected function returnParams() {
-		$result = $this->getResult();
-		$result->addValue( null, 'id', $this->flexiSkinId );
-		$result->addValue( null, 'name', $this->flexiSkinName );
-		$result->addValue( null, 'config', $this->flexiSkinConfig );
+	protected function executeAction() {
+		$flexiSkin = $this->getFlexiSkin();
+		$newSkin = new FlexiSkin( $flexiSkin->getId(), $flexiSkin->getName(), $this->getParameter( 'config' ) );
+		return $this->executeOperationOnSkin( $newSkin );
 	}
 
 	/**
-	 *
+	 * @param IFlexiSkin $flexiSkin
+	 * @return bool
 	 */
-	private function saveFlexiSkinData() {
-		$user = $this->getUser();
-		$userHasRight = MediaWikiServices::getInstance()->getPermissionManager()->userHasRight(
-				$user,
-				'flexiskin-api'
-			);
-
-		if ( !$userHasRight ) {
-			return false;
-		}
-
-		$this->flexiSkinId = $this->getParameter( 'id' );
-		$this->flexiSkinName = $this->getParameter( 'name' );
-		$this->flexiSkinConfig = json_decode( $this->getParameter( 'config' ), true );
-
-		$flexiSkin = $this->flexiSkinManager->create( $this->flexiSkinName, $this->flexiSkinConfig );
-
-		if ( $this->flexiSkinId !== $flexiSkin->getId() ) {
-			// MUST NEVER HAPPEN
-		}
-		$this->flexiSkinId = $this->flexiSkinManager->save( $flexiSkin );
+	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
+		return $this->flexiSkinManager->save( $flexiSkin ) > 0;
 	}
 }

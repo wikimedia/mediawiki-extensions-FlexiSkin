@@ -19,21 +19,23 @@ class GetActiveSkins {
 		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
 		$activeId = $flexiSkinManager->getActive();
 
-		if ( $activeId === null ) {
-			return true;
+		if ( $activeId !== null ) {
+			$out->addJsConfigVars( 'flexiskinId', $activeId );
 		}
 
-		$out->addJsConfigVars( 'flexiskinId', $activeId );
-
-		$flexiSkins = $flexiSkinManager->getList();
+		$flexiSkins = $flexiSkinManager->getList( true );
 
 		$jsVar = [];
 		foreach ( $flexiSkins as $flexiSkin ) {
 			$id = $flexiSkin->getId();
-			$jsVar[] = [
+			if ( $id === null || $id === 0 ) {
+				continue;
+			}
+			$jsVar[$id] = [
 				'id' => $id,
 				'name' => $flexiSkin->getName(),
-				'config' => $flexiSkin->getConfig()
+				'config' => $flexiSkin->getConfig(),
+				'deleted' => $flexiSkin->isDeleted()
 			];
 		}
 		$out->addJsConfigVars( 'flexiskins', $jsVar );

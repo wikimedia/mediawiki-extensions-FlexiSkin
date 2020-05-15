@@ -61,7 +61,8 @@
 		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\SaveFlexiSkin",
 		"flexiskin-preview": "MediaWiki\\Extension\\FlexiSkin\\Api\\PreviewFlexiSkin",
 		"flexiskin-new": "MediaWiki\\Extension\\FlexiSkin\\Api\\NewFlexiSkin",
-		"flexiskin-delete": "MediaWiki\\Extension\\FlexiSkin\\Api\\DeleteFlexiSkin"
+		"flexiskin-delete": "MediaWiki\\Extension\\FlexiSkin\\Api\\DeleteFlexiSkin",
+		"flexiskin-restore": "MediaWiki\\Extension\\FlexiSkin\\Api\\RestoreFlexiSkin"
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
@@ -75,33 +76,33 @@
 		"ext.flexiskin.styles": {
 			"class": "\\MediaWiki\\Extension\\FlexiSkin\\ResourceLoader\\ActiveFlexiSkin"
 		},
+		"ext.flexiskin.specialpage.styles": {
+			"styles": [
+				"stylesheets/selector.less"
+			]
+		},
 		"ext.flexiskin.specialpage.scripts": {
 			"class": "\\MediaWiki\\Extension\\FlexiSkin\\ResourceLoader\\Configurator",
 			"scripts": [
-				"js/ui/flexiskin.js",
-				"js/ui/dialog/newFlexiSkin.js",
-				"js/ui/dialog/deleteFlexiSkin.js"
+				"js/ui/dialog/NewSkin.js",
+				"js/ui/Selector.js",
+				"js/ui/BookletPage.js",
+				"js/ui/Configurator.js",
+				"js/ui/Manager.js",
+				"js/ui/flexiskin.js"
 			],
 			"dependencies" : [
 				"ext.bluespice",
 				"mediawiki.api",
 				"oojs",
 				"oojs-ui",
-				"ext.codeEditor.ace"
+				"ext.codeEditor.ace",
+				"ext.oOJSPlus.widgets.colorPicker"
 			],
 			"messages": [
-				"flexiskin-selection-empty-label",
-				"flexiskin-btn-skin-select-label",
-				"flexiskin-btn-skin-preview-label",
-				"flexiskin-btn-skin-new-label",
-				"flexiskin-btn-skin-edit-label",
-				"flexiskin-btn-skin-save-label",
-				"flexiskin-dlg-new-title",
-				"flexiskin-dlg-new-label-submit",
-				"flexiskin-dlg-new-label-abort",
-				"flexiskin-dlg-new-desc",
-				"flexiskin-dlg-new-input-label",
-				"bs-extjs-title-success"
+				"flexiskin-ui-no-skins",
+				"flexisin-ui-active-skin",
+				"flexiskin-ui-no-active-skin"
 			]
 		}
     },

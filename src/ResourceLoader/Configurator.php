@@ -66,7 +66,12 @@ class Configurator extends ResourceLoaderFileModule {
 	 * @return string|array JavaScript code for $context, or package files data structure
 	 */
 	public function getScript( ResourceLoaderContext $context ) {
-		$scriptCode = "var flexiskinRegistry = [];\n";
+		$scriptCode = $this->getFileContents(
+			__DIR__ . '/../../resources/js/ui/PluginRegistry.js', 'javascript'
+		);
+		$scriptCode .= $this->getFileContents(
+			__DIR__ . '/../../resources/js/ui/Plugin.js', 'javascript'
+		);
 
 		$pluginRegistry = ExtensionRegistry::getInstance()->getAttribute( 'FlexiSkinPluginRegistry' );
 
@@ -89,8 +94,6 @@ class Configurator extends ResourceLoaderFileModule {
 				foreach ( $scripts as $script ) {
 					$scriptCode .= "\n//Plugin '$pluginKey'\n" . $this->getFileContents( $script, 'javascript' );
 				}
-
-				$scriptCode .= "\nflexiskinRegistry['" . $pluginKey . "'] = new {$plugin->getPluginName()};";
 			}
 		}
 

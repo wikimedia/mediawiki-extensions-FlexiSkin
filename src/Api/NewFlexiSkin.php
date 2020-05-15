@@ -3,24 +3,22 @@
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use ApiBase;
+use ApiUsageException;
+use Exception;
+use FormatJson;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
+use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class NewFlexiSkin extends FlexiSkinApiBase {
-	protected $sourceId = null;
-	protected $flexiSkinId = null;
-	protected $flexiSkinName = null;
-	protected $flexiSkinConfig = null;
-
 	public function execute() {
-		$this->getSourceId();
-
-		if ( $this->sourceId !== '' ) {
-			$this->makeCopy();
-		} else {
-			$this->makeNew();
+		try {
+			$skin = $this->makeSkin( $this->getSource() );
+			$this->returnResult( $skin );
+		} catch ( Exception $ex ) {
+			$this->dieWithError( $ex->getMessage() );
 		}
-
-		$this->returnParams();
 	}
 
 	/**
@@ -33,6 +31,7 @@ class NewFlexiSkin extends FlexiSkinApiBase {
 				ApiBase::PARAM_TYPE => 'string',
 				ApiBase::PARAM_REQUIRED => false,
 				ApiBase::PARAM_HELP_MSG => 'apihelp-flexiskin-save-param-id',
+				ParamValidator::PARAM_DEFAULT => null
 			],
 			'name' => [
 				ApiBase::PARAM_TYPE => 'string',
@@ -48,83 +47,50 @@ class NewFlexiSkin extends FlexiSkinApiBase {
 	}
 
 	/**
-		*
-		* @param string $paramName Parameter name
-		* @param array|mixed $paramSettings Default value or an array of settings
-		*  using PARAM_* constants.
-		* @param bool $parseLimit Whether to parse and validate 'limit' parameters
-		* @return mixed Parameter value
-		*/
-	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
-		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
-
-		return $value;
-	}
-
-	protected $result;
-
-	/**
-	 *
+	 * @param IFlexiSkin|null $skin
 	 */
-	protected function returnParams() {
+	protected function returnResult( $skin ) {
 		$result = $this->getResult();
-		$result->addValue( null, 'id', $this->flexiSkinId );
-		$result->addValue( null, 'name', $this->flexiSkinName );
-		$result->addValue( null, 'config', $this->flexiSkinConfig );
-		$result->addValue( null, 'source', $this->sourceId );
+		$result->addValue( null, 'skin', FormatJson::encode( $skin ) );
 	}
 
 	/**
 	 *
-	 * @return bool
+	 * @return IFlexiSkin|null
 	 */
-	private function getSourceId() {
-		$this->sourceId = $this->getParameter( 'source' );
-	}
-
-	/**
-	 *
-	 */
-	private function makeCopy() {
-		$user = $this->getUser();
-		$userHasRight = MediaWikiServices::getInstance()->getPermissionManager()->userHasRight(
-				$user,
-				'flexiskin-api'
-			);
-
-		if ( !$userHasRight ) {
-			return false;
+	private function getSource() {
+		$sourceId = $this->getParameter( 'source' );
+		if ( $sourceId === null ) {
+			return null;
 		}
 
-		$sourceFlexiskin = $this->flexiSkinManager->loadFromId( $this->sourceId );
-
-		$this->flexiSkinName = $this->getParameter( 'name' );
-		$this->flexiSkinConfig = $sourceFlexiskin->getConfig();
-
-		$newFlexiSkin = $this->flexiSkinManager->create( $this->flexiSkinName, $this->flexiSkinConfig );
-
-		$this->flexiSkinId = $this->flexiSkinManager->save( $newFlexiSkin );
+		$source = $this->flexiSkinManager->loadFromId( $sourceId );
+		return $source instanceof IFlexiSkin ? $source : null;
 	}
 
 	/**
-	 *
+	 * @param IFlexiSkin|null $source
+	 * @return IFlexiSkin|null
+	 * @throws ApiUsageException
 	 */
-	private function makeNew() {
-		$user = $this->getUser();
-		$userHasRight = MediaWikiServices::getInstance()->getPermissionManager()->userHasRight(
-				$user,
-				'flexiskin-api'
-			);
+	private function makeSkin( $source = null ) {
+		$this->checkPermissions();
 
-		if ( !$userHasRight ) {
-			return false;
+		$name = $this->getParameter( 'name' );
+		$config = [];
+		if ( $source instanceof IFlexiSkin ) {
+			$config = $source->getConfig();
 		}
 
-		$this->flexiSkinName = $this->getParameter( 'name' );
-		$this->flexiSkinConfig = [];
+		$flexiSkin = $this->flexiSkinManager->create( $name, $config );
+		if ( $flexiSkin->getId() ) {
+			throw new Exception( 'Skin with this name already exists!' );
+		}
+		$id = $this->flexiSkinManager->save( $flexiSkin );
+		if ( $id > 0 ) {
+			return new FlexiSkin( $id, $flexiSkin->getName(), $flexiSkin->getConfig() );
+		}
 
-		$flexiskin = $this->flexiSkinManager->create( $this->flexiSkinName, $this->flexiSkinConfig );
-
-		$this->flexiSkinId = $this->flexiSkinManager->save( $flexiskin );
+		return null;
 	}
 }

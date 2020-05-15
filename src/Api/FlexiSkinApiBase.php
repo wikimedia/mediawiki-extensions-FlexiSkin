@@ -28,4 +28,16 @@ abstract class FlexiSkinApiBase extends ApiBase {
 			$this->flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
 		}
 	}
+
+	protected function checkPermissions() {
+		$user = $this->getUser();
+		$userHasRight = MediaWikiServices::getInstance()->getPermissionManager()->userHasRight(
+			$user,
+			'flexiskin-api'
+		);
+
+		if ( !$userHasRight ) {
+			$this->dieWithError( 'permissiondenied', 'permissiondenied' );
+		}
+	}
 }

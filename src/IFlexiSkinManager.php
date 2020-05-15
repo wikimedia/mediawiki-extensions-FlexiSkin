@@ -34,9 +34,10 @@ interface IFlexiSkinManager {
 	public function delete( IFlexiSkin $flexiSkin );
 
 	/**
+	 * @param bool|null $includeDeleted
 	 * @return IFlexiSkin[]
 	 */
-	public function getList(): array;
+	public function getList( $includeDeleted = false ): array;
 
 	/**
 	 * @param string $name
@@ -44,4 +45,12 @@ interface IFlexiSkinManager {
 	 * @return IFlexiSkin
 	 */
 	public function create( $name, $config ) : IFlexiSkin;
+
+	/**
+	 * Un-delete the skin
+	 *
+	 * @param IFlexiSkin $skin
+	 * @return bool
+	 */
+	public function restore( IFlexiSkin $skin ) : bool;
 }

@@ -3,16 +3,16 @@
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use ApiBase;
+use ApiUsageException;
 use ExtensionRegistry;
 use MediaWiki\Extension\FlexiSkin\IPlugin;
-use MediaWiki\MediaWikiServices;
 
-class PreviewFlexiSkin extends ApiBase {
+class PreviewFlexiSkin extends FlexiSkinApiBase {
 	protected $previewCSS = '';
 
 	public function execute() {
 		$this->generatePreviewCSS();
-		$this->returnParams();
+		$this->returnResult();
 	}
 
 	/**
@@ -34,51 +34,20 @@ class PreviewFlexiSkin extends ApiBase {
 		];
 	}
 
-	/**
-		*
-		* @param string $paramName Parameter name
-		* @param array|mixed $paramSettings Default value or an array of settings
-		*  using PARAM_* constants.
-		* @param bool $parseLimit Whether to parse and validate 'limit' parameters
-		* @return mixed Parameter value
-		*/
-	protected function getParameterFromSettings( $paramName, $paramSettings, $parseLimit ) {
-		$value = parent::getParameterFromSettings( $paramName, $paramSettings, $parseLimit );
-
-		return $value;
-	}
-
-	protected $result;
-
-	/**
-	 *
-	 */
-	protected function returnParams() {
+	protected function returnResult() {
 		$result = $this->getResult();
 		$result->addValue( null, 'preview', $this->previewCSS );
 	}
 
 	/**
-	 *
 	 * @return bool
+	 * @throws ApiUsageException
 	 */
 	private function generatePreviewCSS() {
-		$user = $this->getUser();
-		$userHasRight = MediaWikiServices::getInstance()->getPermissionManager()->userHasRight(
-				$user,
-				'flexiskin-api'
-			);
-
-		if ( !$userHasRight ) {
-			return false;
-		}
+		$this->checkPermissions();
 
 		$idForPreview = $this->getParameter( 'id' );
 		$configForPreview = $this->getParameter( 'config' );
-
-		if ( ( $idForPreview === null ) || ( $configForPreview === null ) ) {
-			return false;
-		}
 
 		$pluginRegistry = ExtensionRegistry::getInstance()->getAttribute( 'FlexiSkinPluginRegistry' );
 

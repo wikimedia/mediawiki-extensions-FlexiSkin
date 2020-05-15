@@ -20,13 +20,9 @@ class FlexiSkin extends SpecialPage {
 		parent::execute( $par );
 
 		$this->setHeaders();
-
+		$this->getOutput()->addModuleStyles( 'ext.flexiskin.specialpage.styles' );
 		$this->getOutput()->addModules( 'ext.flexiskin.specialpage.scripts' );
-
-		$html = Html::element( 'div', [ 'id' => 'fs-select' ] );
-		$html .= Html::element( 'div', [ 'id' => 'fs-configure' ] );
-
-		$this->getOutput()->addHTML( $html );
+		$this->getOutput()->addHTML( Html::element( 'div', [ 'id' => 'fs-container' ] ) );
 	}
 
 	/**

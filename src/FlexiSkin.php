@@ -2,14 +2,16 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
+use stdClass;
+
 class FlexiSkin implements IFlexiSkin {
 	/**
-	 * @var string|null
+	 * @var int|null
 	 */
 	protected $id = null;
 
 	/**
-	 * @var bool|false
+	 * @var bool
 	 */
 	protected $active = false;
 
@@ -23,17 +25,38 @@ class FlexiSkin implements IFlexiSkin {
 	 */
 	protected $config = [];
 
+	/** @var bool  */
+	protected $deleted = false;
+
 	/**
-	 * @param string $id
-	 * @param string $name
-	 * @param string $config
-	 * @param bool $active
+	 * Helper function
+	 *
+	 * @param stdClass $row
+	 * @return static
 	 */
-	public function __construct( $id, $name, $config, $active ) {
+	public static function newFromRow( $row ) {
+		return new static(
+			(int)$row->fs_id,
+			$row->fs_name,
+			json_decode( $row->fs_config, true ),
+			(bool)$row->fs_active,
+			(bool)$row->fs_deleted
+		);
+	}
+
+	/**
+	 * @param int|null $id
+	 * @param string $name
+	 * @param array $config
+	 * @param bool|null $active
+	 * @param bool|null $deleted
+	 */
+	public function __construct( ?int $id, $name, $config, $active = false, $deleted = false ) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->config = $config;
 		$this->active = $active;
+		$this->deleted = $deleted;
 	}
 
 	/**
@@ -62,5 +85,17 @@ class FlexiSkin implements IFlexiSkin {
 	 */
 	public function isActive() {
 		return $this->active;
+	}
+
+	public function jsonSerialize() {
+		return [
+			'id' => $this->getId(),
+			'name' => $this->getName(),
+			'config' => $this->getConfig(),
+		];
+	}
+
+	public function isDeleted() {
+		return $this->deleted;
 	}
 }

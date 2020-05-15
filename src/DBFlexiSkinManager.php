@@ -2,27 +2,19 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
-use Wikimedia\Rdbms\IDatabase;
+use Exception;
 use Wikimedia\Rdbms\LoadBalancer;
 
 class DBFlexiSkinManager implements IFlexiSkinManager {
 
-	/**
-	 * @var IDatabase
-	 */
-	private $dbw = null;
-
-	/**
-	 * @var IDatabase
-	 */
-	private $dbr = null;
+	/** @var LoadBalancer */
+	protected $lb;
 
 	/**
 	 * @param LoadBalancer $loadBalancer
 	 */
 	public function __construct( LoadBalancer $loadBalancer ) {
-		$this->dbw = $loadBalancer->getConnection( DB_MASTER );
-		$this->dbr = $loadBalancer->getConnection( DB_REPLICA );
+		$this->lb = $loadBalancer;
 	}
 
 	/**
@@ -48,7 +40,8 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	 * @return IFlexiSkin|null
 	 */
 	public function loadFromId( $id ) {
-		$row = $this->dbr->selectRow(
+		$db = $this->lb->getConnection( DB_REPLICA );
+		$row = $db->selectRow(
 			'flexiskin',
 			'*',
 			[
@@ -59,12 +52,7 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 		if ( $row === false ) {
 			$skin = null;
 		} else {
-			$skin = new FlexiSkin(
-				$row->fs_id,
-				$row->fs_name,
-				json_decode( $row->fs_config, true ),
-				$row->fs_active
-			);
+			$skin = FlexiSkin::newFromRow( $row );
 		}
 
 		return $skin;
@@ -74,7 +62,8 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	 * @return int|null
 	 */
 	public function getActive() {
-		$row = $this->dbr->selectRow(
+		$db = $this->lb->getConnection( DB_REPLICA );
+		$row = $db->selectRow(
 			'flexiskin',
 			[
 				'fs_id'
@@ -89,7 +78,7 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 		if ( !$row ) {
 			return null;
 		}
-		return $row->fs_id;
+		return (int)$row->fs_id;
 	}
 
 	/**
@@ -98,8 +87,8 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	 */
 	public function setActive( IFlexiSkin $flexiSkin ) {
 		$this->resetActive();
-
-		$res = $this->dbw->update(
+		$db = $this->lb->getConnection( DB_MASTER );
+		return $db->update(
 			'flexiskin',
 			[
 				'fs_active' => true
@@ -109,30 +98,19 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 			],
 			__METHOD__
 		);
-
-		return true;
 	}
 
 	/**
 	 *
 	 */
 	private function resetActive() {
-		$allFlexiSkins = $this->getList();
-
-		foreach ( $allFlexiSkins as $flexiSkin ) {
-			if ( $flexiSkin->isActive() == true ) {
-				$res = $this->dbw->update(
-					'flexiskin',
-					[
-						'fs_active' => false
-					],
-					[
-						'fs_id' => $flexiSkin->getId()
-					],
-					__METHOD__
-				);
-			}
-		}
+		$db = $this->lb->getConnection( DB_MASTER );
+		return $db->update(
+			'flexiskin',
+			[ 'fs_active' => false ],
+			[ 'fs_active' => true ],
+			__METHOD__
+		);
 	}
 
 	/**
@@ -140,7 +118,8 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	 * @return bool
 	 */
 	public function delete( IFlexiSkin $flexiSkin ) {
-		$res = $this->dbw->update(
+		$db = $this->lb->getConnection( DB_MASTER );
+		return $db->update(
 			'flexiskin',
 			[
 				'fs_deleted' => true
@@ -150,20 +129,20 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 			],
 			__METHOD__
 		);
-		return true;
 	}
 
 	/**
 	 * @param string $name
 	 * @param array $config
 	 * @return int $id
+	 * @throws Exception
 	 */
 	private function addFlexiSkin( $name, $config = [] ) {
-		if ( ( $name === null ) || $name === '' ) {
-			return false;
+		if ( $name === null || $name === '' ) {
+			throw new Exception( 'Invalid skin name' );
 		}
-
-		$res = $this->dbw->insert(
+		$db = $this->lb->getConnection( DB_MASTER );
+		$res = $db->insert(
 			'flexiskin',
 			[
 				'fs_name' => $name,
@@ -172,25 +151,28 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 			__METHOD__
 		);
 
-		$newRes = $this->dbr->selectRow( 'flexiskin', 'fs_id', [ 'fs_name' => $name ] );
-		$id = $newRes->fs_id;
+		if ( $res ) {
+			return $db->insertId();
+		}
 
-	return $id;
+		throw new Exception( $db->lastError() );
 	}
 
 	/**
 	 * @param int $id
 	 * @param string $name
 	 * @param array $config
-	 * @return int $id
+	 * @return int|false $id
 	 */
 	private function updateFlexiSkin( $id, $name, $config ) {
 		$args = [
-				'fs_name' => $name,
-				'fs_config' => empty( $config ) ? '' : json_encode( $config )
-			];
+			'fs_name' => $name,
+			'fs_config' => empty( $config ) ? '' : json_encode( $config )
+		];
 
-		$res = $this->dbw->update(
+		$db = $this->lb->getConnection( DB_MASTER );
+		$res =
+			$db->update(
 			'flexiskin',
 			$args,
 			[
@@ -199,33 +181,33 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 			__METHOD__
 		);
 
-		return $id;
+		if ( $res ) {
+			return $id;
+		}
+
+		return false;
 	}
 
 	/**
 	 * @return IFlexiSkin[]
 	 */
-	public function getList(): array {
-		$res = $this->dbr->select(
+	public function getList( $includeDeleted = false ): array {
+		$conds = [];
+		if ( !$includeDeleted ) {
+			$conds['fs_deleted'] = false;
+		}
+		$db = $this->lb->getConnection( DB_REPLICA );
+		$res = $db->select(
 			'flexiskin',
 			'*',
-			[
-				'fs_deleted' => false
-			],
+			$conds,
 			__METHOD__,
-			[
-				'ORDER BY' => 'fs_name'
-			]
+			[ 'ORDER BY' => 'fs_name' ]
 		);
 
 		$skins = [];
 		foreach ( $res as $row ) {
-			$skins[] = new FlexiSkin(
-				$row->fs_id,
-				$row->fs_name,
-				json_decode( $row->fs_config, true ),
-				$row->fs_active
-			);
+			$skins[] = FlexiSkin::newFromRow( $row );
 		}
 
 		return $skins;
@@ -238,9 +220,7 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	 */
 	public function create( $name, $config ): IFlexiSkin {
 		$id = $this->getFlexiSkinIdOrNull( $name );
-		$newFlexiSkin = new FlexiSkin( $id, $name, $config, false );
-
-		return $newFlexiSkin;
+		return new FlexiSkin( $id, $name, $config, false );
 	}
 
 	/**
@@ -248,11 +228,31 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	 * @return int
 	 */
 	private function getFlexiSkinIdOrNull( $name ) {
-		$row = $this->dbr->selectRow( 'flexiskin', 'fs_id', [ 'fs_name' => $name ] );
+		$db = $this->lb->getConnection( DB_REPLICA );
+		$row = $db->selectRow( 'flexiskin', 'fs_id', [ 'fs_name' => $name ] );
 		if ( $row === false ) {
 			return null;
 		}
-		return $row->fs_id;
+		return (int)$row->fs_id;
 	}
 
+	/**
+	 * @inheritDoc
+	 */
+	public function restore( IFlexiSkin $skin ): bool {
+		if ( !$skin->isDeleted() ) {
+			return true;
+		}
+
+		$db = $this->lb->getConnection( DB_MASTER );
+		$res =
+			$db->update(
+				'flexiskin',
+				[ 'fs_deleted' => false ],
+				[ 'fs_id' => $skin->getId() ],
+				__METHOD__
+			);
+
+		return $res;
+	}
 }

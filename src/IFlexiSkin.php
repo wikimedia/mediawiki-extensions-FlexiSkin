@@ -2,10 +2,12 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
-interface IFlexiSkin {
+use JsonSerializable;
+
+interface IFlexiSkin extends JsonSerializable {
 
 	/**
-	 * @return int
+	 * @return int|null
 	 */
 	public function getId();
 
@@ -23,4 +25,9 @@ interface IFlexiSkin {
 	 * @return bool
 	 */
 	public function isActive();
+
+	/**
+	 * @return bool
+	 */
+	public function isDeleted();
 }

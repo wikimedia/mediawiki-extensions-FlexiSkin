@@ -46,15 +46,13 @@ class Colors extends PluginBase {
 
 	/**
 	 *
-	 * @param sting $bodyClass
-	 * @param array $allDataFromDB
+	 * @param string $bodyClass
+	 * @param array $config
 	 * @return string The CSS
 	 */
-	public function generateCSS( $bodyClass, $allDataFromDB ) {
-		$config = $allDataFromDB;
-
-		if ( array_key_exists( 'Colors', $config ) ) {
-			$args = array_merge( $config['Colors'], [ 'bodyClass' => $bodyClass ] );
+	public function generateCSS( $bodyClass, $config ) {
+		if ( array_key_exists( 'colors', $config ) ) {
+			$args = array_merge( $config['colors'], [ 'bodyClass' => $bodyClass ] );
 
 			return $this->parseFlexiSkinCss( $args );
 		}
