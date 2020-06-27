@@ -14,17 +14,11 @@ module.exports = function ( grunt ) {
 				'!node_modules/**',
 				'!vendor/**',
 				'!resources/bluespice.extjs/Ext.ux/**',
-				'!resources/extjs/**'
+				'!resources/extjs/**',
+				'!doc/**'
 			]
 		},
-		banana: Object.assign(
-			conf.MessagesDirs,
-			{
-				options: {
-					requireLowerCase: 'initial'
-				}
-			}
-		)
+		banana: conf.MessagesDirs,
 	} );
 
 	grunt.registerTask( 'test', [ 'eslint', 'banana' ] );
