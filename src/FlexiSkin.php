@@ -25,7 +25,7 @@ class FlexiSkin implements IFlexiSkin {
 	 */
 	protected $config = [];
 
-	/** @var bool  */
+	/** @var bool */
 	protected $deleted = false;
 
 	/**

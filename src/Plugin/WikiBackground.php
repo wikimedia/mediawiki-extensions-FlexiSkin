@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Plugin;
 
-use BlueSpice\Services;
 use BlueSpice\TemplateParser;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
 use MediaWiki\MediaWikiServices;
@@ -64,7 +63,6 @@ class WikiBackground extends PluginBase {
 
 	/**
 	 *
-	 * @param \BlueSpice\TemplateParser $templateParser
 	 * @param array $params
 	 * @return string
 	 */

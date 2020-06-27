@@ -18,9 +18,9 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 	}
 
 	/**
-		*
-		* @return array
-		*/
+	 *
+	 * @return array
+	 */
 	protected function getAllowedParams() {
 		return [
 			'id' => [
@@ -66,5 +66,5 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 	 * @param IFlexiSkin $flexiSkin
 	 * @return bool Operation success
 	 */
-	abstract protected  function executeOperationOnSkin( IFlexiSkin $flexiSkin );
+	abstract protected function executeOperationOnSkin( IFlexiSkin $flexiSkin );
 }

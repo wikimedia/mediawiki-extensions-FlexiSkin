@@ -101,7 +101,7 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 *
+	 * @return bool
 	 */
 	private function resetActive() {
 		$db = $this->lb->getConnection( DB_MASTER );
@@ -189,6 +189,7 @@ class DBFlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
+	 * @param bool $includeDeleted
 	 * @return IFlexiSkin[]
 	 */
 	public function getList( $includeDeleted = false ): array {
