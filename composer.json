@@ -3,10 +3,6 @@
 	"type": "mediawiki-extension",
 	"description": "Adds skin themes",
 	"license": "GPL-3.0-only",
-	"repositories": [{
-		"type": "vcs",
-		"url": ""
-	}],
 	"require": {
 		"composer/installers": "~1.0"
 	},
