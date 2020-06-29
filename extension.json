@@ -7,9 +7,12 @@
 		"Robert Vogel",
 		"Daniel Vogel"
 	],
-    "descriptionmsg": "flexiskin-extension-desc",
-    "namemsg": "flexiskin-extension-name",
+	"descriptionmsg": "flexiskin-extension-desc",
+	"namemsg": "flexiskin-extension-name",
 	"type": "specialpage",
+	"requires": {
+		"MediaWiki": ">= 1.31.0"
+	},
 	"attributes": {
 		"BlueSpiceFoundation": {
 			"PermissionRegistry": {
@@ -21,9 +24,9 @@
 					"type": "global",
 					"roles": [ "admin" ]
 				}
-            },
-            "RendererRegistry": {
-            }
+			},
+			"RendererRegistry": {
+			}
 		},
 		"FlexiSkin": {
 			"PluginRegistry": {
@@ -33,8 +36,8 @@
 				"FreeCSS": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\FreeCSS::factory"
 			}
 		}
-    },
-    "MessagesDirs": {
+	},
+	"MessagesDirs": {
 		"FlexiSkin": [
 			"i18n"
 		]
@@ -46,16 +49,18 @@
 	"ServiceWiringFiles": [
 		"ServiceWiring.php"
 	],
-    "SpecialPages": {
+	"SpecialPages": {
 		"FlexiSkin": "MediaWiki\\Extension\\FlexiSkin\\Special\\FlexiSkin"
 	},
 	"ExtensionMessagesFiles": {
 		"FlexiSkinAlias": "languages/FlexiSkin.alias.php"
 	},
-    "AutoloadNamespaces": {
-        "MediaWiki\\Extension\\FlexiSkin\\": "src/",
+	"AutoloadNamespaces": {
+		"MediaWiki\\Extension\\FlexiSkin\\": "src/"
+	},
+	"TestAutoloadClasses": {
 		"MediaWiki\\Extension\\FlexiSkin\\Tests\\": "tests/phpunit/"
-    },
+	},
 	"APIModules": {
 		"flexiskin-activate": "MediaWiki\\Extension\\FlexiSkin\\Api\\ActivateFlexiSkin",
 		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\SaveFlexiSkin",
@@ -71,8 +76,8 @@
 		],
 		"LoadExtensionSchemaUpdates": "\\MediaWiki\\Extension\\FlexiSkin\\Hook\\LoadExtensionSchemaUpdates\\FlexiSkinShemaUpdates::callback",
 		"OutputPageBodyAttributes": "\\MediaWiki\\Extension\\FlexiSkin\\Hook\\OutputPageBodyAttributes\\AddFlexiSkinBodyClass::callback"
-    },
-    "ResourceModules": {
+	},
+	"ResourceModules": {
 		"ext.flexiskin.styles": {
 			"class": "\\MediaWiki\\Extension\\FlexiSkin\\ResourceLoader\\ActiveFlexiSkin"
 		},
@@ -91,7 +96,7 @@
 				"js/ui/Manager.js",
 				"js/ui/flexiskin.js"
 			],
-			"dependencies" : [
+			"dependencies": [
 				"ext.bluespice",
 				"mediawiki.api",
 				"oojs",
@@ -105,13 +110,13 @@
 				"flexiskin-ui-no-active-skin"
 			]
 		}
-    },
+	},
 	"config": {
 		"FlexiSkinThemePath": {
 			"value": "resources/templates/themes",
 			"path": true
 		}
-    },
+	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "FlexiSkin/resources"
