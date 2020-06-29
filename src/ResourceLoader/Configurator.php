@@ -120,7 +120,8 @@ class Configurator extends ResourceLoaderFileModule {
 	}
 
 	/**
-	 * @param array
+	 * @param array $pluginSkins
+	 * @param IContextSource $context
 	 * @return bool
 	 */
 	private function pluginValidForSkin( $pluginSkins, $context ) {

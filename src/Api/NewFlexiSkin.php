@@ -8,7 +8,6 @@ use Exception;
 use FormatJson;
 use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
-use MediaWiki\MediaWikiServices;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class NewFlexiSkin extends FlexiSkinApiBase {
@@ -22,9 +21,9 @@ class NewFlexiSkin extends FlexiSkinApiBase {
 	}
 
 	/**
-		*
-		* @return array
-		*/
+	 *
+	 * @return array
+	 */
 	protected function getAllowedParams() {
 		return [
 			'source' => [

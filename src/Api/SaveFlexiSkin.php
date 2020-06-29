@@ -7,7 +7,6 @@ use ApiUsageException;
 use FormatJson;
 use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
-use MediaWiki\MediaWikiServices;
 
 class SaveFlexiSkin extends FlexiSkinOperation {
 	/**
@@ -41,7 +40,11 @@ class SaveFlexiSkin extends FlexiSkinOperation {
 	 */
 	protected function executeAction() {
 		$flexiSkin = $this->getFlexiSkin();
-		$newSkin = new FlexiSkin( $flexiSkin->getId(), $flexiSkin->getName(), $this->getParameter( 'config' ) );
+		$newSkin = new FlexiSkin(
+			$flexiSkin->getId(),
+			$flexiSkin->getName(),
+			$this->getParameter( 'config' )
+		);
 		return $this->executeOperationOnSkin( $newSkin );
 	}
 

@@ -16,9 +16,9 @@ class PreviewFlexiSkin extends FlexiSkinApiBase {
 	}
 
 	/**
-		*
-		* @return array
-		*/
+	 *
+	 * @return array
+	 */
 	protected function getAllowedParams() {
 		return [
 			'id' => [

@@ -54,7 +54,6 @@ class LogoAndFavicon extends PluginBase {
 			}
 		}
 
-
 		return '';
 	}
 }
