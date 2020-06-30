@@ -7,5 +7,20 @@
 	"flexiskin": "{{doc-special}}",
 	"flexiskin-ui-no-skins": "Used in JavaScript as label",
 	"flexisin-ui-active-skin": "Used in JavaScript as label",
-	"flexiskin-ui-no-active-skin": "Used in JavaScript as label"
+	"flexiskin-ui-no-active-skin": "Used in JavaScript as label",
+	"right-flexiskin-viewspecialpage": "{{doc-right|flexiskin-viewspecialpage}}",
+	"action-flexiskin-viewspecialpage": "{{doc-action|flexiskin-viewspecialpage}}",
+	"right-flexiskin-api": "{{doc-right|flexiskin-ap}}",
+	"action-flexiskin-api": "{{doc-action|flexiskin-api}}",
+	"apihelp-flexiskin-activate-summary": "{{doc-apihelp-summary|flexiskin-activate}}",
+	"apihelp-flexiskin-save-summary": "{{doc-apihelp-summary|flexiskin-save}}",
+	"apihelp-flexiskin-preview-summary": "{{doc-apihelp-summary|flexiskin-preview}}",
+	"apihelp-flexiskin-new-summary": "{{doc-apihelp-summary|flexiskin-new}}",
+	"apihelp-flexiskin-delete-summary": "{{doc-apihelp-summary|flexiskin-delete}}",
+	"apihelp-flexiskin-restore-summary": "{{doc-apihelp-summary|flexiskin-restore}}",
+	"apihelp-flexiskin-preview-param-id": "{{doc-apihelp-param|flexiskin-preview|id}}",
+	"apihelp-flexiskin-preview-param-config": "{{doc-apihelp-param|flexiskin-preview|config}}",
+	"apihelp-flexiskin-save-param-config": "{{doc-apihelp-param|flexiskin-save|config}}",
+	"apihelp-flexiskin-save-param-id": "{{doc-apihelp-param|flexiskin-save|id}}",
+	"apihelp-flexiskin-save-param-name": "{{doc-apihelp-param|flexiskin-save|name}}"
 }

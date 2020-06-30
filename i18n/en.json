@@ -5,5 +5,20 @@
 	"flexiskin": "FlexiSkin",
 	"flexiskin-ui-no-skins": "No skins available! Create one.",
 	"flexisin-ui-active-skin": "Active skin: $1",
-	"flexiskin-ui-no-active-skin": "No active skin!"
+	"flexiskin-ui-no-active-skin": "No active skin!",
+	"right-flexiskin-viewspecialpage": "view [[Special:FlexiSkin|special page]] to customizing the skin",
+	"action-flexiskin-viewspecialpage": "View [[Special:FlexiSkin|special page]] to customizing the skin",
+	"right-flexiskin-api": "is allowed to use the flexiskin apis",
+	"action-flexiskin-api": "Allowed to use the flexiskin apis",
+	"apihelp-flexiskin-activate-summary": "The activate module",
+	"apihelp-flexiskin-save-summary": "The save module",
+	"apihelp-flexiskin-preview-summary": "The preview module",
+	"apihelp-flexiskin-new-summary": "The new module",
+	"apihelp-flexiskin-delete-summary": "The delete module",
+	"apihelp-flexiskin-restore-summary": "The restore module",
+	"apihelp-flexiskin-preview-param-id": "The id parameter",
+	"apihelp-flexiskin-preview-param-config": "The config parameter",
+	"apihelp-flexiskin-save-param-config": "The config parameter",
+	"apihelp-flexiskin-save-param-id": "The id parameter",
+	"apihelp-flexiskin-save-param-name": "The name parameter"
 }
