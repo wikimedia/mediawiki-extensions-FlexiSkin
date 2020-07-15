@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Wladek92"
+		]
+	},
+	"flexiskin-extension-desc": "Autorise la personnalisation de l'habillage",
+	"flexiskin": "Préférences d'habillage",
+	"flexiskin-ui-no-skins": "Aucun habillage disponible ! Créez le votre.",
+	"flexisin-ui-active-skin": "Habillage actif : $1",
+	"flexiskin-ui-no-active-skin": "Aucun habillage actif !"
+}

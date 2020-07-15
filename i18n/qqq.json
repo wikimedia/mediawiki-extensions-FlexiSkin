@@ -1,5 +1,7 @@
 {
-	"@metadata": {},
+	"@metadata": {
+		"authors": []
+	},
 	"flexiskin-extension-desc": "{{desc|name=FlexiSkin|url=https://www.mediawiki.org/wiki/Extension:FlexiSkin}}",
 	"flexiskin-extension-name": "{{name}}",
 	"flexiskin": "{{doc-special}}",

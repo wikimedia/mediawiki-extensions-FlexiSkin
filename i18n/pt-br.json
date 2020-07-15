@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Cristofer Alves",
+			"Eduardo Addad de Oliveira"
+		]
+	},
+	"flexiskin-extension-desc": "Permite a personalização da pele",
+	"flexiskin": "Preferências de tema",
+	"flexiskin-ui-no-skins": "Não há peles disponíveis! Crie um.",
+	"flexisin-ui-active-skin": "Pele ativa: $1",
+	"flexiskin-ui-no-active-skin": "Sem pele ativa!"
+}

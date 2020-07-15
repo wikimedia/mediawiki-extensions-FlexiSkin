@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Bjankuloski06"
+		]
+	},
+	"flexiskin-extension-desc": "Овозможува прилагодување на рувото „Флекси“",
+	"flexiskin-ui-no-skins": "Нема достапни рува! Направете некое.",
+	"flexisin-ui-active-skin": "Активно руво: $1",
+	"flexiskin-ui-no-active-skin": "Нема активно руво!"
+}

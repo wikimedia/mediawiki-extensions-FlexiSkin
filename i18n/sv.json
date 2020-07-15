@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"WikiPhoenix"
+		]
+	},
+	"flexiskin-extension-desc": "Gör det möjligt att anpassa utseendet",
+	"flexiskin": "Utseendeinställningar",
+	"flexiskin-ui-no-skins": "Inga utseenden är tillgängliga! Skapa ett.",
+	"flexisin-ui-active-skin": "Aktivt utseende: $1",
+	"flexiskin-ui-no-active-skin": "Inga aktiva utseenden!"
+}

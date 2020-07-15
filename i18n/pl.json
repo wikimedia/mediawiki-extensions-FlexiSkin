@@ -1,0 +1,12 @@
+{
+	"@metadata": {
+		"authors": [
+			"Chrumps",
+			"Rail"
+		]
+	},
+	"flexiskin": "Preferencje skórki",
+	"flexiskin-ui-no-skins": "Brak dostępnych skórek! Stwórz jakąś.",
+	"flexisin-ui-active-skin": "Aktywna skórka: $1",
+	"flexiskin-ui-no-active-skin": "Brak aktywnej skórki!"
+}

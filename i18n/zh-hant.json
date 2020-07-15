@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Kly"
+		]
+	},
+	"flexiskin-extension-desc": "允許自訂外觀",
+	"flexiskin-ui-no-skins": "沒有可用的外觀！來建立一個。",
+	"flexisin-ui-active-skin": "有效外觀：$1",
+	"flexiskin-ui-no-active-skin": "沒有有效外觀！"
+}

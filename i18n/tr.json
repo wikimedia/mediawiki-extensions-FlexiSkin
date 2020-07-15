@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Ahmetlii"
+		]
+	},
+	"flexiskin-extension-desc": "Görünümün özelleştirilmesine izin verir",
+	"flexiskin-ui-no-skins": "Hiçbir görünüm kullanılabilir değil! Bir tane oluştur.",
+	"flexisin-ui-active-skin": "Etkin görünüm: $1",
+	"flexiskin-ui-no-active-skin": "Etkin görünüm yok!"
+}
