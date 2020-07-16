@@ -1,6 +1,6 @@
 {
 	"name": "FlexiSkin",
-	"version": "3.2.0-alpha",
+	"version": "3.4.0-alpha",
 	"license-name": "GPL-3.0-only",
 	"url": "https://en.wiki.bluespice.com/wiki/Reference:FlexiSkin",
 	"author": [
@@ -11,7 +11,7 @@
 	"namemsg": "flexiskin-extension-name",
 	"type": "specialpage",
 	"requires": {
-		"MediaWiki": ">= 1.31.0"
+		"MediaWiki": ">= 1.36.0"
 	},
 	"attributes": {
 		"BlueSpiceFoundation": {
