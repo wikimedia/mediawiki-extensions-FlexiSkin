@@ -1,0 +1,11 @@
+{
+	"@metadata": {
+		"authors": [
+			"Jon Harald Søby"
+		]
+	},
+	"flexiskin-extension-desc": "Gjør det mulig å tilpasse drakta",
+	"flexiskin-ui-no-skins": "Ingen drakter tilgjengelig! Opprett en.",
+	"flexisin-ui-active-skin": "Aktiv drakt: $1",
+	"flexiskin-ui-no-active-skin": "Ingen aktiv drakt!"
+}

@@ -1,8 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Piramidion"
+			"Piramidion",
+			"Ата"
 		]
 	},
-	"flexiskin": "Налаштування теми"
+	"flexiskin-extension-desc": "Дозволяє налаштовувати тему оформлення",
+	"flexiskin": "Налаштування теми",
+	"flexiskin-ui-no-skins": "Немає доступних тем! Створіть її.",
+	"flexisin-ui-active-skin": "Активна тема: $1",
+	"flexiskin-ui-no-active-skin": "Немає активної теми!"
 }

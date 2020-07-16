@@ -1,8 +1,15 @@
 {
 	"@metadata": {
 		"authors": [
-			"Liuxinyu970226"
+			"Liuxinyu970226",
+			"Shuiwater",
+			"SomeyaMako",
+			"沈澄心"
 		]
 	},
-	"flexiskin": "皮肤参数设置"
+	"flexiskin-extension-desc": "允许自定义皮肤",
+	"flexiskin": "皮肤参数设置",
+	"flexiskin-ui-no-skins": "没有可用的皮肤！创建一个吧。",
+	"flexisin-ui-active-skin": "当前皮肤：$1",
+	"flexiskin-ui-no-active-skin": "没有可用的皮肤！"
 }
