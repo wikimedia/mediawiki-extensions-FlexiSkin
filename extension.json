@@ -58,7 +58,7 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\FlexiSkin\\": "src/"
 	},
-	"TestAutoloadClasses": {
+	"TestAutoloadNamespaces": {
 		"MediaWiki\\Extension\\FlexiSkin\\Tests\\": "tests/phpunit/"
 	},
 	"APIModules": {
