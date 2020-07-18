@@ -1,0 +1,41 @@
+.fs-configure {
+	.oo-ui-fieldsetLayout {
+		.oo-ui-fieldsetLayout-group {
+			margin-left: 10px;
+		}
+		margin-top: 10px;
+	}
+
+	.fs-configurator-buttons {
+		margin-top: 30px;
+		text-align: right;
+	}
+
+	.fs-group {
+		width: 100%;
+		margin: 20px 0 20px 0;
+		.fs-group-header {
+			border-bottom: 2px solid grey;
+			width: inherit;
+			.fs-group-header-label {
+				font-size: 1.5em;
+			}
+			.fs-group-toggle {
+				float: right;
+			}
+		}
+		.fs-group-item-container {
+			fieldset {
+				display: block;
+				width: 100%;
+				.oo-ui-fieldLayout {
+					display: inline-block;
+					margin-left: 20px;
+					&:first-of-type {
+						margin-left: 0;
+					}
+				}
+			}
+		}
+	}
+}

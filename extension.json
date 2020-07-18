@@ -24,17 +24,16 @@
 					"type": "global",
 					"roles": [ "admin" ]
 				}
-			},
-			"RendererRegistry": {
 			}
 		},
 		"FlexiSkin": {
 			"PluginRegistry": {
-				"WikiBackground": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\WikiBackground::factory",
-				"LogoAndFavicon": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\LogoAndFavicon::factory",
+				"Images": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Images::factory",
+				"ColorPresets": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\ColorPresets::factory",
 				"Colors": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Colors::factory",
-				"FreeCSS": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\FreeCSS::factory"
-			}
+				"Layout": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Layout::factory"
+			},
+			"SubscriberRegistry": {}
 		}
 	},
 	"MessagesDirs": {
@@ -62,52 +61,66 @@
 		"MediaWiki\\Extension\\FlexiSkin\\Tests\\": "tests/phpunit/"
 	},
 	"APIModules": {
-		"flexiskin-activate": "MediaWiki\\Extension\\FlexiSkin\\Api\\ActivateFlexiSkin",
-		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\SaveFlexiSkin",
-		"flexiskin-preview": "MediaWiki\\Extension\\FlexiSkin\\Api\\PreviewFlexiSkin",
-		"flexiskin-new": "MediaWiki\\Extension\\FlexiSkin\\Api\\NewFlexiSkin",
-		"flexiskin-delete": "MediaWiki\\Extension\\FlexiSkin\\Api\\DeleteFlexiSkin",
-		"flexiskin-restore": "MediaWiki\\Extension\\FlexiSkin\\Api\\RestoreFlexiSkin"
+		"flexiskin-activation": "MediaWiki\\Extension\\FlexiSkin\\Api\\Activation",
+		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\Save",
+		"flexiskin-preview": "MediaWiki\\Extension\\FlexiSkin\\Api\\Preview"
 	},
 	"Hooks": {
 		"BeforePageDisplay": [
-			"\\MediaWiki\\Extension\\FlexiSkin\\Hook\\BeforePageDisplay\\GetActiveSkins::callback",
 			"\\MediaWiki\\Extension\\FlexiSkin\\Hook\\BeforePageDisplay\\AddActiveSkinStyles::callback"
 		],
-		"LoadExtensionSchemaUpdates": "\\MediaWiki\\Extension\\FlexiSkin\\Hook\\LoadExtensionSchemaUpdates\\FlexiSkinShemaUpdates::callback",
 		"OutputPageBodyAttributes": "\\MediaWiki\\Extension\\FlexiSkin\\Hook\\OutputPageBodyAttributes\\AddFlexiSkinBodyClass::callback"
 	},
 	"ResourceModules": {
-		"ext.flexiskin.styles": {
-			"class": "\\MediaWiki\\Extension\\FlexiSkin\\ResourceLoader\\ActiveFlexiSkin"
-		},
 		"ext.flexiskin.specialpage.styles": {
 			"styles": [
-				"stylesheets/selector.less"
+				"stylesheets/special.less"
 			]
 		},
 		"ext.flexiskin.specialpage.scripts": {
 			"class": "\\MediaWiki\\Extension\\FlexiSkin\\ResourceLoader\\Configurator",
 			"scripts": [
-				"js/ui/dialog/NewSkin.js",
-				"js/ui/Selector.js",
-				"js/ui/BookletPage.js",
+				"js/ui/dialog/PreviewLoading.js",
+				"js/ui/StyleSizeWidget.js",
+				"js/ui/ConfigGroup.js",
 				"js/ui/Configurator.js",
-				"js/ui/Manager.js",
 				"js/ui/flexiskin.js"
 			],
 			"dependencies": [
 				"ext.bluespice",
 				"mediawiki.api",
-				"oojs",
 				"oojs-ui",
 				"ext.codeEditor.ace",
 				"ext.oOJSPlus.widgets.colorPicker"
 			],
 			"messages": [
-				"flexiskin-ui-no-skins",
-				"flexisin-ui-active-skin",
-				"flexiskin-ui-no-active-skin"
+				"flexiskin-ui-preview-loading-message",
+				"flexiskin-ui-plugin-color-presets-label",
+				"flexiskin-ui-plugin-colors-label",
+				"flexiskin-ui-plugin-colors-background-label",
+				"flexiskin-ui-plugin-colors-background-primary-label",
+				"flexiskin-ui-plugin-colors-background-secondary-label",
+				"flexiskin-ui-plugin-colors-background-neutral-label",
+				"flexiskin-ui-plugin-colors-background-body-label",
+				"flexiskin-ui-plugin-colors-foreground-label",
+				"flexiskin-ui-plugin-colors-foreground-primary-label",
+				"flexiskin-ui-plugin-colors-foreground-secondary-label",
+				"flexiskin-ui-plugin-colors-foreground-neutral-label",
+				"flexiskin-ui-plugin-images-label",
+				"flexiskin-ui-plugin-images-logo-label",
+				"flexiskin-ui-plugin-images-favicon-label",
+				"flexiskin-ui-plugin-color-presets-custom-header",
+				"flexiskin-ui-plugin-color-presets-custom-dirty-warning",
+				"flexiskin-ui-configurator-button-preview-label",
+				"flexiskin-ui-configurator-button-save-label",
+				"flexiskin-ui-error-preview-fail",
+				"flexiskin-ui-error-save-fail",
+				"flexiskin-ui-plugin-color-presets-customize-label",
+				"flexiskin-configurator-prompt-on-save",
+				"flexiskin-ui-plugin-layout-label",
+				"flexiskin-ui-plugin-layout-content-width-label",
+				"flexiskin-ui-plugin-colors-foreground-content-label",
+				"flexiskin-ui-plugin-colors-background-content-label"
 			]
 		}
 	},
@@ -115,12 +128,43 @@
 		"FlexiSkinThemePath": {
 			"value": "resources/templates/themes",
 			"path": true
+		},
+		"FlexiSkinColorPresets": {
+			"value": {
+				"atlantic": {
+					"colors/background/primary": "#2b67e0",
+					"colors/background/secondary": "#4d7cdb",
+					"colors/background/neutral": "#a1baed",
+					"colors/foreground/primary": "#e1f2fa",
+					"colors/foreground/secondary": "#1599d6",
+					"colors/foreground/neutral": "#085a80"
+				},
+				"sunflower": {
+					"colors/background/primary": "#379BE6",
+					"colors/background/secondary": "#E69215",
+					"colors/background/neutral": "#E6BE20",
+					"colors/foreground/primary": "#379BE6",
+					"colors/foreground/secondary": "#E4E62C",
+					"colors/foreground/neutral": "#7609E6"
+				},
+				"meadow":  {
+					"colors/background/primary": "#023C40",
+					"colors/background/secondary": "#B57D88",
+					"colors/background/neutral": "#E1FAF9",
+					"colors/foreground/primary": "#C3979F",
+					"colors/foreground/secondary": "#0AD3FF",
+					"colors/foreground/neutral": "#78FFD6"
+				}
+			}
 		}
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "FlexiSkin/resources"
 	},
+	"ExtensionFunctions": [
+		"MediaWiki\\Extension\\FlexiSkin\\Extension::overrideLessVars"
+	],
 	"manifest_version": 2,
 	"load_composer_autoloader": true
 }

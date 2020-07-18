@@ -9,25 +9,20 @@ interface IFlexiSkin extends JsonSerializable {
 	/**
 	 * @return int|null
 	 */
-	public function getId();
+	public function getId() : ?int;
 
 	/**
 	 * @return string|null
 	 */
-	public function getName();
+	public function getName() : ?string;
 
 	/**
 	 * @return array|null
 	 */
-	public function getConfig();
+	public function getConfig() : ?array;
 
 	/**
 	 * @return bool
 	 */
-	public function isActive();
-
-	/**
-	 * @return bool
-	 */
-	public function isDeleted();
+	public function isActive() : bool;
 }

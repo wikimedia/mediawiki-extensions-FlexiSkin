@@ -25,9 +25,8 @@ interface IPlugin {
 	public function getValidSkins();
 
 	/**
-	 * @param sting $bodyClass
-	 * @param StdClass $allDataFromDB
-	 * @return string The CSS
+	 * @param array $config
+	 * @return array
 	 */
-	public function generateCSS( $bodyClass, $allDataFromDB );
+	public function getLessVars( $config ): array;
 }

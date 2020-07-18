@@ -1,4 +1,4 @@
-flexiskin.ui.plugin.Colors = function(){
+flexiskin.ui.plugin.Colors = function() {
 	flexiskin.ui.plugin.Colors.parent.call( this );
 };
 
@@ -9,40 +9,48 @@ flexiskin.registry.Plugin.register( 'colors', flexiskin.ui.plugin.Colors );
 flexiskin.ui.plugin.Colors.prototype.provideControls = function() {
 	return {
 		colors: {
-			label: 'Colors',
-			custom_menu: {
-				label: "Custom menu",
+			label: mw.message( 'flexiskin-ui-plugin-colors-label' ).text(),
+			background: {
+				label: mw.message( 'flexiskin-ui-plugin-colors-background-label' ).text(),
 				items: {
-					bg1: {
-						label: 'Background color',
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } ),
-						visibility: flexiskin.ui.Configurator.static.VISIBILITY_BASIC
-					},
-					bg2: {
-						label: 'Background color on hover',
+					primary: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-primary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
-					fg1: {
-						label: 'Background color on hover',
+					secondary: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-secondary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
-					fg2: {
-						label: 'Background color on hover',
+					neutral: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-neutral-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
-					fg3: {
-						label: 'Text colors',
-						items: {
-							tc1: {
-								label: 'Unselected',
-								widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
-							},
-							tc2: {
-								label: 'Selected',
-								widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
-							}
-						}
+					content: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-content-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					}
+				}
+			},
+			foreground: {
+				label: mw.message( 'flexiskin-ui-plugin-colors-foreground-label' ).text(),
+				items: {
+					primary: {
+						label:  mw.message( 'flexiskin-ui-plugin-colors-foreground-primary-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+					},
+					secondary: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-secondary-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+					},
+					neutral: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-neutral-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+					},
+					content: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-content-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+					}
+
 				}
 			}
 		}
