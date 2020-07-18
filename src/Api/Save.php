@@ -2,22 +2,21 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
-use ApiBase;
 use ApiUsageException;
 use FormatJson;
 use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 
-class SaveFlexiSkin extends FlexiSkinOperation {
+class Save extends FlexiSkinOperation {
 	/**
 	 * @inheritDoc
 	 */
 	protected function getAllowedParams() {
 		return parent::getAllowedParams() + [
 			'config' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => false,
-				ApiBase::PARAM_HELP_MSG => 'apihelp-flexiskin-save-param-config',
+				static::PARAM_TYPE => 'string',
+				static::PARAM_REQUIRED => false,
+				static::PARAM_HELP_MSG => 'apihelp-flexiskin-save-param-config',
 			]
 		];
 	}
@@ -53,6 +52,14 @@ class SaveFlexiSkin extends FlexiSkinOperation {
 	 * @return bool
 	 */
 	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
-		return $this->flexiSkinManager->save( $flexiSkin ) > 0;
+		return $this->flexiSkinManager->save( $flexiSkin ) &&
+			$this->flexiSkinManager->setActive( true );
+	}
+
+	/**
+	 * @return bool
+	 */
+	protected function mustExist(): bool {
+		return false;
 	}
 }

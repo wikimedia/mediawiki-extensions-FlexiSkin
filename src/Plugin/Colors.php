@@ -12,7 +12,7 @@ class Colors extends PluginBase {
 	 */
 	public function getJSFiles() {
 		return [
-			__DIR__ . '/../../resources/js/ui/plugin/Colors.js'
+			'js/ui/plugin/Colors.js'
 		];
 	}
 
@@ -22,7 +22,7 @@ class Colors extends PluginBase {
 	public function getCSSFiles() {
 		return [
 			'all' => [
-				'stylesheets/plugin/Colors.css'
+				'stylesheets/plugin/Colors.css',
 			]
 		];
 	}
@@ -44,33 +44,22 @@ class Colors extends PluginBase {
 	}
 
 	/**
-	 *
-	 * @param string $bodyClass
-	 * @param array $config
-	 * @return string The CSS
+	 * @inheritDoc
 	 */
-	public function generateCSS( $bodyClass, $config ) {
-		if ( array_key_exists( 'colors', $config ) ) {
-			$args = array_merge( $config['colors'], [ 'bodyClass' => $bodyClass ] );
+	public function getLessVars( $config ): array {
+		$vars = [
+			'primary-bg' => $config['colors']['background']['primary'] ?: null,
+			'secondary-bg' => $config['colors']['background']['secondary'] ?: null,
+			'neutral-bg' => $config['colors']['background']['neutral'] ?: null,
+			'primary-fg' => $config['colors']['foreground']['primary'] ?: null,
+			'secondary-fg' => $config['colors']['foreground']['primary'] ?: null,
+			'neutral-fg' => $config['colors']['foreground']['primary'] ?: null,
+			'content-bg' => $config['colors']['background']['content'] ?: null,
+			'content-fg' => $config['colors']['foreground']['content'] ?: null,
+		];
 
-			return $this->parseFlexiSkinCss( $args );
-		}
-
-		return '';
-	}
-
-	/**
-	 *
-	 * @param array $params
-	 * @return string
-	 */
-	private function parseFlexiSkinCss( $params = [] ) {
-		$config = MediaWikiServices::getInstance()->getMainConfig();
-		$templateParser = new TemplateParser( $config->get( 'FlexiSkinThemePath' ) );
-
-		return $templateParser->processTemplate(
-			'colors',
-			$params
-		);
+		return array_filter( $vars, function ( $item ) {
+			return $item !== null;
+		} );
 	}
 }

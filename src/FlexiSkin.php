@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
-use stdClass;
+use MWException;
 
 class FlexiSkin implements IFlexiSkin {
 	/**
@@ -25,77 +25,74 @@ class FlexiSkin implements IFlexiSkin {
 	 */
 	protected $config = [];
 
-	/** @var bool */
-	protected $deleted = false;
-
-	/**
-	 * Helper function
-	 *
-	 * @param stdClass $row
-	 * @return static
-	 */
-	public static function newFromRow( $row ) {
-		return new static(
-			(int)$row->fs_id,
-			$row->fs_name,
-			json_decode( $row->fs_config, true ),
-			(bool)$row->fs_active,
-			(bool)$row->fs_deleted
-		);
-	}
-
 	/**
 	 * @param int|null $id
 	 * @param string $name
 	 * @param array $config
 	 * @param bool|null $active
-	 * @param bool|null $deleted
 	 */
-	public function __construct( ?int $id, $name, $config, $active = false, $deleted = false ) {
+	public function __construct( ?int $id, $name, $config, $active = false ) {
 		$this->id = $id;
 		$this->name = $name;
 		$this->config = $config;
 		$this->active = $active;
-		$this->deleted = $deleted;
+	}
+
+	/**
+	 * @param array $data
+	 * @return static|null
+	 * @throws MWException
+	 */
+	public static function newFromData( $data ) {
+		if ( !isset( $data['name'] ) || !isset( $data['config'] ) ) {
+			throw new MWException( __METHOD__ . ': Invalid data passed' );
+		}
+
+		return new static(
+			(int) $data['id'],
+			$data['name'],
+			$data['config'],
+			$data['active'] ?? false
+		);
 	}
 
 	/**
 	 * @return int|null
 	 */
-	public function getId() {
+	public function getId() : ?int {
 		return $this->id;
 	}
 
 	/**
 	 * @return string|null
 	 */
-	public function getName() {
+	public function getName() : ?string {
 		return $this->name;
 	}
 
 	/**
 	 * @return array|null
 	 */
-	public function getConfig() {
+	public function getConfig() : ?array {
 		return $this->config;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isActive() {
+	public function isActive() : bool {
 		return $this->active;
 	}
 
+	/**
+	 * @return array
+	 */
 	public function jsonSerialize() {
 		return [
 			'id' => $this->getId(),
 			'name' => $this->getName(),
 			'config' => $this->getConfig(),
+			'active' => $this->isActive()
 		];
-	}
-
-	public function isDeleted() {
-		return $this->deleted;
 	}
 }

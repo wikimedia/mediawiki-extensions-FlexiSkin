@@ -17,19 +17,6 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 		$this->returnResult( $result );
 	}
 
-	/**
-	 *
-	 * @return array
-	 */
-	protected function getAllowedParams() {
-		return [
-			'id' => [
-				ApiBase::PARAM_TYPE => 'string',
-				ApiBase::PARAM_REQUIRED => true,
-				ApiBase::PARAM_HELP_MSG => 'apihelp-flexiskin-preview-param-id',
-			]
-		];
-	}
 
 	/**
 	 * @param bool $value
@@ -54,12 +41,15 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 	 * @throws ApiUsageException
 	 */
 	protected function getFlexiSkin() {
-		$id = $this->getParameter( 'id' );
-		$flexiSkin = $this->flexiSkinManager->loadFromId( $id );
-		if ( !$flexiSkin ) {
-			$this->dieWithError( 'Invalid ID' );
+		$skin = $this->flexiSkinManager->getFlexiSkin();
+		if ( $skin === null ) {
+			if ( $this->mustExist() ) {
+				$this->dieWithError( 'Skin must exist!' );
+			}
+			return $this->flexiSkinManager->create( 'default', [] );
 		}
-		return $flexiSkin;
+
+		return $skin;
 	}
 
 	/**
@@ -67,4 +57,10 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 	 * @return bool Operation success
 	 */
 	abstract protected function executeOperationOnSkin( IFlexiSkin $flexiSkin );
+
+
+	/**
+	 * @return bool
+	 */
+	abstract protected function mustExist(): bool;
 }

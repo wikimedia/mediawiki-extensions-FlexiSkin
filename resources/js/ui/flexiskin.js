@@ -1,7 +1,9 @@
 ( function( $, mw ) {
 	$( function() {
-		new flexiskin.ui.Management( {
-			$element: $( '#fs-container' )
-		} );
+		$( '#fs-container' ).append(
+			new flexiskin.ui.Configurator( {
+				skin: mw.config.get( 'wgFlexiSkin' )
+			}
+		).$element );
 	} );
 } )( jQuery, mediaWiki );

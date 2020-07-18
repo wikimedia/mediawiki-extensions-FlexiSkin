@@ -1,13 +1,11 @@
 <?php
 
-use MediaWiki\Extension\FlexiSkin\DBFlexiSkinManager;
+use MediaWiki\Extension\FlexiSkin\FlexiSkinManager;
 use MediaWiki\MediaWikiServices;
 
 return [
-	'FlexiSkinManager' => function () {
-		$loadBalancer = MediaWikiServices::getInstance()->getDBLoadBalancer();
-
-		$manager = new DBFlexiSkinManager( $loadBalancer );
-		return $manager;
+	'FlexiSkinManager' => function( MediaWikiServices $services ) {
+		$path = $services->getMainConfig()->get( 'UploadDirectory' ) . '/flexiskin/';
+		return new FlexiSkinManager( $path );
 	}
 ];

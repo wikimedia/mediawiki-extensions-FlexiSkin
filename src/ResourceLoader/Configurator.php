@@ -4,6 +4,8 @@ namespace MediaWiki\Extension\FlexiSkin\ResourceLoader;
 
 use ExtensionRegistry;
 use MediaWiki\Extension\FlexiSkin\IPlugin;
+use MediaWiki\MediaWikiServices;
+use OutputPage;
 use ResourceLoaderContext;
 use ResourceLoaderFileModule;
 use RuntimeException;
@@ -20,21 +22,9 @@ class Configurator extends ResourceLoaderFileModule {
 	 * @throws RuntimeException
 	 */
 	public function readStyleFiles( array $styles, ResourceLoaderContext $context ) {
-		$pluginRegistry = ExtensionRegistry::getInstance()->getAttribute( 'FlexiSkinPluginRegistry' );
-		/**
-		 * @var IPlugin[]
-		 */
-		$plugins = [];
+		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
 		$pluginStyles = [];
-
-		foreach ( $pluginRegistry as $pluginKey => $pluginFactoryCallback ) {
-			$plugin = call_user_func_array( $pluginFactoryCallback, [] );
-			if ( $plugin instanceof IPlugin ) {
-				$plugins[$pluginKey] = $plugin;
-			}
-		}
-
-		foreach ( $plugins as $pluginKey => $plugin ) {
+		foreach ( $flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
 			$pluginStylesFiles = $plugin->getCSSFiles();
 
 			if ( !$pluginStylesFiles ) {
@@ -66,40 +56,80 @@ class Configurator extends ResourceLoaderFileModule {
 	 * @return string|array JavaScript code for $context, or package files data structure
 	 */
 	public function getScript( ResourceLoaderContext $context ) {
-		$scriptCode = $this->getFileContents(
-			__DIR__ . '/../../resources/js/ui/PluginRegistry.js', 'javascript'
-		);
-		$scriptCode .= $this->getFileContents(
-			__DIR__ . '/../../resources/js/ui/Plugin.js', 'javascript'
-		);
+		return $this->readScriptFiles( $this->getPluginFiles( $context ) ) .
+			parent::getScript( $context );
+	}
 
-		$pluginRegistry = ExtensionRegistry::getInstance()->getAttribute( 'FlexiSkinPluginRegistry' );
+	/**
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 */
+	public function getScriptURLsForDebug( ResourceLoaderContext $context ) {
+		$pluginFiles = $this->getPluginFiles( $context );
 
-		/**
-		 * @var IPlugin[]
-		 */
-		$plugins = [];
-
-		foreach ( $pluginRegistry as $pluginKey => $pluginFactoryCallback ) {
-			$plugin = call_user_func_array( $pluginFactoryCallback, [] );
-			if ( $plugin instanceof IPlugin ) {
-				$plugins[$pluginKey] = $plugin;
-			}
+		foreach ( $pluginFiles as &$file ) {
+			$file = OutputPage::transformResourcePath(
+				$this->getConfig(),
+				$this->getRemotePath( $file )
+			);
 		}
+		return array_merge( $pluginFiles, parent::getScriptURLsForDebug( $context ) );
+	}
 
-		foreach ( $plugins as $pluginKey => $plugin ) {
+	/**
+	 * @param ResourceLoaderContext $context
+	 * @return string[]
+	 */
+	private function getPluginFiles( $context ) {
+		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
+
+		$files = [
+			'js/Defines.js',
+			'js/ui/Plugin.js',
+		];
+
+		foreach ( $flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
 			if ( $this->pluginValidForSkin( $plugin->getValidSkins(), $context ) ) {
-				$scripts = $plugin->getJSFiles();
-
-				foreach ( $scripts as $script ) {
-					$scriptCode .= "\n//Plugin '$pluginKey'\n" . $this->getFileContents( $script, 'javascript' );
-				}
+				$files = array_merge( $files, $plugin->getJSFiles() );
 			}
 		}
 
-		$parentReturn = parent::getScript( $context );
+		return $files;
+	}
 
-		return $scriptCode . $parentReturn;
+	/**
+	 * Get the contents of a list of JavaScript files. Helper for getScript().
+	 *
+	 * @param array $scripts List of file paths to scripts to read, remap and concetenate
+	 * @return string Concatenated JavaScript data from $scripts
+	 * @throws RuntimeException
+	 */
+	private function readScriptFiles( array $scripts ) {
+		if ( empty( $scripts ) ) {
+			return '';
+		}
+		$js = '';
+		foreach ( array_unique( $scripts, SORT_REGULAR ) as $fileName ) {
+			$localPath = $this->getLocalPath( $fileName );
+			$contents = $this->getFileContents( $localPath, 'script' );
+			$js .= $contents . "\n";
+		}
+		return $js;
+	}
+
+	/**
+	 * @param array $pluginSkins
+	 * @param ResourceLoaderContext $context
+	 * @return bool
+	 */
+	private function pluginValidForSkin( $pluginSkins, $context ) {
+		$skin = $context->getSkin();
+
+		if ( in_array( '*', $pluginSkins ) || in_array( $skin, $pluginSkins ) ) {
+			return true;
+		}
+
+		return false;
 	}
 
 	/**
@@ -117,21 +147,6 @@ class Configurator extends ResourceLoaderFileModule {
 			);
 		}
 		return $this->stripBom( file_get_contents( $localPath ) );
-	}
-
-	/**
-	 * @param array $pluginSkins
-	 * @param IContextSource $context
-	 * @return bool
-	 */
-	private function pluginValidForSkin( $pluginSkins, $context ) {
-		$skin = $context->getSkin();
-
-		if ( in_array( '*', $pluginSkins ) || in_array( $skin, $pluginSkins ) ) {
-			return true;
-		}
-
-		return false;
 	}
 
 }

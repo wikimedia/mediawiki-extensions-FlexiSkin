@@ -16,10 +16,10 @@ class AddFlexiSkinBodyClass {
 	 */
 	public static function callback( OutputPage $out, Skin $skin, &$bodyAttrs ) {
 		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
-		$activeId = $flexiSkinManager->getActive();
+		$active = $flexiSkinManager->getActive();
 
-		if ( $activeId !== false ) {
-			$bodyAttrs[ 'class' ] .= ' fs-' . $activeId . ' ';
+		if ( $active ) {
+			$bodyAttrs[ 'class' ] .= ' fs-' . $active->getId() . ' ';
 		}
 
 		return true;

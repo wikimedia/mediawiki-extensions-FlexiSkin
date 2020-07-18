@@ -20,6 +20,7 @@ flexiskin.ui.plugin.Plugin.prototype.getPluginLabel = function() {
 flexiskin.ui.plugin.Plugin.prototype.getFlatList = function() {
 	this.visibility = {};
 	this.labels = {};
+	this.actionCallbacks = {};
 
 	var flat = {};
 
@@ -94,18 +95,20 @@ flexiskin.ui.plugin.Plugin.prototype.getItemsForObject = function( controls, gro
 flexiskin.ui.plugin.Plugin.prototype.addData = function( item, id ) {
 	if ( item.hasOwnProperty( 'visibility' ) ) {
 		var visibility = item.visibility;
-		if ( !visibility ) {
-			return;
+		if ( visibility ) {
+			this.visibility[id] = visibility;
 		}
-		this.visibility[id] = visibility;
 	}
 
 	if ( item.hasOwnProperty( 'label' ) ) {
 		var label = item.label;
-		if ( !label ) {
-			return;
+		if ( label ) {
+			this.labels[id] = label;
 		}
-		this.labels[id] = label;
+	}
+
+	if ( item.hasOwnProperty( 'actionCallback' ) ) {
+		this.actionCallbacks[id] = item.actionCallback;
 	}
 };
 
@@ -117,6 +120,11 @@ flexiskin.ui.plugin.Plugin.prototype.getWidgetForItem = function( widget, groups
 	if ( this.labels.hasOwnProperty( itemId ) ) {
 		widgetData.label = this.labels[itemId];
 	}
+
+	if ( this.actionCallbacks.hasOwnProperty( itemId ) ) {
+		widgetData.actionCallback = this.actionCallbacks[itemId];
+	}
+
 	widget.setData( widgetData );
 	result[this.makeId( groups, itemId )] = widget;
 	return result;
