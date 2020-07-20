@@ -8,5 +8,6 @@
 	"flexiskin": "Utseendeinställningar",
 	"flexiskin-ui-no-skins": "Inga utseenden är tillgängliga! Skapa ett.",
 	"flexisin-ui-active-skin": "Aktivt utseende: $1",
-	"flexiskin-ui-no-active-skin": "Inga aktiva utseenden!"
+	"flexiskin-ui-no-active-skin": "Inga aktiva utseenden!",
+	"action-flexiskin-viewspecialpage": "visa specialsidan \"Flexiskin\""
 }

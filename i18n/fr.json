@@ -8,5 +8,6 @@
 	"flexiskin": "Préférences d'habillage",
 	"flexiskin-ui-no-skins": "Aucun habillage disponible ! Créez le votre.",
 	"flexisin-ui-active-skin": "Habillage actif : $1",
-	"flexiskin-ui-no-active-skin": "Aucun habillage actif !"
+	"flexiskin-ui-no-active-skin": "Aucun habillage actif !",
+	"action-flexiskin-viewspecialpage": "Voir la page spéciale « Flexiskin »"
 }

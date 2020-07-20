@@ -11,5 +11,6 @@
 	"flexiskin": "皮肤参数设置",
 	"flexiskin-ui-no-skins": "没有可用的皮肤！创建一个吧。",
 	"flexisin-ui-active-skin": "当前皮肤：$1",
-	"flexiskin-ui-no-active-skin": "没有可用的皮肤！"
+	"flexiskin-ui-no-active-skin": "没有可用的皮肤！",
+	"action-flexiskin-viewspecialpage": "查看特殊页面“Flexiskin”"
 }
