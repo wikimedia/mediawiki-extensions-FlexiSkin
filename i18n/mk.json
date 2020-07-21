@@ -7,5 +7,20 @@
 	"flexiskin-extension-desc": "Овозможува прилагодување на рувото „Флекси“",
 	"flexiskin-ui-no-skins": "Нема достапни рува! Направете некое.",
 	"flexisin-ui-active-skin": "Активно руво: $1",
-	"flexiskin-ui-no-active-skin": "Нема активно руво!"
+	"flexiskin-ui-no-active-skin": "Нема активно руво!",
+	"right-flexiskin-viewspecialpage": "преглед на [[Special:FlexiSkin|службена страница]] за прилагодување на рувото",
+	"action-flexiskin-viewspecialpage": "Преглед на [[Special:FlexiSkin|службена страница]] за прилагодување на рувото",
+	"right-flexiskin-api": "му е дозволена употреба на приложници во рувото „Флекси“",
+	"action-flexiskin-api": "Му е дозволена употреба на приложници во рувото „Флекси“",
+	"apihelp-flexiskin-activate-summary": "Модулот за активирање",
+	"apihelp-flexiskin-save-summary": "Модулот за зачувување",
+	"apihelp-flexiskin-preview-summary": "Модулот за преглед",
+	"apihelp-flexiskin-new-summary": "Новиот модул",
+	"apihelp-flexiskin-delete-summary": "Модулот за бришење",
+	"apihelp-flexiskin-restore-summary": "Модулот за повраток",
+	"apihelp-flexiskin-preview-param-id": "Параметарот за назнака",
+	"apihelp-flexiskin-preview-param-config": "Параметарот за поставувања",
+	"apihelp-flexiskin-save-param-config": "Параметарот за поставувања",
+	"apihelp-flexiskin-save-param-id": "Параметарот за назнака",
+	"apihelp-flexiskin-save-param-name": "Параметарот за назив"
 }

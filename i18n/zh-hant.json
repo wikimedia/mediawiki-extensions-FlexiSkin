@@ -7,5 +7,20 @@
 	"flexiskin-extension-desc": "允許自訂外觀",
 	"flexiskin-ui-no-skins": "沒有可用的外觀！來建立一個。",
 	"flexisin-ui-active-skin": "有效外觀：$1",
-	"flexiskin-ui-no-active-skin": "沒有有效外觀！"
+	"flexiskin-ui-no-active-skin": "沒有有效外觀！",
+	"right-flexiskin-viewspecialpage": "查看[[Special:FlexiSkin|特殊頁面]]來自訂外觀",
+	"action-flexiskin-viewspecialpage": "查看[[Special:FlexiSkin|特殊頁面]]來自訂外觀",
+	"right-flexiskin-api": "被允許使用 Flexiskin API",
+	"action-flexiskin-api": "允許使用 Flexiskin API",
+	"apihelp-flexiskin-activate-summary": "啟用模組",
+	"apihelp-flexiskin-save-summary": "儲存模組",
+	"apihelp-flexiskin-preview-summary": "預覽模組",
+	"apihelp-flexiskin-new-summary": "新模組",
+	"apihelp-flexiskin-delete-summary": "刪除模組",
+	"apihelp-flexiskin-restore-summary": "恢復模組",
+	"apihelp-flexiskin-preview-param-id": "ID 參數",
+	"apihelp-flexiskin-preview-param-config": "設定參數",
+	"apihelp-flexiskin-save-param-config": "設定參數",
+	"apihelp-flexiskin-save-param-id": "ID 參數",
+	"apihelp-flexiskin-save-param-name": "名稱參數"
 }

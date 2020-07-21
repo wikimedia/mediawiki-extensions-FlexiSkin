@@ -10,5 +10,10 @@
 	"flexiskin-ui-no-skins": "Não há peles disponíveis! Crie um.",
 	"flexisin-ui-active-skin": "Pele ativa: $1",
 	"flexiskin-ui-no-active-skin": "Sem pele ativa!",
-	"action-flexiskin-viewspecialpage": "ver pagina especial \"Flexiskin\""
+	"action-flexiskin-viewspecialpage": "ver pagina especial \"Flexiskin\"",
+	"apihelp-flexiskin-activate-summary": "O módulo de ativação",
+	"apihelp-flexiskin-new-summary": "O novo módulo",
+	"apihelp-flexiskin-delete-summary": "O módulo de exclusão",
+	"apihelp-flexiskin-restore-summary": "O módulo de restauração",
+	"apihelp-flexiskin-save-param-config": "O parâmetro de configuração"
 }

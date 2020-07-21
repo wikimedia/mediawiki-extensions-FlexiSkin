@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Gomoko",
 			"Wladek92"
 		]
 	},
@@ -9,5 +10,19 @@
 	"flexiskin-ui-no-skins": "Aucun habillage disponible ! Créez le votre.",
 	"flexisin-ui-active-skin": "Habillage actif : $1",
 	"flexiskin-ui-no-active-skin": "Aucun habillage actif !",
-	"action-flexiskin-viewspecialpage": "Voir la page spéciale « Flexiskin »"
+	"right-flexiskin-viewspecialpage": "afficher la [[Special:FlexiSkin|page spéciale]] pour personnaliser l’habillage",
+	"action-flexiskin-viewspecialpage": "Afficher la [[Special:FlexiSkin|page spéciale]] pour personnaliser l’habillage",
+	"right-flexiskin-api": "est autorisé à utiliser les API flexiskin",
+	"action-flexiskin-api": "Autorisé à utiliser les API flexiskin",
+	"apihelp-flexiskin-activate-summary": "Le module d’activation",
+	"apihelp-flexiskin-save-summary": "Le module de sauvegarde",
+	"apihelp-flexiskin-preview-summary": "Le module d’aperçu",
+	"apihelp-flexiskin-new-summary": "Le nouveau module",
+	"apihelp-flexiskin-delete-summary": "Le module de suppression",
+	"apihelp-flexiskin-restore-summary": "Le module de restauration",
+	"apihelp-flexiskin-preview-param-id": "Le paramètre id",
+	"apihelp-flexiskin-preview-param-config": "Le paramètre de configuration",
+	"apihelp-flexiskin-save-param-config": "Le paramètre de configuration",
+	"apihelp-flexiskin-save-param-id": "Le paramètre id",
+	"apihelp-flexiskin-save-param-name": "Le paramètre nom"
 }
