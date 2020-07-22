@@ -9,5 +9,10 @@
 	"flexiskin-ui-no-skins": "Inga utseenden är tillgängliga! Skapa ett.",
 	"flexisin-ui-active-skin": "Aktivt utseende: $1",
 	"flexiskin-ui-no-active-skin": "Inga aktiva utseenden!",
-	"action-flexiskin-viewspecialpage": "visa specialsidan \"Flexiskin\""
+	"action-flexiskin-viewspecialpage": "visa specialsidan \"Flexiskin\"",
+	"apihelp-flexiskin-save-summary": "Sparamodulen",
+	"apihelp-flexiskin-delete-summary": "Raderingsmodulen",
+	"apihelp-flexiskin-preview-param-config": "Konfigurationparametern",
+	"apihelp-flexiskin-save-param-id": "ID-parametern",
+	"apihelp-flexiskin-save-param-name": "Namnparametern"
 }
