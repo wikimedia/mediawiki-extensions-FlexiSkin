@@ -1,9 +1,11 @@
 {
 	"@metadata": {
 		"authors": [
+			"Fitoschido",
 			"Macofe"
 		]
 	},
+	"flexiskin-extension-desc": "Permite la personalización de la apariencia",
 	"flexiskin": "Preferencias de la apariencia",
 	"action-flexiskin-viewspecialpage": "ver la página especial \"Flexiskin\""
 }
