@@ -6,5 +6,6 @@
 	},
 	"flexiskin": "Astellunge vum Layout",
 	"flexisin-ui-active-skin": "Aktiven Interface: $1",
-	"action-flexiskin-viewspecialpage": "D'[[Special:FlexiSkin|Spezialsäit \"Flexiskin\"]] weise fir den Interface anzestellen"
+	"action-flexiskin-viewspecialpage": "D'[[Special:FlexiSkin|Spezialsäit \"Flexiskin\"]] weise fir den Interface anzestellen",
+	"apihelp-flexiskin-new-summary": "Dat neit MOdul"
 }
