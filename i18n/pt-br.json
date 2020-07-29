@@ -15,5 +15,9 @@
 	"apihelp-flexiskin-new-summary": "O novo módulo",
 	"apihelp-flexiskin-delete-summary": "O módulo de exclusão",
 	"apihelp-flexiskin-restore-summary": "O módulo de restauração",
-	"apihelp-flexiskin-save-param-config": "O parâmetro de configuração"
+	"apihelp-flexiskin-preview-param-id": "O id do parâmetro",
+	"apihelp-flexiskin-preview-param-config": "O parâmetro de configuração",
+	"apihelp-flexiskin-save-param-config": "O parâmetro de configuração",
+	"apihelp-flexiskin-save-param-id": "O id do parâmetro",
+	"apihelp-flexiskin-save-param-name": "O nome do parâmetro"
 }
