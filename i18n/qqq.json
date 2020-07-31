@@ -1,6 +1,8 @@
 {
 	"@metadata": {
-		"authors": []
+		"authors": [
+			"Shirayuki"
+		]
 	},
 	"flexiskin-extension-desc": "{{desc|name=FlexiSkin|url=https://www.mediawiki.org/wiki/Extension:FlexiSkin}}",
 	"flexiskin-extension-name": "{{name}}",
@@ -10,7 +12,7 @@
 	"flexiskin-ui-no-active-skin": "Used in JavaScript as label",
 	"right-flexiskin-viewspecialpage": "{{doc-right|flexiskin-viewspecialpage}}",
 	"action-flexiskin-viewspecialpage": "{{doc-action|flexiskin-viewspecialpage}}",
-	"right-flexiskin-api": "{{doc-right|flexiskin-ap}}",
+	"right-flexiskin-api": "{{doc-right|flexiskin-api}}",
 	"action-flexiskin-api": "{{doc-action|flexiskin-api}}",
 	"apihelp-flexiskin-activate-summary": "{{doc-apihelp-summary|flexiskin-activate}}",
 	"apihelp-flexiskin-save-summary": "{{doc-apihelp-summary|flexiskin-save}}",

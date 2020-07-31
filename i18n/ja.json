@@ -9,6 +9,6 @@
 	"flexiskin-ui-no-skins": "利用できる外装がありません。作成してください。",
 	"right-flexiskin-viewspecialpage": "外装をカスタマイズするための[[Special:FlexiSkin|特別ページ]]を閲覧",
 	"action-flexiskin-viewspecialpage": "外装をカスタマイズするための[[Special:FlexiSkin|特別ページ]]の閲覧",
-	"right-flexiskin-api": "は flexiskin API の使用を許可されています",
-	"action-flexiskin-api": "flexiskin API の使用が許可されました"
+	"right-flexiskin-api": "flexiskin API を使用",
+	"action-flexiskin-api": "flexiskin API の使用"
 }
