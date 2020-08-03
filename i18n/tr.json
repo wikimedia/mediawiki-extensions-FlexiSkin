@@ -2,17 +2,18 @@
 	"@metadata": {
 		"authors": [
 			"Ahmetlii",
-			"BaRaN6161 TURK"
+			"BaRaN6161 TURK",
+			"MuratTheTurkish"
 		]
 	},
 	"flexiskin-extension-desc": "Görünümün özelleştirilmesine izin verir",
 	"flexiskin-ui-no-skins": "Hiçbir görünüm kullanılabilir değil! Bir tane oluştur.",
 	"flexisin-ui-active-skin": "Etkin görünüm: $1",
 	"flexiskin-ui-no-active-skin": "Etkin görünüm yok!",
-	"right-flexiskin-viewspecialpage": "görünümü özelleştiemek için [[Special:FlexiSkin|özel sayfayı]] görüntüle",
-	"action-flexiskin-viewspecialpage": "Görünümü özelleştiemek için [[Special:FlexiSkin|özel sayfayı]] görüntüle",
-	"right-flexiskin-api": "flexiskin API'leri kullanmasına izin verilir",
-	"action-flexiskin-api": "Flexiskin API'leri kullanma izni var",
+	"right-flexiskin-viewspecialpage": "Görünümü özelleştiemek için [[Special:FlexiSkin|özel sayfayı]] görüntüle",
+	"action-flexiskin-viewspecialpage": "görünümü özelleştiemek için [[Special:FlexiSkin|özel sayfayı]] görüntüle",
+	"right-flexiskin-api": "FlexiSkin API'lerini kullan",
+	"action-flexiskin-api": "FlexiSkin API'lerini kullan",
 	"apihelp-flexiskin-activate-summary": "Aktif modülü",
 	"apihelp-flexiskin-save-summary": "Kaydetme modülü",
 	"apihelp-flexiskin-preview-summary": "Önizleme modülü",

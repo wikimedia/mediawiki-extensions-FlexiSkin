@@ -2,15 +2,17 @@
 	"@metadata": {
 		"authors": [
 			"Cristofer Alves",
-			"Eduardo Addad de Oliveira"
+			"Eduardo Addad de Oliveira",
+			"Jaideraf"
 		]
 	},
-	"flexiskin-extension-desc": "Permite a personalização da pele",
+	"flexiskin-extension-desc": "Permite a personalização do tema",
 	"flexiskin": "Preferências de tema",
 	"flexiskin-ui-no-skins": "Não há peles disponíveis! Crie um.",
-	"flexisin-ui-active-skin": "Pele ativa: $1",
-	"flexiskin-ui-no-active-skin": "Sem pele ativa!",
-	"action-flexiskin-viewspecialpage": "ver pagina especial \"Flexiskin\"",
+	"flexisin-ui-active-skin": "Tema ativo: $1",
+	"flexiskin-ui-no-active-skin": "Sem tema ativo!",
+	"right-flexiskin-viewspecialpage": "Ver a [[Special:FlexiSkin|página especial]] para personalizar o tema",
+	"action-flexiskin-viewspecialpage": "Ver a [[Special:FlexiSkin|página especial]] para personalizar o tema",
 	"apihelp-flexiskin-activate-summary": "O módulo de ativação",
 	"apihelp-flexiskin-new-summary": "O novo módulo",
 	"apihelp-flexiskin-delete-summary": "O módulo de exclusão",

@@ -9,5 +9,9 @@
 	"flexiskin": "Preferencje skórki",
 	"flexiskin-ui-no-skins": "Brak dostępnych skórek! Stwórz jakąś.",
 	"flexisin-ui-active-skin": "Aktywna skórka: $1",
-	"flexiskin-ui-no-active-skin": "Brak aktywnej skórki!"
+	"flexiskin-ui-no-active-skin": "Brak aktywnej skórki!",
+	"right-flexiskin-viewspecialpage": "Podgląd [[Special:FlexiSkin|strony specjalnej]] do dostosowywania skórki",
+	"action-flexiskin-viewspecialpage": "podglądu [[Special:FlexiSkin|strony specjalnej]] do dostosowywania skórki",
+	"right-flexiskin-api": "Używanie API skórki FlexiSkin",
+	"action-flexiskin-api": "używania API skórki FlexiSkin"
 }
