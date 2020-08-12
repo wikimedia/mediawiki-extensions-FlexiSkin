@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Sabelöga",
 			"WikiPhoenix"
 		]
 	},
@@ -9,10 +10,15 @@
 	"flexiskin-ui-no-skins": "Inga utseenden är tillgängliga! Skapa ett.",
 	"flexisin-ui-active-skin": "Aktivt utseende: $1",
 	"flexiskin-ui-no-active-skin": "Inga aktiva utseenden!",
-	"action-flexiskin-viewspecialpage": "visa specialsidan \"Flexiskin\"",
+	"right-flexiskin-viewspecialpage": "Visa [[Special:FlexiSkin|specialsidan]] för att anpassa utseendet",
+	"action-flexiskin-viewspecialpage": "visa [[Special:FlexiSkin|specialsidan]] för att anpassa utseendet",
+	"right-flexiskin-api": "Använd FlexiSkin API:erna",
+	"action-flexiskin-api": "använd FlexiSkin API:erna",
 	"apihelp-flexiskin-save-summary": "Sparamodulen",
 	"apihelp-flexiskin-delete-summary": "Raderingsmodulen",
-	"apihelp-flexiskin-preview-param-config": "Konfigurationparametern",
+	"apihelp-flexiskin-preview-param-id": "ID-parametern",
+	"apihelp-flexiskin-preview-param-config": "Konfigurationsparametern",
+	"apihelp-flexiskin-save-param-config": "Konfigurationsparametern",
 	"apihelp-flexiskin-save-param-id": "ID-parametern",
 	"apihelp-flexiskin-save-param-name": "Namnparametern"
 }
