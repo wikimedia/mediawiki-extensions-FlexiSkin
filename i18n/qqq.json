@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
-			"Shirayuki"
+			"Shirayuki",
+			"Umherirrender"
 		]
 	},
 	"flexiskin-extension-desc": "{{desc|name=FlexiSkin|url=https://www.mediawiki.org/wiki/Extension:FlexiSkin}}",
 	"flexiskin-extension-name": "{{name}}",
-	"flexiskin": "{{doc-special}}",
+	"flexiskin": "{{optional}}\n{{doc-special}}",
 	"flexiskin-ui-no-skins": "Used in JavaScript as label",
 	"flexisin-ui-active-skin": "Used in JavaScript as label",
 	"flexiskin-ui-no-active-skin": "Used in JavaScript as label",

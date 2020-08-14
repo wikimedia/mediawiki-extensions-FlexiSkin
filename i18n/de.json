@@ -1,9 +1,10 @@
 {
 	"@metadata": {
 		"authors": [
-			"Metalhead64"
+			"Metalhead64",
+			"Umherirrender"
 		]
 	},
 	"flexiskin": "Einstellungen zur Benutzeroberfläche",
-	"action-flexiskin-viewspecialpage": "die Spezialseite „Flexiskin“ anzusehen"
+	"action-flexiskin-viewspecialpage": "die [[Special:FlexiSkin|Spezialseite]] für Skin-Einstellungen anzusehen"
 }
