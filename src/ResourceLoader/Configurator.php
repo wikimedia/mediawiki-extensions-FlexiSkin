@@ -2,8 +2,6 @@
 
 namespace MediaWiki\Extension\FlexiSkin\ResourceLoader;
 
-use ExtensionRegistry;
-use MediaWiki\Extension\FlexiSkin\IPlugin;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use ResourceLoaderContext;

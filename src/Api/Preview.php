@@ -56,7 +56,7 @@ class Preview extends FlexiSkinApiBase {
 		 * @var string $subKey
 		 * @var IFlexiSkinSubscriber $subscriber
 		 */
-		foreach( $flexiSkinManager->getSubscribers() as $subKey => $subscriber ) {
+		foreach ( $flexiSkinManager->getSubscribers() as $subKey => $subscriber ) {
 			$subscribingModules = array_merge(
 				$subscribingModules,
 				$subscriber->getAffectedRLModules()
