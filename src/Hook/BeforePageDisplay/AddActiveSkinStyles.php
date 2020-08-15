@@ -30,7 +30,7 @@ class AddActiveSkinStyles {
 
 	protected static function setGlobalImages( IFlexiSkin $skin, $skinVariable, $globalVariable ) {
 		$url = $skin->getConfig()['images'][$skinVariable]['url'] ?? null;
-		if ( $url ){
+		if ( $url ) {
 			$GLOBALS[$globalVariable] = $url;
 		}
 	}

@@ -44,6 +44,9 @@ class ColorPresets extends PluginBase {
 		];
 	}
 
+	/**
+	 * @inheritDoc
+	 */
 	public function getLessVars( $config ): array {
 		return [];
 	}

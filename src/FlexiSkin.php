@@ -49,7 +49,7 @@ class FlexiSkin implements IFlexiSkin {
 		}
 
 		return new static(
-			(int) $data['id'],
+			(int)$data['id'],
 			$data['name'],
 			$data['config'],
 			$data['active'] ?? false
