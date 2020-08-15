@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
-use ApiBase;
 use ApiUsageException;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 
@@ -16,7 +15,6 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 		$result = $this->executeAction();
 		$this->returnResult( $result );
 	}
-
 
 	/**
 	 * @param bool $value
@@ -57,7 +55,6 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 	 * @return bool Operation success
 	 */
 	abstract protected function executeOperationOnSkin( IFlexiSkin $flexiSkin );
-
 
 	/**
 	 * @return bool

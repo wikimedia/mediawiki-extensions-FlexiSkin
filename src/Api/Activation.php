@@ -21,7 +21,7 @@ class Activation extends FlexiSkinOperation {
 	}
 
 	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
-		$active = (bool) $this->getParameter( 'active' );
+		$active = (bool)$this->getParameter( 'active' );
 		return $this->flexiSkinManager->setActive( $active );
 	}
 
