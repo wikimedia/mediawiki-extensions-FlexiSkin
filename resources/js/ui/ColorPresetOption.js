@@ -1,4 +1,4 @@
-flexiskin.ui.ColorPresetOptionWidget = function( cfg ) {
+flexiskin.ui.ColorPresetOptionWidget = function ( cfg ) {
 	flexiskin.ui.ColorPresetOptionWidget.parent.call( this, cfg );
 
 	this.palette = new flexiskin.ui.ColorPalleteWidget( cfg );
@@ -15,7 +15,7 @@ flexiskin.ui.ColorPresetOptionWidget = function( cfg ) {
 		} );
 
 		this.editButton.connect( this, {
-			click: function() {
+			click: function () {
 				this.emit( 'customize', this.palette.getColors() );
 			}
 		} );

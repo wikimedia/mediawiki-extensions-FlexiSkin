@@ -1,4 +1,4 @@
-flexiskin.ui.ConfigGroup = function( name, cfg ) {
+flexiskin.ui.ConfigGroup = function ( name, cfg ) {
 	flexiskin.ui.ConfigGroup.parent.call( this );
 
 	this.name = name;
@@ -10,7 +10,7 @@ flexiskin.ui.ConfigGroup = function( name, cfg ) {
 
 	this.items = cfg.items || [];
 	for ( var i = 0; i < this.items.length; i++ ) {
-		this.$itemContainer.append( this.items[i].$element );
+		this.$itemContainer.append( this.items[ i ].$element );
 	}
 	this.$element.append( this.$itemContainer );
 
@@ -55,12 +55,12 @@ flexiskin.ui.ConfigGroup.prototype.getItems = function () {
 
 flexiskin.ui.ConfigGroup.prototype.onToggle = function () {
 	if ( this.expanded ) {
-		this.$itemContainer.slideUp( 300, function() {
+		this.$itemContainer.slideUp( 300, function () {
 			this.toggleButton.setIcon( 'expand' );
 			this.expanded = false;
 		}.bind( this ) );
 	} else {
-		this.$itemContainer.slideDown( 300, function() {
+		this.$itemContainer.slideDown( 300, function () {
 			this.toggleButton.setIcon( 'collapse' );
 			this.expanded = true;
 		}.bind( this ) );

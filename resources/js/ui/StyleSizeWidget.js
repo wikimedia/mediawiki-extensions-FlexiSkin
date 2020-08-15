@@ -1,4 +1,4 @@
-flexiskin.ui.StyleSizeWidget = function( cfg ) {
+flexiskin.ui.StyleSizeWidget = function ( cfg ) {
 	cfg = cfg || {};
 	flexiskin.ui.StyleSizeWidget.parent.call( this, cfg );
 
@@ -13,7 +13,7 @@ flexiskin.ui.StyleSizeWidget = function( cfg ) {
 		width: '150px'
 	} );
 	this.unitWidget = new OO.ui.DropdownInputWidget( {
-		options: this.allowedUnits.map( function( unit ) {
+		options: this.allowedUnits.map( function ( unit ) {
 			return { data: unit, label: unit };
 		} )
 	} );
@@ -32,9 +32,9 @@ flexiskin.ui.StyleSizeWidget = function( cfg ) {
 
 OO.inheritClass( flexiskin.ui.StyleSizeWidget, OO.ui.InputWidget );
 
-flexiskin.ui.StyleSizeWidget.prototype.getValue = function() {
-	var value = this.valueWidget.getValue();
-	var unit = this.unitWidget.getValue();
+flexiskin.ui.StyleSizeWidget.prototype.getValue = function () {
+	var value = this.valueWidget.getValue(),
+	 unit = this.unitWidget.getValue();
 
 	if ( !value || ( this.requireUnit && !unit ) ) {
 		return '';
@@ -43,7 +43,7 @@ flexiskin.ui.StyleSizeWidget.prototype.getValue = function() {
 	return value + unit;
 };
 
-flexiskin.ui.StyleSizeWidget.prototype.setValue = function( value ) {
+flexiskin.ui.StyleSizeWidget.prototype.setValue = function ( value ) {
 	if ( $.type( value ) !== 'string' ) {
 		return;
 	}
@@ -51,7 +51,7 @@ flexiskin.ui.StyleSizeWidget.prototype.setValue = function( value ) {
 		matches = regex.exec( value );
 
 	if ( matches.length === 3 ) {
-		this.valueWidget.setValue( matches[1] );
-		this.unitWidget.setValue( matches[2] );
+		this.valueWidget.setValue( matches[ 1 ] );
+		this.unitWidget.setValue( matches[ 2 ] );
 	}
 };

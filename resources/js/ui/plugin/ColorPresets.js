@@ -1,4 +1,4 @@
-flexiskin.ui.plugin.ColorPresets = function() {
+flexiskin.ui.plugin.ColorPresets = function () {
 	flexiskin.ui.plugin.ColorPresets.parent.call( this );
 };
 
@@ -6,12 +6,12 @@ OO.inheritClass( flexiskin.ui.plugin.ColorPresets, flexiskin.ui.plugin.Plugin );
 
 flexiskin.registry.Plugin.register( 'colorPresets', flexiskin.ui.plugin.ColorPresets );
 
-flexiskin.ui.plugin.ColorPresets.prototype.provideControls = function() {
+flexiskin.ui.plugin.ColorPresets.prototype.provideControls = function () {
 	return {
 		colors: {
 			expanded: true,
 			color_presets: {
-				label: mw.message( "flexiskin-ui-plugin-color-presets-label" ).text(),
+				label: mw.message( 'flexiskin-ui-plugin-color-presets-label' ).text(),
 				items: {
 					preset: {
 						label: '',
@@ -26,7 +26,7 @@ flexiskin.ui.plugin.ColorPresets.prototype.provideControls = function() {
 	};
 };
 
-flexiskin.ui.plugin.ColorPresets.prototype.onInit = function( data, itemId ) {
+flexiskin.ui.plugin.ColorPresets.prototype.onInit = function ( data, itemId ) {
 	data = data || {};
 
 	if ( data instanceof flexiskin.ui.Configurator ) {
@@ -41,10 +41,10 @@ flexiskin.ui.plugin.ColorPresets.prototype.onInit = function( data, itemId ) {
 				}
 				colorsLayoutItems = colorsLayout.getItems();
 
-				for( var i = 0; i < colorsLayoutItems.length; i++ ) {
-					var itemData = colorsLayoutItems[i].getData();
+				for ( var i = 0; i < colorsLayoutItems.length; i++ ) {
+					var itemData = colorsLayoutItems[ i ].getData();
 					if ( itemData.hasOwnProperty( 'group' ) && itemData.group !== 'color_presets' ) {
-						this.addCustomColorLayout( colorsLayoutItems[i] );
+						this.addCustomColorLayout( colorsLayoutItems[ i ] );
 					}
 				}
 				this.setColorItems( colorItems );
