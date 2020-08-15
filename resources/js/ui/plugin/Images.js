@@ -1,10 +1,10 @@
-flexiskin.ui.plugin.Images = function(){
+flexiskin.ui.plugin.Images = function () {
 	flexiskin.ui.plugin.Images.parent.call( this );
 };
 
 OO.inheritClass( flexiskin.ui.plugin.Images, flexiskin.ui.plugin.Plugin );
 
-flexiskin.ui.plugin.Images.prototype.provideControls = function() {
+flexiskin.ui.plugin.Images.prototype.provideControls = function () {
 	return {
 		images: {
 			label: mw.message( 'flexiskin-ui-plugin-images-label' ).text(),
@@ -37,7 +37,7 @@ flexiskin.ui.plugin.Images.prototype.provideControls = function() {
 	};
 };
 
-flexiskin.ui.plugin.Images.prototype.onPreview = function( data, itemId ) {
+flexiskin.ui.plugin.Images.prototype.onPreview = function ( data, itemId ) {
 	var dfd = $.Deferred(),
 		file;
 
@@ -59,16 +59,16 @@ flexiskin.ui.plugin.Images.prototype.onPreview = function( data, itemId ) {
 		}
 
 		if ( itemId === 'images/favicon' ) {
-			$( 'link[rel="shortcut icon"]' ). attr('href', 'data:' + file.type + ';' + b64 );
+			$( 'link[rel="shortcut icon"]' ).attr( 'href', 'data:' + file.type + ';' + b64 );
 		}
 
-		dfd.reject() ;
+		dfd.reject();
 	};
 
 	return dfd.promise();
 };
 
-flexiskin.ui.plugin.Images.prototype.onSave = function( data, itemId ) {
+flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 	function compareFile( a, b ) {
 		// No really good way to compare files
 		return a.name === b.name && a.size === b.size && a.type === b.type;
@@ -86,9 +86,9 @@ flexiskin.ui.plugin.Images.prototype.onSave = function( data, itemId ) {
 	}
 
 	var dfd = $.Deferred(),
-		file;
+		file,
 
-	var nameForFile = itemId.replace( '/', '-' );
+	 nameForFile = itemId.replace( '/', '-' );
 	// Get currently choosen file
 	file = this.getValue();
 	if ( !( file instanceof File ) ) {
@@ -105,7 +105,7 @@ flexiskin.ui.plugin.Images.prototype.onSave = function( data, itemId ) {
 		new mw.Api().upload( file, {
 			filename: 'flexiskin-' + nameForFile + '.' + file.name.split( '.' ).pop(),
 			ignorewarnings: 1
-		} ).done( function( response ) {
+		} ).done( function ( response ) {
 			if ( response.hasOwnProperty( 'upload' ) ) {
 				if ( response.upload.result === 'Success' ) {
 					dfd.resolve( getUploadData( response.upload.imageinfo.url, file ) );
@@ -125,13 +125,13 @@ flexiskin.ui.plugin.Images.prototype.onSave = function( data, itemId ) {
 	return dfd.promise();
 };
 
-flexiskin.ui.plugin.Images.prototype.onSetValue = function( data, itemId ) {
+flexiskin.ui.plugin.Images.prototype.onSetValue = function ( data, itemId ) {
 	data = data || {};
 
 	if ( $.type( data ) === 'object' ) {
 		// Get the file object from the URL of the file and set appropriate values on widget
-		fetch( data.url ).then( function( fRes ) {
-			fRes.blob().then( function( blob ) {
+		fetch( data.url ).then( function ( fRes ) {
+			fRes.blob().then( function ( blob ) {
 				var file = new File( [ blob ], data.fileObject.name, data.fileObject );
 				this.setValue( [ file ] );
 				this.setData( $.extend( this.getData() || {}, { url: data.url, file: data.fileObject } ) );

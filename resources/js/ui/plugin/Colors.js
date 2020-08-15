@@ -1,4 +1,4 @@
-flexiskin.ui.plugin.Colors = function() {
+flexiskin.ui.plugin.Colors = function () {
 	flexiskin.ui.plugin.Colors.parent.call( this );
 };
 
@@ -6,7 +6,7 @@ OO.inheritClass( flexiskin.ui.plugin.Colors, flexiskin.ui.plugin.Plugin );
 
 flexiskin.registry.Plugin.register( 'colors', flexiskin.ui.plugin.Colors );
 
-flexiskin.ui.plugin.Colors.prototype.provideControls = function() {
+flexiskin.ui.plugin.Colors.prototype.provideControls = function () {
 	return {
 		colors: {
 			label: mw.message( 'flexiskin-ui-plugin-colors-label' ).text(),
@@ -35,7 +35,7 @@ flexiskin.ui.plugin.Colors.prototype.provideControls = function() {
 				label: mw.message( 'flexiskin-ui-plugin-colors-foreground-label' ).text(),
 				items: {
 					primary: {
-						label:  mw.message( 'flexiskin-ui-plugin-colors-foreground-primary-label' ).text(),
+						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-primary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
 					secondary: {
