@@ -26,11 +26,10 @@ flexiskin.ui.ColorPresetWidget.prototype.init = function() {
 	// Do initial set
 	if ( this.selectedPreset ) {
 		this.presetSelector.selectItemByData( this.selectedPreset );
-	} else {
-		// Mark initialization to "custom"
-		this.customInitial = true;
+	} else if ( this.customInitial === true )  {
 		this.showCustomColorsPanel( this.getColorsFromControls(), true );
 	}
+
 	this.initialized = true;
 };
 
@@ -89,13 +88,21 @@ flexiskin.ui.ColorPresetWidget.prototype.createCustomSection = function() {
 
 flexiskin.ui.ColorPresetWidget.prototype.getValue = function() {
 	if ( !this.selectedPreset ) {
-		return null;
+		return 'custom';
 	}
 
 	return this.selectedPreset;
 };
 
 flexiskin.ui.ColorPresetWidget.prototype.setValue = function( value ) {
+	if ( !value ) {
+		return;
+	}
+	if ( value === 'custom' ) {
+		// Mark initialization to "custom"
+		this.customInitial = true;
+		return;
+	}
 	this.selectedPreset = value;
 	if ( value && this.presetSelector ) {
 		this.presetSelector.selectItemByData( value );
