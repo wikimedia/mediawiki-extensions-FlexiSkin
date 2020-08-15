@@ -7,11 +7,11 @@ use FormatJson;
 use MWException;
 
 class FlexiSkinManager implements IFlexiSkinManager {
-	/** @var string  */
+	/** @var string */
 	private $fsPath = '';
-	/** @var string  */
+	/** @var string */
 	private $fileName = 'default.json';
-	/** @var IFlexiSkin|null  */
+	/** @var IFlexiSkin|null */
 	private $currentSkin = null;
 
 	/**
@@ -29,7 +29,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 		$fullPath = $this->getFullPath();
 
 		$json = FormatJson::encode( $flexiSkin );
-		$res = (bool) file_put_contents( $fullPath, $json );
+		$res = (bool)file_put_contents( $fullPath, $json );
 		if ( $res ) {
 			$this->currentSkin = $flexiSkin;
 		}
@@ -48,11 +48,12 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	/**
 	 * @param bool|null $reload
 	 * @throws MWException
+	 * @return void
 	 */
 	private function load( $reload = false ) {
 		if ( $this->currentSkin === null || $reload ) {
 			$fullPath = $this->getFullPath();
-			if ( !file_exists( $fullPath  ) ) {
+			if ( !file_exists( $fullPath ) ) {
 				return null;
 			}
 			$json = file_get_contents( $fullPath );
@@ -86,7 +87,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 			$active
 		);
 
-		return (bool) $this->save( $newSkin );
+		return (bool)$this->save( $newSkin );
 	}
 
 	/**
@@ -137,6 +138,12 @@ class FlexiSkinManager implements IFlexiSkinManager {
 		return $this->fsPath . $this->fileName;
 	}
 
+	/**
+	 *
+	 * @param string $name
+	 * @param string $targetClass
+	 * @return void
+	 */
 	public function getRegistryInstances( $name, $targetClass ) {
 		$values = ExtensionRegistry::getInstance()->getAttribute( $name );
 		$items = [];

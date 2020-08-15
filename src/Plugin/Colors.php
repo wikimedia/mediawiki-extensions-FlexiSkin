@@ -2,9 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Plugin;
 
-use BlueSpice\TemplateParser;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
-use MediaWiki\MediaWikiServices;
 
 class Colors extends PluginBase {
 	/**
