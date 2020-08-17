@@ -3,13 +3,11 @@
 		"authors": [
 			"Ahmetlii",
 			"BaRaN6161 TURK",
+			"Gokalpselamet",
 			"MuratTheTurkish"
 		]
 	},
 	"flexiskin-extension-desc": "Görünümün özelleştirilmesine izin verir",
-	"flexiskin-ui-no-skins": "Hiçbir görünüm kullanılabilir değil! Bir tane oluştur.",
-	"flexisin-ui-active-skin": "Etkin görünüm: $1",
-	"flexiskin-ui-no-active-skin": "Etkin görünüm yok!",
 	"right-flexiskin-viewspecialpage": "Görünümü özelleştiemek için [[Special:FlexiSkin|özel sayfayı]] görüntüle",
 	"action-flexiskin-viewspecialpage": "görünümü özelleştiemek için [[Special:FlexiSkin|özel sayfayı]] görüntüle",
 	"right-flexiskin-api": "FlexiSkin API'lerini kullan",
@@ -24,5 +22,8 @@
 	"apihelp-flexiskin-preview-param-config": "Yapı parametresi",
 	"apihelp-flexiskin-save-param-config": "Yapı parametresi",
 	"apihelp-flexiskin-save-param-id": "Id parametresi",
-	"apihelp-flexiskin-save-param-name": "Ad parametresi"
+	"apihelp-flexiskin-save-param-name": "Ad parametresi",
+	"flexiskin-ui-plugin-colors-label": "Renkler",
+	"flexiskin-ui-configurator-button-preview-label": "Önizleme",
+	"flexiskin-ui-configurator-button-save-label": "Kaydet"
 }

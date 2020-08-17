@@ -4,8 +4,5 @@
 			"Bugoslav"
 		]
 	},
-	"flexiskin-extension-desc": "Omogućava prilagođavanje izgleda/teme",
-	"flexiskin-ui-no-skins": "Nijedan izgled nije dostupan! Stvorite ga.",
-	"flexisin-ui-active-skin": "Aktivna tema/izgled: $1",
-	"flexiskin-ui-no-active-skin": "Nijedan izgled nije aktiviran!"
+	"flexiskin-extension-desc": "Omogućava prilagođavanje izgleda/teme"
 }

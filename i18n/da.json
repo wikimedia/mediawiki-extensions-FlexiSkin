@@ -1,0 +1,13 @@
+{
+	"@metadata": {
+		"authors": [
+			"Saederup92"
+		]
+	},
+	"flexiskin-ui-plugin-colors-label": "Farver",
+	"flexiskin-ui-plugin-colors-background-label": "Baggrundsfarver",
+	"flexiskin-ui-plugin-colors-background-primary-label": "Primær",
+	"flexiskin-ui-plugin-colors-foreground-primary-label": "Primær",
+	"flexiskin-ui-plugin-images-label": "Billeder",
+	"flexiskin-ui-configurator-button-save-label": "Gem"
+}

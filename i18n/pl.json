@@ -7,11 +7,14 @@
 	},
 	"flexiskin-extension-desc": "Umożliwia dostosowywanie skórki",
 	"flexiskin": "Preferencje skórki",
-	"flexiskin-ui-no-skins": "Brak dostępnych skórek! Stwórz jakąś.",
-	"flexisin-ui-active-skin": "Aktywna skórka: $1",
-	"flexiskin-ui-no-active-skin": "Brak aktywnej skórki!",
 	"right-flexiskin-viewspecialpage": "Podgląd [[Special:FlexiSkin|strony specjalnej]] do dostosowywania skórki",
 	"action-flexiskin-viewspecialpage": "podglądu [[Special:FlexiSkin|strony specjalnej]] do dostosowywania skórki",
 	"right-flexiskin-api": "Używanie API skórki FlexiSkin",
-	"action-flexiskin-api": "używania API skórki FlexiSkin"
+	"action-flexiskin-api": "używania API skórki FlexiSkin",
+	"flexiskin-ui-preview-loading-message": "Generownie podglądu…",
+	"flexiskin-ui-plugin-colors-label": "Kolory",
+	"flexiskin-ui-plugin-colors-background-label": "Kolory tła",
+	"flexiskin-ui-plugin-images-label": "Obrazy",
+	"flexiskin-ui-plugin-images-favicon-label": "Favikona",
+	"flexiskin-ui-configurator-button-preview-label": "Podgląd"
 }
