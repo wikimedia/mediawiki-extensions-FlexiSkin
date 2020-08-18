@@ -1,13 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Robby",
 			"Shirayuki",
 			"Umherirrender"
 		]
 	},
 	"flexiskin-extension-desc": "{{desc|name=FlexiSkin|url=https://www.mediawiki.org/wiki/Extension:FlexiSkin}}",
 	"flexiskin-extension-name": "{{name}}",
-	"flexiskin": "{{doc-special}}",
+	"flexiskin": "{{optional}}\n{{doc-special}}",
 	"right-flexiskin-viewspecialpage": "{{doc-right|flexiskin-viewspecialpage}}",
 	"action-flexiskin-viewspecialpage": "{{doc-action|flexiskin-viewspecialpage}}",
 	"right-flexiskin-api": "{{doc-right|flexiskin-api}}",
@@ -41,7 +42,7 @@
 	"flexiskin-ui-plugin-color-presets-custom-header": "Label for the custom colors section of colors plugin",
 	"flexiskin-ui-plugin-color-presets-custom-dirty-warning": "Warning message when custom colors are dirty",
 	"flexiskin-ui-configurator-button-preview-label": "Label for the preview button",
-	"flexiskin-ui-configurator-button-save-label": "Label for the save button",
+	"flexiskin-ui-configurator-button-save-label": "Label for the save button\n{{identical|Save}}",
 	"flexiskin-ui-error-preview-fail": "Error message when skin preview failed",
 	"flexiskin-ui-error-save-fail": "Error message when skin save failed",
 	"flexiskin-ui-plugin-color-presets-customize-label": "Label the button for customizing a color scheme",
