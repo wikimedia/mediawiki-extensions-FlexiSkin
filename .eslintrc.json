@@ -59,6 +59,7 @@
 		"new-cap": "warn",
 		"semi-style": "warn",
 		"dot-notation": "warn",
-		"no-new": "warn"
+		"no-new": "warn",
+		"no-extra-bind": "warn"
 	}
 }
