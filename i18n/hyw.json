@@ -1,0 +1,18 @@
+{
+	"@metadata": {
+		"authors": [
+			"Շահէն"
+		]
+	},
+	"flexiskin-ui-plugin-colors-label": "Գոյներ",
+	"flexiskin-ui-plugin-colors-background-primary-label": "Նախնական",
+	"flexiskin-ui-plugin-colors-background-secondary-label": "Երկրորդական",
+	"flexiskin-ui-plugin-colors-background-neutral-label": "Չէզոք",
+	"flexiskin-ui-plugin-colors-foreground-primary-label": "Նախնական",
+	"flexiskin-ui-plugin-colors-foreground-secondary-label": "Երկրորդական",
+	"flexiskin-ui-plugin-colors-foreground-neutral-label": "Չէզոք",
+	"flexiskin-ui-plugin-images-label": "Պատկերներ",
+	"flexiskin-ui-configurator-button-preview-label": "Կանխաստուգել",
+	"flexiskin-ui-configurator-button-save-label": "Յիշել",
+	"flexiskin-ui-plugin-colors-foreground-content-label": "Պարունակի գոյն"
+}

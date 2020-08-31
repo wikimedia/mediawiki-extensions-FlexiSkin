@@ -4,9 +4,6 @@
 			"Beta16"
 		]
 	},
-	"apihelp-flexiskin-activate-summary": "Il modulo attivato",
-	"apihelp-flexiskin-save-summary": "Il modulo salvato",
-	"apihelp-flexiskin-new-summary": "Il nuovo modulo",
-	"apihelp-flexiskin-delete-summary": "Il modulo cancellato",
-	"apihelp-flexiskin-restore-summary": "Il modulo ripristinato"
+	"apihelp-flexiskin-activation-summary": "Il modulo attivato",
+	"apihelp-flexiskin-save-summary": "Il modulo salvato"
 }
