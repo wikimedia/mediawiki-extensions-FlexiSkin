@@ -1,8 +1,12 @@
 {
 	"@metadata": {
 		"authors": [
+			"Titodutta",
 			"আফতাবুজ্জামান"
 		]
 	},
-	"flexiskin": "আবরণ পছন্দসমূহ"
+	"flexiskin": "আবরণ পছন্দসমূহ",
+	"flexiskin-ui-plugin-colors-background-primary-label": "প্রাথমিক",
+	"flexiskin-ui-plugin-colors-foreground-primary-label": "প্রাথমিক",
+	"flexiskin-ui-configurator-button-preview-label": "প্রাকদর্শন"
 }
