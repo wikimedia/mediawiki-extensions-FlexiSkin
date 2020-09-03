@@ -18,7 +18,7 @@ module.exports = function ( grunt ) {
 				'!doc/**'
 			]
 		},
-		banana: conf.MessagesDirs,
+		banana: conf.MessagesDirs
 	} );
 
 	grunt.registerTask( 'test', [ 'eslint', 'banana' ] );
