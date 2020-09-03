@@ -1,10 +1,17 @@
 {
 	"@metadata": {
 		"authors": [
+			"Elliot",
 			"Metalhead64",
 			"Umherirrender"
 		]
 	},
 	"flexiskin": "Einstellungen zur Benutzeroberfläche",
-	"action-flexiskin-viewspecialpage": "die [[Special:FlexiSkin|Spezialseite]] für Skin-Einstellungen anzusehen"
+	"action-flexiskin-viewspecialpage": "die [[Special:FlexiSkin|Spezialseite]] für Skin-Einstellungen anzusehen",
+	"apihelp-flexiskin-preview-param-active": "Der aktive Parameter",
+	"flexiskin-ui-plugin-colors-label": "Farben",
+	"flexiskin-ui-plugin-colors-foreground-secondary-label": "Sekundär",
+	"flexiskin-ui-plugin-images-logo-label": "Logo",
+	"flexiskin-ui-configurator-button-save-label": "Speichern",
+	"flexiskin-ui-plugin-layout-label": "Layout"
 }

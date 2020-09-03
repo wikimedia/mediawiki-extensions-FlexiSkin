@@ -14,6 +14,7 @@
 	"action-flexiskin-api": "utiliser les API FlexiSkin",
 	"apihelp-flexiskin-activation-summary": "Le module d’activation",
 	"apihelp-flexiskin-preview-summary": "Le module d’aperçu",
+	"apihelp-flexiskin-preview-param-active": "Le paramètre actif",
 	"apihelp-flexiskin-preview-param-id": "Le paramètre id",
 	"apihelp-flexiskin-preview-param-config": "Le paramètre de configuration",
 	"apihelp-flexiskin-save-summary": "Le module de sauvegarde",

@@ -1,12 +1,14 @@
 {
 	"@metadata": {
 		"authors": [
+			"Songhee",
 			"Ykhwong"
 		]
 	},
 	"flexiskin-extension-desc": "스킨의 사용자 지정 허용",
 	"flexiskin": "스킨 환경 설정",
 	"action-flexiskin-viewspecialpage": "특수문서 \"Flexiskin\" 보기",
+	"apihelp-flexiskin-preview-param-active": "활성 매개 변수",
 	"flexiskin-ui-preview-loading-message": "미리 보기를 생성 중입니다...",
 	"flexiskin-ui-plugin-color-presets-label": "컬러 프리셋",
 	"flexiskin-ui-plugin-colors-label": "색",
