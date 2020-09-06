@@ -14,7 +14,7 @@
 	"action-flexiskin-viewspecialpage": "{{doc-action|flexiskin-viewspecialpage}}",
 	"right-flexiskin-api": "{{doc-right|flexiskin-api}}",
 	"action-flexiskin-api": "{{doc-action|flexiskin-api}}",
-	"apihelp-flexiskin-activation-summary": "{{doc-apihelp-summary|flexiskin-activate}}",
+	"apihelp-flexiskin-activation-summary": "{{doc-apihelp-summary|flexiskin-activation}}",
 	"apihelp-flexiskin-preview-summary": "{{doc-apihelp-summary|flexiskin-preview}}",
 	"apihelp-flexiskin-preview-param-active": "{{doc-apihelp-param|flexiskin-preview|active}}",
 	"apihelp-flexiskin-preview-param-id": "{{doc-apihelp-param|flexiskin-preview|id}}",
