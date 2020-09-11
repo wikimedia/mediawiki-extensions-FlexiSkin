@@ -74,9 +74,9 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 		return a.name === b.name && a.size === b.size && a.type === b.type;
 	}
 
-	function getUploadData( url, file ) {
+	function getUploadData( filename, file ) {
 		return {
-			url: url,
+			filename: filename,
 			fileObject: {
 				name: file.name,
 				size: file.size,
@@ -99,7 +99,7 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 	// Check if its dirty, if not just resolve to existing file
 	var oldData = this.getData();
 	if ( oldData && oldData.hasOwnProperty( 'file' ) && compareFile( oldData.file, file ) ) {
-		dfd.resolve( getUploadData( oldData.url, file ) );
+		dfd.resolve( getUploadData( oldData.filename, file ) );
 	} else {
 		// If file is actually new, upload it
 		new mw.Api().upload( file, {
@@ -108,14 +108,14 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 		} ).done( function ( response ) {
 			if ( response.hasOwnProperty( 'upload' ) ) {
 				if ( response.upload.result === 'Success' ) {
-					dfd.resolve( getUploadData( response.upload.imageinfo.url, file ) );
+					dfd.resolve( getUploadData( response.upload.filename, file ) );
 				} else {
 					dfd.reject();
 				}
 			}
 		} ).fail( function ( error, result ) {
 			if ( error === 'exists' || error === 'duplicate' && result.hasOwnProperty( 'upload' ) ) {
-				dfd.resolve( getUploadData( result.upload.imageinfo.url, file ) );
+				dfd.resolve( getUploadData( result.upload.filename, file ) );
 			}
 			// Cannot upload file
 			dfd.reject();
@@ -128,13 +128,13 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 flexiskin.ui.plugin.Images.prototype.onSetValue = function ( data, itemId ) {
 	data = data || {};
 
-	if ( $.type( data ) === 'object' ) {
+	if ( $.type( data ) === 'object' && data.hasOwnProperty( 'url' ) ) {
 		// Get the file object from the URL of the file and set appropriate values on widget
 		fetch( data.url ).then( function ( fRes ) {
 			fRes.blob().then( function ( blob ) {
 				var file = new File( [ blob ], data.fileObject.name, data.fileObject );
 				this.setValue( [ file ] );
-				this.setData( $.extend( this.getData() || {}, { url: data.url, file: data.fileObject } ) );
+				this.setData( $.extend( this.getData() || {}, { filename: data.filename, file: data.fileObject } ) );
 			}.bind( this ) );
 		}.bind( this ) );
 	}
