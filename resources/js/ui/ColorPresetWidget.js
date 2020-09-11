@@ -86,11 +86,7 @@ flexiskin.ui.ColorPresetWidget.prototype.createCustomSection = function () {
 	this.$wrapper.hide();
 };
 
-flexiskin.ui.ColorPresetWidget.prototype.getValue = function () {
-	if ( !this.selectedPreset ) {
-		return 'custom';
-	}
-
+flexiskin.ui.ColorPresetWidget.prototype.getValue = function() {
 	return this.selectedPreset;
 };
 
@@ -187,8 +183,9 @@ flexiskin.ui.ColorPresetWidget.prototype.doSelectPreset = function ( selected ) 
 	this.updateControls();
 };
 
-flexiskin.ui.ColorPresetWidget.prototype.showCustomColorsPanel = function ( colors, isFromInit ) {
-	this.selectedPreset = null;
+flexiskin.ui.ColorPresetWidget.prototype.showCustomColorsPanel = function( colors, isFromInit ) {
+	this.selectedPreset = 'custom';
+
 	this.presetSelector.unselectItem( this.presetSelector.findSelectedItem() );
 	this.listenToControlChanges = true;
 	if ( !isFromInit ) {

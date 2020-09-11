@@ -14,7 +14,7 @@ class Activation extends FlexiSkinOperation {
 			'active' => [
 				static::PARAM_TYPE => 'integer',
 				static::PARAM_REQUIRED => false,
-				static::PARAM_HELP_MSG => 'apihelp-flexiskin-preview-param-active',
+				static::PARAM_HELP_MSG => 'apihelp-flexiskin-activation-param-active',
 				ParamValidator::PARAM_DEFAULT => 1
 			]
 		];

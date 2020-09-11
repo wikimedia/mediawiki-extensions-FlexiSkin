@@ -29,4 +29,12 @@ interface IPlugin {
 	 * @return array
 	 */
 	public function getLessVars( $config ): array;
+
+	/**
+	 * Adapt configuration values before loading skin config
+	 *
+	 * @param array &$config
+	 * @return void
+	 */
+	public function adaptConfiguration( &$config );
 }

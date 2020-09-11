@@ -17,4 +17,10 @@ abstract class PluginBase implements IPlugin {
 	public function getLessVars( $config ): array {
 		return [];
 	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function adaptConfiguration( &$config ) {
+	}
 }

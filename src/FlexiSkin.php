@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
+use MediaWiki\MediaWikiServices;
 use MWException;
 
 class FlexiSkin implements IFlexiSkin {
@@ -34,7 +35,7 @@ class FlexiSkin implements IFlexiSkin {
 	public function __construct( ?int $id, $name, $config, $active = false ) {
 		$this->id = $id;
 		$this->name = $name;
-		$this->config = $config;
+		$this->config = $this->adaptConfig( $config );
 		$this->active = $active;
 	}
 
@@ -94,5 +95,22 @@ class FlexiSkin implements IFlexiSkin {
 			'config' => $this->getConfig(),
 			'active' => $this->isActive()
 		];
+	}
+
+	/**
+	 * @param array $config
+	 * @return array
+	 */
+	private function adaptConfig( array $config ) {
+		/** @var FlexiSkinManager $manager */
+		$manager = MediaWikiServices::getInstance()->getService(
+			'FlexiSkinManager'
+		);
+
+		foreach ( $manager->getPlugins() as $key => $plugin ) {
+			$plugin->adaptConfiguration( $config );
+		}
+
+		return $config;
 	}
 }

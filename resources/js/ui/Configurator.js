@@ -423,6 +423,10 @@ flexiskin.ui.Configurator.prototype.doSave = function () {
 						return;
 					}
 					// Refresh to apply changes
+					// Add debug=true param - works for cache, but breaks other things
+					/*var url = new URL( window.location.href );
+					url.searchParams.set( 'debug','true' );
+					window.location.href = url.href;*/
 					window.location.reload();
 				}.bind( this ) ).fail( function () {
 					this.saveError();

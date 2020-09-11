@@ -142,7 +142,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 *
 	 * @param string $name
 	 * @param string $targetClass
-	 * @return void
+	 * @return array
 	 */
 	public function getRegistryInstances( $name, $targetClass ) {
 		$values = ExtensionRegistry::getInstance()->getAttribute( $name );
