@@ -28,6 +28,15 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	public function save( IFlexiSkin $flexiSkin ) {
 		$fullPath = $this->getFullPath();
 
+		if ( $flexiSkin->getId() === null ) {
+			$flexiSkin = new FlexiSkin(
+				1,
+				$flexiSkin->getName(),
+				$flexiSkin->getConfig(),
+				$flexiSkin->isActive()
+			);
+		}
+
 		$json = FormatJson::encode( $flexiSkin );
 		$res = (bool)file_put_contents( $fullPath, $json );
 		if ( $res ) {
@@ -35,6 +44,19 @@ class FlexiSkinManager implements IFlexiSkinManager {
 		}
 
 		return $res;
+	}
+
+	/**
+	 * @return int
+	 */
+	public function delete() {
+		$fullPath = $this->getFullPath();
+		$this->currentSkin = null;
+		if ( file_exists( $fullPath ) ) {
+			return unlink( $fullPath );
+		}
+
+		return true;
 	}
 
 	/**
@@ -98,7 +120,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	public function create( $name, $config ): IFlexiSkin {
 		$existingSkin = $this->getFlexiSkin();
 		if ( $existingSkin === null ) {
-			return new FlexiSkin( 1, $name, $config );
+			return new FlexiSkin( null, $name, $config );
 		}
 
 		return $existingSkin;
@@ -107,7 +129,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	/**
 	 * @return IPlugin[]
 	 */
-	public function getPlugins() {
+	public function getPlugins(): array {
 		return $this->getRegistryInstances( 'FlexiSkinPluginRegistry', IPlugin::class );
 	}
 

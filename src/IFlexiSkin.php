@@ -25,4 +25,12 @@ interface IFlexiSkin extends JsonSerializable {
 	 * @return bool
 	 */
 	public function isActive() : bool;
+
+	/**
+	 * Get value at particular path in the skin config
+	 *
+	 * @param string $path
+	 * @return mixed|null if not found
+	 */
+	public function getValueForPath( $path );
 }

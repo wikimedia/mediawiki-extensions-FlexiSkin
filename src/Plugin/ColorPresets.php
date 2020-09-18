@@ -43,11 +43,4 @@ class ColorPresets extends PluginBase {
 			'bluespicecalumma'
 		];
 	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getLessVars( $config ): array {
-		return [];
-	}
 }

@@ -5,12 +5,6 @@ flexiskin.ui.Configurator = function ( cfg ) {
 	this.active = this.skin.active || false;
 	this.skin.config = this.skin.config || {};
 
-	// Items can be grouped based on several criteria:
-	// - plugin - plugin names are keys
-	// - group - root groups of controls are keys
-	// - visibility - group by basic/advanced
-	this.grouping = cfg.grouping || 'group';
-
 	flexiskin.ui.Configurator.parent.call( this );
 
 	this.$element.addClass( 'fs-configure' );
@@ -18,10 +12,18 @@ flexiskin.ui.Configurator = function ( cfg ) {
 	this.$messageCnt = $( '<div>' );
 	this.$element.append( this.$messageCnt );
 
+	if ( !this.active && this.skin.id !== null ) {
+		this.makeDisabledWarning();
+	}
 	this.makeButtons();
 	this.initPlugins();
 	this.setValue( this.skin.config );
 	this.makeForm();
+
+	setTimeout( function() {
+		// Run on another event loop go
+		this.emit( 'renderComplete', this );
+	}.bind( this ), 1 );
 };
 
 OO.inheritClass( flexiskin.ui.Configurator, OO.ui.Widget );
@@ -56,6 +58,13 @@ flexiskin.ui.Configurator.prototype.initPlugins = function () {
 	}
 };
 
+flexiskin.ui.Configurator.prototype.makeDisabledWarning = function () {
+	this.$element.append( new OO.ui.MessageWidget( {
+		type: 'warning',
+		label: mw.message( "flexiskin-ui-configurator-warning-disabled-skin" ).text()
+	} ).$element );
+};
+
 flexiskin.ui.Configurator.prototype.makeForm = function () {
 	var grouped = this.groupItems(),
 		items = [];
@@ -75,13 +84,13 @@ flexiskin.ui.Configurator.prototype.makeForm = function () {
 	}
 
 	this.emit( 'makeFormComplete', this.formElements );
-
 	this.$element.append( items );
 };
 
 flexiskin.ui.Configurator.prototype.getGroupLayouts = function ( items ) {
 	var fieldLayouts = {},
 		roots = [];
+
 	for ( var id in items ) {
 		if ( !items.hasOwnProperty( id ) ) {
 			continue;
@@ -89,12 +98,10 @@ flexiskin.ui.Configurator.prototype.getGroupLayouts = function ( items ) {
 
 		var groups = this.getGroupsForItem( id ),
 			rootGroup;
-		if ( this.grouping === 'group' ) {
-			rootGroup = groups[ 0 ];
-			// Remove root group since we already group by it
-			if ( groups.length > 1 ) {
-				groups.shift();
-			}
+		rootGroup = groups[ 0 ];
+		// Remove root group since we already group by it
+		if ( groups.length > 1 ) {
+			groups.shift();
 		}
 		var lastGroup;
 		for ( var i = 0; i < groups.length; i++ ) {
@@ -136,45 +143,19 @@ flexiskin.ui.Configurator.prototype.getGroupLayouts = function ( items ) {
 };
 
 flexiskin.ui.Configurator.prototype.groupItems = function () {
-	var grouped = {},
-		pluginId, itemId, groups, root, visibility;
-	switch ( this.grouping ) {
-		case 'plugin':
-			for ( pluginId in this.plugins ) {
-				if ( !this.plugins.hasOwnProperty( pluginId ) ) {
-					continue;
-				}
-				grouped[ pluginId ] = this.plugins[ pluginId ].getFlatList();
-			}
-			break;
-		case 'group':
-			for ( itemId in this.items ) {
-				if ( !this.items.hasOwnProperty( itemId ) ) {
-					continue;
-				}
-				groups = this.getGroupsForItem( itemId );
-				root = groups.shift();
+	var grouped = {}, itemId, groups, root;
 
-				if ( !grouped.hasOwnProperty( root ) ) {
-					grouped[ root ] = {};
-				}
-				grouped[ root ][ itemId ] = this.items[ itemId ];
-			}
-			break;
-		case 'visibility':
-			for ( itemId in this.items ) {
-				if ( !this.items.hasOwnProperty( itemId ) ) {
-					continue;
-				}
-				visibility = this.getVisibilityForItem( itemId );
+	for ( itemId in this.items ) {
+		if ( !this.items.hasOwnProperty( itemId ) ) {
+			continue;
+		}
+		groups = this.getGroupsForItem( itemId );
+		root = groups.shift();
 
-				if ( !grouped.hasOwnProperty( visibility ) ) {
-					grouped[ visibility ] = {};
-				}
-				grouped[ visibility ][ itemId ] = this.items[ itemId ];
-			}
-
-			break;
+		if ( !grouped.hasOwnProperty( root ) ) {
+			grouped[ root ] = {};
+		}
+		grouped[ root ][ itemId ] = this.items[ itemId ];
 	}
 
 	return grouped;
@@ -219,6 +200,7 @@ flexiskin.ui.Configurator.prototype.getItems = function ( group ) {
 };
 
 flexiskin.ui.Configurator.prototype.getItemGroupLabel = function ( group ) {
+
 	var item = this.findGroupByKey( this.controls, group );
 
 	if ( item && item.hasOwnProperty( 'label' ) ) {
@@ -247,6 +229,9 @@ flexiskin.ui.Configurator.prototype.findGroupByKey = function ( obj, key ) {
 			return obj[ key ];
 		} else if ( !( obj[ keys[ i ] ] instanceof OO.ui.Widget ) && $.type( obj[ keys[ i ] ] ) === 'object' ) {
 			value = this.findGroupByKey( obj[ keys[ i ] ], key );
+			if ( value ) {
+				return value;
+			}
 		}
 	}
 
@@ -350,6 +335,14 @@ flexiskin.ui.Configurator.prototype.setToPath = function ( obj, path, value, app
 };
 
 flexiskin.ui.Configurator.prototype.makeButtons = function () {
+	this.disableButton = new OO.ui.ButtonWidget( {
+		label: mw.message( 'flexiskin-ui-configurator-button-disable-label' ).text(),
+		flags: [
+			'primary',
+			'destructive'
+		],
+		disabled: !this.active
+	} );
 	this.previewButton = new OO.ui.ButtonWidget( {
 		label: mw.message( 'flexiskin-ui-configurator-button-preview-label' ).text()
 	} );
@@ -362,11 +355,12 @@ flexiskin.ui.Configurator.prototype.makeButtons = function () {
 		]
 	} );
 
+	this.disableButton.connect( this, { click: 'doDisable' } );
 	this.previewButton.connect( this, { click: 'doPreview' } );
 	this.saveButton.connect( this, { click: 'doSave' } );
 
 	this.$element.append( new OO.ui.HorizontalLayout( {
-		items: [ this.previewButton, this.saveButton ],
+		items: [ this.disableButton, this.previewButton, this.saveButton ],
 		classes: [ 'fs-configurator-buttons' ]
 	} ).$element );
 };
@@ -375,9 +369,9 @@ flexiskin.ui.Configurator.prototype.doPreview = function () {
 	this.clearPreview();
 
 	var loadingDialog = new flexiskin.ui.dialog.PreviewLoading( { size: 'small' } ),
-	 windowManager = OO.ui.getWindowManager();
-	windowManager.addWindows( [ loadingDialog ] );
-	windowManager.openWindow( loadingDialog );
+		windowManager = OO.ui.getWindowManager();
+		windowManager.addWindows( [ loadingDialog ] );
+		windowManager.openWindow( loadingDialog );
 	this.getValue( 'preview' ).done( function ( value ) {
 		new mw.Api().get( {
 			action: 'flexiskin-preview',
@@ -422,12 +416,7 @@ flexiskin.ui.Configurator.prototype.doSave = function () {
 						this.saveError();
 						return;
 					}
-					// Refresh to apply changes
-					// Add debug=true param - works for cache, but breaks other things
-					/*var url = new URL( window.location.href );
-					url.searchParams.set( 'debug','true' );
-					window.location.href = url.href;*/
-					window.location.reload();
+					this.debugReload();
 				}.bind( this ) ).fail( function () {
 					this.saveError();
 				}.bind( this ) );
@@ -435,6 +424,35 @@ flexiskin.ui.Configurator.prototype.doSave = function () {
 		}
 	}.bind( this ) );
 
+};
+
+flexiskin.ui.Configurator.prototype.doDisable = function() {
+	var confirmationMessage = mw.message( 'flexiskin-configurator-prompt-on-disable' ).text();
+	OO.ui.confirm( confirmationMessage, { size: 'large' } ).done( function ( confirmed ) {
+		if ( confirmed ) {
+			new mw.Api().get( {
+				action: 'flexiskin-activation',
+				active: 0
+			} ).done( function ( response ) {
+				if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
+					this.resetError();
+					return;
+				}
+				this.debugReload();
+			}.bind( this ) ).fail( function () {
+				this.disableError();
+			}.bind( this ) );
+		}
+
+	}.bind( this ) );
+};
+
+flexiskin.ui.Configurator.prototype.debugReload = function () {
+	// Refresh to apply changes
+	// Add debug=true param - works for cache, but breaks other things
+	var url = new URL( window.location.href );
+	url.searchParams.set( 'debug','true' );
+	window.location.href = url.href;
 };
 
 flexiskin.ui.Configurator.prototype.clearPreview = function () {
@@ -447,4 +465,8 @@ flexiskin.ui.Configurator.prototype.previewError = function () {
 
 flexiskin.ui.Configurator.prototype.saveError = function () {
 	OO.ui.alert( mw.message( 'flexiskin-ui-error-save-fail' ).text() );
+};
+
+flexiskin.ui.Configurator.prototype.disableError = function () {
+	OO.ui.alert( mw.message( 'flexiskin-ui-error-disable-fail' ).text() );
 };

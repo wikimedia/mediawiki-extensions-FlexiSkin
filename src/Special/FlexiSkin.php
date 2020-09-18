@@ -33,10 +33,26 @@ class FlexiSkin extends SpecialPage {
 		if ( $flexiSkin === null ) {
 			$flexiSkin = $manager->create( 'default', [] );
 		}
-		$this->getOutput()->addJsConfigVars( 'wgFlexiSkin', $flexiSkin );
+		$config = $flexiSkin->getConfig();
+
+		foreach ( $manager->getPlugins() as $key => $plugin ) {
+			$plugin->adaptConfiguration( $config );
+			$plugin->setDefaults( $flexiSkin, $config );
+		}
+		$adaptedSkin = new \MediaWiki\Extension\FlexiSkin\FlexiSkin(
+			$flexiSkin->getId(),
+			$flexiSkin->getName(),
+			$config,
+			$flexiSkin->isActive()
+		);
+
+		$this->getOutput()->addJsConfigVars( 'wgFlexiSkin', $adaptedSkin );
 		$this->getOutput()->addJsConfigVars(
 			'wgFlexiSkinColorPresets', $this->getConfig()->get( 'FlexiSkinColorPresets' )
 		);
+		$this->getOutput()->addHTML( Html::element( 'span', [
+			'id' => 'fs-sp-loading'
+		], \Message::newFromKey( 'flexiskin-special-loading-ph' )->text() ) );
 	}
 
 	/**

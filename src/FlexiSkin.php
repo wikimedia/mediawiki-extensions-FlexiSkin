@@ -2,7 +2,6 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
-use MediaWiki\MediaWikiServices;
 use MWException;
 
 class FlexiSkin implements IFlexiSkin {
@@ -35,7 +34,7 @@ class FlexiSkin implements IFlexiSkin {
 	public function __construct( ?int $id, $name, $config, $active = false ) {
 		$this->id = $id;
 		$this->name = $name;
-		$this->config = $this->adaptConfig( $config );
+		$this->config = $config;
 		$this->active = $active;
 	}
 
@@ -53,7 +52,7 @@ class FlexiSkin implements IFlexiSkin {
 			(int)$data['id'],
 			$data['name'],
 			$data['config'],
-			$data['active'] ?? false
+			(bool)$data['active']
 		);
 	}
 
@@ -98,19 +97,22 @@ class FlexiSkin implements IFlexiSkin {
 	}
 
 	/**
-	 * @param array $config
-	 * @return array
+	 * @param string $path
+	 * @return mixed|null if not found
 	 */
-	private function adaptConfig( array $config ) {
-		/** @var FlexiSkinManager $manager */
-		$manager = MediaWikiServices::getInstance()->getService(
-			'FlexiSkinManager'
-		);
-
-		foreach ( $manager->getPlugins() as $key => $plugin ) {
-			$plugin->adaptConfiguration( $config );
+	public function getValueForPath( $path ) {
+		$pathBits = explode( '/', $path );
+		$searchValue = $this->getConfig();
+		foreach ( $pathBits as $bit ) {
+			if ( !isset( $searchValue[$bit] ) ) {
+				return null;
+			}
+			$searchValue = $searchValue[$bit];
 		}
 
-		return $config;
+		if ( empty( $searchValue ) ) {
+			return null;
+		}
+		return $searchValue;
 	}
 }
