@@ -31,4 +31,11 @@ interface IFlexiSkinManager {
 	 * @return IFlexiSkin|null
 	 */
 	public function getActive() : ?IFlexiSkin;
+
+	/**
+	 * Get all available plugins
+	 *
+	 * @return IPlugin[]
+	 */
+	public function getPlugins(): array;
 }

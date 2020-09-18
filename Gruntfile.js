@@ -6,11 +6,11 @@ module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		eslint: {
 			options: {
-				extensions: [ '.js', '.json' ],
+				extensions: [ '.json' ],
 				cache: true
 			},
 			target: [
-				'**/*.{js,json}',
+				'**/*.{json}',
 				'!node_modules/**',
 				'!vendor/**',
 				'!doc/**'

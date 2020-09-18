@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin\ResourceLoader;
 
+use MediaWiki\Extension\FlexiSkin\IPlugin;
 use MediaWiki\MediaWikiServices;
 use OutputPage;
 use ResourceLoaderContext;
@@ -9,6 +10,7 @@ use ResourceLoaderFileModule;
 use RuntimeException;
 
 class Configurator extends ResourceLoaderFileModule {
+
 	/**
 	 * Get the contents of a list of CSS files.
 	 *
@@ -62,6 +64,33 @@ class Configurator extends ResourceLoaderFileModule {
 	 * @param ResourceLoaderContext $context
 	 * @return array
 	 */
+	public function getStyleURLsForDebug( ResourceLoaderContext $context ) {
+		if ( $this->hasGeneratedStyles ) {
+			// Do the default behaviour of returning a url back to load.php
+			// but with only=styles.
+			return parent::getStyleURLsForDebug( $context );
+		}
+		// Our module consists entirely of real css files,
+		// in debug mode we can load those directly.
+		$urls = [];
+
+		foreach ( $this->getPluginFiles( $context, 'styles' ) as $mediaType => $list ) {
+			$urls[$mediaType] = [];
+			foreach ( $list as $file ) {
+				$urls[$mediaType][] = OutputPage::transformResourcePath(
+					$this->getConfig(),
+					$this->getRemotePath( $file )
+				);
+			}
+		}
+
+		return $urls;
+	}
+
+	/**
+	 * @param ResourceLoaderContext $context
+	 * @return array
+	 */
 	public function getScriptURLsForDebug( ResourceLoaderContext $context ) {
 		$pluginFiles = $this->getPluginFiles( $context );
 
@@ -76,23 +105,40 @@ class Configurator extends ResourceLoaderFileModule {
 
 	/**
 	 * @param ResourceLoaderContext $context
+	 * @param string $type
 	 * @return string[]
 	 */
-	private function getPluginFiles( $context ) {
+	private function getPluginFiles( $context, $type = 'scripts' ) {
 		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
 
-		$files = [
-			'js/Defines.js',
-			'js/ui/Plugin.js',
-		];
+		$resFiles = [];
+		if ( $type === 'scripts' ) {
+			$resFiles = [
+				'js/Defines.js',
+				'js/ui/Plugin.js',
+			];
+		}
 
+		/**
+		 * @var string $pluginKey
+		 * @var IPlugin $plugin
+		 */
 		foreach ( $flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
 			if ( $this->pluginValidForSkin( $plugin->getValidSkins(), $context ) ) {
-				$files = array_merge( $files, $plugin->getJSFiles() );
+				if ( $type === 'scripts' ) {
+					$resFiles = array_merge( $resFiles, $plugin->getJSFiles() );
+				} elseif ( $type === 'styles' ) {
+					foreach ( $plugin->getCSSFiles() as $media => $files ) {
+						if ( !isset( $resFiles[$media] ) ) {
+							$resFiles[$media] = [];
+						}
+						$resFiles[$media] = array_merge( $resFiles[$media], $files );
+					}
+				}
 			}
 		}
 
-		return $files;
+		return $resFiles;
 	}
 
 	/**

@@ -4,9 +4,11 @@ namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use ApiUsageException;
 use FormatJson;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Extension\FlexiSkin\FlexiSkinManager;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinSubscriber;
 use MediaWiki\MediaWikiServices;
+use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
 
 class Preview extends FlexiSkinApiBase {
 	public function execute() {
@@ -42,14 +44,15 @@ class Preview extends FlexiSkinApiBase {
 		$this->checkPermissions();
 
 		$vars = [];
-
 		$config = FormatJson::decode( $this->getParameter( 'config' ), 1 );
+		$flexiSkin = new FlexiSkin( null, 'preview', $config );
 
 		/** @var FlexiSkinManager $flexiSkinManager */
 		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
 		foreach ( $flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
-			$vars += $plugin->getLessVars( $config );
+			$vars += $plugin->getLessVars( $flexiSkin );
 		}
+		$vars = $this->filterOutDefaults( $vars );
 
 		$subscribingModules = [];
 		/**
@@ -67,5 +70,23 @@ class Preview extends FlexiSkinApiBase {
 			'vars' => $vars,
 			'modules' => $subscribingModules
 		];
+	}
+
+	/**
+	 * @param array $vars
+	 * @return array
+	 */
+	private function filterOutDefaults( $vars ) {
+		$lessVars = LessVars::getInstance()->getAllVars();
+		return array_filter( $vars, function ( $value, $var ) use ( $lessVars ) {
+			if ( !isset( $lessVars[$var] ) ) {
+				return true;
+			}
+			if ( $lessVars[$var] === $value ) {
+				return false;
+			}
+
+			return true;
+		}, ARRAY_FILTER_USE_BOTH );
 	}
 }

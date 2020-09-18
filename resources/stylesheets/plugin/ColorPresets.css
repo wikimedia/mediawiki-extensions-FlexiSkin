@@ -19,9 +19,9 @@
 
 .color-container {
 	padding: 5px;
-	background-color: white;
 	display: inline;
 	vertical-align: middle;
+	background-color: transparent;
 }
 
 .color-container .color-item {

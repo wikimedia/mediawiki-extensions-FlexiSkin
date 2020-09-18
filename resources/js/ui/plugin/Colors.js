@@ -21,12 +21,16 @@ flexiskin.ui.plugin.Colors.prototype.provideControls = function () {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-secondary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
-					neutral: {
-						label: mw.message( 'flexiskin-ui-plugin-colors-background-neutral-label' ).text(),
+					tertiary: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-tertiary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
-					content: {
-						label: mw.message( 'flexiskin-ui-plugin-colors-background-content-label' ).text(),
+					quaternary: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-quaternary-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+					},
+					body: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-body-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					}
 				}
@@ -42,15 +46,14 @@ flexiskin.ui.plugin.Colors.prototype.provideControls = function () {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-secondary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
-					neutral: {
-						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-neutral-label' ).text(),
+					tertiary: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-tertiary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
-					content: {
-						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-content-label' ).text(),
+					quaternary: {
+						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-quaternary-label' ).text(),
 						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					}
-
 				}
 			}
 		}
