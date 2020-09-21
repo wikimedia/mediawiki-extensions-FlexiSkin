@@ -5,6 +5,7 @@
 		]
 	},
 	"apihelp-flexiskin-save-summary": "מודל השמירה",
+	"apihelp-flexiskin-delete-summary": "מודל המחיקה",
 	"apihelp-flexiskin-save-param-id": "פרמטר הזיהוי",
 	"apihelp-flexiskin-save-param-name": "פרמטר השם"
 }

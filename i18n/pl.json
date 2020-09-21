@@ -11,6 +11,7 @@
 	"action-flexiskin-viewspecialpage": "podglądu [[Special:FlexiSkin|strony specjalnej]] do dostosowywania skórki",
 	"right-flexiskin-api": "Używanie API skórki FlexiSkin",
 	"action-flexiskin-api": "używania API skórki FlexiSkin",
+	"apihelp-flexiskin-activation-param-active": "ID aktywnej skórki",
 	"flexiskin-ui-preview-loading-message": "Generownie podglądu…",
 	"flexiskin-ui-plugin-colors-label": "Kolory",
 	"flexiskin-ui-plugin-colors-background-label": "Kolory tła",
