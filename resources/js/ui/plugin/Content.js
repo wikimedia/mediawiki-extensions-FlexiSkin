@@ -21,20 +21,20 @@ flexiskin.ui.plugin.Content.prototype.provideControls = function () {
 				label: mw.message( 'flexiskin-ui-plugin-content-colors-label' ).text(),
 				items: {
 					background: {
-						label: mw.message('flexiskin-ui-plugin-colors-background-content-label').text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget({enableCustomPicker: true})
+						label: mw.message( 'flexiskin-ui-plugin-colors-background-content-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
 					foreground: {
-						label: mw.message('flexiskin-ui-plugin-colors-foreground-content-label').text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget({enableCustomPicker: true})
+						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-content-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
 					primary_link: {
-						label: mw.message('flexiskin-ui-plugin-content-colors-link-label').text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget({enableCustomPicker: true})
+						label: mw.message( 'flexiskin-ui-plugin-content-colors-link-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					},
 					new_link: {
-						label: mw.message('flexiskin-ui-plugin-content-colors-new-link-label').text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget({enableCustomPicker: true})
+						label: mw.message( 'flexiskin-ui-plugin-content-colors-new-link-label' ).text(),
+						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
 					}
 				}
 			},
