@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use ApiUsageException;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 
 abstract class FlexiSkinOperation extends FlexiSkinApiBase {
@@ -48,6 +49,22 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 		}
 
 		return $skin;
+	}
+
+	/**
+	 * Get a new skin with different config
+	 *
+	 * @param IFlexiSkin $skin
+	 * @param array $config
+	 * @return FlexiSkin
+	 */
+	protected function replaceConfig( IFlexiSkin $skin, array $config ) {
+		return new FlexiSkin(
+			$skin->getId(),
+			$skin->getName(),
+			$config,
+			$skin->isActive()
+		);
 	}
 
 	/**

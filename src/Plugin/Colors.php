@@ -2,6 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Plugin;
 
+use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
 
 class Colors extends PluginBase {
@@ -44,20 +45,24 @@ class Colors extends PluginBase {
 	/**
 	 * @inheritDoc
 	 */
-	public function getLessVars( $config ): array {
-		$vars = [
-			'primary-bg' => $config['colors']['background']['primary'] ?: null,
-			'secondary-bg' => $config['colors']['background']['secondary'] ?: null,
-			'neutral-bg' => $config['colors']['background']['neutral'] ?: null,
-			'primary-fg' => $config['colors']['foreground']['primary'] ?: null,
-			'secondary-fg' => $config['colors']['foreground']['primary'] ?: null,
-			'neutral-fg' => $config['colors']['foreground']['primary'] ?: null,
-			'content-bg' => $config['colors']['background']['content'] ?: null,
-			'content-fg' => $config['colors']['foreground']['content'] ?: null,
+	public function getLessVarsMap(): array {
+		return [
+			'primary-bg' => 'colors/background/primary',
+			'secondary-bg' => 'colors/background/secondary',
+			'tertiary-bg' => 'colors/background/tertiary',
+			'quaternary-bg' => 'colors/background/quaternary',
+			'body-bg' => 'colors/background/body',
+			'primary-fg' => 'colors/foreground/primary',
+			'secondary-fg' => 'colors/foreground/secondary',
+			'tertiary-fg' => 'colors/foreground/tertiary',
+			'quaternary-fg' => 'colors/foreground/quaternary',
 		];
+	}
 
-		return array_filter( $vars, function ( $item ) {
-			return $item !== null;
-		} );
+	/**
+	 * @inheritDoc
+	 */
+	public function setDefaults( IFlexiSkin $skin, &$config ) {
+		// No defaults for colors - we use themes
 	}
 }

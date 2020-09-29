@@ -7,7 +7,7 @@ flexiskin.ui.StyleSizeWidget = function ( cfg ) {
 
 	this.valueWidget = new OO.ui.NumberInputWidget( {
 		min: 0,
-		step: 1
+		step: 0.001
 	} );
 	this.valueWidget.$element.css( {
 		width: '150px'
@@ -47,7 +47,7 @@ flexiskin.ui.StyleSizeWidget.prototype.setValue = function ( value ) {
 	if ( $.type( value ) !== 'string' ) {
 		return;
 	}
-	var regex = /^(\d*)(.*)$/gm,
+	var regex = /^([\d\.]*)(.*)$/gm,
 		matches = regex.exec( value );
 
 	if ( matches.length === 3 ) {

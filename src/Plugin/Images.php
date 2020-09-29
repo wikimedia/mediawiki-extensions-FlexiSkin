@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\FlexiSkin\Plugin;
 
 use File;
+use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
 use MediaWiki\MediaWikiServices;
 use Title;
@@ -55,6 +56,13 @@ class Images extends PluginBase {
 		foreach ( $config['images'] as $key => $data ) {
 			$config['images'][$key] = $this->expandUrl( $data );
 		}
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function setDefaults( IFlexiSkin $skin, &$config ) {
+		// Does not make sense for images
 	}
 
 	/**

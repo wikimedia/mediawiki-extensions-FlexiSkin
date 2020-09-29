@@ -2,15 +2,16 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Plugin;
 
+use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
 
-class Layout extends PluginBase {
+class FreeCss extends PluginBase {
 	/**
 	 * @return array with js files
 	 */
 	public function getJSFiles() {
 		return [
-			'js/ui/plugin/Layout.js'
+			'js/ui/plugin/FreeCss.js'
 		];
 	}
 
@@ -27,7 +28,7 @@ class Layout extends PluginBase {
 	 * @return string Name of the module
 	 */
 	public function getPluginName() {
-		return 'flexiskin.ui.plugin.Layout';
+		return 'flexiskin.ui.plugin.FreeCss';
 	}
 
 	/**
@@ -35,20 +36,14 @@ class Layout extends PluginBase {
 	 */
 	public function getValidSkins() {
 		return [
-			'*'
+			'bluespicecalumma'
 		];
 	}
 
 	/**
 	 * @inheritDoc
 	 */
-	public function getLessVars( $config ): array {
-		$vars = [
-			'content-width' => $config['layout']['content_width'] ?: null,
-		];
-
-		return array_filter( $vars, function ( $item ) {
-			return $item !== null;
-		} );
+	public function setDefaults( IFlexiSkin $skin, &$config ) {
+		// No defaults
 	}
 }

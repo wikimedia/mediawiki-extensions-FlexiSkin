@@ -25,16 +25,35 @@ interface IPlugin {
 	public function getValidSkins();
 
 	/**
-	 * @param array $config
+	 * @param IFlexiSkin $skin
 	 * @return array
 	 */
-	public function getLessVars( $config ): array;
+	public function getLessVars( IFlexiSkin $skin ): array;
+
+	/**
+	 * Get less var name => path is config map
+	 * Config path should use / as delimiter (key1/key2/key3)
+	 *
+	 * @return array
+	 */
+	public function getLessVarsMap(): array;
 
 	/**
 	 * Adapt configuration values before loading skin config
+	 * Called when FlexiSkin is being initialized
 	 *
 	 * @param array &$config
 	 * @return void
 	 */
 	public function adaptConfiguration( &$config );
+
+	/**
+	 * Set the default values of inputs if nothing is customized
+	 * By default, called from self::adaptConfiguration()
+	 *
+	 * @param IFlexiSkin $skin
+	 * @param array &$config
+	 * @return void
+	 */
+	public function setDefaults( IFlexiSkin $skin, &$config );
 }

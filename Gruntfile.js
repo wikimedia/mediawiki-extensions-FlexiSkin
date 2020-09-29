@@ -6,14 +6,11 @@ module.exports = function ( grunt ) {
 	grunt.initConfig( {
 		eslint: {
 			options: {
-				extensions: [ '.js', '.json' ],
+				extensions: [ '.json' ],
 				cache: true
 			},
 			all: [
-				'**/*.{js,json}',
-				'!node_modules/**',
-				'!vendor/**',
-				'!doc/**'
+				'**/*.{json}'
 			]
 		},
 		banana: conf.MessagesDirs
