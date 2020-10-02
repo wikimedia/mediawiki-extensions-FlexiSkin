@@ -15,23 +15,23 @@ flexiskin.ui.plugin.Colors.prototype.provideControls = function () {
 				items: {
 					primary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-primary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					secondary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-secondary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					tertiary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-tertiary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					quaternary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-quaternary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					body: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-body-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					}
 				}
 			},
@@ -40,19 +40,19 @@ flexiskin.ui.plugin.Colors.prototype.provideControls = function () {
 				items: {
 					primary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-primary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					secondary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-secondary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					tertiary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-tertiary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					quaternary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-quaternary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					}
 				}
 			}
