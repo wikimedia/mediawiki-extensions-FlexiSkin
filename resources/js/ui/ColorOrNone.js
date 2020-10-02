@@ -5,7 +5,7 @@ flexiskin.ui.widget.ColorOrNone = function ( cfg ) {
 
 	this.noneCheck = new OO.ui.CheckboxInputWidget();
 
-	this.colorWidget = new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } );
+	this.colorWidget = new flexiskin.ui.widget.ColorPicker();
 	this.$colorWidgetWrap = $( '<div>' ).append( this.colorWidget.$element ).addClass( 'color-picker-wrapper' );
 	this.noneCheck.connect( this, {
 		change: 'onNoneChange'

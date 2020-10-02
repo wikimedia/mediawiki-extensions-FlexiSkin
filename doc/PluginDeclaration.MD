@@ -58,11 +58,11 @@ flexiskin.ui.plugin.Colors.prototype.provideControls = function () {
                         // Label for the control
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-primary-label' ).text(),
                         // Control widget
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					secondary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-secondary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					}
 				}
 			},
@@ -71,11 +71,11 @@ flexiskin.ui.plugin.Colors.prototype.provideControls = function () {
 				items: {
 					primary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-primary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					secondary: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-secondary-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					}
 				}
 			}
@@ -120,7 +120,7 @@ flexiskin.ui.plugin.MyPlugin.prototype.provideControls = function () {
                 items: {
                     body_background: {
                         label: 'Body background',
-                        widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+                        widget: new flexiskin.ui.widget.ColorPicker()
                 }
             }
         }

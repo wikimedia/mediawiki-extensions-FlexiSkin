@@ -7,12 +7,12 @@ OO.inheritClass( flexiskin.ui.plugin.Content, flexiskin.ui.plugin.Plugin );
 flexiskin.registry.Plugin.register( 'content', flexiskin.ui.plugin.Content );
 
 flexiskin.ui.plugin.Content.prototype.provideControls = function () {
-	var h1ColorWidget = new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } ),
-		h2ColorWidget = new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } ),
-		h3ColorWidget = new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } ),
-		h4ColorWidget = new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } ),
-		h5ColorWidget = new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } ),
-		h6ColorWidget = new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } );
+	var h1ColorWidget = new flexiskin.ui.widget.ColorPicker(),
+		h2ColorWidget = new flexiskin.ui.widget.ColorPicker(),
+		h3ColorWidget = new flexiskin.ui.widget.ColorPicker(),
+		h4ColorWidget = new flexiskin.ui.widget.ColorPicker(),
+		h5ColorWidget = new flexiskin.ui.widget.ColorPicker(),
+		h6ColorWidget = new flexiskin.ui.widget.ColorPicker();
 
 	return {
 		content: {
@@ -22,19 +22,19 @@ flexiskin.ui.plugin.Content.prototype.provideControls = function () {
 				items: {
 					background: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-background-content-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					foreground: {
 						label: mw.message( 'flexiskin-ui-plugin-colors-foreground-content-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					primary_link: {
 						label: mw.message( 'flexiskin-ui-plugin-content-colors-link-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					},
 					new_link: {
 						label: mw.message( 'flexiskin-ui-plugin-content-colors-new-link-label' ).text(),
-						widget: new OOJSPlus.ui.widget.HexColorPickerWidget( { enableCustomPicker: true } )
+						widget: new flexiskin.ui.widget.ColorPicker()
 					}
 				}
 			},
