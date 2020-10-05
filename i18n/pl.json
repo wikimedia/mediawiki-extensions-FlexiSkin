@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Chrumps",
+			"Pietrasagh",
 			"Rail"
 		]
 	},
@@ -21,8 +22,8 @@
 	"flexiskin-ui-plugin-colors-background-quaternary-label": "Kolor 4",
 	"flexiskin-ui-plugin-colors-foreground-primary-label": "Kolor 1",
 	"flexiskin-ui-plugin-colors-foreground-secondary-label": "Kolor 2",
-	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "Kolor 2",
-	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "Kolor 2",
+	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "Kolor 3",
+	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "Kolor 4",
 	"flexiskin-ui-plugin-images-label": "Obrazy",
 	"flexiskin-ui-plugin-images-favicon-label": "Favikona",
 	"flexiskin-ui-configurator-button-preview-label": "Podgląd",
@@ -44,12 +45,12 @@
 	"flexiskin-font-weight-light": "Cienka",
 	"flexiskin-font-weight-regular": "Zwykła",
 	"flexiskin-font-weight-medium": "Średnia",
-	"flexiskin-font-weight-bold": "Gruba",
+	"flexiskin-font-weight-bold": "Wytłuszczona",
 	"flexiskin-ui-plugin-content-colors-label": "Kolory",
 	"flexiskin-ui-plugin-content-font-label": "Czcionka",
 	"flexiskin-ui-plugin-content-font-family-label": "Główna czcionka",
 	"flexiskin-ui-plugin-content-font-weight-label": "Grubość",
-	"flexiskin-ui-widget-border-solid": "Nieprzerywana",
+	"flexiskin-ui-widget-border-solid": "Ciągła",
 	"flexiskin-ui-widget-border-dashed": "Przerywana",
 	"flexiskin-ui-widget-border-dotted": "Punktowana",
 	"flexiskin-ui-widget-border-double": "Podwójna",
