@@ -35,11 +35,13 @@
 	"flexiskin-ui-plugin-content-colors-label": "Színek",
 	"flexiskin-ui-plugin-content-font-label": "Betűtípus",
 	"flexiskin-ui-plugin-content-font-family-label": "Elsődleges betűtípus",
+	"flexiskin-ui-plugin-content-font-weight-label": "Vastagság",
 	"flexiskin-ui-widget-border-dashed": "Szaggatott",
 	"flexiskin-ui-widget-border-dotted": "Pontozott",
 	"flexiskin-ui-widget-border-double": "Dupla",
 	"flexiskin-ui-plugin-content-colors-link-label": "Érvényes link",
 	"flexiskin-ui-plugin-content-colors-new-link-label": "Hibás hivatkozás",
 	"flexiskin-special-loading-ph": "FlexiSkin elemek betöltése...",
-	"flexiskin-ui-configurator-warning-disabled-skin": "A FlexiSkin konfigurálva van, de nincs bekapcsolva. Az újraengedélyezéshez használd a \"Mentés és aktiválás\" gombot. Aktiválás előtt ellenőrizheted a jelenlegi állapotot az \"Előnézet\" gomb lenyomásával."
+	"flexiskin-ui-configurator-warning-disabled-skin": "A FlexiSkin konfigurálva van, de nincs bekapcsolva. Az újraengedélyezéshez használd a \"Mentés és aktiválás\" gombot. Aktiválás előtt ellenőrizheted a jelenlegi állapotot az \"Előnézet\" gomb lenyomásával.",
+	"flexiskin-ui-plugin-free-css-label": "Ingyenes CSS"
 }
