@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Beta16"
+			"Beta16",
+			"Luca.favorido"
 		]
 	},
 	"apihelp-flexiskin-activation-summary": "Il modulo attivato",
@@ -14,5 +15,21 @@
 	"flexiskin-ui-plugin-colors-foreground-primary-label": "Colore 1",
 	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "Colore 3",
 	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "Colore 4",
-	"flexiskin-ui-plugin-content-header-color-label": "Colore"
+	"flexiskin-ui-configurator-button-disable-label": "Disabilita",
+	"flexiskin-ui-plugin-content-header-label": "Intestazioni",
+	"flexiskin-ui-plugin-content-header-h2-label": "Intestazione 2 (h2)",
+	"flexiskin-ui-plugin-content-header-h3-label": "Intestazione 3 (h3)",
+	"flexiskin-ui-plugin-content-header-h4-label": "Intestazione 4 (h4)",
+	"flexiskin-ui-plugin-content-header-h5-label": "Intestazione 5 (h5)",
+	"flexiskin-ui-plugin-content-header-h6-label": "Intestazione 6 (h6)",
+	"flexiskin-ui-plugin-content-header-color-label": "Colore",
+	"flexiskin-ui-plugin-content-header-font-size-label": "Dimensione carattere",
+	"flexiskin-ui-plugin-content-header-underline-label": "Sottolineato",
+	"flexiskin-font-weight-regular": "Regolare",
+	"flexiskin-font-weight-medium": "Medio",
+	"flexiskin-font-weight-bold": "Grassetto",
+	"flexiskin-ui-plugin-content-colors-label": "Colori",
+	"flexiskin-ui-plugin-content-font-label": "Tipo di carattere",
+	"flexiskin-ui-widget-border-dashed": "Tratteggiato",
+	"flexiskin-ui-widget-border-double": "Doppio"
 }
