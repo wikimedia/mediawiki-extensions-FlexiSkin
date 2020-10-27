@@ -25,8 +25,8 @@ class Extension {
 			$vars = array_merge( $vars, $plugin->getLessVars( $active ) );
 		}
 
-		static::setGlobalImages( $config, 'logo', 'wgLogo' );
-		static::setGlobalImages( $config, 'favicon', 'wgFavicon' );
+		static::setGlobalImages( $config, 'logo', 'bsgOverrideLogo' );
+		static::setGlobalImages( $config, 'favicon', 'bsgOverrideFavicon' );
 		static::applyFreeCSS( $config );
 
 		$lessVars = LessVars::getInstance();
@@ -47,6 +47,11 @@ class Extension {
 		}
 	}
 
+	/**
+	 * Apply the CSS styles
+	 *
+	 * @param array $config
+	 */
 	protected static function applyFreeCSS( $config ) {
 		if ( !isset( $config['free_css']['css'] ) ) {
 			return;
@@ -55,7 +60,7 @@ class Extension {
 		$GLOBALS['wgHooks']['BeforePageDisplay'][] = function ( \OutputPage $out, \Skin $skin ) use ( $config ) {
 			$style = $config['free_css']['css'];
 			$style = str_replace( "\n", '', $style );
-			$style = preg_replace( '/\s/', '', $style );
+			$style = preg_replace( '/\s/', ' ', $style );
 			if ( empty( $style ) ) {
 				return true;
 			}
