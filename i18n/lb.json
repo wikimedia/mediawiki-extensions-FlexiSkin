@@ -1,12 +1,13 @@
 {
 	"@metadata": {
 		"authors": [
+			"Les Meloures",
 			"Robby"
 		]
 	},
 	"flexiskin": "Astellunge vum Layout",
 	"action-flexiskin-viewspecialpage": "D'[[Special:FlexiSkin|Spezialsäit \"Flexiskin\"]] weise fir den Interface anzestellen",
-	"apihelp-flexiskin-new-summary": "Dat neit Modul",
+	"apihelp-flexiskin-new-summary": "Den neie Module",
 	"flexiskin-ui-plugin-colors-label": "Thema",
 	"flexiskin-ui-plugin-colors-background-label": "Hannergrondfaarwen",
 	"flexiskin-ui-plugin-colors-background-primary-label": "Faarf 1",
