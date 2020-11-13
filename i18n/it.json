@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Beta16",
-			"Luca.favorido"
+			"Luca.favorido",
+			"TheRukk"
 		]
 	},
 	"apihelp-flexiskin-activation-summary": "Il modulo attivato",
 	"apihelp-flexiskin-save-summary": "Il modulo salvato",
-	"apihelp-flexiskin-new-summary": "Il nuovo modulo",
-	"apihelp-flexiskin-delete-summary": "Il modulo cancellato",
-	"apihelp-flexiskin-restore-summary": "Il modulo ripristinato",
+	"apihelp-flexiskin-new-summary": "Il modulo crea",
+	"apihelp-flexiskin-delete-summary": "Il modulo elimina",
+	"apihelp-flexiskin-restore-summary": "Il modulo ripristina",
 	"flexiskin-ui-plugin-colors-background-primary-label": "Colore 1",
 	"flexiskin-ui-plugin-colors-background-tertiary-label": "Colore 3",
 	"flexiskin-ui-plugin-colors-foreground-primary-label": "Colore 1",
