@@ -10,7 +10,9 @@ module.exports = function ( grunt ) {
 				cache: true
 			},
 			all: [
-				'**/*.{json}'
+				'**/*.json',
+				'!node_modules/**',
+				'!vendor/**'
 			]
 		},
 		banana: conf.MessagesDirs
