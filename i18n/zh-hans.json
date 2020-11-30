@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Func",
 			"Liuxinyu970226",
 			"Shuiwater",
 			"SomeyaMako",
@@ -15,6 +16,6 @@
 	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "颜色 3",
 	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "颜色 4",
 	"flexiskin-ui-plugin-images-logo-label": "标志",
-	"flexiskin-ui-configurator-button-save-label": "保存",
+	"flexiskin-ui-configurator-button-save-label": "保存并启用",
 	"flexiskin-ui-plugin-color-presets-customize-label": "个性化……"
 }
