@@ -2,10 +2,11 @@
 	"@metadata": {
 		"authors": [
 			"Piramidion",
+			"Renamerr",
 			"Ата"
 		]
 	},
 	"flexiskin-extension-desc": "Дозволяє налаштовувати тему оформлення",
-	"flexiskin": "Налаштування теми",
+	"flexiskin": "FlexiSkin",
 	"action-flexiskin-viewspecialpage": "перегляд [[Special:FlexiSkin|спеціальної сторінки]] налаштування теми"
 }
