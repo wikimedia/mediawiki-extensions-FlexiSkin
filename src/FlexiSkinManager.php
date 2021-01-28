@@ -76,7 +76,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 		if ( $this->currentSkin === null || $reload ) {
 			$fullPath = $this->getFullPath();
 			if ( !file_exists( $fullPath ) ) {
-				return null;
+				return;
 			}
 			$json = file_get_contents( $fullPath );
 			$this->currentSkin = FlexiSkin::newFromData( FormatJson::decode( $json, 1 ) );

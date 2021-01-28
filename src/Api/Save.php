@@ -103,7 +103,7 @@ class Save extends FlexiSkinOperation {
 		while ( $i < count( $bits ) - 1 ) {
 			$bit = $bits[$i];
 			if ( !is_array( $config ) || !array_key_exists( $bit, $config ) ) {
-				return null;
+				return;
 			}
 			$config = &$config[$bit];
 			$i++;
