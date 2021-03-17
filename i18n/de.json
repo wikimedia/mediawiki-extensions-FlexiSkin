@@ -3,6 +3,7 @@
 		"authors": [
 			"Ameisenigel",
 			"Elliot",
+			"Gebu",
 			"Metalhead64",
 			"Umherirrender"
 		]
@@ -30,10 +31,14 @@
 	"flexiskin-ui-plugin-colors-background-label": "Hintergrundfarben",
 	"flexiskin-ui-plugin-colors-background-primary-label": "Farbe 1",
 	"flexiskin-ui-plugin-colors-background-secondary-label": "Farbe 2",
+	"flexiskin-ui-plugin-colors-background-tertiary-label": "Farbe 3",
+	"flexiskin-ui-plugin-colors-background-quaternary-label": "Farbe 4",
 	"flexiskin-ui-plugin-colors-background-body-label": "Body Hintergrund",
 	"flexiskin-ui-plugin-colors-foreground-label": "Vordergrundfarben",
 	"flexiskin-ui-plugin-colors-foreground-primary-label": "Farbe 1",
 	"flexiskin-ui-plugin-colors-foreground-secondary-label": "Farbe 2",
+	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "Farbe 3",
+	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "Farbe 4",
 	"flexiskin-ui-plugin-images-label": "Bilder",
 	"flexiskin-ui-plugin-images-logo-label": "Logo",
 	"flexiskin-ui-plugin-images-favicon-label": "Favicon",
@@ -48,5 +53,9 @@
 	"flexiskin-ui-plugin-layout-label": "Layout",
 	"flexiskin-ui-plugin-layout-content-width-label": "Breite des Inhalts",
 	"flexiskin-ui-plugin-colors-foreground-content-label": "Farbe des Inhalts",
-	"flexiskin-ui-plugin-colors-background-content-label": "Inhalt Hintergrund"
+	"flexiskin-ui-plugin-colors-background-content-label": "Inhalt Hintergrund",
+	"flexiskin-ui-plugin-content-label": "Inhalt",
+	"flexiskin-ui-plugin-content-header-color-label": "Farbe",
+	"flexiskin-ui-plugin-content-header-font-size-label": "Schriftgröße",
+	"flexiskin-ui-plugin-content-colors-label": "Farben"
 }
