@@ -57,7 +57,7 @@ class Extension {
 			return;
 		}
 
-		$GLOBALS['wgHooks']['BeforePageDisplay'][] = function ( \OutputPage $out, \Skin $skin ) use ( $config ) {
+		$GLOBALS['wgHooks']['BeforePageDisplay'][] = static function ( \OutputPage $out, \Skin $skin ) use ( $config ) {
 			$style = $config['free_css']['css'];
 			$style = str_replace( "\n", '', $style );
 			$style = preg_replace( '/\s/', ' ', $style );

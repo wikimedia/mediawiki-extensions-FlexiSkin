@@ -78,7 +78,7 @@ class Preview extends FlexiSkinApiBase {
 	 */
 	private function filterOutDefaults( $vars ) {
 		$lessVars = LessVars::getInstance()->getAllVars();
-		return array_filter( $vars, function ( $value, $var ) use ( $lessVars ) {
+		return array_filter( $vars, static function ( $value, $var ) use ( $lessVars ) {
 			if ( !isset( $lessVars[$var] ) ) {
 				return true;
 			}
