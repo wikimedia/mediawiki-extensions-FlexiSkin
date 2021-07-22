@@ -8,7 +8,7 @@ interface IFlexiSkinManager {
 	 * @param array $config
 	 * @return IFlexiSkin
 	 */
-	public function create( $name, $config ) : IFlexiSkin;
+	public function create( $name, $config ): IFlexiSkin;
 
 	/**
 	 * @param IFlexiSkin $flexiSkin
@@ -19,18 +19,18 @@ interface IFlexiSkinManager {
 	/**
 	 * @return IFlexiSkin|null
 	 */
-	public function getFlexiSkin() : ?IFlexiSkin;
+	public function getFlexiSkin(): ?IFlexiSkin;
 
 	/**
 	 * @param bool|null $active
 	 * @return bool
 	 */
-	public function setActive( $active = true ) : bool;
+	public function setActive( $active = true ): bool;
 
 	/**
 	 * @return IFlexiSkin|null
 	 */
-	public function getActive() : ?IFlexiSkin;
+	public function getActive(): ?IFlexiSkin;
 
 	/**
 	 * Get all available plugins

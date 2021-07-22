@@ -59,28 +59,28 @@ class FlexiSkin implements IFlexiSkin {
 	/**
 	 * @return int|null
 	 */
-	public function getId() : ?int {
+	public function getId(): ?int {
 		return $this->id;
 	}
 
 	/**
 	 * @return string|null
 	 */
-	public function getName() : ?string {
+	public function getName(): ?string {
 		return $this->name;
 	}
 
 	/**
 	 * @return array|null
 	 */
-	public function getConfig() : ?array {
+	public function getConfig(): ?array {
 		return $this->config;
 	}
 
 	/**
 	 * @return bool
 	 */
-	public function isActive() : bool {
+	public function isActive(): bool {
 		return $this->active;
 	}
 

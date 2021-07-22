@@ -86,7 +86,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	/**
 	 * @return IFlexiSkin|null
 	 */
-	public function getActive() : ?IFlexiSkin {
+	public function getActive(): ?IFlexiSkin {
 		$current = $this->getFlexiSkin();
 		if ( $current && $current->isActive() ) {
 			return $current;
@@ -97,7 +97,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	/**
 	 * @inheritDoc
 	 */
-	public function setActive( $active = true ) : bool {
+	public function setActive( $active = true ): bool {
 		$current = $this->getFlexiSkin();
 		if ( $current === null ) {
 			$current = $this->create( 'default', [] );
