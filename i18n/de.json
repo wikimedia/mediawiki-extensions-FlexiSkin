@@ -5,7 +5,8 @@
 			"Elliot",
 			"Gebu",
 			"Metalhead64",
-			"Umherirrender"
+			"Umherirrender",
+			"Zabe"
 		]
 	},
 	"flexiskin-extension-desc": "Ermöglicht die Anpassung des Skins",
@@ -57,5 +58,7 @@
 	"flexiskin-ui-plugin-content-label": "Inhalt",
 	"flexiskin-ui-plugin-content-header-color-label": "Farbe",
 	"flexiskin-ui-plugin-content-header-font-size-label": "Schriftgröße",
-	"flexiskin-ui-plugin-content-colors-label": "Farben"
+	"flexiskin-font-weight-bold": "Fett",
+	"flexiskin-ui-plugin-content-colors-label": "Farben",
+	"flexiskin-ui-plugin-content-font-label": "Schriftart"
 }
