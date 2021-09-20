@@ -6,6 +6,7 @@
 			"Gebu",
 			"Metalhead64",
 			"Umherirrender",
+			"Umlaut",
 			"Zabe"
 		]
 	},
@@ -55,6 +56,7 @@
 	"flexiskin-ui-plugin-layout-content-width-label": "Breite des Inhalts",
 	"flexiskin-ui-plugin-colors-foreground-content-label": "Farbe des Inhalts",
 	"flexiskin-ui-plugin-colors-background-content-label": "Inhalt Hintergrund",
+	"flexiskin-ui-configurator-button-disable-label": "Deaktiviert",
 	"flexiskin-ui-plugin-content-label": "Inhalt",
 	"flexiskin-ui-plugin-content-header-color-label": "Farbe",
 	"flexiskin-ui-plugin-content-header-font-size-label": "Schriftgröße",
