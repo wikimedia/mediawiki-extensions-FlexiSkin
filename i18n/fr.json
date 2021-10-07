@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"Gomoko",
+			"McDutchie",
 			"Thibaut120094",
 			"Verdy p",
 			"Wladek92"
@@ -50,12 +51,12 @@
 	"flexiskin-ui-error-save-fail": "Échec dans l’enregistrement de l'habillage",
 	"flexiskin-ui-plugin-color-presets-customize-label": "personnaliser...",
 	"flexiskin-configurator-prompt-on-save": "Les modifications de l’habillage seront appliqués immédiatement et affecteront tous les utilisateurs sur le wiki. Êtes-vous sûr de vouloir continuer ?",
-	"flexiskin-ui-plugin-layout-label": "Mise ne page",
+	"flexiskin-ui-plugin-layout-label": "Mise en page",
 	"flexiskin-ui-plugin-layout-content-width-label": "Largeur du contenu",
 	"flexiskin-ui-plugin-colors-foreground-content-label": "Couleur du contenu",
 	"flexiskin-ui-plugin-colors-background-content-label": "Fond du contenu",
 	"flexiskin-ui-configurator-button-disable-label": "Désactiver",
-	"flexiskin-configurator-prompt-on-disable": "Désactiver l’habillage par défaut réinitialisera tous les paramètres par défaut pour tous les utilisateurs. Les modifications que vous avez faites ne seront pas perdues et pourront être de nouveau appliquées à tout moment. Voulez-vous continuer ?",
+	"flexiskin-configurator-prompt-on-disable": "Désactiver l’habillage personnalisé réinitialisera tous les paramètres par défaut pour tous les utilisateurs. Les modifications que vous avez faites ne seront pas perdues et pourront être de nouveau appliquées à tout moment. Voulez-vous continuer ?",
 	"flexiskin-ui-error-disable-fail": "Échec de la désactivation de l’habillage",
 	"flexiskin-ui-plugin-content-label": "Contenu",
 	"flexiskin-ui-plugin-content-header-label": "Titres",
