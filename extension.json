@@ -31,6 +31,7 @@
 				"Images": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Images::factory",
 				"ColorPresets": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\ColorPresets::factory",
 				"Colors": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Colors::factory",
+				"LayoutColors": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\LayoutColors::factory",
 				"Content": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Content::factory",
 				"FreeCss": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\FreeCss::factory"
 			},
@@ -151,7 +152,19 @@
 				"flexiskin-ui-plugin-content-colors-link-label",
 				"flexiskin-ui-plugin-content-colors-new-link-label",
 				"flexiskin-ui-configurator-warning-disabled-skin",
-				"flexiskin-ui-plugin-free-css-label"
+				"flexiskin-ui-plugin-free-css-label",
+				"flexiskin-ui-plugin-color-settings-label",
+				"flexiskin-ui-plugin-navbar-colors-label",
+				"flexiskin-ui-plugin-colors-background-navbar-label",
+				"flexiskin-ui-plugin-colors-foreground-navbar-label",
+				"flexiskin-ui-plugin-colors-highlight-navbar-label",
+				"flexiskin-ui-plugin-sidebar-primary-colors-label",
+				"flexiskin-ui-plugin-colors-background-sidebar-primary-label",
+				"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label",
+				"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label",
+				"flexiskin-ui-plugin-footer-colors-label",
+				"flexiskin-ui-plugin-colors-background-footer-label",
+				"flexiskin-ui-plugin-colors-foreground-footer-label"
 			]
 		}
 	},
