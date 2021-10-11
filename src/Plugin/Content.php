@@ -35,7 +35,7 @@ class Content extends PluginBase {
 	 */
 	public function getValidSkins() {
 		return [
-			'bluespicecalumma'
+			'bluespicecalumma', 'bluespicediscovery'
 		];
 	}
 
