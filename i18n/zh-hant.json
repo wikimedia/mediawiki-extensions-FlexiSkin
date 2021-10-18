@@ -79,5 +79,17 @@
 	"flexiskin-ui-plugin-content-colors-new-link-label": "失效連結",
 	"flexiskin-special-loading-ph": "FlexiSkin 正在載入元件…",
 	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin 已設置過，但目前為停用。若要重新啟用它，請使用「儲存並生效」按鈕。您可以在生效之前，使用「預覽」按鈕來檢查目前狀態",
-	"flexiskin-ui-plugin-free-css-label": "Free CSS"
+	"flexiskin-ui-plugin-free-css-label": "Free CSS",
+	"flexiskin-ui-plugin-color-settings-label": "布局色彩",
+	"flexiskin-ui-plugin-navbar-colors-label": "標頭色彩",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "標頭背景",
+	"flexiskin-ui-plugin-colors-foreground-navbar-label": "標頭前景",
+	"flexiskin-ui-plugin-colors-highlight-navbar-label": "標頭凸顯效果",
+	"flexiskin-ui-plugin-sidebar-primary-colors-label": "側邊欄色彩",
+	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "側邊欄背景",
+	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "側邊欄前景",
+	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "側邊欄凸顯效果",
+	"flexiskin-ui-plugin-footer-colors-label": "註腳色彩",
+	"flexiskin-ui-plugin-colors-background-footer-label": "註腳背景",
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "註腳前景"
 }

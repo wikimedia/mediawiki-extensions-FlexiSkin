@@ -83,5 +83,17 @@
 	"flexiskin-ui-plugin-content-colors-new-link-label": "Link quebrado",
 	"flexiskin-special-loading-ph": "FlexiSkin está carregando componentes...",
 	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin está configurado, mas atualmente desativado. Para reativá-lo, use o botão \"Salvar e ativar\". Você pode verificar o estado atual usando o botão \"Visualizar\" antes de ativá-lo",
-	"flexiskin-ui-plugin-free-css-label": "CSS grátis"
+	"flexiskin-ui-plugin-free-css-label": "CSS grátis",
+	"flexiskin-ui-plugin-color-settings-label": "Cores de layout.",
+	"flexiskin-ui-plugin-navbar-colors-label": "Cor de cabeçalho.",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "Fundo de cabeçalho",
+	"flexiskin-ui-plugin-colors-foreground-navbar-label": "Primeiro plano de cabeçalho",
+	"flexiskin-ui-plugin-colors-highlight-navbar-label": "Destaque de cabeçalho",
+	"flexiskin-ui-plugin-sidebar-primary-colors-label": "Cores da barra lateral",
+	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "Fundo da barra lateral.",
+	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "Primeiro plano da barra lateral",
+	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Destaque da barra lateral",
+	"flexiskin-ui-plugin-footer-colors-label": "Cores do rodapé",
+	"flexiskin-ui-plugin-colors-background-footer-label": "Fundo de rodapé",
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "Primeiro plano de rodapé"
 }

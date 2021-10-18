@@ -39,5 +39,17 @@
 	"flexiskin-ui-widget-border-dotted": "نقطه‌چین",
 	"flexiskin-ui-widget-border-double": "دوگانه",
 	"flexiskin-ui-plugin-content-colors-link-label": "پیوند معتبر",
-	"flexiskin-ui-plugin-content-colors-new-link-label": "پیوند شکسته"
+	"flexiskin-ui-plugin-content-colors-new-link-label": "پیوند شکسته",
+	"flexiskin-ui-plugin-color-settings-label": "رنگ‌های چیدمان",
+	"flexiskin-ui-plugin-navbar-colors-label": "رنگ سرآیند",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "پس‌زمینهٔ سرآیند",
+	"flexiskin-ui-plugin-colors-foreground-navbar-label": "پیش‌زمینهٔ سرآیند",
+	"flexiskin-ui-plugin-colors-highlight-navbar-label": "برجسته‌سازی سرآیند",
+	"flexiskin-ui-plugin-sidebar-primary-colors-label": "رنگ‌های نوار کناری",
+	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "پس‌زمینهٔ نوار کناری",
+	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "پیش‌زمینهٔ نوار کناری",
+	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "برجسته‌سازی نوار کناری",
+	"flexiskin-ui-plugin-footer-colors-label": "رنگ‌های پاورقی",
+	"flexiskin-ui-plugin-colors-background-footer-label": "پس‌زمینهٔ پاورقی",
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "پیش‌زمینهٔ پاورقی"
 }

@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"DreZhsh",
 			"Gomoko",
 			"McDutchie",
 			"Thibaut120094",
@@ -85,5 +86,17 @@
 	"flexiskin-ui-plugin-content-colors-new-link-label": "Lien non valide",
 	"flexiskin-special-loading-ph": "FlexiSkin charge les composants…",
 	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin est configuré, mais actuellement désactivé. Pour le ré-activer, utiliser le bouton « Enregistrer & activer ». Vous pouvez contrôler l’état actuel en utilisant le bouton « Aperçu » avant de l’activer",
-	"flexiskin-ui-plugin-free-css-label": "CSS libre"
+	"flexiskin-ui-plugin-free-css-label": "CSS libre",
+	"flexiskin-ui-plugin-color-settings-label": "Couleurs de la présentation",
+	"flexiskin-ui-plugin-navbar-colors-label": "Couleur de l'entête",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "Arrière-plan de l'entête",
+	"flexiskin-ui-plugin-colors-foreground-navbar-label": "Avant-plan de l'entête",
+	"flexiskin-ui-plugin-colors-highlight-navbar-label": "Mise en évidence de l'entête",
+	"flexiskin-ui-plugin-sidebar-primary-colors-label": "Couleurs de la barre latérale",
+	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "Fond de la barre latérale",
+	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "Avant-plan de la barre latérale",
+	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Mise en évidence de la barre latérale",
+	"flexiskin-ui-plugin-footer-colors-label": "Couleurs du bas de page",
+	"flexiskin-ui-plugin-colors-background-footer-label": "Fond du bas de page",
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "Avant-plan du pied de page"
 }

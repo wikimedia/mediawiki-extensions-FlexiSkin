@@ -4,6 +4,7 @@
 			"Ahmetlii",
 			"BaRaN6161 TURK",
 			"Gokalpselamet",
+			"Melissadilara",
 			"MuratTheTurkish"
 		]
 	},
@@ -82,5 +83,12 @@
 	"flexiskin-ui-plugin-content-colors-new-link-label": "Bozuk bağlantı",
 	"flexiskin-special-loading-ph": "FlexiSkin bileşenleri yüklüyor...",
 	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin yapılandırılmış, ancak şu anda devre dışı. Yeniden etkinleştirmek için \"Kaydet ve aktif et\" düğmesini kullanın. Etkinleştirmeden önce \"Önizleme\" düğmesini kullanarak mevcut durumu kontrol edebilirsiniz.",
-	"flexiskin-ui-plugin-free-css-label": "Özgür CSS"
+	"flexiskin-ui-plugin-free-css-label": "Özgür CSS",
+	"flexiskin-ui-plugin-color-settings-label": "Görünüm renkleri",
+	"flexiskin-ui-plugin-navbar-colors-label": "Başlık rengi",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "Başlık arkaplanı",
+	"flexiskin-ui-plugin-colors-foreground-navbar-label": "Başlık önplanı",
+	"flexiskin-ui-plugin-footer-colors-label": "Dipnot renkleri",
+	"flexiskin-ui-plugin-colors-background-footer-label": "Dipnot arkaplanı",
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "Dipnot önplanı"
 }
