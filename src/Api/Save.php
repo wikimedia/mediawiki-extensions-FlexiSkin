@@ -56,7 +56,7 @@ class Save extends FlexiSkinOperation {
 	 */
 	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
 		return $this->flexiSkinManager->save( $flexiSkin ) &&
-			$this->flexiSkinManager->setActive( true );
+			$this->flexiSkinManager->setActive( $flexiSkin, true );
 	}
 
 	/**

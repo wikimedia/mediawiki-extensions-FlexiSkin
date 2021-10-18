@@ -56,6 +56,9 @@
 	"ExtensionMessagesFiles": {
 		"FlexiSkinAlias": "languages/FlexiSkin.alias.php"
 	},
+	"AutoloadClasses": {
+		"RenameDefaultFile": "maintenance/RenameDefaultFile.php"
+	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\FlexiSkin\\": "src/"
 	},
@@ -244,6 +247,18 @@
 
 			}
 		}
+	},
+	"HookHandlers": {
+		"discovery-skin": {
+			"class": "\\MediaWiki\\Extension\\FlexiSkin\\HookHandler\\DiscoverySkin"
+		},
+		"convert-default-file": {
+			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\ConvertDefaultFile"
+		}
+	},
+	"Hooks": {
+		"MWStakeCommonUIRegisterSkinSlotComponents": "discovery-skin",
+		"LoadExtensionSchemaUpdates": "convert-default-file"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",

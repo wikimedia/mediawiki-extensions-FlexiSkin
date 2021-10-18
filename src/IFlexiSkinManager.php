@@ -17,20 +17,23 @@ interface IFlexiSkinManager {
 	public function save( IFlexiSkin $flexiSkin );
 
 	/**
+	 * @param string $skinname
 	 * @return IFlexiSkin|null
 	 */
-	public function getFlexiSkin(): ?IFlexiSkin;
+	public function getFlexiSkin( $skinname = '' ): ?IFlexiSkin;
 
 	/**
+	 * @param IFlexiSkin|null $flexiSkin
 	 * @param bool|null $active
 	 * @return bool
 	 */
-	public function setActive( $active = true ): bool;
+	public function setActive( ?IFlexiSkin $flexiSkin = null, $active = true ): bool;
 
 	/**
+	 * @param string $skinname
 	 * @return IFlexiSkin|null
 	 */
-	public function getActive(): ?IFlexiSkin;
+	public function getActive( $skinname = '' ): ?IFlexiSkin;
 
 	/**
 	 * Get all available plugins

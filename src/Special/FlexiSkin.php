@@ -30,8 +30,9 @@ class FlexiSkin extends SpecialPage {
 		/** @var IFlexiSkinManager $manager */
 		$manager = MediaWikiServices::getInstance()->getService( 'FlexiSkinManager' );
 		$flexiSkin = $manager->getFlexiSkin();
+		$skinName = $this->getSkin()->getSkinName();
 		if ( $flexiSkin === null ) {
-			$flexiSkin = $manager->create( 'default', [] );
+			$flexiSkin = $manager->create( $skinName, [] );
 		}
 		$config = $flexiSkin->getConfig();
 
