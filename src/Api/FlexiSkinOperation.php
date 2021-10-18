@@ -8,6 +8,16 @@ use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 
 abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 
+	protected function getAllowedParams() {
+		return parent::getAllowedParams() + [
+			'skinname' => [
+				static::PARAM_TYPE => 'string',
+				static::PARAM_REQUIRED => true,
+				static::PARAM_HELP_MSG => 'apihelp-flexiskin-skinoperation-param-skinname',
+			]
+		];
+	}
+
 	/**
 	 * @throws ApiUsageException
 	 */
@@ -40,12 +50,13 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 	 * @throws ApiUsageException
 	 */
 	protected function getFlexiSkin() {
-		$skin = $this->flexiSkinManager->getFlexiSkin();
+		$skinName = $this->getParameter( 'skinname' );
+		$skin = $this->flexiSkinManager->getFlexiSkin( $skinName );
 		if ( $skin === null ) {
 			if ( $this->mustExist() ) {
 				$this->dieWithError( 'Skin must exist!' );
 			}
-			return $this->flexiSkinManager->create( 'default', [] );
+			return $this->flexiSkinManager->create( $skinName, [] );
 		}
 
 		return $skin;

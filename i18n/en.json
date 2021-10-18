@@ -7,6 +7,7 @@
 	"action-flexiskin-viewspecialpage": "view [[Special:FlexiSkin|special page]] to customizing the skin",
 	"right-flexiskin-api": "Use the FlexiSkin APIs",
 	"action-flexiskin-api": "use the FlexiSkin APIs",
+	"apihelp-flexiskin-skinoperation-param-skinname": "The skin name to manage a FlexiSkin for",
 	"apihelp-flexiskin-activation-summary": "The activate module",
 	"apihelp-flexiskin-save-summary": "The save module",
 	"apihelp-flexiskin-preview-summary": "The preview module",

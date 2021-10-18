@@ -5,14 +5,15 @@ namespace MediaWiki\Extension\FlexiSkin;
 use ExtensionRegistry;
 use FormatJson;
 use MWException;
+use RequestContext;
 
 class FlexiSkinManager implements IFlexiSkinManager {
 	/** @var string */
 	private $fsPath = '';
-	/** @var string */
-	private $fileName = 'default.json';
 	/** @var IFlexiSkin|null */
 	private $currentSkin = null;
+	/** @var IFlexiSkin[] */
+	private $loadedSkins = [];
 
 	/**
 	 * @param string $path
@@ -26,7 +27,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 * @return int
 	 */
 	public function save( IFlexiSkin $flexiSkin ) {
-		$fullPath = $this->getFullPath();
+		$fullPath = $this->getFullPath( $flexiSkin->getName() );
 
 		if ( $flexiSkin->getId() === null ) {
 			$flexiSkin = new FlexiSkin(
@@ -60,34 +61,43 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
+	 * @param string $skinname
 	 * @return IFlexiSkin|null
 	 */
-	public function getFlexiSkin(): ?IFlexiSkin {
-		$this->load();
+	public function getFlexiSkin( $skinname = '' ): ?IFlexiSkin {
+		$this->load( false, $skinname );
 		return $this->currentSkin;
 	}
 
 	/**
 	 * @param bool|null $reload
+	 * @param string $skinname
 	 * @throws MWException
 	 * @return void
 	 */
-	private function load( $reload = false ) {
+	private function load( $reload = false, $skinname = '' ) {
+		if ( !empty( $skinname ) ) {
+				$this->currentSkin = isset( $this->loadedSkins[$skinname] )
+					? $this->loadedSkins[$skinname] : null;
+		}
 		if ( $this->currentSkin === null || $reload ) {
-			$fullPath = $this->getFullPath();
+			$fullPath = $this->getFullPath( $skinname );
 			if ( !file_exists( $fullPath ) ) {
-				return null;
+				return;
 			}
 			$json = file_get_contents( $fullPath );
-			$this->currentSkin = FlexiSkin::newFromData( FormatJson::decode( $json, 1 ) );
+			$newSkin = FlexiSkin::newFromData( FormatJson::decode( $json, 1 ) );
+			$skinname = $newSkin->getName();
+			$this->loadedSkins[$skinname] = $newSkin;
+			$this->currentSkin = $this->loadedSkins[$skinname];
 		}
 	}
 
 	/**
-	 * @return IFlexiSkin|null
+	 * @inheritDoc
 	 */
-	public function getActive() : ?IFlexiSkin {
-		$current = $this->getFlexiSkin();
+	public function getActive( $skinname = '' ) : ?IFlexiSkin {
+		$current = $this->getFlexiSkin( $skinname );
 		if ( $current && $current->isActive() ) {
 			return $current;
 		}
@@ -97,10 +107,12 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	/**
 	 * @inheritDoc
 	 */
-	public function setActive( $active = true ) : bool {
-		$current = $this->getFlexiSkin();
+	public function setActive( ?IFlexiSkin $flexiSkin = null, $active = true ) : bool {
+		$current = $flexiSkin;
 		if ( $current === null ) {
-			$current = $this->create( 'default', [] );
+			$context = RequestContext::getMain();
+			$currentSkin = $context->getSkin()->getSkinName();
+			$current = $this->create( $currentSkin, [] );
 		}
 		$newSkin = new FlexiSkin(
 			$current->getId(),
@@ -118,7 +130,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 * @return IFlexiSkin
 	 */
 	public function create( $name, $config ): IFlexiSkin {
-		$existingSkin = $this->getFlexiSkin();
+		$existingSkin = $this->getFlexiSkin( $name );
 		if ( $existingSkin === null ) {
 			return new FlexiSkin( null, $name, $config );
 		}
@@ -153,11 +165,16 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
+	 * @param string $skinname
 	 * @return string
 	 */
-	private function getFullPath() {
+	private function getFullPath( $skinname = '' ) {
 		$this->assertPath();
-		return $this->fsPath . $this->fileName;
+		if ( empty( $skinname ) ) {
+			$context = RequestContext::getMain();
+			$skinname  = $context->getSkin()->getSkinName();
+		}
+		return $this->fsPath . $skinname . '.json';
 	}
 
 	/**

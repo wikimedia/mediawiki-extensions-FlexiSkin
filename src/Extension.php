@@ -4,12 +4,17 @@ namespace MediaWiki\Extension\FlexiSkin;
 
 use MediaWiki\MediaWikiServices;
 use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
+use RequestContext;
 
 class Extension {
 	public static function overrideLessVars() {
 		/** @var IFlexiSkinManager $flexiSkinManager */
 		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
-		$active = $flexiSkinManager->getActive();
+		$skinname = '';
+		if ( MW_ENTRY_POINT === 'load' ) {
+			$skinname = RequestContext::getMain()->getRequest()->getVal( 'skin', '' );
+		}
+		$active = $flexiSkinManager->getActive( $skinname );
 		if ( !$active instanceof IFlexiSkin ) {
 			return;
 		}

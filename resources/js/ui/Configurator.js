@@ -410,6 +410,7 @@ flexiskin.ui.Configurator.prototype.doSave = function () {
 			this.getValue( 'save' ).done( function ( value ) {
 				new mw.Api().get( {
 					action: 'flexiskin-save',
+					skinname: this.skin.name,
 					config: JSON.stringify( value )
 				} ).done( function ( response ) {
 					if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
@@ -432,6 +433,7 @@ flexiskin.ui.Configurator.prototype.doDisable = function() {
 		if ( confirmed ) {
 			new mw.Api().get( {
 				action: 'flexiskin-activation',
+				skinname: this.skin.name,
 				active: 0
 			} ).done( function ( response ) {
 				if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
