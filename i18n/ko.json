@@ -66,5 +66,17 @@
 	"flexiskin-ui-widget-border-double": "이중선",
 	"flexiskin-ui-plugin-content-colors-link-label": "유효한 링크",
 	"flexiskin-ui-plugin-content-colors-new-link-label": "깨진 링크",
-	"flexiskin-special-loading-ph": "플렉스스킨이 구성 요소를 불러오고 있습니다..."
+	"flexiskin-special-loading-ph": "플렉스스킨이 구성 요소를 불러오고 있습니다...",
+	"flexiskin-ui-plugin-color-settings-label": "레이아웃 색",
+	"flexiskin-ui-plugin-navbar-colors-label": "헤더 색",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "헤더 배경",
+	"flexiskin-ui-plugin-colors-foreground-navbar-label": "헤더 전경",
+	"flexiskin-ui-plugin-colors-highlight-navbar-label": "헤더 강조",
+	"flexiskin-ui-plugin-sidebar-primary-colors-label": "사이드바 색",
+	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "사이드바 배경",
+	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "사이드바 전경",
+	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "사이드바 강조",
+	"flexiskin-ui-plugin-footer-colors-label": "푸터 색",
+	"flexiskin-ui-plugin-colors-background-footer-label": "푸터 배경",
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "푸터 전경"
 }
