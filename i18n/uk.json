@@ -14,6 +14,7 @@
 	"action-flexiskin-viewspecialpage": "перегляд [[Special:FlexiSkin|спеціальної сторінки]] налаштування теми",
 	"right-flexiskin-api": "Використовуйте API FlexiSkin",
 	"action-flexiskin-api": "використовувати API FlexiSkin",
+	"apihelp-flexiskin-skinoperation-param-skinname": "Назва скіна для керування FlexiSkin",
 	"apihelp-flexiskin-activation-summary": "Модуль активації",
 	"apihelp-flexiskin-save-summary": "Модуль збереження",
 	"apihelp-flexiskin-preview-summary": "Модуль попереднього перегляду",

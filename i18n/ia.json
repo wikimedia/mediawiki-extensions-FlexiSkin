@@ -9,6 +9,7 @@
 	"action-flexiskin-viewspecialpage": "vider le [[Special:FlexiSkin|pagina special]] pro personalisar le apparentia",
 	"right-flexiskin-api": "Usar le APIs de FlexiSkin",
 	"action-flexiskin-api": "usar le APIs de FlexiSkin",
+	"apihelp-flexiskin-skinoperation-param-skinname": "Le nomine del apparentia pro le qual gerer un FlexiSkin",
 	"apihelp-flexiskin-activation-summary": "Le modulo de activation",
 	"apihelp-flexiskin-save-summary": "Le modulo de salveguarda",
 	"apihelp-flexiskin-preview-summary": "Le modulo de previsualisation",

@@ -9,6 +9,7 @@
 	"action-flexiskin-viewspecialpage": "преглед на [[Special:FlexiSkin|службена страница]] за прилагодување на рувото",
 	"right-flexiskin-api": "Употреба на приложници во рувото „Флекси“",
 	"action-flexiskin-api": "употреба на приложници во рувото „Флекси“",
+	"apihelp-flexiskin-skinoperation-param-skinname": "Име на рувото за кое ќе се раководи „Флекси“",
 	"apihelp-flexiskin-activation-summary": "Модулот за активирање",
 	"apihelp-flexiskin-save-summary": "Модулот за зачувување",
 	"apihelp-flexiskin-preview-summary": "Модулот за преглед",
