@@ -168,12 +168,8 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 * @param string $skinname
 	 * @return string
 	 */
-	private function getFullPath( $skinname = '' ) {
+	private function getFullPath( $skinname = 'default' ) {
 		$this->assertPath();
-		if ( empty( $skinname ) ) {
-			$context = RequestContext::getMain();
-			$skinname  = $context->getSkin()->getSkinName();
-		}
 		return $this->fsPath . $skinname . '.json';
 	}
 
