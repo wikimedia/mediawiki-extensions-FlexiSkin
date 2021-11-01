@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Bruno44101",
 			"Fitoschido",
 			"Macofe"
 		]
@@ -8,6 +9,7 @@
 	"flexiskin-extension-desc": "Permite la personalización de la apariencia",
 	"flexiskin": "FlexiSkin",
 	"action-flexiskin-viewspecialpage": "ver la página especial \"Flexiskin\"",
+	"apihelp-flexiskin-skinoperation-param-skinname": "El nombre de la piel para administrar un FlexiSkin",
 	"apihelp-flexiskin-activation-summary": "El módulo «activate»",
 	"apihelp-flexiskin-save-summary": "El módulo «save»",
 	"apihelp-flexiskin-preview-summary": "El módulo «preview»",
