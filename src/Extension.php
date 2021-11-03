@@ -7,13 +7,35 @@ use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
 use RequestContext;
 
 class Extension {
+
+	/**
+	 * @param User $user
+	 * @return void
+	 */
+	public static function onUserLoadAfterLoadFromSession( $user ) {
+		$skinname = RequestContext::getMain()->getSkin()->getSkinName();
+		static::loadFlexiSkin( $skinname );
+	}
+
+	/**
+	 * @return void
+	 */
 	public static function overrideLessVars() {
+		if ( MW_ENTRY_POINT !== 'load' ) {
+			return;
+		}
+		$skinname = RequestContext::getMain()->getRequest()->getVal( 'skin', '' );
+		static::loadFlexiSkin( $skinname );
+	}
+
+	/**
+	 *
+	 * @param string $skinname
+	 * @return void
+	 */
+	private static function loadFlexiSkin( $skinname ) {
 		/** @var IFlexiSkinManager $flexiSkinManager */
 		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
-		$skinname = '';
-		if ( MW_ENTRY_POINT === 'load' ) {
-			$skinname = RequestContext::getMain()->getRequest()->getVal( 'skin', '' );
-		}
 		$active = $flexiSkinManager->getActive( $skinname );
 		if ( !$active instanceof IFlexiSkin ) {
 			return;
@@ -30,8 +52,8 @@ class Extension {
 			$vars = array_merge( $vars, $plugin->getLessVars( $active ) );
 		}
 
-		static::setGlobalImages( $config, 'logo', 'bsgOverrideLogo' );
-		static::setGlobalImages( $config, 'favicon', 'bsgOverrideFavicon' );
+		static::setGlobalImages( $config, 'logo', 'wgLogo' );
+		static::setGlobalImages( $config, 'favicon', 'wgFavicon' );
 		static::applyFreeCSS( $config );
 
 		$lessVars = LessVars::getInstance();

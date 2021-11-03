@@ -258,7 +258,8 @@
 	},
 	"Hooks": {
 		"MWStakeCommonUIRegisterSkinSlotComponents": "discovery-skin",
-		"LoadExtensionSchemaUpdates": "convert-default-file"
+		"LoadExtensionSchemaUpdates": "convert-default-file",
+		"UserLoadAfterLoadFromSession": "MediaWiki\\Extension\\FlexiSkin\\Extension::onUserLoadAfterLoadFromSession"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
