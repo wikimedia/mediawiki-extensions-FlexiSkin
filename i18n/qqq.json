@@ -1,5 +1,12 @@
 {
-	"@metadata": {},
+	"@metadata": {
+		"authors": [
+			"Raymond",
+			"Robby",
+			"Shirayuki",
+			"Umherirrender"
+		]
+	},
 	"flexiskin-extension-desc": "{{desc|name=FlexiSkin|url=https://www.mediawiki.org/wiki/Extension:FlexiSkin}}",
 	"flexiskin-extension-name": "{{name}}",
 	"right-flexiskin-viewspecialpage": "{{doc-right|flexiskin-viewspecialpage}}",
@@ -18,7 +25,7 @@
 	"apihelp-flexiskin-save-param-id": "{{doc-apihelp-param|flexiskin-save|id}}",
 	"apihelp-flexiskin-save-param-name": "{{doc-apihelp-param|flexiskin-save|name}}",
 	"apihelp-flexiskin-activation-param-active": "{{doc-apihelp-param|flexiskin-activation|active}}",
-	"flexiskin": "{{doc-special}}",
+	"flexiskin": "{{optional}}\n{{doc-special}}",
 	"flexiskin-ui-preview-loading-message": "Preview loading info message",
 	"flexiskin-ui-plugin-color-presets-label": "Label for the plugin \"color_presets\"",
 	"flexiskin-ui-plugin-colors-label": "Label for the plugin \"colors\"",
@@ -39,7 +46,7 @@
 	"flexiskin-ui-plugin-color-presets-custom-header": "Label for the custom colors section of colors plugin",
 	"flexiskin-ui-plugin-color-presets-custom-dirty-warning": "Warning message when custom colors are dirty",
 	"flexiskin-ui-configurator-button-preview-label": "Label for the preview button",
-	"flexiskin-ui-configurator-button-save-label": "Label for the save button",
+	"flexiskin-ui-configurator-button-save-label": "Label for the save button\n{{identical|Save}}",
 	"flexiskin-ui-error-preview-fail": "Error message when skin preview failed",
 	"flexiskin-ui-error-save-fail": "Error message when skin save failed",
 	"flexiskin-ui-plugin-color-presets-customize-label": "Label the button for customizing a color scheme",
@@ -59,14 +66,14 @@
 	"flexiskin-ui-plugin-content-header-h4-label": "Label for the \"h4\" section",
 	"flexiskin-ui-plugin-content-header-h5-label": "Label for the \"h5\" section",
 	"flexiskin-ui-plugin-content-header-h6-label": "Label for the \"h6\" section",
-	"flexiskin-ui-plugin-content-header-color-label": "Field label",
+	"flexiskin-ui-plugin-content-header-color-label": "Field label\n{{Identical|Color}}",
 	"flexiskin-ui-plugin-content-header-font-size-label": "Field label",
 	"flexiskin-ui-plugin-content-header-underline-label": "Field label",
 	"flexiskin-font-weight-light": "Label for the bold level \"light\"",
 	"flexiskin-font-weight-regular": "Label for the bold level \"regular\"",
 	"flexiskin-font-weight-medium": "Label for the bold level \"medium\"",
 	"flexiskin-font-weight-bold": "Label for the bold level \"bold\"",
-	"flexiskin-ui-plugin-content-colors-label": "Label for a section",
+	"flexiskin-ui-plugin-content-colors-label": "Label for a section\n{{identical|Color}}",
 	"flexiskin-ui-plugin-content-font-label": "Field label",
 	"flexiskin-ui-plugin-content-font-family-label": "Field label",
 	"flexiskin-ui-plugin-content-font-weight-label": "Field label",
