@@ -43,7 +43,7 @@ class GlobalActionsManager extends RestrictedTextLink {
 	 * @return Message
 	 */
 	public function getText() : Message {
-		return Message::newFromKey( 'flexiskin' );
+		return Message::newFromKey( 'flexiskin-label' );
 	}
 
 	/**
@@ -57,7 +57,7 @@ class GlobalActionsManager extends RestrictedTextLink {
 	 * @return Message
 	 */
 	public function getAriaLabel() : Message {
-		return Message::newFromKey( 'flexiskin' );
+		return Message::newFromKey( 'flexiskin-label' );
 	}
 
 }

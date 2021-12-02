@@ -9,6 +9,7 @@
 	},
 	"flexiskin-extension-desc": "{{desc|name=FlexiSkin|url=https://www.mediawiki.org/wiki/Extension:FlexiSkin}}",
 	"flexiskin-extension-name": "{{name}}",
+	"flexiskin-label": "Label for flexiskin",
 	"right-flexiskin-viewspecialpage": "{{doc-right|flexiskin-viewspecialpage}}",
 	"action-flexiskin-viewspecialpage": "{{doc-action|flexiskin-viewspecialpage}}",
 	"right-flexiskin-api": "{{doc-right|flexiskin-api}}",
