@@ -55,7 +55,7 @@ flexiskin.ui.plugin.Images.prototype.onPreview = function ( data, itemId ) {
 	reader.onloadend = function () {
 		var b64 = reader.result;
 		if ( itemId === 'images/logo' ) {
-			$( '#p-logo a.mw-wiki-logo' ).css( 'background-image', 'url("' + b64 + '")' );
+			$( 'a.mw-wiki-logo' ).css( 'background-image', 'url("' + b64 + '")' );
 		}
 
 		if ( itemId === 'images/favicon' ) {
