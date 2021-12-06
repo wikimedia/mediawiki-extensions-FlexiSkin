@@ -6,6 +6,7 @@
 		]
 	},
 	"flexiskin-extension-desc": "스킨의 사용자 지정 허용",
+	"flexiskin-label": "스킨",
 	"flexiskin": "스킨 환경 설정",
 	"action-flexiskin-viewspecialpage": "특수문서 \"Flexiskin\" 보기",
 	"apihelp-flexiskin-skinoperation-param-skinname": "FlexiSkin을 관리할 스킨 이름",

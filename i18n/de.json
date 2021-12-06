@@ -11,8 +11,8 @@
 		]
 	},
 	"flexiskin-extension-desc": "Ermöglicht die Anpassung des Skins",
-	"flexiskin": "Einstellungen zur Benutzeroberfläche",
 	"flexiskin-label": "Oberfläche",
+	"flexiskin": "Einstellungen zur Benutzeroberfläche",
 	"right-flexiskin-viewspecialpage": "Ansehen der [[Special:FlexiSkin|Spezialseite]] zum Anpassen des Skins",
 	"action-flexiskin-viewspecialpage": "die [[Special:FlexiSkin|Spezialseite]] für Skin-Einstellungen anzusehen",
 	"right-flexiskin-api": "Verwenden der FlexiSkin-APIs",

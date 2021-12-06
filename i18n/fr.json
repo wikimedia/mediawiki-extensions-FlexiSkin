@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Ajeje Brazorf",
 			"DreZhsh",
 			"Gomoko",
 			"McDutchie",
@@ -11,6 +12,7 @@
 	},
 	"flexiskin-extension-desc": "Autorise la personnalisation de l'habillage",
 	"flexiskin-extension-name": "FlexiSkin",
+	"flexiskin-label": "Habillage",
 	"flexiskin": "FlexiSkin",
 	"right-flexiskin-viewspecialpage": "afficher la [[Special:FlexiSkin|page spéciale]] pour personnaliser l’habillage",
 	"action-flexiskin-viewspecialpage": "afficher la [[Special:FlexiSkin|page spéciale]] pour personnaliser l’habillage",
