@@ -2,6 +2,7 @@ flexiskin.ui.widget.FontPicker = function ( cfg ) {
 	cfg = cfg || {};
 
 	cfg.options = this.makeOptionsFromFlat( [
+		"Lato",
 		"Arial",
 		"Times New Roman",
 		"Courier",
@@ -34,6 +35,7 @@ flexiskin.ui.widget.FontPicker.prototype.getValue = function() {
 		// Quote values with spaces
 		return '\"' + value + '\"';
 	}
+	return value;
 };
 
 flexiskin.ui.widget.FontPicker.prototype.makeOptionsFromFlat = function( flat ) {
