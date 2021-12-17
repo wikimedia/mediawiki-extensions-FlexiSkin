@@ -21,6 +21,17 @@ class RenameDefaultFile extends LoggedUpdateMaintenance {
 		} else {
 			$this->output( "no default.json available, skipping\n" );
 		}
+		if ( file_exists( $directory . 'bluespicecalumma.json' ) ) {
+			$json = file_get_contents( $calummaName );
+			$data = json_decode( $json, true );
+			if ( $data['name'] != 'bluespicecalumma' ) {
+				$data['name'] = 'bluespicecalumma';
+				$updatedJson = json_encode( $data );
+				file_put_contents( $calummaName, $updatedJson );
+				$this->output( "fix name of skin in bluespicecalumma.json\n" );
+			}
+		}
+		return true;
 	}
 
 	protected function getUpdateKey() {
