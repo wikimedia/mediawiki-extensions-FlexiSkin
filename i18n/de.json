@@ -19,6 +19,7 @@
 	"action-flexiskin-viewspecialpage": "die [[Special:FlexiSkin|Spezialseite]] für Skin-Einstellungen anzusehen",
 	"right-flexiskin-api": "Verwenden der FlexiSkin-APIs",
 	"action-flexiskin-api": "verwenden der FlexiSkin-APIs",
+	"apihelp-flexiskin-skinoperation-param-skinname": "Der Oberflächenname zur Verwaltung eines FlexiSkins für",
 	"apihelp-flexiskin-activation-summary": "Das Aktivierungsmodul",
 	"apihelp-flexiskin-save-summary": "Das Speichermodul",
 	"apihelp-flexiskin-preview-summary": "Das Vorschau-Modul",
