@@ -38,6 +38,7 @@
 			"SubscriberRegistry": {}
 		}
 	},
+	"callback": "mwsInitComponents",
 	"MessagesDirs": {
 		"FlexiSkin": [
 			"i18n"
