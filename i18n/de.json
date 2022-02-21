@@ -8,7 +8,8 @@
 			"Mschlindwein",
 			"Umherirrender",
 			"Umlaut",
-			"Zabe"
+			"Zabe",
+			"Kghbln"
 		]
 	},
 	"flexiskin-extension-desc": "Ermöglicht die Anpassung des Skins",
@@ -53,7 +54,7 @@
 	"flexiskin-ui-configurator-button-preview-label": "Vorschau",
 	"flexiskin-ui-configurator-button-save-label": "Speichern & aktivieren",
 	"flexiskin-ui-error-preview-fail": "Vorschau des Skins fehlgeschlagen!",
-	"flexiskin-ui-error-save-fail": "Fehler beim Speichern des Skins!",
+	"flexiskin-ui-error-save-fail": "Fehler beim Speichern der Benutzeroberfläche",
 	"flexiskin-ui-plugin-color-presets-customize-label": "anpassen …",
 	"flexiskin-configurator-prompt-on-save": "Änderungen am Skin werden sofort übernommen und wirken sich auf alle Benutzer im Wiki aus. Bist du sicher, dass du fortfahren möchtest?",
 	"flexiskin-ui-plugin-layout-label": "Layout",
