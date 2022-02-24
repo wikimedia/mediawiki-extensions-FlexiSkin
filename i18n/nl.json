@@ -4,6 +4,9 @@
 			"Romaine"
 		]
 	},
+	"apihelp-flexiskin-new-summary": "De nieuwe module",
+	"flexiskin-ui-plugin-colors-label": "Thematisering",
+	"flexiskin-ui-plugin-colors-background-label": "Achtergrondkleuren",
 	"flexiskin-ui-plugin-colors-background-primary-label": "Kleur 1",
 	"flexiskin-ui-plugin-colors-background-secondary-label": "Kleur 2",
 	"flexiskin-ui-plugin-colors-background-tertiary-label": "Kleur 3",
