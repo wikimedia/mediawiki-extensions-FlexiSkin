@@ -51,5 +51,7 @@
 	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "برجسته‌سازی نوار کناری",
 	"flexiskin-ui-plugin-footer-colors-label": "رنگ‌های پاورقی",
 	"flexiskin-ui-plugin-colors-background-footer-label": "پس‌زمینهٔ پاورقی",
-	"flexiskin-ui-plugin-colors-foreground-footer-label": "پیش‌زمینهٔ پاورقی"
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "پیش‌زمینهٔ پاورقی",
+	"apihelp-flexiskin-preview-summary": "پودمان پیش‌نمایش",
+	"flexiskin-ui-preview-loading-message": "در حال ایجاد پیش‌نمایش..."
 }
