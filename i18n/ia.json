@@ -92,5 +92,6 @@
 	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Accentuation del barra lateral",
 	"flexiskin-ui-plugin-footer-colors-label": "Colores del pede",
 	"flexiskin-ui-plugin-colors-background-footer-label": "Fundo del pede",
-	"flexiskin-ui-plugin-colors-foreground-footer-label": "Prime plano del pede"
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "Prime plano del pede",
+	"flexiskin-label": "Apparentia"
 }
