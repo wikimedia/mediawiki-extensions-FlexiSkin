@@ -79,5 +79,9 @@
 	"flexiskin-ui-plugin-content-header-h4-label": "عنوان ۴ (h4)",
 	"flexiskin-ui-plugin-content-header-h5-label": "عنوان ۵ (h5)",
 	"flexiskin-ui-plugin-content-header-h6-label": "عنوان ۶ (h6)",
-	"flexiskin-ui-plugin-content-font-family-label": "خانوادهٔ قلم اصلی"
+	"flexiskin-ui-plugin-content-font-family-label": "خانوادهٔ قلم اصلی",
+	"flexiskin-extension-desc": "امکان سفارشی‌سازی پوسته را فراهم می‌کند",
+	"flexiskin-label": "پوسته",
+	"right-flexiskin-viewspecialpage": "مشاهدهٔ [[Special:FlexiSkin|صفحهٔ ویژه]] برای سفارشی‌سازی پوسته",
+	"action-flexiskin-viewspecialpage": "مشاهدهٔ [[Special:FlexiSkin|صفحهٔ ویژه]] برای سفارشی‌سازی پوسته"
 }
