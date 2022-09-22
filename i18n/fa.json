@@ -4,6 +4,10 @@
 			"Jeeputer"
 		]
 	},
+	"flexiskin-extension-desc": "امکان سفارشی‌سازی پوسته را فراهم می‌کند",
+	"flexiskin-label": "پوسته",
+	"right-flexiskin-viewspecialpage": "مشاهدهٔ [[Special:FlexiSkin|صفحهٔ ویژه]] برای سفارشی‌سازی پوسته",
+	"action-flexiskin-viewspecialpage": "مشاهدهٔ [[Special:FlexiSkin|صفحهٔ ویژه]] برای سفارشی‌سازی پوسته",
 	"apihelp-flexiskin-activation-summary": "پودمان فعال‌سازی",
 	"apihelp-flexiskin-save-summary": "پودمان ذخیره‌سازی",
 	"apihelp-flexiskin-preview-summary": "پودمان پیش‌نمایش",
