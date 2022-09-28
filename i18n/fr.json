@@ -27,7 +27,7 @@
 	"apihelp-flexiskin-restore-summary": "Le module de restauration",
 	"apihelp-flexiskin-preview-param-config": "Le paramètre de configuration",
 	"apihelp-flexiskin-save-param-config": "Le paramètre de configuration",
-	"apihelp-flexiskin-save-param-id": "Le paramètre id",
+	"apihelp-flexiskin-save-param-id": "Le paramètre identifiant",
 	"apihelp-flexiskin-save-param-name": "Le paramètre nom",
 	"apihelp-flexiskin-activation-param-active": "ID de l'habillage actif",
 	"flexiskin-ui-preview-loading-message": "Aperçu en cours de génération...",
