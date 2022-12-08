@@ -29,7 +29,7 @@
 	"apihelp-flexiskin-save-param-config": "Le paramètre de configuration",
 	"apihelp-flexiskin-save-param-id": "Le paramètre identifiant",
 	"apihelp-flexiskin-save-param-name": "Le paramètre nom",
-	"apihelp-flexiskin-activation-param-active": "ID de l'habillage actif",
+	"apihelp-flexiskin-activation-param-active": "Identifiant de l’habillage actif",
 	"flexiskin-ui-preview-loading-message": "Aperçu en cours de génération...",
 	"flexiskin-ui-plugin-color-presets-label": "Couleurs prédéfinies",
 	"flexiskin-ui-plugin-colors-label": "Thème",
