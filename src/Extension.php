@@ -60,6 +60,8 @@ class Extension {
 		foreach ( $vars as $var => $value ) {
 			$lessVars->setVar( $var, $value );
 		}
+		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
+		$hookContainer->run( 'FlexiSkinAfterLoad', [ $active ] );
 	}
 
 	/**
