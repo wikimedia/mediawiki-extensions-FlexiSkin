@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kly"
+			"Kly",
+			"捍粵者"
 		]
 	},
 	"flexiskin-extension-desc": "允許自訂外觀",
@@ -46,7 +47,7 @@
 	"flexiskin-ui-error-save-fail": "儲存外觀失敗！",
 	"flexiskin-ui-plugin-color-presets-customize-label": "自訂…",
 	"flexiskin-configurator-prompt-on-save": "外觀的更改將會立刻套用，並且會影響 Wiki 上的所有使用者。您確定您要繼續嗎？",
-	"flexiskin-ui-plugin-layout-label": "布局",
+	"flexiskin-ui-plugin-layout-label": "佈局",
 	"flexiskin-ui-plugin-layout-content-width-label": "內容寬度",
 	"flexiskin-ui-plugin-colors-foreground-content-label": "內容色彩",
 	"flexiskin-ui-plugin-colors-background-content-label": "內容背景",
