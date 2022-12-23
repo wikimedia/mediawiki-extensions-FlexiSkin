@@ -5,5 +5,10 @@
 		]
 	},
 	"flexiskin-ui-plugin-layout-label": "Postavitev",
-	"flexiskin-font-weight-regular": "Običajna"
+	"flexiskin-font-weight-regular": "Običajna",
+	"flexiskin-ui-error-preview-fail": "Predogled preobleke ni uspel!",
+	"flexiskin-ui-error-save-fail": "Shranjevanje preobleke ni uspelo!",
+	"flexiskin-ui-error-disable-fail": "Onemogočenje preobleke ni uspelo",
+	"flexiskin-ui-plugin-content-header-color-label": "Barva",
+	"flexiskin-ui-plugin-content-colors-label": "Barve"
 }
