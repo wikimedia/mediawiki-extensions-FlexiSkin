@@ -10,5 +10,9 @@
 	"flexiskin-ui-error-save-fail": "Shranjevanje preobleke ni uspelo!",
 	"flexiskin-ui-error-disable-fail": "Onemogočenje preobleke ni uspelo",
 	"flexiskin-ui-plugin-content-header-color-label": "Barva",
-	"flexiskin-ui-plugin-content-colors-label": "Barve"
+	"flexiskin-ui-plugin-content-colors-label": "Barve",
+	"apihelp-flexiskin-preview-summary": "Predogledni modul",
+	"flexiskin-ui-preview-loading-message": "Predogled se ustvarja ...",
+	"flexiskin-ui-configurator-button-preview-label": "Predogled",
+	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin je konfiguriran, vendar trenutno onemogočen. Če ga želite znova omogočiti, uporabite gumb »Shrani in aktiviraj«. Trenutno stanje lahko preverite z gumbom \"Predogled\", preden ga aktivirate."
 }
