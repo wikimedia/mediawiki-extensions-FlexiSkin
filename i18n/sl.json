@@ -14,5 +14,9 @@
 	"flexiskin-ui-plugin-content-header-color-label": "Barva",
 	"flexiskin-font-weight-regular": "Običajna",
 	"flexiskin-ui-plugin-content-colors-label": "Barve",
-	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin je konfiguriran, vendar trenutno onemogočen. Če ga želite znova omogočiti, uporabite gumb »Shrani in aktiviraj«. Trenutno stanje lahko preverite z gumbom \"Predogled\", preden ga aktivirate."
+	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin je konfiguriran, vendar trenutno onemogočen. Če ga želite znova omogočiti, uporabite gumb »Shrani in aktiviraj«. Trenutno stanje lahko preverite z gumbom \"Predogled\", preden ga aktivirate.",
+	"flexiskin-ui-plugin-sidebar-primary-colors-label": "Barve stranske letvice",
+	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "Ozadje stranske letvice",
+	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "Osprednje stranske letvice",
+	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Poudarjanje stranske letvice"
 }
