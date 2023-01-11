@@ -18,5 +18,11 @@
 	"flexiskin-ui-plugin-sidebar-primary-colors-label": "Barve stranske letvice",
 	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "Ozadje stranske letvice",
 	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "Osprednje stranske letvice",
-	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Poudarjanje stranske letvice"
+	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Poudarjanje stranske letvice",
+	"flexiskin-ui-plugin-colors-background-label": "Barve ozadja",
+	"flexiskin-ui-plugin-colors-background-body-label": "Ozadje telesa",
+	"flexiskin-ui-plugin-colors-background-content-label": "Ozadje vsebine",
+	"flexiskin-special-loading-ph": "FlexiSkin nalaga komponente ...",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "Ozadje glave",
+	"flexiskin-ui-plugin-colors-background-footer-label": "Ozadje noge"
 }
