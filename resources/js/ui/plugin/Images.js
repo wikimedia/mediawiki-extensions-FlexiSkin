@@ -85,12 +85,15 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 		};
 	}
 
-	var dfd = $.Deferred(),
-		file,
+	function getTargetFilename( file ) {
+		var nameForFile = itemId.replace( '/', '-' );
+		return 'flexiskin-' + nameForFile + '.' + file.name.split( '.' ).pop()
+	}
 
-	 nameForFile = itemId.replace( '/', '-' );
+	var dfd = $.Deferred();
+
 	// Get currently choosen file
-	file = this.getValue();
+	var file = this.getValue();
 	if ( !( file instanceof File ) ) {
 		// Nothing selected
 		return dfd.reject();
@@ -103,7 +106,7 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 	} else {
 		// If file is actually new, upload it
 		new mw.Api().upload( file, {
-			filename: 'flexiskin-' + nameForFile + '.' + file.name.split( '.' ).pop(),
+			filename: getTargetFilename( file ),
 			ignorewarnings: 1
 		} ).done( function ( response ) {
 			if ( response.hasOwnProperty( 'upload' ) ) {
@@ -114,11 +117,13 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 				}
 			}
 		} ).fail( function ( error, result ) {
-			if ( error === 'exists' || error === 'duplicate' && result.hasOwnProperty( 'upload' ) ) {
-				dfd.resolve( getUploadData( result.upload.filename, file ) );
+			let filename = getTargetFilename( file );
+			if ( error === 'exists' || error === 'fileexists-no-change' || error === 'duplicate' ) {
+				dfd.resolve( getUploadData( filename, file ) );
+			} else {
+				// Cannot upload file
+				dfd.reject();
 			}
-			// Cannot upload file
-			dfd.reject();
 		} );
 	}
 
