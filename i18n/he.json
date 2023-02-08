@@ -3,13 +3,22 @@
 		"authors": [
 			"Amire80",
 			"ישראל קלר",
-			"מגזין יהלום"
+			"מגזין יהלום",
+			"שוקו מוקה"
 		]
 	},
 	"apihelp-flexiskin-save-summary": "מודל השמירה",
 	"apihelp-flexiskin-delete-summary": "מודול המחיקה",
 	"apihelp-flexiskin-save-param-id": "פרמטר הזיהוי",
 	"apihelp-flexiskin-save-param-name": "פרמטר השם",
+	"flexiskin-ui-plugin-colors-background-label": "צבעי הרקע",
+	"flexiskin-ui-plugin-colors-background-primary-label": "צבע 1",
+	"flexiskin-ui-plugin-colors-background-secondary-label": "צבע 2",
+	"flexiskin-ui-plugin-colors-background-tertiary-label": "צבע 3",
+	"flexiskin-ui-plugin-colors-background-quaternary-label": "צבע 4",
+	"flexiskin-ui-plugin-colors-foreground-primary-label": "צבע 1",
+	"flexiskin-ui-plugin-colors-foreground-secondary-label": "צבע 2",
+	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "צבע 3",
 	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "צבע 4",
 	"flexiskin-ui-configurator-button-preview-label": "תצוגה מקדימה",
 	"flexiskin-ui-configurator-button-save-label": "לשמור ולהפעיל",
