@@ -61,7 +61,7 @@
 	"flexiskin-ui-plugin-layout-content-width-label": "Breite des Inhalts",
 	"flexiskin-ui-plugin-colors-foreground-content-label": "Farbe des Inhalts",
 	"flexiskin-ui-plugin-colors-background-content-label": "Inhalt Hintergrund",
-	"flexiskin-ui-configurator-button-disable-label": "Deaktiviert",
+	"flexiskin-ui-configurator-button-disable-label": "Deaktivieren",
 	"flexiskin-configurator-prompt-on-disable": "Mit der Deaktivierung der benutzerdefinierten Oberfläche werden alle Einstellungen für alle Benutzer auf die Standardwerte zurückgesetzt. Vorgenommene Änderungen gehen nicht verloren und können jederzeit wieder angewendet werden. Möchtest du fortfahren?",
 	"flexiskin-ui-error-disable-fail": "Deaktivierung des Skins fehlgeschlagen",
 	"flexiskin-ui-plugin-content-label": "Inhalt",
