@@ -119,10 +119,10 @@ flexiskin.ui.Configurator.prototype.getGroupLayouts = function ( items ) {
 				if ( data && data.hasOwnProperty( 'label' ) ) {
 					label = data.label;
 				}
-				layout.addItems( new OO.ui.FieldLayout( items[ id ], {
+				layout.addItems( [ new OO.ui.FieldLayout( items[ id ], {
 					label: label,
 					align: 'top'
-				} ) );
+				} ) ] );
 			}
 			if ( !fieldLayouts.hasOwnProperty( groups[ i ] ) ) {
 				fieldLayouts[ groups[ i ] ] = layout;
