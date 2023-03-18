@@ -58,7 +58,6 @@
 		"semi-style": "warn",
 		"dot-notation": "warn",
 		"no-new": "warn",
-		"no-extra-bind": "warn",
-		"es/no-object-values": "warn"
+		"no-extra-bind": "warn"
 	}
 }
