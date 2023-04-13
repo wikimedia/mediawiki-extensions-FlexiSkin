@@ -87,7 +87,7 @@ class FlexiSkin implements IFlexiSkin {
 	/**
 	 * @return array
 	 */
-	public function jsonSerialize() {
+	public function jsonSerialize(): array {
 		return [
 			'id' => $this->getId(),
 			'name' => $this->getName(),
