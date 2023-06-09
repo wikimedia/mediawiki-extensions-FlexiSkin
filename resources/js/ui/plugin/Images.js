@@ -120,6 +120,11 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 			let filename = getTargetFilename( file );
 			if ( error === 'exists' || error === 'fileexists-no-change' || error === 'duplicate' ) {
 				dfd.resolve( getUploadData( filename, file ) );
+			} else if ( result.hasOwnProperty( 'upload' ) && result.upload.hasOwnProperty( 'warnings' ) ) {
+				let warnings = result.upload.warnings;
+				if ( warnings.hasOwnProperty( 'exists' ) ) {
+					dfd.resolve( getUploadData( filename, file ) );
+				}
 			} else {
 				// Cannot upload file
 				dfd.reject();
