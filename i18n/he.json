@@ -22,5 +22,16 @@
 	"flexiskin-ui-plugin-colors-background-quaternary-label": "צבע 4",
 	"flexiskin-ui-plugin-colors-foreground-primary-label": "צבע 1",
 	"flexiskin-ui-plugin-colors-foreground-secondary-label": "צבע 2",
-	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "צבע 3"
+	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "צבע 3",
+	"flexiskin-ui-plugin-images-label": "תמונות",
+	"flexiskin-ui-plugin-color-presets-customize-label": "התאמה אישית...",
+	"flexiskin-ui-plugin-content-label": "תוכן",
+	"flexiskin-ui-plugin-content-header-label": "כותרות",
+	"flexiskin-ui-plugin-content-header-color-label": "צבע",
+	"flexiskin-font-weight-light": "דק",
+	"flexiskin-font-weight-regular": "רגיל",
+	"flexiskin-font-weight-bold": "בולט",
+	"flexiskin-ui-plugin-content-colors-label": "צבעים",
+	"flexiskin-ui-plugin-content-font-label": "גופן",
+	"flexiskin-ui-plugin-content-font-weight-label": "עובי"
 }
