@@ -33,5 +33,13 @@
 	"flexiskin-font-weight-bold": "בולט",
 	"flexiskin-ui-plugin-content-colors-label": "צבעים",
 	"flexiskin-ui-plugin-content-font-label": "גופן",
-	"flexiskin-ui-plugin-content-font-weight-label": "עובי"
+	"flexiskin-ui-plugin-content-font-weight-label": "עובי",
+	"flexiskin-ui-plugin-content-header-h1-label": "כותרת 1 (h1)",
+	"flexiskin-ui-plugin-content-header-h2-label": "כותרת 2 (h2)",
+	"flexiskin-ui-plugin-content-header-h3-label": "כותרת 3 (h3)",
+	"flexiskin-ui-plugin-content-header-h4-label": "כותרת 4 (h4)",
+	"flexiskin-ui-plugin-content-header-h5-label": "כותרת 5 (h5)",
+	"flexiskin-ui-plugin-content-header-h6-label": "כותרת 6 (h6)",
+	"flexiskin-ui-plugin-content-header-font-size-label": "גודל גופן",
+	"flexiskin-ui-plugin-content-header-underline-label": "קו תחתי"
 }
