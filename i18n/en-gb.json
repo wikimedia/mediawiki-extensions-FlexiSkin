@@ -18,7 +18,6 @@
 	"flexiskin-ui-plugin-colors-foreground-content-label": "Content colour",
 	"flexiskin-ui-plugin-content-header-color-label": "Colour",
 	"flexiskin-ui-plugin-content-colors-label": "Colours",
-	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin is configured, but currently disabled. To re-enable it, use 'Save & activate' button. You can check the current state by using the 'Preview' button before activating it",
 	"flexiskin-ui-plugin-color-settings-label": "Layout colours",
 	"flexiskin-ui-plugin-navbar-colors-label": "Header colour",
 	"flexiskin-ui-plugin-sidebar-primary-colors-label": "Sidebar colours",
