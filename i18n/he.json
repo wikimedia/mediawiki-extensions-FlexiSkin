@@ -4,6 +4,7 @@
 			"Amire80",
 			"ישראל קלר",
 			"מגזין יהלום",
+			"מקף",
 			"שוקו מוקה"
 		]
 	},
@@ -41,5 +42,27 @@
 	"flexiskin-ui-plugin-content-header-h5-label": "כותרת 5 (h5)",
 	"flexiskin-ui-plugin-content-header-h6-label": "כותרת 6 (h6)",
 	"flexiskin-ui-plugin-content-header-font-size-label": "גודל גופן",
-	"flexiskin-ui-plugin-content-header-underline-label": "קו תחתי"
+	"flexiskin-ui-plugin-content-header-underline-label": "קו תחתי",
+	"flexiskin-label": "עיצוב",
+	"flexiskin-ui-plugin-images-logo-label": "סמליל",
+	"flexiskin-ui-error-save-fail": "שמירת העיצוב נכשלה!",
+	"flexiskin-ui-plugin-layout-label": "פריסה",
+	"flexiskin-ui-plugin-layout-content-width-label": "רוחב תוכן",
+	"flexiskin-ui-plugin-colors-foreground-content-label": "צבע תוכן",
+	"flexiskin-ui-plugin-colors-background-content-label": "רקע תוכן",
+	"flexiskin-ui-configurator-button-disable-label": "כיבוי",
+	"flexiskin-ui-widget-border-solid": "מוצק",
+	"flexiskin-ui-widget-border-dashed": "מקווקו",
+	"flexiskin-ui-widget-border-dotted": "מנוקד",
+	"flexiskin-ui-widget-border-double": "כפול",
+	"flexiskin-ui-plugin-content-colors-link-label": "קישור תקין",
+	"flexiskin-ui-plugin-content-colors-new-link-label": "קישור שבור",
+	"flexiskin-special-loading-ph": "FlexiSkin טוען רכיבים...",
+	"flexiskin-ui-plugin-free-css-label": "CSS חופשי",
+	"flexiskin-ui-plugin-color-settings-label": "צבעי פריסה",
+	"flexiskin-ui-plugin-navbar-colors-label": "צבע כותרת",
+	"flexiskin-ui-plugin-colors-background-navbar-label": "רקע כותרת",
+	"flexiskin-ui-plugin-colors-highlight-navbar-label": "הדגשת כותרת",
+	"flexiskin-ui-plugin-sidebar-primary-colors-label": "צבעי סרגל צד",
+	"flexiskin-ui-plugin-colors-background-sidebar-primary-label": "רקע סרגל צד"
 }
