@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dreamy Jazz",
 			"Piano1forte2"
 		]
 	},
@@ -22,5 +23,7 @@
 	"flexiskin-ui-plugin-colors-background-primary-label": "Colour 1",
 	"flexiskin-ui-plugin-colors-foreground-primary-label": "Colour 1",
 	"flexiskin-ui-configurator-warning-disabled-skin": "FlexiSkin is configured, but currently disabled. To re-enable it, use 'Save & activate' button. You can check the current state by using the 'Preview' button before activating it",
-	"flexiskin-ui-plugin-navbar-colors-label": "Header colour"
+	"flexiskin-ui-plugin-navbar-colors-label": "Header colour",
+	"flexiskin-ui-plugin-colors-background-tertiary-label": "Colour 3",
+	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "Colour 3"
 }
