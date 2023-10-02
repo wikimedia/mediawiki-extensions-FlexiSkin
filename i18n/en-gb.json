@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Dreamy Jazz",
 			"Piano1forte2"
 		]
 	},
@@ -8,10 +9,12 @@
 	"flexiskin-ui-plugin-colors-background-label": "Background colours",
 	"flexiskin-ui-plugin-colors-background-primary-label": "Colour 1",
 	"flexiskin-ui-plugin-colors-background-secondary-label": "Colour 2",
+	"flexiskin-ui-plugin-colors-background-tertiary-label": "Colour 3",
 	"flexiskin-ui-plugin-colors-background-quaternary-label": "Colour 4",
 	"flexiskin-ui-plugin-colors-foreground-label": "Foreground colours",
 	"flexiskin-ui-plugin-colors-foreground-primary-label": "Colour 1",
 	"flexiskin-ui-plugin-colors-foreground-secondary-label": "Colour 2",
+	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "Colour 3",
 	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "Colour 4",
 	"flexiskin-ui-plugin-color-presets-custom-header": "Custom colour scheme",
 	"flexiskin-ui-plugin-color-presets-custom-dirty-warning": "If you switch to a preset, custom colour changes will be lost. Are you sure you want to continue?",
