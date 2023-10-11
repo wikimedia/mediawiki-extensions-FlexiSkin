@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin\HookHandler;
 
-use MediaWiki\Extension\FlexiSkin\GlobalActionsManager;
+use MediaWiki\Extension\FlexiSkin\GlobalActionsAdministration;
 use MWStake\MediaWiki\Component\CommonUserInterface\Hook\MWStakeCommonUIRegisterSkinSlotComponents;
 
 class DiscoverySkin implements MWStakeCommonUIRegisterSkinSlotComponents {
@@ -12,11 +12,11 @@ class DiscoverySkin implements MWStakeCommonUIRegisterSkinSlotComponents {
 	 */
 	public function onMWStakeCommonUIRegisterSkinSlotComponents( $registry ): void {
 		$registry->register(
-			'GlobalActionsManager',
+			'GlobalActionsAdministration',
 			[
 				'bs-special-flexiskin' => [
 					'factory' => static function () {
-						return new GlobalActionsManager();
+						return new GlobalActionsAdministration();
 					}
 				]
 			]
