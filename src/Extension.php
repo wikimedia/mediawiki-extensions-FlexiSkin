@@ -52,8 +52,8 @@ class Extension {
 			$vars = array_merge( $vars, $plugin->getLessVars( $active ) );
 		}
 
-		static::setGlobalImages( $config, 'logo', 'wgLogo' );
-		static::setGlobalImages( $config, 'favicon', 'wgFavicon' );
+		static::setLogo( $config );
+		static::setFavicon( $config );
 		static::applyFreeCSS( $config );
 
 		$lessVars = LessVars::getInstance();
@@ -66,13 +66,23 @@ class Extension {
 
 	/**
 	 * @param array $config
-	 * @param string $skinVariable
-	 * @param string $globalVariable
 	 */
-	protected static function setGlobalImages( array $config, $skinVariable, $globalVariable ) {
-		$url = $config['images'][$skinVariable]['url'] ?? null;
+	protected static function setFavicon( array $config ) {
+		$url = $config['images']['favicon']['url'] ?? null;
 		if ( $url ) {
-			$GLOBALS[$globalVariable] = $url;
+			$GLOBALS['wgFavicon'] = $url;
+		}
+	}
+
+	/**
+	 * @param array $config
+	 *
+	 * @return void
+	 */
+	protected static function setLogo( array $config ) {
+		$url = $config['images']['logo']['url'] ?? null;
+		if ( $url ) {
+			$GLOBALS['wgLogos'] = [ '1x' => $url ];
 		}
 	}
 
