@@ -6,9 +6,7 @@ use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Activation extends FlexiSkinOperation {
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getAllowedParams() {
 		return parent::getAllowedParams() + [
 			'active' => [
@@ -20,6 +18,10 @@ class Activation extends FlexiSkinOperation {
 		];
 	}
 
+	/**
+	 * @param IFlexiSkin $flexiSkin
+	 * @return bool
+	 */
 	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
 		$active = (bool)$this->getParameter( 'active' );
 		return $this->flexiSkinManager->setActive( $flexiSkin, $active );

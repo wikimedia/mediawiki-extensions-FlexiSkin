@@ -34,6 +34,7 @@ class RenameDefaultFile extends LoggedUpdateMaintenance {
 		return true;
 	}
 
+	/** @inheritDoc */
 	protected function getUpdateKey() {
 		return 'flexiskin-update-default-file';
 	}
