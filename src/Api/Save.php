@@ -8,9 +8,7 @@ use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
 
 class Save extends FlexiSkinOperation {
-	/**
-	 * @inheritDoc
-	 */
+	/** @inheritDoc */
 	protected function getAllowedParams() {
 		return parent::getAllowedParams() + [
 			'config' => [
@@ -21,6 +19,12 @@ class Save extends FlexiSkinOperation {
 		];
 	}
 
+	/**
+	 * @param string $name
+	 * @param array $settings
+	 * @param int $parseLimit
+	 * @return mixed
+	 */
 	protected function getParameterFromSettings( $name, $settings, $parseLimit ) {
 		$value = parent::getParameterFromSettings( $name, $settings, $parseLimit );
 		if ( $name === 'config' ) {

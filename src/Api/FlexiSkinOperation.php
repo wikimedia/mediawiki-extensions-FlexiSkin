@@ -8,6 +8,7 @@ use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 
 abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 
+	/** @inheritDoc */
 	protected function getAllowedParams() {
 		return parent::getAllowedParams() + [
 			'skinname' => [
