@@ -16,10 +16,7 @@ class Preview extends FlexiSkinApiBase {
 		);
 	}
 
-	/**
-	 *
-	 * @return array
-	 */
+	/** @inheritDoc */
 	protected function getAllowedParams() {
 		return [
 			'config' => [
@@ -30,6 +27,9 @@ class Preview extends FlexiSkinApiBase {
 		];
 	}
 
+	/**
+	 * @param array $data
+	 */
 	protected function returnResult( $data ) {
 		$result = $this->getResult();
 		$result->addValue( null, 'loadData', $data );
