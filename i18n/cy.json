@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Afalau",
 			"Robin Owain"
 		]
 	},
@@ -14,7 +15,7 @@
 	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "Lliw 4",
 	"flexiskin-ui-configurator-button-save-label": "Cadw a'i wneud yn fyw",
 	"flexiskin-ui-configurator-button-disable-label": "Analluogi",
-	"flexiskin-ui-error-disable-fail": "Methwyd analluogi'r croen",
+	"flexiskin-ui-error-disable-fail": "Methwyd analluogi'r wedd",
 	"flexiskin-ui-plugin-content-label": "Cynnwys",
 	"flexiskin-ui-plugin-content-header-label": "Penawdau",
 	"flexiskin-ui-plugin-content-header-h1-label": "Pennawd 1 (h1)",

@@ -1,7 +1,8 @@
 {
 	"@metadata": {
 		"authors": [
-			"Kareyac"
+			"Kareyac",
+			"Սերգեյ Սաֆարյան"
 		]
 	},
 	"flexiskin-ui-plugin-colors-background-primary-label": "Գույն 1",
@@ -17,5 +18,6 @@
 	"flexiskin-ui-plugin-content-header-color-label": "Գույն",
 	"flexiskin-ui-plugin-content-header-font-size-label": "Տառաչափ",
 	"flexiskin-ui-plugin-content-colors-label": "Գույներ",
-	"flexiskin-ui-plugin-content-font-label": "Տառատեսակ"
+	"flexiskin-ui-plugin-content-font-label": "Տառատեսակ",
+	"flexiskin-ui-configurator-button-preview-label": "Նախադիտում"
 }
