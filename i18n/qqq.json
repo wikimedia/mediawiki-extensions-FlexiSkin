@@ -1,6 +1,7 @@
 {
 	"@metadata": {
 		"authors": [
+			"Amire80",
 			"Raymond",
 			"Robby",
 			"Shirayuki",
@@ -85,7 +86,7 @@
 	"flexiskin-ui-plugin-content-colors-link-label": "Field label",
 	"flexiskin-ui-plugin-content-colors-new-link-label": "Field label",
 	"flexiskin-special-loading-ph": "Label for loading placeholder for Special:FlexiSkin",
-	"flexiskin-ui-configurator-warning-disabled-skin": "Warning text when FlexiSkin exists, but is disabled",
+	"flexiskin-ui-configurator-warning-disabled-skin": "Warning text when FlexiSkin exists, but is disabled.\n* \"Save & activate\" is {{msg-mw|Flexiskin-ui-configurator-button-save-label}}.\n* \"Preview\" is {{msg-mw|Flexiskin-ui-configurator-button-preview-label}}",
 	"flexiskin-ui-plugin-free-css-label": "Label for \"free_css\" plugin section",
 	"flexiskin-ui-plugin-color-settings-label": "Label for \"Layout_colors\" plugin section",
 	"flexiskin-ui-plugin-navbar-colors-label": "Label for \"Header_color\"",
