@@ -5,6 +5,7 @@
 			"Func",
 			"LittlePaw365",
 			"Liuxinyu970226",
+			"LowensteinYang",
 			"Shuiwater",
 			"SomeyaMako",
 			"StarHeart",
@@ -13,7 +14,7 @@
 		]
 	},
 	"flexiskin-extension-desc": "允许自定义皮肤",
-	"flexiskin": "皮肤参数设置",
+	"flexiskin": "FlexiSkin",
 	"action-flexiskin-viewspecialpage": "查看[[Special:FlexiSkin|特殊页面]]自定义皮肤",
 	"flexiskin-ui-plugin-colors-foreground-tertiary-label": "颜色 3",
 	"flexiskin-ui-plugin-colors-foreground-quaternary-label": "颜色 4",
