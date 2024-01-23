@@ -59,7 +59,7 @@ flexiskin.ui.plugin.Images.prototype.onPreview = function ( data, itemId ) {
 		}
 
 		if ( itemId === 'images/favicon' ) {
-			$( 'link[rel="shortcut icon"]' ).attr( 'href', 'data:' + file.type + ';' + b64 );
+			$( 'link[rel="icon"]' ).attr( 'href', 'data:' + file.type + ';' + b64 );
 		}
 
 		dfd.reject();
