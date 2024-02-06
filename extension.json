@@ -256,12 +256,16 @@
 		},
 		"convert-default-file": {
 			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\ConvertDefaultFile"
+		},
+		"stabilizationExceptionForImages": {
+			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\StabilizationExceptionForImages"
 		}
 	},
 	"Hooks": {
 		"MWStakeCommonUIRegisterSkinSlotComponents": "discovery-skin",
 		"LoadExtensionSchemaUpdates": "convert-default-file",
-		"UserLoadAfterLoadFromSession": "MediaWiki\\Extension\\FlexiSkin\\Extension::onUserLoadAfterLoadFromSession"
+		"UserLoadAfterLoadFromSession": "MediaWiki\\Extension\\FlexiSkin\\Extension::onUserLoadAfterLoadFromSession",
+		"ContentStabilizationIsStabilizationEnabled": "stabilizationExceptionForImages"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
