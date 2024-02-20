@@ -13,6 +13,9 @@ class Extension {
 	 * @return void
 	 */
 	public static function onUserLoadAfterLoadFromSession( $user ) {
+		if ( MW_ENTRY_POINT !== 'load' && MW_ENTRY_POINT !== 'index' ) {
+			return;
+		}
 		$skinname = RequestContext::getMain()->getSkin()->getSkinName();
 		static::loadFlexiSkin( $skinname );
 	}
