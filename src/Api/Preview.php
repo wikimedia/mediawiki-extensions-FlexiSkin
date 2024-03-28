@@ -8,6 +8,7 @@ use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Extension\FlexiSkin\FlexiSkinManager;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinSubscriber;
 use MediaWiki\MediaWikiServices;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class Preview extends FlexiSkinApiBase {
 	public function execute() {
@@ -20,8 +21,8 @@ class Preview extends FlexiSkinApiBase {
 	protected function getAllowedParams() {
 		return [
 			'config' => [
-				static::PARAM_TYPE => 'string',
-				static::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				static::PARAM_HELP_MSG => 'apihelp-flexiskin-preview-param-config',
 			]
 		];
