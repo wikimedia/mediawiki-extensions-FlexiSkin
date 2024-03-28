@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\FlexiSkin\Api;
 use ApiUsageException;
 use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
+use Wikimedia\ParamValidator\ParamValidator;
 
 abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 
@@ -12,8 +13,8 @@ abstract class FlexiSkinOperation extends FlexiSkinApiBase {
 	protected function getAllowedParams() {
 		return parent::getAllowedParams() + [
 			'skinname' => [
-				static::PARAM_TYPE => 'string',
-				static::PARAM_REQUIRED => true,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => true,
 				static::PARAM_HELP_MSG => 'apihelp-flexiskin-skinoperation-param-skinname',
 			]
 		];
