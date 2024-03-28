@@ -11,11 +11,11 @@ class StabilizationExceptionForImages implements ContentStabilizationIsStabiliza
 	 * Make sure that the logo and favicon images are not stabilized
 	 *
 	 * @param PageIdentity $page
-	 * @param bool $result
+	 * @param bool &$result
 	 *
 	 * @return void
 	 */
-	public function onContentStabilizationIsStabilizationEnabled( PageIdentity $page, bool &$result ) : void {
+	public function onContentStabilizationIsStabilizationEnabled( PageIdentity $page, bool &$result ): void {
 		if ( $page->getNamespace() !== NS_FILE ) {
 			return;
 		}
