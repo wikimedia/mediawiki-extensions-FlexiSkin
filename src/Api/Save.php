@@ -6,14 +6,15 @@ use ApiUsageException;
 use FormatJson;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
+use Wikimedia\ParamValidator\ParamValidator;
 
 class Save extends FlexiSkinOperation {
 	/** @inheritDoc */
 	protected function getAllowedParams() {
 		return parent::getAllowedParams() + [
 			'config' => [
-				static::PARAM_TYPE => 'string',
-				static::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'string',
+				ParamValidator::PARAM_REQUIRED => false,
 				static::PARAM_HELP_MSG => 'apihelp-flexiskin-save-param-config',
 			]
 		];

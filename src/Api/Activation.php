@@ -10,8 +10,8 @@ class Activation extends FlexiSkinOperation {
 	protected function getAllowedParams() {
 		return parent::getAllowedParams() + [
 			'active' => [
-				static::PARAM_TYPE => 'integer',
-				static::PARAM_REQUIRED => false,
+				ParamValidator::PARAM_TYPE => 'integer',
+				ParamValidator::PARAM_REQUIRED => false,
 				static::PARAM_HELP_MSG => 'apihelp-flexiskin-activation-param-active',
 				ParamValidator::PARAM_DEFAULT => 1
 			]
