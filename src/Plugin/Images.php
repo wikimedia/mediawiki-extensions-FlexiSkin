@@ -6,7 +6,6 @@ use File;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
 use MediaWiki\MediaWikiServices;
-use Title;
 
 class Images extends PluginBase {
 
@@ -74,12 +73,9 @@ class Images extends PluginBase {
 			return $data;
 		}
 
-		$title = Title::makeTitle( NS_FILE, $data['filename'] );
-		if ( $title->exists() ) {
-			$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $title );
-			if ( $file instanceof File ) {
-				$data['url'] = $file->getFullUrl();
-			}
+		$file = MediaWikiServices::getInstance()->getRepoGroup()->findFile( $data['filename'] );
+		if ( $file instanceof File ) {
+			$data['url'] = $file->getFullUrl();
 		}
 
 		return $data;
