@@ -35,9 +35,7 @@ class FreeCss extends PluginBase {
 	 * @return array valid skinnames
 	 */
 	public function getValidSkins() {
-		return [
-			'bluespicecalumma', 'bluespicediscovery'
-		];
+		return [ 'bluespicediscovery' ];
 	}
 
 	/**
