@@ -37,9 +37,7 @@ class Colors extends PluginBase {
 	 * @return array valid skinnames
 	 */
 	public function getValidSkins() {
-		return [
-			'bluespicecalumma'
-		];
+		return [];
 	}
 
 	/**
