@@ -2,10 +2,12 @@
 	"@metadata": {
 		"authors": [
 			"MITO",
-			"Rönttönen"
+			"Rönttönen",
+			"Pyscowicz"
 		]
 	},
 	"flexiskin-label": "Ulkoasu",
+	"flexiskin-ui-plugin-content-header-color-label": "Väri",
 	"flexiskin-ui-plugin-color-settings-label": "Ulkoasun värit",
 	"flexiskin-ui-plugin-navbar-colors-label": "Otsikon väri",
 	"flexiskin-ui-plugin-colors-background-navbar-label": "Ylätunnisteen tausta",
