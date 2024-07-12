@@ -41,4 +41,10 @@ interface IFlexiSkinManager {
 	 * @return IPlugin[]
 	 */
 	public function getPlugins(): array;
+
+	/**
+	 * @param string $skinname
+	 * @return array
+	 */
+	public function getActiveConfig( $skinname = '' ): array;
 }
