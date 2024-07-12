@@ -3,7 +3,6 @@
 namespace MediaWiki\Extension\FlexiSkin;
 
 use MediaWiki\MediaWikiServices;
-use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
 use RequestContext;
 
 class Extension {
@@ -21,17 +20,6 @@ class Extension {
 	}
 
 	/**
-	 * @return void
-	 */
-	public static function overrideLessVars() {
-		if ( MW_ENTRY_POINT !== 'load' ) {
-			return;
-		}
-		$skinname = RequestContext::getMain()->getRequest()->getVal( 'skin', '' );
-		static::loadFlexiSkin( $skinname );
-	}
-
-	/**
 	 *
 	 * @param string $skinname
 	 * @return void
@@ -43,26 +31,12 @@ class Extension {
 		if ( !$active instanceof IFlexiSkin ) {
 			return;
 		}
-
-		$vars = [];
-		$config = $active->getConfig();
-		/**
-		 * @var string $pluginKey
-		 * @var IPlugin $plugin
-		 */
-		foreach ( $flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
-			$plugin->adaptConfiguration( $config );
-			$vars = array_merge( $vars, $plugin->getLessVars( $active ) );
-		}
+		$config = $flexiSkinManager->getActiveConfig( $skinname );
 
 		static::setLogo( $config );
 		static::setFavicon( $config );
 		static::applyFreeCSS( $config );
 
-		$lessVars = LessVars::getInstance();
-		foreach ( $vars as $var => $value ) {
-			$lessVars->setVar( $var, $value );
-		}
 		$hookContainer = MediaWikiServices::getInstance()->getHookContainer();
 		$hookContainer->run( 'FlexiSkinAfterLoad', [ $active ] );
 	}

@@ -252,7 +252,8 @@
 	},
 	"HookHandlers": {
 		"discovery-skin": {
-			"class": "\\MediaWiki\\Extension\\FlexiSkin\\HookHandler\\DiscoverySkin"
+			"class": "\\MediaWiki\\Extension\\FlexiSkin\\HookHandler\\DiscoverySkin",
+			"services": [ "FlexiSkinManager" ]
 		},
 		"convert-default-file": {
 			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\ConvertDefaultFile"
@@ -265,15 +266,13 @@
 		"MWStakeCommonUIRegisterSkinSlotComponents": "discovery-skin",
 		"LoadExtensionSchemaUpdates": "convert-default-file",
 		"UserLoadAfterLoadFromSession": "MediaWiki\\Extension\\FlexiSkin\\Extension::onUserLoadAfterLoadFromSession",
-		"ContentStabilizationIsStabilizationEnabled": "stabilizationExceptionForImages"
+		"ContentStabilizationIsStabilizationEnabled": "stabilizationExceptionForImages",
+		"MWStakeCommonUILessVarsOverride": "discovery-skin"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
 		"remoteExtPath": "FlexiSkin/resources"
 	},
-	"ExtensionFunctions": [
-		"MediaWiki\\Extension\\FlexiSkin\\Extension::overrideLessVars"
-	],
 	"manifest_version": 2,
 	"load_composer_autoloader": true
 }

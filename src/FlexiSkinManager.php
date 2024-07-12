@@ -156,6 +156,48 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
+	 *
+	 * @param string $skinname
+	 * @return array
+	 */
+	public function getActiveConfig( $skinname = '' ): array {
+		$active = $this->getActive( $skinname );
+		if ( !$active instanceof IFlexiSkin ) {
+			return [];
+		}
+
+		$config = $active->getConfig();
+		if ( !$config ) {
+			return [];
+		}
+		/**
+		 * @var string $pluginKey
+		 * @var IPlugin $plugin
+		 */
+		foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
+			$plugin->adaptConfiguration( $config );
+		}
+		return $config;
+	}
+
+	/**
+	 *
+	 * @param string $skinname
+	 * @return array
+	 */
+	public function getActiveLessVars( $skinname = '' ): array {
+		$active = $this->getActive( $skinname );
+		if ( !$active instanceof IFlexiSkin ) {
+			return [];
+		}
+		$vars = [];
+		foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
+			$vars = array_merge( $vars, $plugin->getLessVars( $active ) );
+		}
+		return $vars;
+	}
+
+	/**
 	 * Make sure filesystem path is available
 	 */
 	private function assertPath() {
