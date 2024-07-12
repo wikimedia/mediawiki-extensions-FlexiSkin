@@ -260,14 +260,19 @@
 		},
 		"stabilizationExceptionForImages": {
 			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\StabilizationExceptionForImages"
+		},
+		"main": {
+			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\Main"
 		}
 	},
 	"Hooks": {
 		"MWStakeCommonUIRegisterSkinSlotComponents": "discovery-skin",
 		"LoadExtensionSchemaUpdates": "convert-default-file",
-		"UserLoadAfterLoadFromSession": "MediaWiki\\Extension\\FlexiSkin\\Extension::onUserLoadAfterLoadFromSession",
+		"UserLoadAfterLoadFromSession": "main",
 		"ContentStabilizationIsStabilizationEnabled": "stabilizationExceptionForImages",
-		"MWStakeCommonUILessVarsOverride": "discovery-skin"
+		"MWStakeCommonUILessVarsOverride": "discovery-skin",
+		"MediaWikiServices": "main",
+		"BeforePageDisplay": "main"
 	},
 	"ResourceFileModulePaths": {
 		"localBasePath": "resources",
