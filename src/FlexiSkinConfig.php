@@ -4,7 +4,6 @@ namespace MediaWiki\Extension\FlexiSkin;
 
 use Config;
 use MediaWiki\MediaWikiServices;
-use RequestContext;
 
 class FlexiSkinConfig implements Config {
 	/** @var array */
@@ -25,17 +24,16 @@ class FlexiSkinConfig implements Config {
 			return;
 		}
 
-		$skinname = $this->getSkinname();
 		$services = MediaWikiServices::getInstance();
 		/** @var IFlexiSkinManager $flexiSkinManager */
 		$flexiSkinManager = $services->get( 'FlexiSkinManager' );
-		$active = $flexiSkinManager->getActive( $skinname );
+		$active = $flexiSkinManager->getActive();
 		if ( !$active instanceof IFlexiSkin ) {
 			$this->initialized = true;
 			return;
 		}
 
-		$config = $flexiSkinManager->getActiveConfig( $skinname );
+		$config = $flexiSkinManager->getActiveConfig();
 		$logoUrl = $config['images']['logo']['url'] ?? null;
 		if ( $logoUrl ) {
 			$this->config['Logos'] = [
@@ -70,17 +68,5 @@ class FlexiSkinConfig implements Config {
 
 		$this->init();
 		return isset( $this->config[$name] );
-	}
-
-	/**
-	 * @return string
-	 */
-	private function getSkinname() {
-		$context = RequestContext::getMain();
-		if ( defined( 'MW_NO_SESSION' ) && MW_NO_SESSION ) {
-			return $context->getRequest()->getVal( 'skin', '' );
-		}
-		$skinname = $context->getSkin()->getSkinName();
-		return $skinname;
 	}
 }
