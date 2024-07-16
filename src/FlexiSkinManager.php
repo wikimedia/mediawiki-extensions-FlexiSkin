@@ -97,11 +97,26 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 * @inheritDoc
 	 */
 	public function getActive( $skinname = '' ): ?IFlexiSkin {
+		if ( empty( $skinname ) ) {
+			$skinname = $this->getCurrentSkinname();
+		}
 		$current = $this->getFlexiSkin( $skinname );
 		if ( $current && $current->isActive() ) {
 			return $current;
 		}
 		return null;
+	}
+
+	/**
+	 * @return string
+	 */
+	private function getCurrentSkinname() {
+		$context = RequestContext::getMain();
+		if ( defined( 'MW_NO_SESSION' ) && MW_NO_SESSION ) {
+			return $context->getRequest()->getVal( 'skin', '' );
+		}
+		$skinname = $context->getSkin()->getSkinName();
+		return $skinname;
 	}
 
 	/**
@@ -161,6 +176,9 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 * @return array
 	 */
 	public function getActiveConfig( $skinname = '' ): array {
+		if ( empty( $skinname ) ) {
+			$skinname = $this->getCurrentSkinname();
+		}
 		$active = $this->getActive( $skinname );
 		if ( !$active instanceof IFlexiSkin ) {
 			return [];
@@ -186,6 +204,9 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 * @return array
 	 */
 	public function getActiveLessVars( $skinname = '' ): array {
+		if ( empty( $skinname ) ) {
+			$skinname = $this->getCurrentSkinname();
+		}
 		$active = $this->getActive( $skinname );
 		if ( !$active instanceof IFlexiSkin ) {
 			return [];

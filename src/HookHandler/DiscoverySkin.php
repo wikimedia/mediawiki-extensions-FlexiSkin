@@ -7,7 +7,6 @@ use MediaWiki\Extension\FlexiSkin\GlobalActionsAdministration;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MWStake\MediaWiki\Component\CommonUserInterface\Hook\MWStakeCommonUILessVarsOverride;
 use MWStake\MediaWiki\Component\CommonUserInterface\Hook\MWStakeCommonUIRegisterSkinSlotComponents;
-use RequestContext;
 
 class DiscoverySkin implements MWStakeCommonUIRegisterSkinSlotComponents, MWStakeCommonUILessVarsOverride {
 
@@ -42,12 +41,11 @@ class DiscoverySkin implements MWStakeCommonUIRegisterSkinSlotComponents, MWStak
 	 * @inheritDoc
 	 */
 	public function onMWStakeCommonUILessVarsOverride( $lessVars ): void {
-		$skinname = RequestContext::getMain()->getSkin()->getSkinName();
-		$active = $this->flexiSkinManager->getActive( $skinname );
+		$active = $this->flexiSkinManager->getActive();
 		if ( !$active instanceof IFlexiSkin ) {
 			return;
 		}
-		$vars = $this->flexiSkinManager->getActiveLessVars( $skinname );
+		$vars = $this->flexiSkinManager->getActiveLessVars();
 		foreach ( $vars as $var => $value ) {
 			$lessVars->setVar( $var, $value );
 		}
