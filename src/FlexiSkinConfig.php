@@ -15,6 +15,7 @@ class FlexiSkinConfig implements Config {
 
 	/** @var array */
 	private $supportedSettings = [
+		'Logo',
 		'Logos',
 		'Favicon'
 	];
@@ -40,6 +41,7 @@ class FlexiSkinConfig implements Config {
 			$this->config['Logos'] = [
 				'1x' => $logoUrl
 			];
+			$this->config['Logo'] = $logoUrl;
 		}
 
 		$faviconUrl = $config['images']['favicon']['url'] ?? null;
