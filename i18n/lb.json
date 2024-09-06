@@ -2,14 +2,15 @@
 	"@metadata": {
 		"authors": [
 			"Les Meloures",
-			"Robby"
+			"Robby",
+			"Volvox"
 		]
 	},
 	"flexiskin-label": "Ausgesinn",
 	"flexiskin": "Astellunge vum Layout",
 	"action-flexiskin-viewspecialpage": "D'[[Special:FlexiSkin|Spezialsäit \"Flexiskin\"]] weise fir den Interface anzestellen",
 	"apihelp-flexiskin-new-summary": "Den neie Module",
-	"flexiskin-ui-plugin-colors-label": "Thema",
+	"flexiskin-ui-plugin-colors-label": "Theemen",
 	"flexiskin-ui-plugin-colors-background-label": "Hannergrondfaarwen",
 	"flexiskin-ui-plugin-colors-background-primary-label": "Faarf 1",
 	"flexiskin-ui-plugin-colors-background-secondary-label": "Faarf 2",
