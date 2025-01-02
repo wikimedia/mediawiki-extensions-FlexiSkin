@@ -15,7 +15,7 @@ flexiskin.ui.Configurator = function ( cfg ) {
 	if ( !this.active && this.skin.id !== null ) {
 		this.makeDisabledWarning();
 	}
-	this.makeButtons();
+	this.makeToolbar();
 	this.initPlugins();
 	this.setValue( this.skin.config );
 	this.makeForm();
@@ -334,35 +334,43 @@ flexiskin.ui.Configurator.prototype.setToPath = function ( obj, path, value, app
 	this.setToPath( obj[ bit ], path, value, append );
 };
 
-flexiskin.ui.Configurator.prototype.makeButtons = function () {
-	this.disableButton = new OO.ui.ButtonWidget( {
-		label: mw.message( 'flexiskin-ui-configurator-button-disable-label' ).text(),
-		flags: [
-			'primary',
-			'destructive'
-		],
-		disabled: !this.active
-	} );
-	this.previewButton = new OO.ui.ButtonWidget( {
-		label: mw.message( 'flexiskin-ui-configurator-button-preview-label' ).text()
-	} );
-
-	this.saveButton = new OO.ui.ButtonWidget( {
-		label: mw.message( 'flexiskin-ui-configurator-button-save-label' ).text(),
-		flags: [
-			'progressive',
-			'primary'
+flexiskin.ui.Configurator.prototype.makeToolbar = function () {
+	this.toolbar = new OOJSPlus.ui.toolbar.ManagerToolbar( {
+		actions: [
+			new OOJSPlus.ui.toolbar.tool.ToolbarTool( {
+				name: 'preview',
+				title: mw.msg( 'flexiskin-ui-configurator-button-preview-label' )
+			} ),
+			new OOJSPlus.ui.toolbar.tool.ToolbarTool( {
+				name: 'delete',
+				flags: [ 'destructive', 'primary' ],
+				title: mw.msg( 'flexiskin-ui-configurator-button-disable-label' )
+			} ),
+			new OOJSPlus.ui.toolbar.tool.ToolbarTool( {
+				name: 'save',
+				flags: [ 'primary', 'progressive' ],
+				title: mw.msg( 'flexiskin-ui-configurator-button-save-label' )
+			} ),
 		]
 	} );
+	this.$element.append( this.toolbar.$element );
+	this.toolbar.connect( this, {
+		action: 'onAction'
+	} );
+	this.toolbar.setup();
+	this.toolbar.initialize();
+};
 
-	this.disableButton.connect( this, { click: 'doDisable' } );
-	this.previewButton.connect( this, { click: 'doPreview' } );
-	this.saveButton.connect( this, { click: 'doSave' } );
-
-	this.$element.append( new OO.ui.HorizontalLayout( {
-		items: [ this.disableButton, this.previewButton, this.saveButton ],
-		classes: [ 'fs-configurator-buttons' ]
-	} ).$element );
+flexiskin.ui.Configurator.prototype.onAction = function ( action ) {
+	if ( action === 'preview' ) {
+		this.doPreview();
+	}
+	if ( action === 'save' ) {
+		this.doSave();
+	}
+	if ( action === 'delete' ) {
+		this.doDisable();
+	}
 };
 
 flexiskin.ui.Configurator.prototype.doPreview = function () {

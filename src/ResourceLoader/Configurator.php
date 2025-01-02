@@ -56,8 +56,12 @@ class Configurator extends ResourceLoaderFileModule {
 	 * @return string|array JavaScript code for $context, or package files data structure
 	 */
 	public function getScript( ResourceLoaderContext $context ) {
-		return $this->readScriptFiles( $this->getPluginFiles( $context ) ) .
-			parent::getScript( $context );
+		$parent = parent::getScript( $context );
+		$js = $this->readScriptFiles( $this->getPluginFiles( $context ) );
+		foreach ( $parent['plainScripts'] as $data ) {
+			$js .= "\n" . $data['content'];
+		}
+		return $js;
 	}
 
 	/**

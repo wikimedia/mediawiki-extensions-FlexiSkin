@@ -96,7 +96,8 @@
 				"oojs-ui",
 				"oojs-ui.styles.icons-editing-core",
 				"oojs-ui.styles.icons-interactions",
-				"ext.oOJSPlus.widgets.colorPicker"
+				"ext.oOJSPlus.widgets.colorPicker",
+				"ext.oOJSPlus.managerPanel"
 			],
 			"messages": [
 				"flexiskin-ui-preview-loading-message",
