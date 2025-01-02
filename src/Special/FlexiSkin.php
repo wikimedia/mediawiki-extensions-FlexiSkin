@@ -23,8 +23,8 @@ class FlexiSkin extends SpecialPage {
 
 		$this->setHeaders();
 		$this->getOutput()->enableOOUI();
-		$this->getOutput()->addModuleStyles( 'ext.flexiskin.specialpage.styles' );
-		$this->getOutput()->addModules( 'ext.flexiskin.specialpage.scripts' );
+		$this->getOutput()->addModuleStyles( [ 'ext.flexiskin.specialpage.styles' ] );
+		$this->getOutput()->addModules( [ 'ext.flexiskin.specialpage.scripts' ] );
 		$this->getOutput()->addHTML( Html::element( 'div', [ 'id' => 'fs-container' ] ) );
 
 		/** @var IFlexiSkinManager $manager */
