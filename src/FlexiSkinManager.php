@@ -4,8 +4,8 @@ namespace MediaWiki\Extension\FlexiSkin;
 
 use ExtensionRegistry;
 use FormatJson;
+use MediaWiki\Context\RequestContext;
 use MWException;
-use RequestContext;
 
 class FlexiSkinManager implements IFlexiSkinManager {
 	/** @var string */

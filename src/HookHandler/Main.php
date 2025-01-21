@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\FlexiSkin\HookHandler;
 
 use Config;
+use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\FlexiSkin\FlexiSkinConfig;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
@@ -12,7 +13,6 @@ use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\User\Hook\UserLoadAfterLoadFromSessionHook;
 use MultiConfig;
-use RequestContext;
 
 class Main implements MediaWikiServicesHook, BeforePageDisplayHook, UserLoadAfterLoadFromSessionHook {
 
