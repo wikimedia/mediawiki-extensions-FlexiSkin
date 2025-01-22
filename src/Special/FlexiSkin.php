@@ -5,6 +5,7 @@ namespace MediaWiki\Extension\FlexiSkin\Special;
 use Html;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Message\Message;
 use SpecialPage;
 
 class FlexiSkin extends SpecialPage {
@@ -53,7 +54,7 @@ class FlexiSkin extends SpecialPage {
 		);
 		$this->getOutput()->addHTML( Html::element( 'span', [
 			'id' => 'fs-sp-loading'
-		], \Message::newFromKey( 'flexiskin-special-loading-ph' )->text() ) );
+		], Message::newFromKey( 'flexiskin-special-loading-ph' )->text() ) );
 	}
 
 	/**
