@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin\HookHandler;
 
-use Config;
+use MediaWiki\Config\Config;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\FlexiSkin\FlexiSkinConfig;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
