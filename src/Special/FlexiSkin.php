@@ -6,7 +6,7 @@ use Html;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
-use SpecialPage;
+use MediaWiki\SpecialPage\SpecialPage;
 
 class FlexiSkin extends SpecialPage {
 
