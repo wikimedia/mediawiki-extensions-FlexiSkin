@@ -2,8 +2,8 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Special;
 
-use Html;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
+use MediaWiki\Html\Html;
 use MediaWiki\MediaWikiServices;
 use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
