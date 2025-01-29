@@ -4,9 +4,9 @@ namespace MediaWiki\Extension\FlexiSkin\ResourceLoader;
 
 use MediaWiki\Extension\FlexiSkin\IPlugin;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\OutputPage;
 use MediaWiki\ResourceLoader\Context as ResourceLoaderContext;
 use MediaWiki\ResourceLoader\FileModule as ResourceLoaderFileModule;
-use OutputPage;
 use RuntimeException;
 
 class Configurator extends ResourceLoaderFileModule {
