@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\FlexiSkin;
 
 use ExtensionRegistry;
-use FormatJson;
 use MediaWiki\Context\RequestContext;
+use MediaWiki\Json\FormatJson;
 use MWException;
 
 class FlexiSkinManager implements IFlexiSkinManager {
