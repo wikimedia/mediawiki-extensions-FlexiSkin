@@ -3,8 +3,8 @@
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use ApiUsageException;
-use FormatJson;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
+use MediaWiki\Json\FormatJson;
 use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
 use Wikimedia\ParamValidator\ParamValidator;
 
