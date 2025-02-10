@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
-use ExtensionRegistry;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
+use MediaWiki\Registration\ExtensionRegistry;
 use MWException;
 
 class FlexiSkinManager implements IFlexiSkinManager {
