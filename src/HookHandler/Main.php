@@ -8,10 +8,10 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Extension\FlexiSkin\FlexiSkinConfig;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
-use MediaWiki\Hook\BeforePageDisplayHook;
 use MediaWiki\Hook\MediaWikiServicesHook;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\Output\Hook\BeforePageDisplayHook;
 use MediaWiki\User\Hook\UserLoadAfterLoadFromSessionHook;
 
 class Main implements MediaWikiServicesHook, BeforePageDisplayHook, UserLoadAfterLoadFromSessionHook {
