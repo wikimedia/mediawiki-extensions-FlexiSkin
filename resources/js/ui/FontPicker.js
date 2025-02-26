@@ -10,7 +10,8 @@ flexiskin.ui.widget.FontPicker = function ( cfg ) {
 		"Georgia",
 		"Palatino",
 		"Tahoma",
-		"Trebuchet MS"
+		"Trebuchet MS",
+		"Hyperlegible"
 	] );
 	flexiskin.ui.widget.FontPicker.parent.call( this, cfg );
 
