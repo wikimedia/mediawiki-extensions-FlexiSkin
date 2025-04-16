@@ -4,14 +4,21 @@ namespace MediaWiki\Extension\FlexiSkin\Special;
 
 use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
 use MediaWiki\Html\Html;
+use MediaWiki\Html\TemplateParser;
 use MediaWiki\MediaWikiServices;
-use MediaWiki\Message\Message;
 use MediaWiki\SpecialPage\SpecialPage;
 
 class FlexiSkin extends SpecialPage {
 
+	/** @var TemplateParser */
+	protected $templateParser;
+
 	public function __construct() {
 		parent::__construct( 'FlexiSkin', 'flexiskin-viewspecialpage', true );
+
+		$this->templateParser = new TemplateParser(
+			dirname( __DIR__, 2 ) . '/resources/templates'
+		);
 	}
 
 	/**
@@ -24,6 +31,7 @@ class FlexiSkin extends SpecialPage {
 
 		$this->setHeaders();
 		$this->getOutput()->enableOOUI();
+		$this->buildSkeleton();
 		$this->getOutput()->addModuleStyles( [ 'ext.flexiskin.specialpage.styles' ] );
 		$this->getOutput()->addModules( [ 'ext.flexiskin.specialpage.scripts' ] );
 		$this->getOutput()->addHTML( Html::element( 'div', [ 'id' => 'fs-container' ] ) );
@@ -52,9 +60,23 @@ class FlexiSkin extends SpecialPage {
 		$this->getOutput()->addJsConfigVars(
 			'wgFlexiSkinColorPresets', $this->getConfig()->get( 'FlexiSkinColorPresets' )
 		);
-		$this->getOutput()->addHTML( Html::element( 'span', [
-			'id' => 'fs-sp-loading'
-		], Message::newFromKey( 'flexiskin-special-loading-ph' )->text() ) );
+	}
+
+	/**
+	 *
+	 * @return void
+	 */
+	protected function buildSkeleton() {
+		$skeleton = $this->templateParser->processTemplate(
+			'flexiskin-skeleton',
+			[]
+		);
+		$skeletonCnt = Html::openElement( 'div', [
+			'id' => 'fs-skeleton-cnt'
+		] );
+		$skeletonCnt .= $skeleton;
+		$skeletonCnt .= Html::closeElement( 'div' );
+		$this->getOutput()->addHTML( $skeletonCnt );
 	}
 
 	/**
