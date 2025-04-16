@@ -77,3 +77,95 @@
 	display: block;
 	font-size: 2em;
 }
+
+/* skeleton */
+.skeleton {
+	background: linear-gradient( 90deg, #eee, #ddd, #eee );
+	background-size: 200% 100%;
+	animation: shimmer 1.5s infinite;
+	border-radius: 6px;
+}
+
+@keyframes shimmer {
+	0% {
+		background-position: -200% 0;
+	}
+
+	100% {
+		background-position: 200% 0;
+	}
+}
+
+.container {
+	max-width: 800px;
+	margin: 0 auto;
+	background: #fff;
+	padding: 2rem;
+	border-radius: 12px;
+}
+
+/* Toolbar */
+.toolbar {
+	display: flex;
+	justify-content: flex-end;
+	margin-bottom: 24px;
+}
+
+.toolbar .skeleton {
+	width: 52px;
+	height: 36px;
+	margin: 0 6px;
+}
+
+.header-toggle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 32px;
+}
+
+.title-skeleton {
+	width: 40%;
+	height: 20px;
+}
+
+.toggle-skeleton {
+	width: 24px;
+	height: 24px;
+	border-radius: 50%;
+}
+
+/* Drop Zones */
+.dropzone-section {
+	margin-bottom: 32px;
+	display: flex;
+}
+
+.dropzone-card {
+	width: 30%;
+	margin-right: 20px;
+}
+
+.dropzone-title {
+	width: 30%;
+	height: 16px;
+	margin-bottom: 12px;
+}
+
+.dropzone {
+	width: 100%;
+	height: 100px;
+	margin-bottom: 24px;
+}
+
+.section-toggle {
+	display: flex;
+	justify-content: space-between;
+	align-items: center;
+	margin-bottom: 30px;
+}
+
+.section-title {
+	width: 35%;
+	height: 16px;
+}
