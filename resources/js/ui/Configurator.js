@@ -135,7 +135,7 @@ flexiskin.ui.Configurator.prototype.getGroupLayouts = function ( items ) {
 	}
 
 	for ( const layoutGroupId in fieldLayouts ) {
-		if ( roots.indexOf( layoutGroupId ) === -1 ) {
+		if ( !roots.includes( layoutGroupId ) ) {
 			delete ( fieldLayouts[ layoutGroupId ] );
 		}
 	}
