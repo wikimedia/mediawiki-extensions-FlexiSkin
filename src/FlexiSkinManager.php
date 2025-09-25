@@ -171,7 +171,6 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 *
 	 * @param string $skinname
 	 * @return array
 	 */
@@ -199,7 +198,6 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 *
 	 * @param string $skinname
 	 * @return array
 	 */
@@ -237,7 +235,6 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 *
 	 * @param string $name
 	 * @param string $targetClass
 	 * @return array
