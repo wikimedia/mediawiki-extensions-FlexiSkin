@@ -5,28 +5,29 @@ namespace MediaWiki\Extension\FlexiSkin;
 use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Registration\ExtensionRegistry;
+use MWStake\MediaWiki\Component\FileStorageUtilities\StorageHandler;
 
 class FlexiSkinManager implements IFlexiSkinManager {
-	/** @var string */
-	private $fsPath = '';
+
 	/** @var IFlexiSkin|null */
 	private $currentSkin = null;
 	/** @var IFlexiSkin[] */
 	private $loadedSkins = [];
 
 	/**
-	 * @param string $path
+	 * @param StorageHandler $storageHandler
 	 */
-	public function __construct( $path ) {
-		$this->fsPath = $path;
+	public function __construct(
+		private readonly StorageHandler $storageHandler
+	) {
 	}
 
 	/**
 	 * @param IFlexiSkin $flexiSkin
-	 * @return int
+	 * @return bool
 	 */
-	public function save( IFlexiSkin $flexiSkin ) {
-		$fullPath = $this->getFullPath( $flexiSkin->getName() );
+	public function save( IFlexiSkin $flexiSkin ): bool {
+		$filename = $this->getFilename( $flexiSkin->getName() );
 
 		if ( $flexiSkin->getId() === null ) {
 			$flexiSkin = new FlexiSkin(
@@ -38,25 +39,25 @@ class FlexiSkinManager implements IFlexiSkinManager {
 		}
 
 		$json = FormatJson::encode( $flexiSkin );
-		$res = (bool)file_put_contents( $fullPath, $json );
-		if ( $res ) {
+
+		$status = $this->storageHandler->newTransaction()
+			->create( $filename, $json, 'flexiskin', [ 'overwrite' => true ] )
+			->commit();
+		if ( $status->isOK() ) {
 			$this->currentSkin = $flexiSkin;
 		}
 
-		return $res;
+		return $status->isOK();
 	}
 
 	/**
 	 * @return int
 	 */
 	public function delete() {
-		$fullPath = $this->getFullPath();
-		$this->currentSkin = null;
-		if ( file_exists( $fullPath ) ) {
-			return unlink( $fullPath );
-		}
-
-		return true;
+		$status = $this->storageHandler->newTransaction()
+			->delete( $this->getFilename(), 'flexiskin' )
+			->commit();
+		return $status->isOK();
 	}
 
 	/**
@@ -79,11 +80,14 @@ class FlexiSkinManager implements IFlexiSkinManager {
 					? $this->loadedSkins[$skinname] : null;
 		}
 		if ( $this->currentSkin === null || $reload ) {
-			$fullPath = $this->getFullPath( $skinname );
-			if ( !file_exists( $fullPath ) ) {
+			$file = $this->storageHandler->getFile(
+				$this->getFilename( $skinname ),
+				'flexiskin'
+			);
+			if ( !$file ) {
 				return;
 			}
-			$json = file_get_contents( $fullPath );
+			$json = file_get_contents( $file->getPath() );
 			$newSkin = FlexiSkin::newFromData( FormatJson::decode( $json, 1 ) );
 			$skinname = $newSkin->getName();
 			$this->loadedSkins[$skinname] = $newSkin;
@@ -217,21 +221,11 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 * Make sure filesystem path is available
-	 */
-	private function assertPath() {
-		if ( !file_exists( $this->fsPath ) ) {
-			mkdir( $this->fsPath, 0755, true );
-		}
-	}
-
-	/**
 	 * @param string $skinname
 	 * @return string
 	 */
-	private function getFullPath( $skinname = 'default' ) {
-		$this->assertPath();
-		return $this->fsPath . $skinname . '.json';
+	private function getFilename( $skinname = 'default' ) {
+		return $skinname . '.json';
 	}
 
 	/**
