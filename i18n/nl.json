@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"McDutchie",
-			"Romaine"
+			"Romaine",
+			"Siebrand"
 		]
 	},
 	"apihelp-flexiskin-new-summary": "De nieuwe module",
@@ -40,8 +41,8 @@
 	"flexiskin-ui-plugin-content-colors-label": "Kleuren",
 	"flexiskin-ui-plugin-content-font-label": "Lettertype",
 	"flexiskin-ui-plugin-content-font-family-label": "Primaire lettertypefamilie",
-	"flexiskin-ui-plugin-content-colors-link-label": "Geldige link",
-	"flexiskin-ui-plugin-content-colors-new-link-label": "Kapotte link",
+	"flexiskin-ui-plugin-content-colors-link-label": "Geldige koppeling",
+	"flexiskin-ui-plugin-content-colors-new-link-label": "Kapotte koppeling",
 	"flexiskin-extension-desc": "Maakt het aanpassen van de vormgeving mogelijk",
 	"flexiskin-label": "Vormgeving",
 	"right-flexiskin-viewspecialpage": "De [[Special:FlexiSkin|speciale pagina]] voor het aanpassen van de vormgeving bekijken",

@@ -2,7 +2,8 @@
 	"@metadata": {
 		"authors": [
 			"Dreamy Jazz",
-			"Piano1forte2"
+			"Piano1forte2",
+			"Reedy"
 		]
 	},
 	"flexiskin-ui-plugin-color-presets-label": "Colour presets",
@@ -24,5 +25,6 @@
 	"flexiskin-ui-plugin-color-settings-label": "Layout colours",
 	"flexiskin-ui-plugin-navbar-colors-label": "Header colour",
 	"flexiskin-ui-plugin-sidebar-primary-colors-label": "Sidebar colours",
-	"flexiskin-ui-plugin-footer-colors-label": "Footer colours"
+	"flexiskin-ui-plugin-footer-colors-label": "Footer colours",
+	"flexiskin-ui-plugin-color-presets-customize-label": "customise..."
 }

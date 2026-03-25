@@ -2,6 +2,7 @@
 	"@metadata": {
 		"authors": [
 			"MITO",
+			"Pyscowicz",
 			"Rönttönen"
 		]
 	},
@@ -15,5 +16,6 @@
 	"flexiskin-ui-plugin-colors-foreground-sidebar-primary-label": "Sivupalkin etuala",
 	"flexiskin-ui-plugin-footer-colors-label": "Alapalkin värit",
 	"flexiskin-ui-plugin-colors-background-footer-label": "Alaviitteen tausta",
-	"flexiskin-ui-plugin-colors-foreground-footer-label": "Alaviitteen etuala"
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "Alaviitteen etuala",
+	"flexiskin-ui-plugin-content-header-color-label": "Väri"
 }
