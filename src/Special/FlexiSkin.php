@@ -14,11 +14,16 @@ class FlexiSkin extends SpecialPage {
 	protected $templateParser;
 
 	public function __construct() {
-		parent::__construct( 'FlexiSkin', 'flexiskin-viewspecialpage', true );
+		parent::__construct( 'FlexiSkin' );
 
 		$this->templateParser = new TemplateParser(
 			dirname( __DIR__, 2 ) . '/resources/templates'
 		);
+	}
+
+	/** @inheritDoc */
+	public function getRestriction(): string {
+		return 'flexiskin-viewspecialpage';
 	}
 
 	/**
