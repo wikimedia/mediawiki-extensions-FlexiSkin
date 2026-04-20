@@ -3,6 +3,7 @@
 		"authors": [
 			"DDPAT",
 			"Ice bulldog",
+			"Movses",
 			"Piramidion",
 			"Renamerr",
 			"Ата"
@@ -10,6 +11,7 @@
 	},
 	"flexiskin-extension-desc": "Дозволяє налаштовувати тему оформлення",
 	"flexiskin-extension-name": "FlexiSkin",
+	"flexiskin-label": "Скін",
 	"flexiskin": "FlexiSkin",
 	"right-flexiskin-viewspecialpage": "Переглянути [[Special:FlexiSkin|спеціальну сторінку]] для налаштування скіна",
 	"action-flexiskin-viewspecialpage": "перегляд [[Special:FlexiSkin|спеціальної сторінки]] налаштування теми",
