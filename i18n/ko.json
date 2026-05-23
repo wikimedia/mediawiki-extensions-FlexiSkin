@@ -98,5 +98,6 @@
 	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "사이드바 강조",
 	"flexiskin-ui-plugin-footer-colors-label": "푸터 색",
 	"flexiskin-ui-plugin-colors-background-footer-label": "푸터 배경",
-	"flexiskin-ui-plugin-colors-foreground-footer-label": "푸터 전경"
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "푸터 전경",
+	"flexiskin-extension-name": "플렉시스킨"
 }
