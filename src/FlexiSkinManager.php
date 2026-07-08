@@ -6,8 +6,12 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Registration\ExtensionRegistry;
 use MWStake\MediaWiki\Component\FileStorageUtilities\StorageHandler;
+use WANObjectCache;
 
 class FlexiSkinManager implements IFlexiSkinManager {
+
+	private const CACHE_TTL = WANObjectCache::TTL_INDEFINITE;
+	private const CACHE_VERSION = 1;
 
 	/** @var IFlexiSkin|null */
 	private $currentSkin = null;
@@ -16,10 +20,20 @@ class FlexiSkinManager implements IFlexiSkinManager {
 
 	/**
 	 * @param StorageHandler $storageHandler
+	 * @param WANObjectCache $cache
 	 */
 	public function __construct(
-		private readonly StorageHandler $storageHandler
+		private readonly StorageHandler $storageHandler,
+		private readonly WANObjectCache $cache
 	) {
+	}
+
+	/**
+	 * @param string $skinname
+	 * @return string
+	 */
+	private function getCacheKey( string $skinname ): string {
+		return $this->cache->makeKey( 'flexiskin', self::CACHE_VERSION, $skinname );
 	}
 
 	/**
@@ -45,6 +59,7 @@ class FlexiSkinManager implements IFlexiSkinManager {
 			->commit();
 		if ( $status->isOK() ) {
 			$this->currentSkin = $flexiSkin;
+			$this->cache->delete( $this->getCacheKey( $flexiSkin->getName() ) );
 		}
 
 		return $status->isOK();
@@ -54,9 +69,14 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	 * @return int
 	 */
 	public function delete() {
+		$skinname = $this->currentSkin ? $this->currentSkin->getName() : 'default';
 		$status = $this->storageHandler->newTransaction()
 			->delete( $this->getFilename(), 'flexiskin' )
 			->commit();
+		if ( $status->isOK() ) {
+			$this->cache->delete( $this->getCacheKey( $skinname ) );
+			$this->currentSkin = null;
+		}
 		return $status->isOK();
 	}
 
@@ -80,15 +100,27 @@ class FlexiSkinManager implements IFlexiSkinManager {
 					? $this->loadedSkins[$skinname] : null;
 		}
 		if ( $this->currentSkin === null || $reload ) {
-			$file = $this->storageHandler->getFile(
-				$this->getFilename( $skinname ),
-				'flexiskin'
+			$filename = $this->getFilename( $skinname );
+			$cacheKey = $this->getCacheKey( $skinname ?: 'default' );
+
+			$data = $this->cache->getWithSetCallback(
+				$cacheKey,
+				self::CACHE_TTL,
+				function () use ( $filename ) {
+					$file = $this->storageHandler->getFile( $filename, 'flexiskin' );
+					if ( !$file ) {
+						return false;
+					}
+					$json = file_get_contents( $file->getPath() );
+					return FormatJson::decode( $json, 1 );
+				}
 			);
-			if ( !$file ) {
+
+			if ( $data === false ) {
 				return;
 			}
-			$json = file_get_contents( $file->getPath() );
-			$newSkin = FlexiSkin::newFromData( FormatJson::decode( $json, 1 ) );
+
+			$newSkin = FlexiSkin::newFromData( $data );
 			$skinname = $newSkin->getName();
 			$this->loadedSkins[$skinname] = $newSkin;
 			$this->currentSkin = $this->loadedSkins[$skinname];

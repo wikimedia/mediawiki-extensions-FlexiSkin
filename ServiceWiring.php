@@ -6,7 +6,8 @@ use MediaWiki\MediaWikiServices;
 return [
 	'FlexiSkinManager' => static function ( MediaWikiServices $services ) {
 		return new FlexiSkinManager(
-			$services->getService( 'MWStake.StorageUtilities' )
+			$services->getService( 'MWStake.StorageUtilities' ),
+			$services->getMainWANObjectCache()
 		);
 	}
 ];
