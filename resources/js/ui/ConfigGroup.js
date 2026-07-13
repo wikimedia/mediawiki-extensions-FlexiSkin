@@ -25,7 +25,7 @@ OO.inheritClass( flexiskin.ui.ConfigGroup, OO.ui.Widget );
 
 flexiskin.ui.ConfigGroup.prototype.makeHeader = function () {
 	this.$headerContainer = $( '<div>' ).addClass( 'fs-group-header' );
-	this.toggleButton = new OO.ui.ButtonWidget( {
+	this.toggleButton = new OO.ui.ButtonWidget( { // eslint-disable-line mediawiki/no-unlabeled-buttonwidget
 		icon: 'expand',
 		framed: false,
 		classes: [ 'fs-group-toggle' ]

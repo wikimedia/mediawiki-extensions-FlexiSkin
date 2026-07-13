@@ -8,7 +8,7 @@ flexiskin.ui.ColorPresetOptionWidget = function ( cfg ) {
 	);
 
 	if ( cfg.editable ) {
-		this.editButton = new OO.ui.ButtonWidget( {
+		this.editButton = new OO.ui.ButtonWidget( { // eslint-disable-line mediawiki/no-unlabeled-buttonwidget
 			title: mw.message( 'flexiskin-ui-plugin-color-presets-customize-label' ).text(),
 			icon: 'edit',
 			framed: false
