@@ -1,10 +1,13 @@
 {
 	"root": true,
 	"extends": [
-		"wikimedia/client-es6",
+		"wikimedia/client",
 		"wikimedia/jquery",
 		"wikimedia/mediawiki"
 	],
+	"parserOptions": {
+		"sourceType": "commonjs"
+	},
 	"globals": {
 		"flexiskin": "readonly",
 		"OOJSPlus": "readonly"
@@ -13,6 +16,7 @@
 		"camelcase": "off",
 		"es-x/no-object-values": "off",
 		"max-len": "off",
+		"mediawiki/no-unlabeled-buttonwidget": "off",
 		"no-jquery/no-global-selector": "off",
 		"no-jquery/no-slide": "off",
 		"no-prototype-builtins": "off"
