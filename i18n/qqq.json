@@ -12,6 +12,7 @@
 	"flexiskin-extension-name": "{{name}}",
 	"flexiskin-label": "Label for flexiskin",
 	"flexiskin": "{{optional}}\n{{doc-special}}",
+	"flexiskin-special-title": "Title of [[Special:FlexiSkin]]",
 	"right-flexiskin-viewspecialpage": "{{doc-right|flexiskin-viewspecialpage}}",
 	"action-flexiskin-viewspecialpage": "{{doc-action|flexiskin-viewspecialpage}}",
 	"right-flexiskin-api": "{{doc-right|flexiskin-api}}",

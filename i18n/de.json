@@ -16,6 +16,7 @@
 	"flexiskin-extension-name": "FlexiSkin",
 	"flexiskin-label": "Oberfläche",
 	"flexiskin": "Einstellungen zur Benutzeroberfläche",
+	"flexiskin-special-title": "Oberflächenverwaltung",
 	"right-flexiskin-viewspecialpage": "Ansehen der [[Special:FlexiSkin|Spezialseite]] zum Anpassen des Skins",
 	"action-flexiskin-viewspecialpage": "die [[Special:FlexiSkin|Spezialseite]] für Skin-Einstellungen anzusehen",
 	"right-flexiskin-api": "Verwenden der FlexiSkin-APIs",
