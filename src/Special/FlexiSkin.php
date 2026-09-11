@@ -22,6 +22,13 @@ class FlexiSkin extends SpecialPage {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getDescription() {
+		return $this->msg( 'flexiskin-special-title' );
+	}
+
+	/**
 	 * @param string $par
 	 * @return void
 	 */
