@@ -36,7 +36,8 @@
 				"Content": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\Content::factory",
 				"FreeCss": "MediaWiki\\Extension\\FlexiSkin\\Plugin\\FreeCss::factory"
 			},
-			"SubscriberRegistry": {}
+			"SubscriberRegistry": {},
+			"SkinRegistry": {}
 		}
 	},
 	"callback": "mwsInitComponents",
@@ -68,7 +69,8 @@
 		"flexiskin-activation": "MediaWiki\\Extension\\FlexiSkin\\Api\\Activation",
 		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\Save",
 		"flexiskin-preview": "MediaWiki\\Extension\\FlexiSkin\\Api\\Preview",
-		"flexiskin-delete": "MediaWiki\\Extension\\FlexiSkin\\Api\\Delete"
+		"flexiskin-delete": "MediaWiki\\Extension\\FlexiSkin\\Api\\Delete",
+		"flexiskin-reset": "MediaWiki\\Extension\\FlexiSkin\\Api\\Reset"
 	},
 	"ResourceModules": {
 		"ext.flexiskin.specialpage.styles": {
@@ -170,7 +172,13 @@
 				"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label",
 				"flexiskin-ui-plugin-footer-colors-label",
 				"flexiskin-ui-plugin-colors-background-footer-label",
-				"flexiskin-ui-plugin-colors-foreground-footer-label"
+				"flexiskin-ui-plugin-colors-foreground-footer-label",
+				"flexiskin-ui-configurator-button-reset-label",
+				"flexiskin-ui-error-reset-fail",
+				"flexiskin-configurator-prompt-on-reset",
+				"flexiskin-configurator-prompt-on-reset-to-main-wiki",
+				"flexiskin-ui-configurator-notice-inherited-styling",
+				"flexiskin-ui-configurator-notice-inherited-styling-default"
 			]
 		}
 	},

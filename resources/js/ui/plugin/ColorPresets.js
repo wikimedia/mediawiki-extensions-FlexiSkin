@@ -10,7 +10,6 @@ flexiskin.ui.plugin.ColorPresets.prototype.provideControls = function () {
 	return {
 		colors: {
 			label: mw.message( 'flexiskin-ui-plugin-colors-label' ).text(),
-			expanded: true,
 			color_presets: {
 				label: mw.message( 'flexiskin-ui-plugin-color-presets-label' ).text(),
 				items: {

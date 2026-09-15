@@ -4,6 +4,8 @@ flexiskin.ui.Configurator = function ( cfg ) {
 	this.skin = cfg.skin;
 	this.active = this.skin.active || false;
 	this.skin.config = this.skin.config || {};
+	this.inheritance = cfg.inheritance || {};
+	this.unsupportedControls = cfg.unsupportedControls || [];
 
 	flexiskin.ui.Configurator.parent.call( this );
 
@@ -12,6 +14,9 @@ flexiskin.ui.Configurator = function ( cfg ) {
 	this.$messageCnt = $( '<div>' );
 	this.$element.append( this.$messageCnt );
 
+	if ( this.inheritance.inherits ) {
+		this.makeInheritanceNotice();
+	}
 	if ( !this.active && this.skin.id !== null ) {
 		this.makeDisabledWarning();
 	}
@@ -53,9 +58,25 @@ flexiskin.ui.Configurator.prototype.initPlugins = function () {
 			}
 		}
 
-		this.items = $.extend( true, {}, this.items, flatlist );
+		this.items = $.extend( true, {}, this.items, this.withoutUnsupported( flatlist ) );
 		this.controls = $.extend( true, {}, this.controls, this.plugins[ pluginId ].getControls() );
 	}
+};
+
+flexiskin.ui.Configurator.prototype.withoutUnsupported = function ( items ) {
+	const supported = {};
+	for ( const id in items ) {
+		if ( !items.hasOwnProperty( id ) ) {
+			continue;
+		}
+		const unsupported = this.unsupportedControls.some(
+			( path ) => id === path || id.startsWith( path + '/' )
+		);
+		if ( !unsupported ) {
+			supported[ id ] = items[ id ];
+		}
+	}
+	return supported;
 };
 
 flexiskin.ui.Configurator.prototype.makeDisabledWarning = function () {
@@ -65,9 +86,20 @@ flexiskin.ui.Configurator.prototype.makeDisabledWarning = function () {
 	} ).$element );
 };
 
+flexiskin.ui.Configurator.prototype.makeInheritanceNotice = function () {
+	const label = this.inheritance.hasInheritedStyling ?
+		mw.message( 'flexiskin-ui-configurator-notice-inherited-styling' ).text() :
+		mw.message( 'flexiskin-ui-configurator-notice-inherited-styling-default' ).text();
+
+	this.$element.append( new OO.ui.MessageWidget( {
+		type: 'notice',
+		label: label
+	} ).$element );
+};
+
 flexiskin.ui.Configurator.prototype.makeForm = function () {
 	const grouped = this.groupItems(),
-		items = [];
+		tabPanels = [];
 	this.formElements = {};
 
 	for ( const groupId in grouped ) {
@@ -77,14 +109,20 @@ flexiskin.ui.Configurator.prototype.makeForm = function () {
 		const layouts = this.getGroupLayouts( grouped[ groupId ] );
 		this.formElements[ groupId ] = new flexiskin.ui.ConfigGroup( groupId, {
 			label: this.getItemGroupLabel( groupId ),
-			expanded: this.getItemGroupExpanded( groupId ),
 			items: layouts
 		} );
-		items.push( this.formElements[ groupId ].$element );
+		tabPanels.push( this.formElements[ groupId ] );
 	}
 
+	this.tabs = new OO.ui.IndexLayout( {
+		expanded: false,
+		autoFocus: false,
+		classes: [ 'fs-tabs' ]
+	} );
+	this.tabs.addTabPanels( tabPanels );
+
 	this.emit( 'makeFormComplete', this.formElements );
-	this.$element.append( items );
+	this.$element.append( this.tabs.$element );
 };
 
 flexiskin.ui.Configurator.prototype.getGroupLayouts = function ( items ) {
@@ -211,16 +249,6 @@ flexiskin.ui.Configurator.prototype.getItemGroupLabel = function ( group ) {
 	return '';
 };
 
-flexiskin.ui.Configurator.prototype.getItemGroupExpanded = function ( group ) {
-	const item = this.findGroupByKey( this.controls, group );
-
-	if ( item && item.hasOwnProperty( 'expanded' ) ) {
-		return !!item.expanded;
-	}
-
-	return false;
-};
-
 flexiskin.ui.Configurator.prototype.findGroupByKey = function ( obj, key ) {
 	const keys = Object.keys( obj );
 	let value;
@@ -341,6 +369,11 @@ flexiskin.ui.Configurator.prototype.makeToolbar = function () {
 				title: mw.msg( 'flexiskin-ui-configurator-button-preview-label' )
 			} ),
 			new OOJSPlus.ui.toolbar.tool.ToolbarTool( {
+				name: 'reset',
+				flags: [ 'destructive' ],
+				title: mw.msg( 'flexiskin-ui-configurator-button-reset-label' )
+			} ),
+			new OOJSPlus.ui.toolbar.tool.ToolbarTool( {
 				name: 'delete',
 				flags: [ 'destructive', 'primary' ],
 				title: mw.msg( 'flexiskin-ui-configurator-button-disable-label' )
@@ -369,6 +402,9 @@ flexiskin.ui.Configurator.prototype.onAction = function ( action ) {
 	}
 	if ( action === 'delete' ) {
 		this.doDisable();
+	}
+	if ( action === 'reset' ) {
+		this.doReset();
 	}
 };
 
@@ -424,7 +460,7 @@ flexiskin.ui.Configurator.prototype.doSave = function () {
 						this.saveError();
 						return;
 					}
-					this.debugReload();
+					this.reload();
 				} ).fail( () => {
 					this.saveError();
 				} );
@@ -444,10 +480,10 @@ flexiskin.ui.Configurator.prototype.doDisable = function () {
 				active: 0
 			} ).done( ( response ) => {
 				if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
-					this.resetError();
+					this.disableError();
 					return;
 				}
-				this.debugReload();
+				this.reload();
 			} ).fail( () => {
 				this.disableError();
 			} );
@@ -456,12 +492,40 @@ flexiskin.ui.Configurator.prototype.doDisable = function () {
 	} );
 };
 
-flexiskin.ui.Configurator.prototype.debugReload = function () {
-	// Refresh to apply changes
-	// Add debug=true param - works for cache, but breaks other things
-	const url = new URL( window.location.href );
-	url.searchParams.set( 'debug', 'true' );
-	window.location.href = url.href;
+flexiskin.ui.Configurator.prototype.doReset = function () {
+	const confirmationMessage = this.inheritance.inherits ?
+		mw.message( 'flexiskin-configurator-prompt-on-reset-to-main-wiki' ).text() :
+		mw.message( 'flexiskin-configurator-prompt-on-reset' ).text();
+
+	OO.ui.confirm( confirmationMessage, { size: 'large' } ).done( ( confirmed ) => {
+		if ( !confirmed ) {
+			return;
+		}
+		new mw.Api().postWithToken( 'csrf', {
+			action: 'flexiskin-reset',
+			skinname: this.skin.name
+		} ).done( ( response ) => {
+			if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
+				this.resetError();
+				return;
+			}
+			this.reload();
+		} ).fail( () => {
+			this.resetError();
+		} );
+	} );
+};
+
+flexiskin.ui.Configurator.prototype.reload = function () {
+	// Unversioned load.php styles are browser cached, refresh them before reloading
+	const refreshes = $( 'link[rel="stylesheet"][href*="load.php"], script[src*="load.php"]' )
+		.toArray()
+		.map( ( element ) => element.href || element.src )
+		.map( ( url ) => fetch( url, { cache: 'reload', credentials: 'same-origin' } ).catch( () => {} ) );
+
+	Promise.all( refreshes ).then( () => {
+		window.location.reload();
+	} );
 };
 
 flexiskin.ui.Configurator.prototype.clearPreview = function () {
@@ -478,4 +542,8 @@ flexiskin.ui.Configurator.prototype.saveError = function () {
 
 flexiskin.ui.Configurator.prototype.disableError = function () {
 	OO.ui.alert( mw.message( 'flexiskin-ui-error-disable-fail' ).text() );
+};
+
+flexiskin.ui.Configurator.prototype.resetError = function () {
+	OO.ui.alert( mw.message( 'flexiskin-ui-error-reset-fail' ).text() );
 };

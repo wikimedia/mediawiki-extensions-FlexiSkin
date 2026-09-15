@@ -19,7 +19,7 @@ class Delete extends FlexiSkinOperation {
 	 * @return bool
 	 */
 	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
-		return $this->flexiSkinManager->delete();
+		return $this->flexiSkinManager->delete( $flexiSkin->getName() );
 	}
 
 	/**

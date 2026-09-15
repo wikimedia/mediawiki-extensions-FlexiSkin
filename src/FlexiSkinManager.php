@@ -3,6 +3,7 @@
 namespace MediaWiki\Extension\FlexiSkin;
 
 use MediaWiki\Context\RequestContext;
+use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Registration\ExtensionRegistry;
 use MWStake\MediaWiki\Component\FileStorageUtilities\StorageHandler;
@@ -17,14 +18,18 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	private $currentSkin = null;
 	/** @var IFlexiSkin[] */
 	private $loadedSkins = [];
+	/** @var array<string, array{inherits: bool, skin: IFlexiSkin|null}> */
+	private $inheritance = [];
 
 	/**
 	 * @param StorageHandler $storageHandler
 	 * @param WANObjectCache $cache
+	 * @param HookContainer $hookContainer
 	 */
 	public function __construct(
 		private readonly StorageHandler $storageHandler,
-		private readonly WANObjectCache $cache
+		private readonly WANObjectCache $cache,
+		private readonly HookContainer $hookContainer
 	) {
 	}
 
@@ -66,15 +71,18 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 * @return int
+	 * @inheritDoc
 	 */
-	public function delete() {
-		$skinname = $this->currentSkin ? $this->currentSkin->getName() : 'default';
+	public function delete( $skinname = '' ) {
+		if ( empty( $skinname ) ) {
+			$skinname = $this->currentSkin ? $this->currentSkin->getName() : 'default';
+		}
 		$status = $this->storageHandler->newTransaction()
-			->delete( $this->getFilename(), 'flexiskin' )
+			->delete( $this->getFilename( $skinname ), 'flexiskin', [ 'ignoreMissingSource' => true ] )
 			->commit();
 		if ( $status->isOK() ) {
 			$this->cache->delete( $this->getCacheKey( $skinname ) );
+			unset( $this->loadedSkins[$skinname] );
 			$this->currentSkin = null;
 		}
 		return $status->isOK();
@@ -232,6 +240,34 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getEffectiveConfig( $skinname = '' ): array {
+		if ( empty( $skinname ) ) {
+			$skinname = $this->getCurrentSkinname();
+		}
+		$config = [];
+		foreach ( $this->getEffectiveSkins( $skinname ) as $skin ) {
+			$skinConfig = $skin->getConfig();
+			if ( !$skinConfig ) {
+				continue;
+			}
+			$config = array_replace_recursive( $config, $skinConfig );
+		}
+		if ( !$config ) {
+			return [];
+		}
+		/**
+		 * @var string $pluginKey
+		 * @var IPlugin $plugin
+		 */
+		foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
+			$plugin->adaptConfiguration( $config );
+		}
+		return $config;
+	}
+
+	/**
 	 * @param string $skinname
 	 * @return array
 	 */
@@ -239,15 +275,128 @@ class FlexiSkinManager implements IFlexiSkinManager {
 		if ( empty( $skinname ) ) {
 			$skinname = $this->getCurrentSkinname();
 		}
-		$active = $this->getActive( $skinname );
-		if ( !$active instanceof IFlexiSkin ) {
-			return [];
-		}
 		$vars = [];
-		foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
-			$vars = array_merge( $vars, $plugin->getLessVars( $active ) );
+		foreach ( $this->getEffectiveSkins( $skinname ) as $skin ) {
+			foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
+				$vars = array_merge( $vars, $plugin->getLessVars( $skin ) );
+			}
 		}
 		return $vars;
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function inheritsStyling( $skinname = '' ): bool {
+		return $this->getInheritance( $skinname )['inherits'];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getInheritedSkin( $skinname = '' ): ?IFlexiSkin {
+		return $this->getInheritance( $skinname )['skin'];
+	}
+
+	/**
+	 * @param string $skinname
+	 * @return array{inherits: bool, skin: IFlexiSkin|null}
+	 */
+	private function getInheritance( $skinname ): array {
+		if ( empty( $skinname ) ) {
+			$skinname = $this->getCurrentSkinname();
+		}
+		if ( !isset( $this->inheritance[$skinname] ) ) {
+			$inherits = false;
+			$inheritedSkin = null;
+			$this->hookContainer->run(
+				'FlexiSkinGetInheritedSkin',
+				[ $skinname, &$inherits, &$inheritedSkin ]
+			);
+			$this->inheritance[$skinname] = [
+				'inherits' => $inherits,
+				'skin' => $inherits ? $inheritedSkin : null
+			];
+		}
+
+		return $this->inheritance[$skinname];
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function loadFromDataDirectory( string $dataDirectory, string $skinname ): ?IFlexiSkin {
+		$filename = "$dataDirectory/flexiskin/" . $this->getFilename( $skinname );
+		if ( !is_readable( $filename ) ) {
+			return null;
+		}
+		$json = file_get_contents( $filename );
+		if ( $json === false ) {
+			return null;
+		}
+		$data = FormatJson::decode( $json, 1 );
+		if ( !is_array( $data ) ) {
+			return null;
+		}
+
+		return FlexiSkin::newFromData( $data );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function isPluginValidForSkin( string $pluginKey, IPlugin $plugin, string $skinname ): bool {
+		$validSkins = $plugin->getValidSkins();
+		if ( in_array( '*', $validSkins ) || in_array( $skinname, $validSkins ) ) {
+			return true;
+		}
+
+		return in_array( $pluginKey, $this->getSkinDefinition( $skinname )['plugins'] ?? [] );
+	}
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getUnsupportedControls( string $skinname ): array {
+		return $this->getSkinDefinition( $skinname )['unsupportedControls'] ?? [];
+	}
+
+	/**
+	 * @param string $skinname
+	 * @return array
+	 */
+	private function getSkinDefinition( string $skinname ): array {
+		$skins = ExtensionRegistry::getInstance()->getAttribute( 'FlexiSkinSkinRegistry' );
+
+		return $skins[$skinname] ?? [];
+	}
+
+	/**
+	 * @param string $skinname
+	 * @return IFlexiSkin[]
+	 */
+	private function getEffectiveSkins( string $skinname ): array {
+		$skins = [];
+
+		$inheritedSkin = $this->getInheritedSkin( $skinname );
+		if ( $inheritedSkin instanceof IFlexiSkin && $inheritedSkin->isActive() ) {
+			// Images are resolved through the local file repo, they cannot be inherited
+			$config = $inheritedSkin->getConfig() ?? [];
+			unset( $config['images'] );
+			$skins[] = new FlexiSkin(
+				$inheritedSkin->getId(),
+				$inheritedSkin->getName(),
+				$config,
+				true
+			);
+		}
+
+		$own = $this->getActive( $skinname );
+		if ( $own instanceof IFlexiSkin ) {
+			$skins[] = $own;
+		}
+
+		return $skins;
 	}
 
 	/**

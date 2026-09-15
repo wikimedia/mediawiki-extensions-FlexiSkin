@@ -50,6 +50,19 @@ class Configurator extends ResourceLoaderFileModule {
 	}
 
 	/**
+	 * @return string[]
+	 */
+	public function getMessages() {
+		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
+		$messages = parent::getMessages();
+		foreach ( $flexiSkinManager->getPlugins() as $plugin ) {
+			$messages = array_merge( $messages, $plugin->getMessages() );
+		}
+
+		return array_values( array_unique( $messages ) );
+	}
+
+	/**
 	 * Gets all scripts for a given context concatenated together.
 	 *
 	 * @param ResourceLoaderContext $context Context in which to generate script
@@ -128,7 +141,7 @@ class Configurator extends ResourceLoaderFileModule {
 		 * @var IPlugin $plugin
 		 */
 		foreach ( $flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
-			if ( $this->pluginValidForSkin( $plugin->getValidSkins(), $context ) ) {
+			if ( $flexiSkinManager->isPluginValidForSkin( $pluginKey, $plugin, $context->getSkin() ) ) {
 				if ( $type === 'scripts' ) {
 					$resFiles = array_merge( $resFiles, $plugin->getJSFiles() );
 				} elseif ( $type === 'styles' ) {
@@ -163,21 +176,6 @@ class Configurator extends ResourceLoaderFileModule {
 			$js .= $contents . "\n";
 		}
 		return $js;
-	}
-
-	/**
-	 * @param array $pluginSkins
-	 * @param ResourceLoaderContext $context
-	 * @return bool
-	 */
-	private function pluginValidForSkin( $pluginSkins, $context ) {
-		$skin = $context->getSkin();
-
-		if ( in_array( '*', $pluginSkins ) || in_array( $skin, $pluginSkins ) ) {
-			return true;
-		}
-
-		return false;
 	}
 
 	/**

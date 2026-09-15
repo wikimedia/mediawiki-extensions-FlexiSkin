@@ -8,7 +8,6 @@ flexiskin.ui.plugin.Images.prototype.provideControls = function () {
 	return {
 		images: {
 			label: mw.message( 'flexiskin-ui-plugin-images-label' ).text(),
-			expanded: true,
 			items: {
 				logo: {
 					label: mw.message( 'flexiskin-ui-plugin-images-logo-label' ).text(),
