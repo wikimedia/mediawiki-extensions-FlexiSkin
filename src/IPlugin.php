@@ -15,6 +15,11 @@ interface IPlugin {
 	public function getCSSFiles();
 
 	/**
+	 * @return string[] Message keys used by the JS files
+	 */
+	public function getMessages(): array;
+
+	/**
 	 * @return string Name of the plugin
 	 */
 	public function getPluginName();

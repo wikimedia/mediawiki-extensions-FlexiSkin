@@ -71,6 +71,14 @@ class FlexiSkin extends SpecialPage {
 		$this->getOutput()->addJsConfigVars(
 			'wgFlexiSkinColorPresets', $this->getConfig()->get( 'FlexiSkinColorPresets' )
 		);
+		$inheritedSkin = $manager->getInheritedSkin( $skinName );
+		$this->getOutput()->addJsConfigVars( 'wgFlexiSkinInheritance', [
+			'inherits' => $manager->inheritsStyling( $skinName ),
+			'hasInheritedStyling' => $inheritedSkin !== null && $inheritedSkin->isActive()
+		] );
+		$this->getOutput()->addJsConfigVars(
+			'wgFlexiSkinUnsupportedControls', $manager->getUnsupportedControls( $skinName )
+		);
 	}
 
 	/**

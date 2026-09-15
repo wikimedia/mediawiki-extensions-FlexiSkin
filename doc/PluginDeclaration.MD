@@ -20,6 +20,9 @@ After those components are added, plugin must be registered in extension attribu
 
 ## IPlugin
 Main purpose of this file is to provide JS and possible CSS files for the plugin.
+Paths are relative to FlexiSkin's `resources` directory. A plugin declared in another extension or skin returns
+`MediaWiki\ResourceLoader\FilePath` objects with its own base paths instead, and lists the messages its JS uses
+in `getMessages()`.
 
 It also provides the mapping of less var names to the path in the plugin control structure. It might also
 provide the default values for the controls.
@@ -144,3 +147,25 @@ actionCallback: {
 ```
 
 
+
+# Declaring skins
+Plugins that only work with certain skins return an empty array from `IPlugin::getValidSkins()`. Skins then enable
+them in the extension attribute registry `FlexiSkinSkinRegistry`, keyed by skin name. A skin can also hide
+controls it cannot apply, by their path in the control structure:
+```
+"attributes": {
+	"FlexiSkin": {
+		"SkinRegistry": {
+			"myskin": {
+				"plugins": [ "LayoutColors", "Content", "FreeCss" ],
+				"unsupportedControls": [ "color_settings/sidebar_colors" ]
+			}
+		}
+	}
+}
+```
+
+# Inheriting styling
+Hook `FlexiSkinGetInheritedSkin` lets a wiki inherit its styling from elsewhere, e.g. from another wiki (use
+`IFlexiSkinManager::loadFromDataDirectory()` to read its skin). The wiki's own configuration is applied on top
+of the inherited one, and resetting it falls back to the inherited styling.

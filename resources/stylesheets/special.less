@@ -25,22 +25,17 @@
 		vertical-align: top;
 	}
 
+	.fs-tabs {
+		margin-top: 20px;
+
+		> .oo-ui-menuLayout-menu {
+			border-bottom: 2px solid grey;
+		}
+	}
+
 	.fs-group {
 		width: 100%;
 		margin: 20px 0 20px 0;
-
-		.fs-group-header {
-			border-bottom: 2px solid grey;
-			width: inherit;
-
-			.fs-group-header-label {
-				font-size: 1.5em;
-			}
-
-			.fs-group-toggle {
-				float: right;
-			}
-		}
 
 		.fs-group-item-container {
 			fieldset {
@@ -52,6 +47,23 @@
 					margin-right: 20px;
 				}
 			}
+		}
+	}
+
+	.fs-group-free-css {
+		.oo-ui-fieldsetLayout,
+		.oo-ui-fieldsetLayout .oo-ui-fieldsetLayout-group,
+		.fs-group-item-container fieldset .oo-ui-fieldLayout {
+			display: block;
+			width: 100%;
+			margin-left: 0;
+			margin-right: 0;
+			padding-right: 0;
+		}
+
+		.flexiskin-plugin-free-css-input {
+			width: 100%;
+			max-width: none;
 		}
 	}
 }

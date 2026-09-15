@@ -70,12 +70,7 @@ class Main implements MediaWikiServicesHook, BeforePageDisplayHook, UserLoadAfte
 	 */
 	public function onBeforePageDisplay( $out, $skin ): void {
 		$skinname = $skin->getSkinName();
-		$active = $this->getFlextSkinManager()->getActive( $skinname );
-		if ( !$active instanceof IFlexiSkin ) {
-			return;
-		}
-
-		$config = $this->getFlextSkinManager()->getActiveConfig( $skinname );
+		$config = $this->getFlextSkinManager()->getEffectiveConfig( $skinname );
 		if ( !isset( $config['free_css']['css'] ) ) {
 			return;
 		}

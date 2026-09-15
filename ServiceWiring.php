@@ -7,7 +7,8 @@ return [
 	'FlexiSkinManager' => static function ( MediaWikiServices $services ) {
 		return new FlexiSkinManager(
 			$services->getService( 'MWStake.StorageUtilities' ),
-			$services->getMainWANObjectCache()
+			$services->getMainWANObjectCache(),
+			$services->getHookContainer()
 		);
 	}
 ];

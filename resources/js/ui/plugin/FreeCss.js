@@ -16,29 +16,9 @@ flexiskin.ui.plugin.FreeCss.prototype.provideControls = function () {
 					widget: new OO.ui.MultilineTextInputWidget( {
 						rows: 10,
 						classes: [ 'flexiskin-plugin-free-css-input' ]
-					} ),
-					actionCallback: {
-						init: this.onInit
-					}
+					} )
 				}
 			}
 		}
 	};
-};
-
-flexiskin.ui.plugin.FreeCss.prototype.onInit = function ( data ) {
-	data = data || {};
-
-	if ( data instanceof flexiskin.ui.Configurator ) {
-		data.connect( this, {
-			renderComplete: function ( sender ) {
-				const freeCss = sender.items[ 'free_css/css' ],
-					width = freeCss.$element.parents( '.fs-group' ).width() - 20;
-				freeCss.$element.css( {
-					width: width,
-					'max-width': width
-				} );
-			}
-		} );
-	}
 };

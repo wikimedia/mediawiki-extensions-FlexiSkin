@@ -13,6 +13,13 @@ abstract class PluginBase implements IPlugin {
 	}
 
 	/**
+	 * @inheritDoc
+	 */
+	public function getMessages(): array {
+		return [];
+	}
+
+	/**
 	 * @param IFlexiSkin $skin
 	 * @return array
 	 */
