@@ -9,6 +9,7 @@
 		]
 	},
 	"flexiskin-extension-desc": "스킨의 사용자 지정 허용",
+	"flexiskin-extension-name": "플렉시스킨",
 	"flexiskin-label": "스킨",
 	"flexiskin": "플렉시스킨",
 	"right-flexiskin-viewspecialpage": "스킨을 적용하기 위해 [[Special:FlexiSkin|특수 문서]]를 참고",
@@ -98,6 +99,5 @@
 	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "사이드바 강조",
 	"flexiskin-ui-plugin-footer-colors-label": "푸터 색",
 	"flexiskin-ui-plugin-colors-background-footer-label": "푸터 배경",
-	"flexiskin-ui-plugin-colors-foreground-footer-label": "푸터 전경",
-	"flexiskin-extension-name": "플렉시스킨"
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "푸터 전경"
 }

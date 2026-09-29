@@ -17,6 +17,7 @@
 	"flexiskin-extension-desc": "允许自定义皮肤",
 	"flexiskin-label": "皮肤",
 	"flexiskin": "FlexiSkin",
+	"flexiskin-special-title": "皮肤管理器",
 	"right-flexiskin-viewspecialpage": "查看[[Special:FlexiSkin|特殊页面]]以自定义皮肤",
 	"action-flexiskin-viewspecialpage": "查看[[Special:FlexiSkin|特殊页面]]自定义皮肤",
 	"right-flexiskin-api": "使用FlexiSkin API",
