@@ -6,7 +6,7 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Registration\ExtensionRegistry;
 use MWStake\MediaWiki\Component\FileStorageUtilities\StorageHandler;
-use WANObjectCache;
+use Wikimedia\ObjectCache\WANObjectCache;
 
 class FlexiSkinManager implements IFlexiSkinManager {
 
