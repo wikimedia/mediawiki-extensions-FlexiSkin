@@ -45,11 +45,11 @@ class Preview extends FlexiSkinApiBase {
 
 		$vars = [];
 		$config = FormatJson::decode( $this->getParameter( 'config' ), 1 );
-		$flexiSkin = new FlexiSkin( null, 'preview', $config );
+		$flexiSkin = new FlexiSkin( null, $config );
 
 		/** @var FlexiSkinManager $flexiSkinManager */
-		$flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
-		foreach ( $flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
+		$flexiSkinManager = MediaWikiServices::getInstance()->getService( 'FlexiSkinManager' );
+		foreach ( $flexiSkinManager->getPlugins() as $plugin ) {
 			$vars += $plugin->getLessVars( $flexiSkin );
 		}
 
@@ -58,7 +58,7 @@ class Preview extends FlexiSkinApiBase {
 		 * @var string $subKey
 		 * @var IFlexiSkinSubscriber $subscriber
 		 */
-		foreach ( $flexiSkinManager->getSubscribers() as $subKey => $subscriber ) {
+		foreach ( $flexiSkinManager->getSubscribers() as $subscriber ) {
 			$subscribingModules = array_merge(
 				$subscribingModules,
 				$subscriber->getAffectedRLModules()

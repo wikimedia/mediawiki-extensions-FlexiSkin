@@ -2,7 +2,8 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
-use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
+use MediaWiki\Api\ApiUsageException;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use Wikimedia\ParamValidator\ParamValidator;
 
 class Activation extends FlexiSkinOperation {
@@ -19,10 +20,11 @@ class Activation extends FlexiSkinOperation {
 	}
 
 	/**
-	 * @param IFlexiSkin $flexiSkin
+	 * @param FlexiSkin $flexiSkin
 	 * @return bool
+	 * @throws ApiUsageException
 	 */
-	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
+	protected function executeOperationOnSkin( FlexiSkin $flexiSkin ) {
 		$active = (bool)$this->getParameter( 'active' );
 		return $this->flexiSkinManager->setActive( $flexiSkin, $active );
 	}

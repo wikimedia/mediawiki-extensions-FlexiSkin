@@ -11,13 +11,14 @@ flexiskin.ui.Configurator = function ( cfg ) {
 
 	this.$element.addClass( 'fs-configure' );
 
-	this.$messageCnt = $( '<div>' );
+	this.$messageCnt = $( '<div>' ).css( 'margin-bottom', '1em' );
 	this.$element.append( this.$messageCnt );
 
 	if ( this.inheritance.inherits ) {
 		this.makeInheritanceNotice();
 	}
-	if ( !this.active && this.skin.id !== null ) {
+
+	if ( !this.active && 'id' in this.skin && this.skin.id !== null ) {
 		this.makeDisabledWarning();
 	}
 	this.makeToolbar();
@@ -80,20 +81,16 @@ flexiskin.ui.Configurator.prototype.withoutUnsupported = function ( items ) {
 };
 
 flexiskin.ui.Configurator.prototype.makeDisabledWarning = function () {
-	this.$element.append( new OO.ui.MessageWidget( {
+	this.$messageCnt.append( new OO.ui.MessageWidget( {
 		type: 'warning',
 		label: mw.message( 'flexiskin-ui-configurator-warning-disabled-skin' ).text()
 	} ).$element );
 };
 
 flexiskin.ui.Configurator.prototype.makeInheritanceNotice = function () {
-	const label = this.inheritance.hasInheritedStyling ?
-		mw.message( 'flexiskin-ui-configurator-notice-inherited-styling' ).text() :
-		mw.message( 'flexiskin-ui-configurator-notice-inherited-styling-default' ).text();
-
-	this.$element.append( new OO.ui.MessageWidget( {
+	this.$messageCnt.append( new OO.ui.MessageWidget( {
 		type: 'notice',
-		label: label
+		label: mw.msg( 'flexiskin-ui-configurator-notice-inherited-styling' )
 	} ).$element );
 };
 
@@ -453,7 +450,6 @@ flexiskin.ui.Configurator.prototype.doSave = function () {
 			this.getValue( 'save' ).done( ( value ) => {
 				new mw.Api().postWithToken( 'csrf', {
 					action: 'flexiskin-save',
-					skinname: this.skin.name,
 					config: JSON.stringify( value )
 				} ).done( ( response ) => {
 					if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
@@ -476,7 +472,6 @@ flexiskin.ui.Configurator.prototype.doDisable = function () {
 		if ( confirmed ) {
 			new mw.Api().get( {
 				action: 'flexiskin-activation',
-				skinname: this.skin.name,
 				active: 0
 			} ).done( ( response ) => {
 				if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
@@ -502,8 +497,7 @@ flexiskin.ui.Configurator.prototype.doReset = function () {
 			return;
 		}
 		new mw.Api().postWithToken( 'csrf', {
-			action: 'flexiskin-reset',
-			skinname: this.skin.name
+			action: 'flexiskin-reset'
 		} ).done( ( response ) => {
 			if ( !response.hasOwnProperty( 'success' ) || !response.success ) {
 				this.resetError();

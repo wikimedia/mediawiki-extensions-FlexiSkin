@@ -2,58 +2,20 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
-use InvalidArgumentException;
+use JsonSerializable;
 
-class FlexiSkin implements IFlexiSkin {
-	/**
-	 * @var int|null
-	 */
-	protected $id = null;
-
-	/**
-	 * @var bool
-	 */
-	protected $active = false;
-
-	/**
-	 * @var string|null
-	 */
-	protected $name = null;
-
-	/**
-	 * @var string|null
-	 */
-	protected $config = [];
+class FlexiSkin implements IFlexiSkin, JsonSerializable {
 
 	/**
 	 * @param int|null $id
-	 * @param string $name
 	 * @param array $config
 	 * @param bool|null $active
 	 */
-	public function __construct( ?int $id, $name, $config, $active = false ) {
-		$this->id = $id;
-		$this->name = $name;
-		$this->config = $config;
-		$this->active = $active;
-	}
-
-	/**
-	 * @param array $data
-	 * @return static|null
-	 * @throws InvalidArgumentException
-	 */
-	public static function newFromData( $data ) {
-		if ( !isset( $data['name'] ) || !isset( $data['config'] ) ) {
-			throw new InvalidArgumentException( __METHOD__ . ': Invalid data passed' );
-		}
-
-		return new static(
-			(int)$data['id'],
-			$data['name'],
-			$data['config'],
-			(bool)$data['active']
-		);
+	public function __construct(
+		private ?int $id,
+		private array $config,
+		private bool $active = false
+	) {
 	}
 
 	/**
@@ -61,13 +23,6 @@ class FlexiSkin implements IFlexiSkin {
 	 */
 	public function getId(): ?int {
 		return $this->id;
-	}
-
-	/**
-	 * @return string|null
-	 */
-	public function getName(): ?string {
-		return $this->name;
 	}
 
 	/**
@@ -84,23 +39,19 @@ class FlexiSkin implements IFlexiSkin {
 		return $this->active;
 	}
 
-	/**
-	 * @return array
-	 */
-	public function jsonSerialize(): array {
-		return [
-			'id' => $this->getId(),
-			'name' => $this->getName(),
-			'config' => $this->getConfig(),
-			'active' => $this->isActive()
-		];
+	public function activate(): void {
+		$this->active = true;
+	}
+
+	public function deactivate(): void {
+		$this->active = false;
 	}
 
 	/**
 	 * @param string $path
 	 * @return mixed|null if not found
 	 */
-	public function getValueForPath( $path ) {
+	public function getValueForPath( string $path ): mixed {
 		$pathBits = explode( '/', $path );
 		$searchValue = $this->getConfig();
 		foreach ( $pathBits as $bit ) {
@@ -114,5 +65,16 @@ class FlexiSkin implements IFlexiSkin {
 			return null;
 		}
 		return $searchValue;
+	}
+
+	/**
+	 * @return mixed
+	 */
+	public function jsonSerialize(): mixed {
+		return [
+			'id' => $this->getId(),
+			'config' => $this->getConfig(),
+			'active' => $this->isActive()
+		];
 	}
 }

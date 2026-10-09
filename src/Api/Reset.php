@@ -2,7 +2,7 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
-use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 
 /**
  * Discards the configuration of this wiki, so that its styling falls back to the inherited
@@ -21,11 +21,11 @@ class Reset extends FlexiSkinOperation {
 	}
 
 	/**
-	 * @param IFlexiSkin $flexiSkin
+	 * @param FlexiSkin $flexiSkin
 	 * @return bool
 	 */
-	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
-		return $this->flexiSkinManager->delete( $flexiSkin->getName() );
+	protected function executeOperationOnSkin( FlexiSkin $flexiSkin ) {
+		return $this->flexiSkinManager->delete();
 	}
 
 	/**

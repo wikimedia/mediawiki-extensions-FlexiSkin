@@ -2,19 +2,15 @@
 
 namespace MediaWiki\Extension\FlexiSkin;
 
-use JsonSerializable;
-
-interface IFlexiSkin extends JsonSerializable {
+/**
+ * @deprecated since 6.0 - use FlexiSkin class directly
+ */
+interface IFlexiSkin {
 
 	/**
 	 * @return int|null
 	 */
 	public function getId(): ?int;
-
-	/**
-	 * @return string|null
-	 */
-	public function getName(): ?string;
 
 	/**
 	 * @return array|null
@@ -27,10 +23,18 @@ interface IFlexiSkin extends JsonSerializable {
 	public function isActive(): bool;
 
 	/**
-	 * Get value at particular path in the skin config
-	 *
+	 * @return void
+	 */
+	public function activate(): void;
+
+	/**
+	 * @return void
+	 */
+	public function deactivate(): void;
+
+	/**
 	 * @param string $path
 	 * @return mixed|null if not found
 	 */
-	public function getValueForPath( $path );
+	public function getValueForPath( string $path ): mixed;
 }

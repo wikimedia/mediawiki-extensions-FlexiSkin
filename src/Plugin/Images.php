@@ -2,9 +2,9 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Plugin;
 
-use File;
 use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
+use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
 
 class Images extends PluginBase {
