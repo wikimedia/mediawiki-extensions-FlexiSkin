@@ -25,10 +25,10 @@ class FlexiSkinConfig implements Config {
 		}
 
 		$services = MediaWikiServices::getInstance();
-		/** @var IFlexiSkinManager $flexiSkinManager */
-		$flexiSkinManager = $services->get( 'FlexiSkinManager' );
+		/** @var FlexiSkinManager $flexiSkinManager */
+		$flexiSkinManager = $services->getService( 'FlexiSkinManager' );
 		$active = $flexiSkinManager->getActive();
-		if ( !$active instanceof IFlexiSkin ) {
+		if ( !$active instanceof FlexiSkin ) {
 			$this->initialized = true;
 			return;
 		}

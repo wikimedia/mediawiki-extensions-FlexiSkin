@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use MediaWiki\Api\ApiUsageException;
-use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 
 class Delete extends FlexiSkinOperation {
 	/**
@@ -11,15 +11,15 @@ class Delete extends FlexiSkinOperation {
 	 * @throws ApiUsageException
 	 */
 	protected function executeAction() {
-		return $this->executeOperationOnSkin( $this->getFlexiSkin() );
+		return $this->executeOperationOnSkin( $this->getLocalSkin() );
 	}
 
 	/**
-	 * @param IFlexiSkin $flexiSkin
+	 * @param FlexiSkin $flexiSkin
 	 * @return bool
 	 */
-	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
-		return $this->flexiSkinManager->delete( $flexiSkin->getName() );
+	protected function executeOperationOnSkin( FlexiSkin $flexiSkin ) {
+		return $this->flexiSkinManager->delete();
 	}
 
 	/**

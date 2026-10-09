@@ -9,7 +9,6 @@
 	"action-flexiskin-viewspecialpage": "view [[Special:FlexiSkin|special page]] to customizing the skin",
 	"right-flexiskin-api": "Use the FlexiSkin APIs",
 	"action-flexiskin-api": "use the FlexiSkin APIs",
-	"apihelp-flexiskin-skinoperation-param-skinname": "The skin name to manage a FlexiSkin for",
 	"apihelp-flexiskin-activation-summary": "The activate module",
 	"apihelp-flexiskin-save-summary": "The save module",
 	"apihelp-flexiskin-preview-summary": "The preview module",
@@ -97,7 +96,6 @@
 	"flexiskin-ui-error-reset-fail": "Resetting the skin failed",
 	"flexiskin-configurator-prompt-on-reset": "All settings of this wiki will be discarded and the BlueSpice default styling will be applied instead. This affects all users on this wiki and cannot be undone. Do you want to proceed?",
 	"flexiskin-configurator-prompt-on-reset-to-main-wiki": "All settings of this wiki will be discarded and the styling of the main wiki will be applied instead. This affects all users on this wiki and cannot be undone. Do you want to proceed?",
-	"flexiskin-ui-configurator-notice-inherited-styling": "This wiki inherits its styling from the main wiki. Every setting you do not customize here keeps following the main wiki.",
-	"flexiskin-ui-configurator-notice-inherited-styling-default": "This wiki inherits its styling from the main wiki. The main wiki currently uses the BlueSpice default styling, so that is what every setting you do not customize here follows.",
+	"flexiskin-ui-configurator-notice-inherited-styling": "This wiki inherits its styling from the main wiki. You can further customize this wiki. Changes you make here will only be applied to this wiki.",
 	"apihelp-flexiskin-reset-summary": "The reset module"
 }

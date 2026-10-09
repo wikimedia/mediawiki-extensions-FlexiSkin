@@ -5,15 +5,16 @@ namespace MediaWiki\Extension\FlexiSkin\HookHandler;
 use MediaWiki\Installer\DatabaseUpdater;
 use MediaWiki\Installer\Hook\LoadExtensionSchemaUpdatesHook;
 
-class ConvertDefaultFile implements LoadExtensionSchemaUpdatesHook {
+class RunDatabaseUpdates implements LoadExtensionSchemaUpdatesHook {
 
 	/**
 	 * @param DatabaseUpdater $updater
 	 * @return bool|void
 	 */
 	public function onLoadExtensionSchemaUpdates( $updater ) {
-		$updater->addPostDatabaseUpdateMaintenance( \RenameDefaultFile::class );
+		$baseDir = __DIR__ . '/../../db';
+		$dbType = $updater->getDB()->getType();
 
-		return true;
+		$updater->addExtensionTable( 'flexiskin', "$baseDir/$dbType/flexiskin.sql" );
 	}
 }

@@ -3,7 +3,7 @@
 namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use MediaWiki\Api\ApiUsageException;
-use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
+use MediaWiki\Extension\FlexiSkin\FlexiSkin;
 use MediaWiki\Json\FormatJson;
 use MWStake\MediaWiki\Component\CommonUserInterface\LessVars;
 use Wikimedia\ParamValidator\ParamValidator;
@@ -53,7 +53,7 @@ class Save extends FlexiSkinOperation {
 	 * @throws ApiUsageException
 	 */
 	protected function executeAction() {
-		$flexiSkin = $this->getFlexiSkin();
+		$flexiSkin = $this->getLocalSkin( true );
 		$newSkin = $this->replaceConfig( $flexiSkin, $this->getParameter( 'config' ) );
 		$filteredConfig = $this->filterOutDefaults(
 			$flexiSkin,
@@ -66,12 +66,12 @@ class Save extends FlexiSkinOperation {
 	}
 
 	/**
-	 * @param IFlexiSkin $flexiSkin
+	 * @param FlexiSkin $flexiSkin
 	 * @return bool
 	 */
-	protected function executeOperationOnSkin( IFlexiSkin $flexiSkin ) {
-		return $this->flexiSkinManager->save( $flexiSkin ) &&
-			$this->flexiSkinManager->setActive( $flexiSkin, true );
+	protected function executeOperationOnSkin( FlexiSkin $flexiSkin ) {
+		$savedSkin = $this->flexiSkinManager->save( $flexiSkin );
+		return $savedSkin && $this->flexiSkinManager->setActive( $savedSkin, true );
 	}
 
 	/**
@@ -84,14 +84,14 @@ class Save extends FlexiSkinOperation {
 	/**
 	 * Filter out all of the values that were no supposed to go to the skin
 	 *
-	 * @param IFlexiSkin $old
-	 * @param IFlexiSkin $new
+	 * @param FlexiSkin $old
+	 * @param FlexiSkin $new
 	 * @return array
 	 */
-	private function filterOutDefaults( IFlexiSkin $old, IFlexiSkin $new ) {
+	private function filterOutDefaults( FlexiSkin $old, FlexiSkin $new ) {
 		$allVars = LessVars::getInstance()->getAllVars();
 		$config = $new->getConfig();
-		foreach ( $this->flexiSkinManager->getPlugins() as $pluginKey => $plugin ) {
+		foreach ( $this->flexiSkinManager->getPlugins() as $plugin ) {
 			$map = $plugin->getLessVarsMap();
 			$lessVars = $plugin->getLessVars( $new );
 			foreach ( $lessVars as $var => $value ) {
@@ -149,10 +149,10 @@ class Save extends FlexiSkinOperation {
 	 * Check if the variable var already set
 	 *
 	 * @param string $path
-	 * @param IFlexiSkin $skin
+	 * @param FlexiSkin $skin
 	 * @return bool
 	 */
-	private function isVarPreviouslySet( $path, IFlexiSkin $skin ) {
+	private function isVarPreviouslySet( $path, FlexiSkin $skin ) {
 		$value = $skin->getValueForPath( $path );
 		return $value !== null;
 	}

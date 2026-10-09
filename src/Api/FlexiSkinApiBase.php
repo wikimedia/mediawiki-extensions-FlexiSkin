@@ -4,11 +4,10 @@ namespace MediaWiki\Extension\FlexiSkin\Api;
 
 use MediaWiki\Api\ApiBase;
 use MediaWiki\Api\ApiMain;
-use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
 use MediaWiki\MediaWikiServices;
 
 abstract class FlexiSkinApiBase extends ApiBase {
-	/** @var IFlexiSkinManager */
+	/** @var FlexiSkinManager */
 	protected $flexiSkinManager = null;
 
 	/**
@@ -18,7 +17,7 @@ abstract class FlexiSkinApiBase extends ApiBase {
 	 */
 	public function __construct( ApiMain $mainModule, $moduleName, $modulePrefix = '' ) {
 		parent::__construct( $mainModule, $moduleName, $modulePrefix );
-		$this->flexiSkinManager = MediaWikiServices::getInstance()->get( 'FlexiSkinManager' );
+		$this->flexiSkinManager = MediaWikiServices::getInstance()->getService( 'FlexiSkinManager' );
 	}
 
 	protected function checkPermissions() {

@@ -2,10 +2,9 @@
 
 namespace MediaWiki\Extension\FlexiSkin\Special;
 
-use MediaWiki\Extension\FlexiSkin\IFlexiSkinManager;
+use MediaWiki\Extension\FlexiSkin\FlexiSkinManager;
 use MediaWiki\Html\Html;
 use MediaWiki\Html\TemplateParser;
-use MediaWiki\MediaWikiServices;
 use MediaWiki\SpecialPage\SpecialPage;
 
 class FlexiSkin extends SpecialPage {
@@ -13,7 +12,9 @@ class FlexiSkin extends SpecialPage {
 	/** @var TemplateParser */
 	protected $templateParser;
 
-	public function __construct() {
+	public function __construct(
+		private readonly FlexiSkinManager $flexiSkinManager
+	) {
 		parent::__construct( 'FlexiSkin' );
 
 		$this->templateParser = new TemplateParser(
@@ -47,37 +48,42 @@ class FlexiSkin extends SpecialPage {
 		$this->getOutput()->addModules( [ 'ext.flexiskin.specialpage.scripts' ] );
 		$this->getOutput()->addHTML( Html::element( 'div', [ 'id' => 'fs-container' ] ) );
 
-		/** @var IFlexiSkinManager $manager */
-		$manager = MediaWikiServices::getInstance()->getService( 'FlexiSkinManager' );
-		$flexiSkin = $manager->getFlexiSkin();
-		$skinName = $this->getSkin()->getSkinName();
-		if ( $flexiSkin === null ) {
-			$flexiSkin = $manager->create( $skinName, [] );
+		$localSkin = $this->flexiSkinManager->getLocalSkin();
+		if ( !$localSkin ) {
+			$localSkin = $this->flexiSkinManager->createNew();
 		}
-		$config = $flexiSkin->getConfig();
+		$activeSkin = $this->flexiSkinManager->getActive();
+		$inherited = false;
+		$usedSkin = $localSkin;
+		if ( ( !$localSkin->getId() || !$localSkin->isActive() ) && $activeSkin?->getId() ) {
+			$usedSkin = $activeSkin;
+			$inherited = true;
+		}
+		$config = $usedSkin->getConfig();
 
-		foreach ( $manager->getPlugins() as $key => $plugin ) {
+		foreach ( $this->flexiSkinManager->getPlugins() as $plugin ) {
 			$plugin->adaptConfiguration( $config );
-			$plugin->setDefaults( $flexiSkin, $config );
+			$plugin->setDefaults( $usedSkin, $config );
 		}
+		$this->getHookContainer()->run( 'FlexiSkinAdaptConfiguration', [ $usedSkin, &$config ] );
+
 		$adaptedSkin = new \MediaWiki\Extension\FlexiSkin\FlexiSkin(
-			$flexiSkin->getId(),
-			$flexiSkin->getName(),
+			$localSkin->getId(),
 			$config,
-			$flexiSkin->isActive()
+			$localSkin->isActive()
 		);
 
 		$this->getOutput()->addJsConfigVars( 'wgFlexiSkin', $adaptedSkin );
 		$this->getOutput()->addJsConfigVars(
 			'wgFlexiSkinColorPresets', $this->getConfig()->get( 'FlexiSkinColorPresets' )
 		);
-		$inheritedSkin = $manager->getInheritedSkin( $skinName );
+
 		$this->getOutput()->addJsConfigVars( 'wgFlexiSkinInheritance', [
-			'inherits' => $manager->inheritsStyling( $skinName ),
-			'hasInheritedStyling' => $inheritedSkin !== null && $inheritedSkin->isActive()
+			'inherits' => $inherited,
 		] );
+
 		$this->getOutput()->addJsConfigVars(
-			'wgFlexiSkinUnsupportedControls', $manager->getUnsupportedControls( $skinName )
+			'wgFlexiSkinUnsupportedControls', $this->flexiSkinManager->getUnsupportedControls()
 		);
 	}
 
