@@ -54,13 +54,13 @@
 		"ServiceWiring.php"
 	],
 	"SpecialPages": {
-		"FlexiSkin": "MediaWiki\\Extension\\FlexiSkin\\Special\\FlexiSkin"
+		"FlexiSkin": {
+			"class": "MediaWiki\\Extension\\FlexiSkin\\Special\\FlexiSkin",
+			"services": [ "FlexiSkinManager" ]
+		}
 	},
 	"ExtensionMessagesFiles": {
 		"FlexiSkinAlias": "languages/FlexiSkin.alias.php"
-	},
-	"AutoloadClasses": {
-		"RenameDefaultFile": "maintenance/RenameDefaultFile.php"
 	},
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\FlexiSkin\\": "src/"
@@ -177,8 +177,7 @@
 				"flexiskin-ui-error-reset-fail",
 				"flexiskin-configurator-prompt-on-reset",
 				"flexiskin-configurator-prompt-on-reset-to-main-wiki",
-				"flexiskin-ui-configurator-notice-inherited-styling",
-				"flexiskin-ui-configurator-notice-inherited-styling-default"
+				"flexiskin-ui-configurator-notice-inherited-styling"
 			]
 		}
 	},
@@ -264,8 +263,8 @@
 			"class": "\\MediaWiki\\Extension\\FlexiSkin\\HookHandler\\DiscoverySkin",
 			"services": [ "FlexiSkinManager" ]
 		},
-		"convert-default-file": {
-			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\ConvertDefaultFile"
+		"run-db-updates": {
+			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\RunDatabaseUpdates"
 		},
 		"stabilizationExceptionForImages": {
 			"class": "MediaWiki\\Extension\\FlexiSkin\\HookHandler\\StabilizationExceptionForImages"
@@ -279,8 +278,7 @@
 	},
 	"Hooks": {
 		"MWStakeCommonUIRegisterSkinSlotComponents": "discovery-skin",
-		"LoadExtensionSchemaUpdates": "convert-default-file",
-		"UserLoadAfterLoadFromSession": "main",
+		"LoadExtensionSchemaUpdates": "run-db-updates",
 		"ContentStabilizationIsStabilizationEnabled": "stabilizationExceptionForImages",
 		"MWStakeCommonUILessVarsOverride": "discovery-skin",
 		"MediaWikiServices": "main",

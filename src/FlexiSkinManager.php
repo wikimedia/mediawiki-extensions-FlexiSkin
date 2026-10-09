@@ -6,190 +6,179 @@ use MediaWiki\Context\RequestContext;
 use MediaWiki\HookContainer\HookContainer;
 use MediaWiki\Json\FormatJson;
 use MediaWiki\Registration\ExtensionRegistry;
-use MWStake\MediaWiki\Component\FileStorageUtilities\StorageHandler;
-use Wikimedia\ObjectCache\WANObjectCache;
+use MediaWiki\WikiMap\WikiMap;
+use Psr\Log\LoggerInterface;
+use Throwable;
+use Wikimedia\Rdbms\ILoadBalancer;
 
-class FlexiSkinManager implements IFlexiSkinManager {
+class FlexiSkinManager {
 
-	private const CACHE_TTL = WANObjectCache::TTL_INDEFINITE;
-	private const CACHE_VERSION = 1;
+	private const TABLE_NAME = 'flexiskin';
 
-	/** @var IFlexiSkin|null */
-	private $currentSkin = null;
-	/** @var IFlexiSkin[] */
-	private $loadedSkins = [];
-	/** @var array<string, array{inherits: bool, skin: IFlexiSkin|null}> */
-	private $inheritance = [];
+	/** @var FlexiSkin|null */
+	private ?FlexiSkin $localSkin = null;
+	/** @var bool */
+	private bool $activeSkinLoaded = false;
+	private ?FlexiSkin $activeSkin = null;
 
 	/**
-	 * @param StorageHandler $storageHandler
-	 * @param WANObjectCache $cache
+	 * @param ILoadBalancer $lb
 	 * @param HookContainer $hookContainer
+	 * @param LoggerInterface $logger
 	 */
 	public function __construct(
-		private readonly StorageHandler $storageHandler,
-		private readonly WANObjectCache $cache,
-		private readonly HookContainer $hookContainer
+		private readonly ILoadBalancer $lb,
+		private readonly HookContainer $hookContainer,
+		private readonly LoggerInterface $logger
 	) {
 	}
 
 	/**
-	 * @param string $skinname
-	 * @return string
+	 * @param FlexiSkin $flexiSkin
+	 * @return FlexiSkin|null
 	 */
-	private function getCacheKey( string $skinname ): string {
-		return $this->cache->makeKey( 'flexiskin', self::CACHE_VERSION, $skinname );
+	public function save( FlexiSkin $flexiSkin ): ?FlexiSkin {
+		$row = [
+			'fs_skin' => $this->getCurrentSkinName(),
+			'fs_active' => $flexiSkin->isActive(),
+			'fs_config' => FormatJson::encode( $flexiSkin->getConfig() ),
+			'fs_wiki_id' => WikiMap::getCurrentWikiId(),
+		];
+
+		$db = $this->lb->getConnection( DB_PRIMARY );
+		if ( $flexiSkin->getId() === null ) {
+			$query = $db->newInsertQueryBuilder()
+				->insert( self::TABLE_NAME )
+				->row( $row )
+				->caller( __METHOD__ );
+		} else {
+			$query = $db->newUpdateQueryBuilder()
+				->update( self::TABLE_NAME )
+				->set( $row )
+				->where( [ 'fs_id' => $flexiSkin->getId() ] )
+				->caller( __METHOD__ );
+		}
+
+		try {
+			$query->execute();
+			return $this->getSkinForWiki( WikiMap::getCurrentWikiId() );
+		} catch ( Throwable $e ) {
+			$this->logger->error( "Failed to save FlexiSkin: {$e->getMessage()}" );
+			return null;
+		}
 	}
 
 	/**
-	 * @param IFlexiSkin $flexiSkin
 	 * @return bool
 	 */
-	public function save( IFlexiSkin $flexiSkin ): bool {
-		$filename = $this->getFilename( $flexiSkin->getName() );
-
-		if ( $flexiSkin->getId() === null ) {
-			$flexiSkin = new FlexiSkin(
-				1,
-				$flexiSkin->getName(),
-				$flexiSkin->getConfig(),
-				$flexiSkin->isActive()
-			);
+	public function delete(): bool {
+		$db = $this->lb->getConnection( DB_PRIMARY );
+		try {
+			$db->newDeleteQueryBuilder()
+				->delete( self::TABLE_NAME )
+				->where( [ 'fs_skin' => $this->getCurrentSkinName(), 'fs_wiki_id' => WikiMap::getCurrentWikiId() ] )
+				->caller( __METHOD__ )
+				->execute();
+		} catch ( Throwable $e ) {
+			$this->logger->error( "Failed to delete FlexiSkin: {$e->getMessage()}" );
+			return false;
 		}
 
-		$json = FormatJson::encode( $flexiSkin );
-
-		$status = $this->storageHandler->newTransaction()
-			->create( $filename, $json, 'flexiskin', [ 'overwrite' => true ] )
-			->commit();
-		if ( $status->isOK() ) {
-			$this->currentSkin = $flexiSkin;
-			$this->cache->delete( $this->getCacheKey( $flexiSkin->getName() ) );
-		}
-
-		return $status->isOK();
+		return true;
 	}
 
 	/**
-	 * @inheritDoc
+	 * @return FlexiSkin|null
 	 */
-	public function delete( $skinname = '' ) {
-		if ( empty( $skinname ) ) {
-			$skinname = $this->currentSkin ? $this->currentSkin->getName() : 'default';
-		}
-		$status = $this->storageHandler->newTransaction()
-			->delete( $this->getFilename( $skinname ), 'flexiskin', [ 'ignoreMissingSource' => true ] )
-			->commit();
-		if ( $status->isOK() ) {
-			$this->cache->delete( $this->getCacheKey( $skinname ) );
-			unset( $this->loadedSkins[$skinname] );
-			$this->currentSkin = null;
-		}
-		return $status->isOK();
-	}
-
-	/**
-	 * @param string $skinname
-	 * @return IFlexiSkin|null
-	 */
-	public function getFlexiSkin( $skinname = '' ): ?IFlexiSkin {
-		$this->load( false, $skinname );
-		return $this->currentSkin;
+	public function getLocalSkin(): ?FlexiSkin {
+		$this->load();
+		return $this->localSkin;
 	}
 
 	/**
 	 * @param bool|null $reload
-	 * @param string $skinname
 	 * @return void
 	 */
-	private function load( $reload = false, $skinname = '' ) {
-		if ( !empty( $skinname ) ) {
-				$this->currentSkin = isset( $this->loadedSkins[$skinname] )
-					? $this->loadedSkins[$skinname] : null;
-		}
-		if ( $this->currentSkin === null || $reload ) {
-			$filename = $this->getFilename( $skinname );
-			$cacheKey = $this->getCacheKey( $skinname ?: 'default' );
-
-			$data = $this->cache->getWithSetCallback(
-				$cacheKey,
-				self::CACHE_TTL,
-				function () use ( $filename ) {
-					$file = $this->storageHandler->getFile( $filename, 'flexiskin' );
-					if ( !$file ) {
-						return false;
-					}
-					$json = file_get_contents( $file->getPath() );
-					return FormatJson::decode( $json, 1 );
-				}
-			);
-
-			if ( $data === false ) {
-				return;
-			}
-
-			$newSkin = FlexiSkin::newFromData( $data );
-			$skinname = $newSkin->getName();
-			$this->loadedSkins[$skinname] = $newSkin;
-			$this->currentSkin = $this->loadedSkins[$skinname];
+	private function load( bool $reload = false ): void {
+		if ( $this->localSkin === null || $reload ) {
+			$this->localSkin = $this->getSkinForWiki( WikiMap::getCurrentWikiId() );
 		}
 	}
 
 	/**
-	 * @inheritDoc
+	 * @param string $wikiId
+	 * @param bool $onlyActive
+	 * @return FlexiSkin|null
 	 */
-	public function getActive( $skinname = '' ): ?IFlexiSkin {
-		if ( empty( $skinname ) ) {
-			$skinname = $this->getCurrentSkinname();
+	public function getSkinForWiki( string $wikiId, bool $onlyActive = false ): ?FlexiSkin {
+		$db = $this->lb->getConnection( DB_PRIMARY );
+		$query = $db->newSelectQueryBuilder()
+			->from( self::TABLE_NAME )
+			->select( [ 'fs_id', 'fs_skin', 'fs_config', 'fs_active' ] )
+			->where( [ 'fs_skin' => $this->getCurrentSkinName(), 'fs_wiki_id' => $wikiId ] )
+			->caller( __METHOD__ );
+		if ( $onlyActive ) {
+			$query->where( [ 'fs_active' => 1 ] );
 		}
-		$current = $this->getFlexiSkin( $skinname );
-		if ( $current && $current->isActive() ) {
-			return $current;
+		$row = $query->fetchRow();
+
+		if ( !$row ) {
+			return null;
 		}
+
+		return new FlexiSkin(
+			id: (int)$row->fs_id,
+			config: FormatJson::decode( $row->fs_config, 1 ),
+			active: (bool)$row->fs_active
+		);
+	}
+
+	/**
+	 * @return FlexiSkin|null
+	 */
+	public function getActive(): ?FlexiSkin {
+		if ( $this->activeSkinLoaded ) {
+			return $this->activeSkin;
+		}
+		$this->load();
+		if ( $this->localSkin && $this->localSkin->isActive() ) {
+			$this->activeSkin = $this->localSkin;
+			return $this->localSkin;
+		}
+		$activeSkin = null;
+		$this->hookContainer->run( 'FlexiSkinGetActiveSkin', [ $this, &$activeSkin ] );
+		if ( $activeSkin && $activeSkin->isActive() ) {
+			$this->activeSkin = $activeSkin;
+			$this->activeSkinLoaded = true;
+			return $activeSkin;
+		}
+		$this->activeSkinLoaded = true;
+		$this->activeSkin = null;
 		return null;
 	}
 
 	/**
-	 * @return string
+	 * @param FlexiSkin|null $flexiSkin
+	 * @param bool $active
+	 * @return FlexiSkin|null
 	 */
-	private function getCurrentSkinname() {
-		$context = RequestContext::getMain();
-		if ( defined( 'MW_NO_SESSION' ) && MW_NO_SESSION ) {
-			return $context->getRequest()->getVal( 'skin', '' );
+	public function setActive( ?FlexiSkin $flexiSkin = null, bool $active = true ): ?FlexiSkin {
+		if ( !$flexiSkin ) {
+			return null;
 		}
-		$skinname = $context->getSkin()->getSkinName();
-		return $skinname;
+		$active ? $flexiSkin->activate() : $flexiSkin->deactivate();
+
+		return $this->save( $flexiSkin );
 	}
 
 	/**
-	 * @inheritDoc
-	 */
-	public function setActive( ?IFlexiSkin $flexiSkin = null, $active = true ): bool {
-		$current = $flexiSkin;
-		if ( $current === null ) {
-			$context = RequestContext::getMain();
-			$currentSkin = $context->getSkin()->getSkinName();
-			$current = $this->create( $currentSkin, [] );
-		}
-		$newSkin = new FlexiSkin(
-			$current->getId(),
-			$current->getName(),
-			$current->getConfig(),
-			$active
-		);
-
-		return (bool)$this->save( $newSkin );
-	}
-
-	/**
-	 * @param string $name
 	 * @param array $config
-	 * @return IFlexiSkin
+	 * @return FlexiSkin
 	 */
-	public function create( $name, $config ): IFlexiSkin {
-		$existingSkin = $this->getFlexiSkin( $name );
+	public function createNew( array $config = [] ): FlexiSkin {
+		$existingSkin = $this->getLocalSkin();
 		if ( $existingSkin === null ) {
-			return new FlexiSkin( null, $name, $config );
+			return new FlexiSkin( null, $config );
 		}
 
 		return $existingSkin;
@@ -213,15 +202,11 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 * @param string $skinname
 	 * @return array
 	 */
-	public function getActiveConfig( $skinname = '' ): array {
-		if ( empty( $skinname ) ) {
-			$skinname = $this->getCurrentSkinname();
-		}
-		$active = $this->getActive( $skinname );
-		if ( !$active instanceof IFlexiSkin ) {
+	public function getActiveConfig(): array {
+		$active = $this->getActive();
+		if ( !$active instanceof FlexiSkin ) {
 			return [];
 		}
 
@@ -233,113 +218,27 @@ class FlexiSkinManager implements IFlexiSkinManager {
 		 * @var string $pluginKey
 		 * @var IPlugin $plugin
 		 */
-		foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
+		foreach ( $this->getPlugins() as $plugin ) {
 			$plugin->adaptConfiguration( $config );
 		}
+
+		$this->hookContainer->run( 'FlexiSkinAdaptConfiguration', [ $active, &$config ] );
 		return $config;
 	}
 
 	/**
-	 * @inheritDoc
-	 */
-	public function getEffectiveConfig( $skinname = '' ): array {
-		if ( empty( $skinname ) ) {
-			$skinname = $this->getCurrentSkinname();
-		}
-		$config = [];
-		foreach ( $this->getEffectiveSkins( $skinname ) as $skin ) {
-			$skinConfig = $skin->getConfig();
-			if ( !$skinConfig ) {
-				continue;
-			}
-			$config = array_replace_recursive( $config, $skinConfig );
-		}
-		if ( !$config ) {
-			return [];
-		}
-		/**
-		 * @var string $pluginKey
-		 * @var IPlugin $plugin
-		 */
-		foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
-			$plugin->adaptConfiguration( $config );
-		}
-		return $config;
-	}
-
-	/**
-	 * @param string $skinname
 	 * @return array
 	 */
-	public function getActiveLessVars( $skinname = '' ): array {
-		if ( empty( $skinname ) ) {
-			$skinname = $this->getCurrentSkinname();
+	public function getActiveLessVars(): array {
+		$active = $this->getActive();
+		if ( !$active ) {
+			return [];
 		}
 		$vars = [];
-		foreach ( $this->getEffectiveSkins( $skinname ) as $skin ) {
-			foreach ( $this->getPlugins() as $pluginKey => $plugin ) {
-				$vars = array_merge( $vars, $plugin->getLessVars( $skin ) );
-			}
+		foreach ( $this->getPlugins() as $plugin ) {
+			$vars = array_merge( $vars, $plugin->getLessVars( $active ) );
 		}
 		return $vars;
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function inheritsStyling( $skinname = '' ): bool {
-		return $this->getInheritance( $skinname )['inherits'];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function getInheritedSkin( $skinname = '' ): ?IFlexiSkin {
-		return $this->getInheritance( $skinname )['skin'];
-	}
-
-	/**
-	 * @param string $skinname
-	 * @return array{inherits: bool, skin: IFlexiSkin|null}
-	 */
-	private function getInheritance( $skinname ): array {
-		if ( empty( $skinname ) ) {
-			$skinname = $this->getCurrentSkinname();
-		}
-		if ( !isset( $this->inheritance[$skinname] ) ) {
-			$inherits = false;
-			$inheritedSkin = null;
-			$this->hookContainer->run(
-				'FlexiSkinGetInheritedSkin',
-				[ $skinname, &$inherits, &$inheritedSkin ]
-			);
-			$this->inheritance[$skinname] = [
-				'inherits' => $inherits,
-				'skin' => $inherits ? $inheritedSkin : null
-			];
-		}
-
-		return $this->inheritance[$skinname];
-	}
-
-	/**
-	 * @inheritDoc
-	 */
-	public function loadFromDataDirectory( string $dataDirectory, string $skinname ): ?IFlexiSkin {
-		$filename = "$dataDirectory/flexiskin/" . $this->getFilename( $skinname );
-		if ( !is_readable( $filename ) ) {
-			return null;
-		}
-		$json = file_get_contents( $filename );
-		if ( $json === false ) {
-			return null;
-		}
-		$data = FormatJson::decode( $json, 1 );
-		if ( !is_array( $data ) ) {
-			return null;
-		}
-
-		return FlexiSkin::newFromData( $data );
 	}
 
 	/**
@@ -355,56 +254,30 @@ class FlexiSkinManager implements IFlexiSkinManager {
 	}
 
 	/**
-	 * @inheritDoc
-	 */
-	public function getUnsupportedControls( string $skinname ): array {
-		return $this->getSkinDefinition( $skinname )['unsupportedControls'] ?? [];
-	}
-
-	/**
-	 * @param string $skinname
 	 * @return array
 	 */
-	private function getSkinDefinition( string $skinname ): array {
+	public function getUnsupportedControls(): array {
+		return $this->getSkinDefinition()['unsupportedControls'] ?? [];
+	}
+
+	/**
+	 * @return array
+	 */
+	private function getSkinDefinition(): array {
 		$skins = ExtensionRegistry::getInstance()->getAttribute( 'FlexiSkinSkinRegistry' );
 
-		return $skins[$skinname] ?? [];
+		return $skins[$this->getCurrentSkinName()] ?? [];
 	}
 
 	/**
-	 * @param string $skinname
-	 * @return IFlexiSkin[]
-	 */
-	private function getEffectiveSkins( string $skinname ): array {
-		$skins = [];
-
-		$inheritedSkin = $this->getInheritedSkin( $skinname );
-		if ( $inheritedSkin instanceof IFlexiSkin && $inheritedSkin->isActive() ) {
-			// Images are resolved through the local file repo, they cannot be inherited
-			$config = $inheritedSkin->getConfig() ?? [];
-			unset( $config['images'] );
-			$skins[] = new FlexiSkin(
-				$inheritedSkin->getId(),
-				$inheritedSkin->getName(),
-				$config,
-				true
-			);
-		}
-
-		$own = $this->getActive( $skinname );
-		if ( $own instanceof IFlexiSkin ) {
-			$skins[] = $own;
-		}
-
-		return $skins;
-	}
-
-	/**
-	 * @param string $skinname
 	 * @return string
 	 */
-	private function getFilename( $skinname = 'default' ) {
-		return $skinname . '.json';
+	private function getCurrentSkinName(): string {
+		$context = RequestContext::getMain();
+		if ( defined( 'MW_NO_SESSION' ) && MW_NO_SESSION ) {
+			return $context->getRequest()->getVal( 'skin', '' );
+		}
+		return $context->getSkin()->getSkinName();
 	}
 
 	/**

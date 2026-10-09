@@ -1,0 +1,43 @@
+[
+	{
+		"name": "flexiskin",
+		"comment": "Table containing FlexiSkin configuration",
+		"columns": [
+			{
+				"name": "fs_id",
+				"type": "integer",
+				"options": {
+					"unsigned": true,
+					"notnull": true,
+					"autoincrement": true
+				}
+			},
+			{
+				"name": "fs_skin",
+				"type": "string",
+				"options": { "length": 255 }
+			},
+			{
+				"name": "fs_active",
+				"type": "mwtinyint",
+				"options": {
+					"unsigned": true,
+					"notnull": false,
+					"default": 0
+				}
+			},
+			{
+				"name": "fs_config",
+				"type": "text",
+				"options": {}
+			},
+			{
+				"name": "fs_wiki_id",
+				"type": "string",
+				"options": { "length": 255 }
+			}
+		],
+		"pk": [ "fs_id" ],
+		"indexes": []
+	}
+]
