@@ -94,5 +94,7 @@
 	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Истакнато на страничникот",
 	"flexiskin-ui-plugin-footer-colors-label": "Бои на подножјето",
 	"flexiskin-ui-plugin-colors-background-footer-label": "Заднина на подножјето",
-	"flexiskin-ui-plugin-colors-foreground-footer-label": "Преднина на подножјето"
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "Преднина на подножјето",
+	"flexiskin-ui-configurator-button-reset-label": "Врати одново",
+	"flexiskin-ui-error-reset-fail": "Враќањето одново на рувото не успеа"
 }
