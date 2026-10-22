@@ -13,7 +13,6 @@
 	"action-flexiskin-viewspecialpage": "de [[Special:FlexiSkin|speciale pagina]] voor het aanpassen van de vormgeving te bekijken",
 	"right-flexiskin-api": "De FlexiSkin-API’s gebruiken",
 	"action-flexiskin-api": "de FlexiSkin-API’s te gebruiken",
-	"apihelp-flexiskin-skinoperation-param-skinname": "De naam van de vormgeving waarvoor een FlexiSkin moet worden beheerd",
 	"apihelp-flexiskin-activation-summary": "De activeringsmodule",
 	"apihelp-flexiskin-save-summary": "De opslagmodule",
 	"apihelp-flexiskin-preview-summary": "De voorvertoningsmodule",

@@ -12,7 +12,6 @@
 	"action-flexiskin-viewspecialpage": "عرض [[Special:FlexiSkin|صفحة خاصة]] لتخصيص الجلد",
 	"right-flexiskin-api": "استخدم FlexiSkin APIs",
 	"action-flexiskin-api": "استخدام واجهات برمجة تطبيقات FlexiSkin",
-	"apihelp-flexiskin-skinoperation-param-skinname": "اسم الجلد المراد إدارة FlexiSkin لم",
 	"apihelp-flexiskin-activation-summary": "وحدة التنشيط",
 	"apihelp-flexiskin-save-summary": "وحدة الحفظ",
 	"apihelp-flexiskin-preview-summary": "وحدة المعاينة",

@@ -13,7 +13,6 @@
 	"action-flexiskin-viewspecialpage": "visa [[Special:FlexiSkin|specialsidan]] för att anpassa utseendet",
 	"right-flexiskin-api": "Använd FlexiSkin API:erna",
 	"action-flexiskin-api": "använd FlexiSkin API:erna",
-	"apihelp-flexiskin-skinoperation-param-skinname": "Utseendenamnet för att hantera en FlexiSkin",
 	"apihelp-flexiskin-activation-summary": "Aktiveringsmodulen",
 	"apihelp-flexiskin-save-summary": "Sparamodulen",
 	"apihelp-flexiskin-preview-summary": "Förhandsgranskningsmodulen",

@@ -13,7 +13,6 @@
 	"action-flexiskin-viewspecialpage": "преглед на [[Special:FlexiSkin|службена страница]] за прилагодување на рувото",
 	"right-flexiskin-api": "Употреба на приложници во рувото „Флекси“",
 	"action-flexiskin-api": "употреба на приложници во рувото „Флекси“",
-	"apihelp-flexiskin-skinoperation-param-skinname": "Име на рувото за кое ќе се раководи „Флекси“",
 	"apihelp-flexiskin-activation-summary": "Модулот за активирање",
 	"apihelp-flexiskin-save-summary": "Модулот за зачувување",
 	"apihelp-flexiskin-preview-summary": "Модулот за преглед",
@@ -102,6 +101,5 @@
 	"flexiskin-configurator-prompt-on-reset": "Сите поставки на ова вики ќе бидат отфрлени и наместо тоа ќе се примени стандардниот стил на BlueSpice. Ова ги засега сите корисници на ова вики и не може да се отповика. Дали сакате да продолжите?",
 	"flexiskin-configurator-prompt-on-reset-to-main-wiki": "Сите поставки на ова вики ќе бидат отфрлени и наместо тоа ќе се примени стилот на главното вики. Ова ги засега сите корисници на ова вики и не може да се отповика. Дали сакате да продолжите?",
 	"flexiskin-ui-configurator-notice-inherited-styling": "Ова вики го наследува стилот од главното вики. Секоја поставка што не ја прилагодувате тука продолжува да го следи главното вики.",
-	"flexiskin-ui-configurator-notice-inherited-styling-default": "Ова вики го наследува својот стил од главното вики. Главното вики моментално го користи стандардниот стил на BlueSpice, така што тоа е стилот кој го следи по секоја поставка што нема да ја прилагодите овде.",
 	"apihelp-flexiskin-reset-summary": "Модулот за враќање одново"
 }
