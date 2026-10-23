@@ -266,6 +266,13 @@ class FlexiSkinManager {
 	}
 
 	/**
+	 * @return string[]
+	 */
+	public function getTabOrder(): array {
+		return $this->getSkinDefinition()['tabOrder'] ?? [];
+	}
+
+	/**
 	 * @return array
 	 */
 	private function getSkinDefinition(): array {

@@ -133,6 +133,10 @@ flexiskin.ui.plugin.MyPlugin.prototype.provideControls = function () {
 
 This will add control for body background to "background colors" section, in the UI as well as in the result structure
 
+Controls can set `align` alongside `label` and `widget` to configure their
+`OO.ui.FieldLayout` label alignment. The default is `left`; use `align: 'top'`
+for controls such as the logo and favicon upload fields.
+
 ### Advanced
 Plugin can "listen" to several events in order to interfere with different processes. These are called `actionCallbacks` and are declared on control-level (same level as `widget` is declared)
 
@@ -158,12 +162,18 @@ controls it cannot apply, by their path in the control structure:
 		"SkinRegistry": {
 			"myskin": {
 				"plugins": [ "LayoutColors", "Content", "FreeCss" ],
+				"tabOrder": [ "images", "content" ],
 				"unsupportedControls": [ "color_settings/sidebar_colors" ]
 			}
 		}
 	}
 }
 ```
+
+The optional `tabOrder` lists top-level control group IDs, not plugin registry
+keys. Listed tabs appear first in the specified order. Unlisted tabs keep their
+relative order afterwards; unavailable and duplicate IDs do not create tabs.
+Without `tabOrder`, the existing registration order is preserved.
 
 # Inheriting styling
 Hook `FlexiSkinGetInheritedSkin` lets a wiki inherit its styling from elsewhere, e.g. from another wiki (use

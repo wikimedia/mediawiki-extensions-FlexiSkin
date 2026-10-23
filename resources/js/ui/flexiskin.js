@@ -4,7 +4,8 @@ $( () => {
 		new flexiskin.ui.Configurator( {
 			skin: mw.config.get( 'wgFlexiSkin' ),
 			inheritance: mw.config.get( 'wgFlexiSkinInheritance' ),
-			unsupportedControls: mw.config.get( 'wgFlexiSkinUnsupportedControls' )
+			unsupportedControls: mw.config.get( 'wgFlexiSkinUnsupportedControls' ),
+			tabOrder: mw.config.get( 'wgFlexiSkinTabOrder' )
 		}
 		).$element );
 

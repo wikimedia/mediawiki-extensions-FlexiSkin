@@ -1,4 +1,8 @@
 .fs-configure {
+	.oo-ui-indexLayout-stackLayout > .oo-ui-panelLayout {
+		padding: 20px 0;
+	}
+
 	.oo-ui-toolbar-tools .manager-actions {
 		float: right;
 
@@ -11,31 +15,26 @@
 
 	.oo-ui-fieldsetLayout {
 		.oo-ui-fieldsetLayout-group {
-			margin-left: 10px;
-			display: table;
+			display: block;
 
 			.oo-ui-fieldLayout {
-				display: table-cell;
-				vertical-align: top;
-				padding-right: 10px;
-				margin-top: 0;
+				display: block;
+
+				.oo-ui-selectFileInputWidget-dropTarget {
+					width: 100%;
+					max-width: unset;
+				}
+
+				.oojsplus-hex-color-picker-widget {
+					display: inline-flex;
+					width: auto;
+				}
 			}
-		}
-		margin-top: 10px;
-		vertical-align: top;
-	}
-
-	.fs-tabs {
-		margin-top: 20px;
-
-		> .oo-ui-menuLayout-menu {
-			border-bottom: 2px solid grey;
 		}
 	}
 
 	.fs-group {
 		width: 100%;
-		margin: 20px 0 20px 0;
 
 		.fs-group-item-container {
 			fieldset {
@@ -43,8 +42,8 @@
 				width: 100%;
 
 				.oo-ui-fieldLayout {
-					display: inline-block;
-					margin-right: 20px;
+					display: block;
+					margin: 20px 0;
 				}
 			}
 		}

@@ -14,6 +14,7 @@ flexiskin.ui.plugin.Images.prototype.provideControls = function () {
 					widget: new OO.ui.SelectFileInputWidget( {
 						showDropTarget: true
 					} ),
+					align: 'top',
 					actionCallback: {
 						preview: this.onPreview,
 						save: this.onSave,
@@ -25,6 +26,7 @@ flexiskin.ui.plugin.Images.prototype.provideControls = function () {
 					widget: new OO.ui.SelectFileInputWidget( {
 						showDropTarget: true
 					} ),
+					align: 'top',
 					actionCallback: {
 						preview: this.onPreview,
 						save: this.onSave,

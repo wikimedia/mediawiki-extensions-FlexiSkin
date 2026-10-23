@@ -6,6 +6,7 @@ flexiskin.ui.Configurator = function ( cfg ) {
 	this.skin.config = this.skin.config || {};
 	this.inheritance = cfg.inheritance || {};
 	this.unsupportedControls = cfg.unsupportedControls || [];
+	this.tabOrder = cfg.tabOrder || [];
 
 	flexiskin.ui.Configurator.parent.call( this );
 
@@ -96,10 +97,11 @@ flexiskin.ui.Configurator.prototype.makeInheritanceNotice = function () {
 
 flexiskin.ui.Configurator.prototype.makeForm = function () {
 	const grouped = this.groupItems(),
-		tabPanels = [];
+		tabPanels = [],
+		groupIds = Array.from( new Set( this.tabOrder.concat( Object.keys( grouped ) ) ) );
 	this.formElements = {};
 
-	for ( const groupId in grouped ) {
+	for ( const groupId of groupIds ) {
 		if ( !grouped.hasOwnProperty( groupId ) ) {
 			continue;
 		}
@@ -114,7 +116,8 @@ flexiskin.ui.Configurator.prototype.makeForm = function () {
 	this.tabs = new OO.ui.IndexLayout( {
 		expanded: false,
 		autoFocus: false,
-		classes: [ 'fs-tabs' ]
+		classes: [ 'fs-tabs' ],
+		framed: false
 	} );
 	this.tabs.addTabPanels( tabPanels );
 
@@ -148,15 +151,17 @@ flexiskin.ui.Configurator.prototype.getGroupLayouts = function ( items ) {
 					group: groups[ i ]
 				}
 			} );
+
 			if ( i === ( groups.length - 1 ) ) {
 				const data = items[ id ].getData();
 				let label = '';
 				if ( data && data.hasOwnProperty( 'label' ) ) {
 					label = data.label;
 				}
+
 				layout.addItems( [ new OO.ui.FieldLayout( items[ id ], {
 					label: label,
-					align: 'top'
+					align: data && data.align ? data.align : 'left'
 				} ) ] );
 			}
 			if ( !fieldLayouts.hasOwnProperty( groups[ i ] ) ) {

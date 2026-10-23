@@ -12,7 +12,8 @@ flexiskin.ui.plugin.FreeCss.prototype.provideControls = function () {
 			label: mw.message( 'flexiskin-ui-plugin-free-css-label' ).text(),
 			items: {
 				css: {
-					label: '',
+					label: mw.message( 'flexiskin-ui-plugin-free-css-label' ).text(),
+					align: 'top',
 					widget: new OO.ui.MultilineTextInputWidget( {
 						rows: 10,
 						classes: [ 'flexiskin-plugin-free-css-input' ]

@@ -7,9 +7,33 @@ use MediaWiki\MediaWikiServices;
 use MediaWiki\Output\OutputPage;
 use MediaWiki\ResourceLoader\Context as ResourceLoaderContext;
 use MediaWiki\ResourceLoader\FileModule as ResourceLoaderFileModule;
+use MediaWiki\Utils\FileContentsHasher;
 use RuntimeException;
 
 class Configurator extends ResourceLoaderFileModule {
+
+	/**
+	 * @inheritDoc
+	 */
+	public function getDefinitionSummary( ResourceLoaderContext $context ) {
+		$summary = parent::getDefinitionSummary( $context );
+		$files = [];
+		foreach ( $this->getPluginFiles( $context ) as $file ) {
+			$files[] = $this->getLocalPath( $file );
+		}
+		foreach ( $this->getPluginFiles( $context, 'styles' ) as $styleFiles ) {
+			foreach ( $styleFiles as $file ) {
+				$files[] = $this->getLocalPath( $file );
+			}
+		}
+		$summary[] = [
+			'pluginFiles' => array_map(
+				static fn ( $file ) => FileContentsHasher::getFileContentsHash( $file ),
+				$files
+			)
+		];
+		return $summary;
+	}
 
 	/**
 	 * Get the contents of a list of CSS files.
