@@ -99,7 +99,7 @@
 	"flexiskin-ui-error-reset-fail": "Dib u dejinta muuqaalka way fashilantay",
 	"flexiskin-configurator-prompt-on-reset": "Dhammaan dejimaha wiki-gan waa la tirtiri doonaa, waxaana beddelkooda la adeegsan doonaa qaabaynta caadiga ah ee BlueSpice. Tani waxay saamaynaysaa dhammaan isticmaalayaasha wiki-gan, dibna looma celin karo. Ma doonaysaa inaad sii waddo?",
 	"flexiskin-configurator-prompt-on-reset-to-main-wiki": "Dhammaan dejimaha wiki-gan waa la tirtiri doonaa, waxaana beddelkooda la adeegsan doonaa qaabaynta wiki-ga weyn. Tani waxay saamaynaysaa dhammaan isticmaalayaasha wiki-gan, dibna looma celin karo. Ma doonaysaa inaad sii waddo?",
-	"flexiskin-ui-configurator-notice-inherited-styling": "Wiki-gani wuxuu qaabeyntiisa ka dhaxlaa wiki-ga weyn. Dej kasta oo aadan halkan ku habayn wuxuu sii raacayaa dejimaha wiki-ga liiska.",
+	"flexiskin-ui-configurator-notice-inherited-styling": "Wiki-gani wuxuu qaab dhismeedkiisa muuqaalka ka dhaxlaa wiki-ga weyn. Waxaad sii habayn kartaa wiki-gan. Isbeddellada aad halkan ku samayso waxaa lagu dabaqi doonaa wiki-gan oo keliya.",
 	"flexiskin-ui-configurator-notice-inherited-styling-default": "Wiki-gani wuxuu qaabeyntiisa ka dhaxlaa wiki-ga weyn. Wiki-ga weyn wuxuu hadda isticmaalaa qaabaynta caadiga ah ee BlueSpice, sidaas darteed dejin kasta oo aadan halkan ku habayn waxay raacaysaa qaabayntaas.",
 	"apihelp-flexiskin-reset-summary": "Qaybta dib u dejinta"
 }
