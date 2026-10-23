@@ -92,6 +92,12 @@ flexiskin.ui.plugin.Plugin.prototype.getItemsForObject = function ( controls, gr
 };
 
 flexiskin.ui.plugin.Plugin.prototype.addData = function ( item, id ) {
+	if ( item.hasOwnProperty( 'align' ) ) {
+		item.widget.setData( Object.assign( {}, item.widget.getData(), {
+			align: item.align
+		} ) );
+	}
+
 	if ( item.hasOwnProperty( 'label' ) ) {
 		const label = item.label;
 		if ( label ) {
@@ -105,7 +111,8 @@ flexiskin.ui.plugin.Plugin.prototype.addData = function ( item, id ) {
 };
 
 flexiskin.ui.plugin.Plugin.prototype.getWidgetForItem = function ( widget, groups, itemId ) {
-	const result = {}, widgetData = {};
+	const result = {},
+		widgetData = Object.assign( {}, widget.getData() );
 	if ( this.labels.hasOwnProperty( itemId ) ) {
 		widgetData.label = this.labels[ itemId ];
 	}

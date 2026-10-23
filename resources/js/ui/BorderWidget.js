@@ -42,7 +42,7 @@ flexiskin.ui.widget.BorderWidget.prototype.onNoneChange = function ( value ) {
 };
 
 flexiskin.ui.widget.BorderWidget.prototype.getValue = function () {
-	if ( !this.noneCheck.isSelected() ) {
+	if ( !this.noneCheck.getValue() ) {
 		return 'none';
 	}
 
@@ -82,5 +82,5 @@ flexiskin.ui.widget.BorderWidget.prototype.setValue = function ( value ) {
 
 	this.typeWidget.setValue( type );
 	this.widthWidget.setValue( size );
-	this.noneCheck.setSelected( true );
+	this.noneCheck.setValue( true );
 };

@@ -3,7 +3,7 @@ flexiskin.ui.widget.ColorOrNone = function ( cfg ) {
 	flexiskin.ui.widget.ColorOrNone.parent.call( this, cfg );
 	this.$input.remove();
 
-	this.noneCheck = new OO.ui.CheckboxInputWidget();
+	this.noneCheck = new OO.ui.ToggleSwitchWidget();
 
 	this.colorWidget = new flexiskin.ui.widget.ColorPicker();
 	this.$colorWidgetWrap = $( '<div>' ).append( this.colorWidget.$element ).addClass( 'color-picker-wrapper' );
@@ -28,7 +28,7 @@ flexiskin.ui.widget.ColorOrNone.prototype.onNoneChange = function ( value ) {
 };
 
 flexiskin.ui.widget.ColorOrNone.prototype.getValue = function () {
-	if ( this.noneCheck.isSelected() === false ) {
+	if ( this.noneCheck.getValue() === false ) {
 		return 'none';
 	}
 	return this.colorWidget.getValue();
@@ -39,6 +39,6 @@ flexiskin.ui.widget.ColorOrNone.prototype.setValue = function ( value ) {
 		return;
 	}
 
-	this.noneCheck.setSelected( true );
+	this.noneCheck.setValue( true );
 	this.colorWidget.setValue( value );
 };

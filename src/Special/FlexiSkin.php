@@ -85,6 +85,9 @@ class FlexiSkin extends SpecialPage {
 		$this->getOutput()->addJsConfigVars(
 			'wgFlexiSkinUnsupportedControls', $this->flexiSkinManager->getUnsupportedControls()
 		);
+		$this->getOutput()->addJsConfigVars(
+			'wgFlexiSkinTabOrder', $this->flexiSkinManager->getTabOrder()
+		);
 	}
 
 	/**

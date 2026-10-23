@@ -16,7 +16,7 @@ flexiskin.ui.StyleSizeWidget = function ( cfg ) {
 		options: this.allowedUnits.map( ( unit ) => ( { data: unit, label: unit } ) )
 	} );
 	this.unitWidget.$element.css( {
-		width: '70px'
+		width: 'auto'
 	} );
 
 	this.$input.remove();
