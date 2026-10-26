@@ -77,6 +77,7 @@ flexiskin.ui.plugin.Images.prototype.onSave = function ( data, itemId ) {
 	function getUploadData( filename, file ) { // eslint-disable-line no-shadow
 		return {
 			filename: filename,
+			source: mw.config.get( 'wgWikiID' ),
 			fileObject: {
 				name: file.name,
 				size: file.size,
