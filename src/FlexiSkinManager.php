@@ -230,7 +230,12 @@ class FlexiSkinManager {
 	 * @return array
 	 */
 	public function getActiveLessVars(): array {
-		$active = $this->getActive();
+		try {
+			$active = $this->getActive();
+		} catch ( Throwable $e ) {
+			// DB may be unavailable, e.g. during structure tests
+			return [];
+		}
 		if ( !$active ) {
 			return [];
 		}

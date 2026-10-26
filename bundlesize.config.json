@@ -1,0 +1,12 @@
+[
+	{
+		"resourceModule": "ext.flexiskin.specialpage.styles",
+		"maxSize": "2 kB"
+	},
+	{
+		"resourceModule": "ext.flexiskin.specialpage.scripts",
+		"maxSize": "8 kB",
+		"@note": "Ignore oojs-ui*",
+		"ignoreDependencies": true
+	}
+]
