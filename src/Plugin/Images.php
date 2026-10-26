@@ -6,6 +6,7 @@ use MediaWiki\Extension\FlexiSkin\IFlexiSkin;
 use MediaWiki\Extension\FlexiSkin\PluginBase;
 use MediaWiki\FileRepo\File\File;
 use MediaWiki\MediaWikiServices;
+use MediaWiki\WikiMap\WikiMap;
 
 class Images extends PluginBase {
 
@@ -54,6 +55,9 @@ class Images extends PluginBase {
 		}
 		foreach ( $config['images'] as $key => $data ) {
 			$config['images'][$key] = $this->expandUrl( $data );
+			if ( !isset( $config['images'][$key]['source'] ) ) {
+				$config['images'][$key]['source'] = WikiMap::getCurrentWikiId();
+			}
 		}
 	}
 

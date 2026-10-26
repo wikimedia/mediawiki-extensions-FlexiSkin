@@ -55,7 +55,7 @@ class FlexiSkin extends SpecialPage {
 		$activeSkin = $this->flexiSkinManager->getActive();
 		$inherited = false;
 		$usedSkin = $localSkin;
-		if ( ( !$localSkin->getId() || !$localSkin->isActive() ) && $activeSkin?->getId() ) {
+		if ( !$localSkin->getId() && $activeSkin?->getId() ) {
 			$usedSkin = $activeSkin;
 			$inherited = true;
 		}
