@@ -65,6 +65,10 @@
 	"AutoloadNamespaces": {
 		"MediaWiki\\Extension\\FlexiSkin\\": "src/"
 	},
+	"TestAutoloadNamespaces": {
+		"MediaWiki\\Extension\\FlexiSkin\\Tests\\Structure\\": "tests/phpunit/structure/",
+		"MediaWiki\\Extension\\FlexiSkin\\Tests\\Unit\\": "tests/phpunit/unit/"
+	},
 	"APIModules": {
 		"flexiskin-activation": "MediaWiki\\Extension\\FlexiSkin\\Api\\Activation",
 		"flexiskin-save": "MediaWiki\\Extension\\FlexiSkin\\Api\\Save",
