@@ -473,7 +473,21 @@ flexiskin.ui.Configurator.prototype.doSave = function () {
 
 flexiskin.ui.Configurator.prototype.doDisable = function () {
 	const confirmationMessage = mw.message( 'flexiskin-configurator-prompt-on-disable' ).text();
-	OO.ui.confirm( confirmationMessage, { size: 'large' } ).done( ( confirmed ) => {
+	OO.ui.confirm( confirmationMessage, {
+		size: 'large',
+		actions: [
+			{
+				label: mw.message( 'flexiskin-ui-configurator-button-disable-label' ).text(),
+				flags: [ 'primary', 'destructive' ],
+				action: 'accept'
+			},
+			{
+				label: OO.ui.msg( 'ooui-dialog-message-reject' ),
+				flags: 'safe',
+				action: 'reject'
+			}
+		]
+	} ).done( ( confirmed ) => {
 		if ( confirmed ) {
 			new mw.Api().get( {
 				action: 'flexiskin-activation',
@@ -497,7 +511,21 @@ flexiskin.ui.Configurator.prototype.doReset = function () {
 		mw.message( 'flexiskin-configurator-prompt-on-reset-to-main-wiki' ).text() :
 		mw.message( 'flexiskin-configurator-prompt-on-reset' ).text();
 
-	OO.ui.confirm( confirmationMessage, { size: 'large' } ).done( ( confirmed ) => {
+	OO.ui.confirm( confirmationMessage, {
+		size: 'large',
+		actions: [
+			{
+				label: mw.message( 'flexiskin-ui-configurator-button-reset-label' ).text(),
+				flags: [ 'primary', 'destructive' ],
+				action: 'accept'
+			},
+			{
+				label: OO.ui.msg( 'ooui-dialog-message-reject' ),
+				flags: 'safe',
+				action: 'reject'
+			}
+		]
+	} ).done( ( confirmed ) => {
 		if ( !confirmed ) {
 			return;
 		}
