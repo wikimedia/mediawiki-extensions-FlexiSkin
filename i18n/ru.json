@@ -13,7 +13,6 @@
 	"action-flexiskin-viewspecialpage": "просмотреть [[Special:FlexiSkin|специальную страницу]] для настройки скина",
 	"right-flexiskin-api": "Используйте API FlexiSkin",
 	"action-flexiskin-api": "использовать API FlexiSkin",
-	"apihelp-flexiskin-skinoperation-param-skinname": "Имя скина для управления FlexiSkin",
 	"apihelp-flexiskin-save-param-id": "Параметр id",
 	"apihelp-flexiskin-save-param-name": "Название параметра",
 	"apihelp-flexiskin-activation-param-active": "ID активного скина",
