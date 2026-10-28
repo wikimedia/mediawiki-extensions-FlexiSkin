@@ -10,7 +10,6 @@
 	"action-flexiskin-viewspecialpage": "ogled [[Special:FlexiSkin|posebne strani]] za prilagajanje preobleke",
 	"right-flexiskin-api": "Uporaba API-jev FlexiSkin",
 	"action-flexiskin-api": "uporabo API-jev FlexiSkin",
-	"apihelp-flexiskin-skinoperation-param-skinname": "Ime preboleme za upravljanje FlexiSkin",
 	"apihelp-flexiskin-activation-summary": "Modul za aktivacijo",
 	"apihelp-flexiskin-save-summary": "Modul za shranjevanje",
 	"apihelp-flexiskin-preview-summary": "Predogledni modul",

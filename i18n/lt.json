@@ -12,7 +12,6 @@
 	"action-flexiskin-viewspecialpage": "peržiūrėti [[Special:FlexiSkin|specialų puslapį]], kad pritaikytu temą",
 	"right-flexiskin-api": "Naudoti FlexiSkin APIs",
 	"action-flexiskin-api": "naudoti FlexiSkin APIs",
-	"apihelp-flexiskin-skinoperation-param-skinname": "Temos pavadinimas FlexiSkin valdymui",
 	"apihelp-flexiskin-activation-summary": "Aktyvavimo modulis",
 	"apihelp-flexiskin-save-summary": "Išsaugojimo modulis",
 	"apihelp-flexiskin-preview-summary": "Peržiūros modulis",

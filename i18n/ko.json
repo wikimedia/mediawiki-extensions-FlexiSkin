@@ -17,7 +17,6 @@
 	"action-flexiskin-viewspecialpage": "스킨을 적용하기 위해 [[Special:FlexiSkin|특수 문서]]를 참고",
 	"right-flexiskin-api": "FlexiSkin API를 사용",
 	"action-flexiskin-api": "FlexiSkin API를 사용",
-	"apihelp-flexiskin-skinoperation-param-skinname": "FlexiSkin을 관리할 스킨 이름",
 	"apihelp-flexiskin-activation-summary": "활성화 모듈",
 	"apihelp-flexiskin-save-summary": "저장 모듈",
 	"apihelp-flexiskin-preview-summary": "미리 보기 모듈",

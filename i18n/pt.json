@@ -12,7 +12,6 @@
 	"action-flexiskin-viewspecialpage": "ver a [[Special:FlexiSkin|página especial]] para personalizar o tema",
 	"right-flexiskin-api": "Usar as API FlexiSkin",
 	"action-flexiskin-api": "usar as API FlexiSkin",
-	"apihelp-flexiskin-skinoperation-param-skinname": "O nome do tema para o qual gerir um FlexiSkin",
 	"apihelp-flexiskin-activation-summary": "O módulo de ativação",
 	"apihelp-flexiskin-save-summary": "O módulo de gravação",
 	"apihelp-flexiskin-preview-summary": "O módulo de antevisão",

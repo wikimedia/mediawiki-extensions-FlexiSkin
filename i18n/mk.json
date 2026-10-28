@@ -5,13 +5,14 @@
 		]
 	},
 	"flexiskin-extension-desc": "Овозможува прилагодување на рувото „Флекси“",
+	"flexiskin-extension-name": "FlexiSkin",
 	"flexiskin-label": "Руво",
+	"flexiskin": "FlexiSkin",
 	"flexiskin-special-title": "Управување со рува",
 	"right-flexiskin-viewspecialpage": "Преглед на [[Special:FlexiSkin|службена страница]] за прилагодување на рувото",
 	"action-flexiskin-viewspecialpage": "преглед на [[Special:FlexiSkin|службена страница]] за прилагодување на рувото",
 	"right-flexiskin-api": "Употреба на приложници во рувото „Флекси“",
 	"action-flexiskin-api": "употреба на приложници во рувото „Флекси“",
-	"apihelp-flexiskin-skinoperation-param-skinname": "Име на рувото за кое ќе се раководи „Флекси“",
 	"apihelp-flexiskin-activation-summary": "Модулот за активирање",
 	"apihelp-flexiskin-save-summary": "Модулот за зачувување",
 	"apihelp-flexiskin-preview-summary": "Модулот за преглед",
@@ -94,5 +95,11 @@
 	"flexiskin-ui-plugin-colors-highlight-sidebar-primary-label": "Истакнато на страничникот",
 	"flexiskin-ui-plugin-footer-colors-label": "Бои на подножјето",
 	"flexiskin-ui-plugin-colors-background-footer-label": "Заднина на подножјето",
-	"flexiskin-ui-plugin-colors-foreground-footer-label": "Преднина на подножјето"
+	"flexiskin-ui-plugin-colors-foreground-footer-label": "Преднина на подножјето",
+	"flexiskin-ui-configurator-button-reset-label": "Врати одново",
+	"flexiskin-ui-error-reset-fail": "Враќањето одново на рувото не успеа",
+	"flexiskin-configurator-prompt-on-reset": "Сите поставки на ова вики ќе бидат отфрлени и наместо тоа ќе се примени стандардниот стил на BlueSpice. Ова ги засега сите корисници на ова вики и не може да се отповика. Дали сакате да продолжите?",
+	"flexiskin-configurator-prompt-on-reset-to-main-wiki": "Сите поставки на ова вики ќе бидат отфрлени и наместо тоа ќе се примени стилот на главното вики. Ова ги засега сите корисници на ова вики и не може да се отповика. Дали сакате да продолжите?",
+	"flexiskin-ui-configurator-notice-inherited-styling": "Ова вики го наследува стилот од главното вики. Можете понатаму да го прилагодувате ова вики. Тука направените промени ќе важат само за ова вики.",
+	"apihelp-flexiskin-reset-summary": "Модулот за враќање одново"
 }

@@ -14,7 +14,6 @@
 	"action-flexiskin-viewspecialpage": "להציג את [[Special:FlexiSkin|הדף המיוחד]] להתאמה אישית של העיצוב",
 	"right-flexiskin-api": "שימוש ב־API־ים של FlexiSkin",
 	"action-flexiskin-api": "להשתמש ב־API־ים של FlexiSkin",
-	"apihelp-flexiskin-skinoperation-param-skinname": "שם העיצוב לניהול FlexiSkin עבורו",
 	"apihelp-flexiskin-activation-summary": "מודול ההפעלה",
 	"apihelp-flexiskin-save-summary": "מודל השמירה",
 	"apihelp-flexiskin-preview-summary": "מודול התצוגה המקדימה",
