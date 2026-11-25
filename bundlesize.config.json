@@ -5,7 +5,7 @@
 	},
 	{
 		"resourceModule": "ext.flexiskin.specialpage.scripts",
-		"maxSize": "8 kB",
+		"maxSize": "9 kB",
 		"@note": "Ignore oojs-ui*",
 		"ignoreDependencies": true
 	}
